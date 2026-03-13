@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgkiiik7h1t4o"
-path="res://.godot/imported/Bluecrouch.png-229a5d744b6244e986283f06febdc17d.ctex"
+uid="uid://bwisdjivkbmtk"
+path="res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-835474d34d37ca97448269e7f3ec20fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Bluecrouch.png"
-dest_files=["res://.godot/imported/Bluecrouch.png-229a5d744b6244e986283f06febdc17d.ctex"]
+source_file="res://Sprite Sheets/Character/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png"
+dest_files=["res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-835474d34d37ca97448269e7f3ec20fa.ctex"]
 
 [params]
 

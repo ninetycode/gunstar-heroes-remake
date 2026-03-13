@@ -1,133 +1,128 @@
-[gd_scene format=3 uid="uid://dayoqc78au6j2"]
+[gd_scene format=3 uid="uid://bd18wtvyjn7ph"]
 
-[ext_resource type="Script" uid="uid://brftpcdr3wcdn" path="res://Entities/Player/gunstar_blue.gd" id="1_3kua5"]
-[ext_resource type="Texture2D" uid="uid://dgkiiik7h1t4o" path="res://Sprite Sheets/Character/Bluecrouch.png" id="2_ap3xn"]
+[ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sprite Sheets/Character/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_7rnhd"]
+[ext_resource type="Texture2D" uid="uid://dgkiiik7h1t4o" path="res://Sprite Sheets/Character/Bluecrouch.png" id="1_65kgp"]
+[ext_resource type="Texture2D" uid="uid://c38gywf8gabr0" path="res://Sprite Sheets/Character/Blueshot down.png" id="2_eeay7"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="2_fmlbe"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_3kua5"]
-[ext_resource type="Texture2D" uid="uid://c38gywf8gabr0" path="res://Sprite Sheets/Character/Blueshot down.png" id="3_iplt1"]
-[ext_resource type="Texture2D" uid="uid://dbj7kssimttdg" path="res://Sprite Sheets/Character/Blueshot up.png" id="4_owvpp"]
-[ext_resource type="Texture2D" uid="uid://wmn1817p4ajn" path="res://Sprite Sheets/Character/blueshot f.png" id="5_ap3xn"]
-[ext_resource type="Texture2D" uid="uid://bur8h675kt5a6" path="res://Sprite Sheets/Character/Blue hanging.png" id="6_r8fok"]
-[ext_resource type="Texture2D" uid="uid://cnrfm135yjdbl" path="res://Sprite Sheets/Character/Blue final.png" id="7_nhbkt"]
-[ext_resource type="Texture2D" uid="uid://clca1c0vsarn7" path="res://Sprite Sheets/Character/Bluesalto.png" id="8_vskfa"]
-[ext_resource type="Texture2D" uid="uid://c3gvebdv7c2sh" path="res://Sprite Sheets/Character/Bluerun.png" id="9_iplt1"]
+[ext_resource type="Texture2D" uid="uid://dbj7kssimttdg" path="res://Sprite Sheets/Character/Blueshot up.png" id="3_qk2ct"]
+[ext_resource type="Texture2D" uid="uid://ch5e4whe8c1b" path="res://Sprite Sheets/Character/Blueshot.png" id="4_ggf60"]
+[ext_resource type="Texture2D" uid="uid://bur8h675kt5a6" path="res://Sprite Sheets/Character/Blue hanging.png" id="5_bi0ec"]
+[ext_resource type="Texture2D" uid="uid://cnrfm135yjdbl" path="res://Sprite Sheets/Character/Blue final.png" id="6_pw4no"]
+[ext_resource type="Texture2D" uid="uid://clca1c0vsarn7" path="res://Sprite Sheets/Character/Bluesalto.png" id="7_7dqj8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
-atlas = ExtResource("2_ap3xn")
-region = Rect2(116, 0, 52, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3whp"]
+atlas = ExtResource("1_65kgp")
+region = Rect2(0, 0, 42, 21)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xr8lj"]
-atlas = ExtResource("3_iplt1")
-region = Rect2(106, 0, 36, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqcyi"]
+atlas = ExtResource("2_eeay7")
+region = Rect2(0, 0, 24, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r8fok"]
-atlas = ExtResource("3_iplt1")
-region = Rect2(138, 0, 36, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_puegb"]
+atlas = ExtResource("2_eeay7")
+region = Rect2(33, 0, 24, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d1us"]
-atlas = ExtResource("4_owvpp")
+atlas = ExtResource("3_qk2ct")
 region = Rect2(0, 0, 22, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr01m"]
-atlas = ExtResource("4_owvpp")
+atlas = ExtResource("3_qk2ct")
 region = Rect2(30, 0, 22, 52)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nhbkt"]
-atlas = ExtResource("5_ap3xn")
-region = Rect2(98, 0, 47, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7q5m"]
+atlas = ExtResource("4_ggf60")
+region = Rect2(0, 8, 46, 36)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vskfa"]
-atlas = ExtResource("5_ap3xn")
-region = Rect2(149, 0, 46, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uwwe"]
+atlas = ExtResource("4_ggf60")
+region = Rect2(46, 9, 46, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw6i8"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(0, 0, 35, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_glbt0"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(35, 0, 35, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0ip6"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(70, 0, 35, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fydvb"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(110, 0, 36, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8qky"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(146, 0, 36, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cete1"]
-atlas = ExtResource("6_r8fok")
+atlas = ExtResource("5_bi0ec")
 region = Rect2(182, 0, 31, 49)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0h34"]
-atlas = ExtResource("7_nhbkt")
+atlas = ExtResource("6_pw4no")
 region = Rect2(12, 0, 27, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcn7p"]
-atlas = ExtResource("7_nhbkt")
+atlas = ExtResource("6_pw4no")
 region = Rect2(46, 0, 27, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcwaf"]
-atlas = ExtResource("8_vskfa")
+atlas = ExtResource("7_7dqj8")
 region = Rect2(0, 0, 38, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v7ulf"]
-atlas = ExtResource("8_vskfa")
+atlas = ExtResource("7_7dqj8")
 region = Rect2(39, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nd53j"]
-atlas = ExtResource("8_vskfa")
+atlas = ExtResource("7_7dqj8")
 region = Rect2(88, 0, 25, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pjcup"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(0, 0, 41, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e040r"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(202, 25, 39, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0poeq"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(41, 0, 41, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadvw"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(241, 25, 39, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppdlg"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(92, 0, 38, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c81q"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(280, 25, 39, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7p16"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(130, 0, 38, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjv7i"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(319, 25, 39, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8wow"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(173, 0, 38, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfowr"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(358, 25, 39, 44)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_avsg8"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(211, 0, 38, 52)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dv6dp"]
-atlas = ExtResource("9_iplt1")
-region = Rect2(249, 0, 38, 52)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aga14"]
+atlas = ExtResource("1_7rnhd")
+region = Rect2(397, 25, 39, 44)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ugs6r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_owvpp")
+"texture": SubResource("AtlasTexture_s3whp")
 }],
 "loop": true,
-"name": &"Crouch",
+"name": &"Chourch",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xr8lj")
+"texture": SubResource("AtlasTexture_rqcyi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r8fok")
+"texture": SubResource("AtlasTexture_puegb")
 }],
 "loop": true,
 "name": &"Disparo abajo",
@@ -146,10 +141,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nhbkt")
+"texture": SubResource("AtlasTexture_j7q5m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vskfa")
+"texture": SubResource("AtlasTexture_2uwwe")
 }],
 "loop": true,
 "name": &"Disparo recto",
@@ -205,25 +200,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pjcup")
+"texture": SubResource("AtlasTexture_e040r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0poeq")
+"texture": SubResource("AtlasTexture_tadvw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ppdlg")
+"texture": SubResource("AtlasTexture_1c81q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v7p16")
+"texture": SubResource("AtlasTexture_jjv7i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a8wow")
+"texture": SubResource("AtlasTexture_kfowr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_avsg8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dv6dp")
+"texture": SubResource("AtlasTexture_aga14")
 }],
 "loop": true,
 "name": &"Run",
@@ -237,16 +229,11 @@ radius = 11.0
 height = 32.0
 
 [node name="GunstarBlue" type="CharacterBody2D" unique_id=488555054]
-script = ExtResource("1_3kua5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
-position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo recto"
-offset = Vector2(0.33, -25.58)
-
-[node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
-position = Vector2(11, -21)
+animation = &"Disparo abajo"
+frame_progress = 0.08221874
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022022785]
 shape = SubResource("CapsuleShape2D_fmlbe")
@@ -260,9 +247,3 @@ stats_component = NodePath("../StatsComponent")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent" unique_id=848332993]
 shape = SubResource("CapsuleShape2D_w7imp")
 debug_color = Color(0.8534828, 0.370072, 0, 0.41960785)
-
-[node name="ShooterTime" type="Timer" parent="." unique_id=1605067090]
-wait_time = 0.1
-one_shot = true
-
-[connection signal="salud_agotada" from="StatsComponent" to="." method="_on_stats_component_salud_agotada"]

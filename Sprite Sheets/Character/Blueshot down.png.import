@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbj7kssimttdg"
-path="res://.godot/imported/Blueshot up.png-b4be51c7a7fe73e90d8350dc0303bcd4.ctex"
+uid="uid://c38gywf8gabr0"
+path="res://.godot/imported/Blueshot down.png-21730420bdc7985e4462de5a2f741284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Blueshot up.png"
-dest_files=["res://.godot/imported/Blueshot up.png-b4be51c7a7fe73e90d8350dc0303bcd4.ctex"]
+source_file="res://Sprite Sheets/Character/Blueshot down.png"
+dest_files=["res://.godot/imported/Blueshot down.png-21730420bdc7985e4462de5a2f741284.ctex"]
 
 [params]
 

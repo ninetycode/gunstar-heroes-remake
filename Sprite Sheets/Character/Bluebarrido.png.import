@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch5e4whe8c1b"
-path="res://.godot/imported/Blueshot.png-6bc0cf653c2e2a15f9a498b3fbf29b03.ctex"
+uid="uid://qxrsxpqp8u8u"
+path="res://.godot/imported/Bluebarrido.png-60978a246a213cef7af1d229bcb822b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Blueshot.png"
-dest_files=["res://.godot/imported/Blueshot.png-6bc0cf653c2e2a15f9a498b3fbf29b03.ctex"]
+source_file="res://Sprite Sheets/Character/Bluebarrido.png"
+dest_files=["res://.godot/imported/Bluebarrido.png-60978a246a213cef7af1d229bcb822b6.ctex"]
 
 [params]
 

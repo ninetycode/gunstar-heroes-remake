@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://p6157ufvrp6h"]
+
+[ext_resource type="Script" uid="uid://mfdbt38jn4v4" path="res://Bala.gd" id="1_4s4u5"]
+[ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Sprite Sheets/Bullets/Force_bullet.png" id="2_7281b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8st5"]
+
+[node name="Area2D" type="Area2D" unique_id=99186007]
+script = ExtResource("1_4s4u5")
+speed = null
+damage = null
+type = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=360125284]
+texture = ExtResource("2_7281b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397574564]
+shape = SubResource("CircleShape2D_u8st5")

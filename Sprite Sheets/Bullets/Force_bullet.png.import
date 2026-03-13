@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clca1c0vsarn7"
-path="res://.godot/imported/Bluesalto.png-69a48ecfad219c60bce0ca429f0c53ba.ctex"
+uid="uid://cupkb545f1l67"
+path="res://.godot/imported/Force_bullet.png-6064222b2a8e012b16d6604bbfff6eab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Bluesalto.png"
-dest_files=["res://.godot/imported/Bluesalto.png-69a48ecfad219c60bce0ca429f0c53ba.ctex"]
+source_file="res://Sprite Sheets/Bullets/Force_bullet.png"
+dest_files=["res://.godot/imported/Force_bullet.png-6064222b2a8e012b16d6604bbfff6eab.ctex"]
 
 [params]
 
