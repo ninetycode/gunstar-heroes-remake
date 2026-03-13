@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b3m42blla0abc"]
+
+[ext_resource type="Texture2D" path="res://Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_njcog"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b34a1"]
+atlas = ExtResource("1_njcog")
+region = Rect2(5, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfcew"]
+atlas = ExtResource("1_njcog")
+region = Rect2(44, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmpay"]
+atlas = ExtResource("1_njcog")
+region = Rect2(73, 25, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpa2c"]
+atlas = ExtResource("1_njcog")
+region = Rect2(117, 25, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkfjv"]
+atlas = ExtResource("1_njcog")
+region = Rect2(161, 25, 44, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e040r"]
+atlas = ExtResource("1_njcog")
+region = Rect2(202, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadvw"]
+atlas = ExtResource("1_njcog")
+region = Rect2(241, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c81q"]
+atlas = ExtResource("1_njcog")
+region = Rect2(280, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjv7i"]
+atlas = ExtResource("1_njcog")
+region = Rect2(319, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfowr"]
+atlas = ExtResource("1_njcog")
+region = Rect2(358, 25, 39, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aga14"]
+atlas = ExtResource("1_njcog")
+region = Rect2(397, 25, 39, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugs6r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b34a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfcew")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmpay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpa2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkfjv")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e040r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c81q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjv7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfowr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aga14")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}]
+
+[node name="GunstarBlue" type="CharacterBody2D" unique_id=488555054]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
+sprite_frames = SubResource("SpriteFrames_ugs6r")
+animation = &"Run"
+frame_progress = 0.6616457
