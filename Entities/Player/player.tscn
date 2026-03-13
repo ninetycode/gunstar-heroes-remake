@@ -246,7 +246,7 @@ animation = &"Disparo recto"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
-position = Vector2(11, -21)
+position = Vector2(-5, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022022785]
 shape = SubResource("CapsuleShape2D_fmlbe")

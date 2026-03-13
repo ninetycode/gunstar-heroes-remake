@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Sprite Sheets/Bullets/Force_bullet.png" id="2_7281b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8st5"]
+radius = 4.0
 
 [node name="Area2D" type="Area2D" unique_id=99186007]
 script = ExtResource("1_4s4u5")
-speed = null
-damage = null
-type = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360125284]
+z_index = -1
 texture = ExtResource("2_7281b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397574564]
