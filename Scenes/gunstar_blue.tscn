@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr6cjgdyweuyj"]
 
-[ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_njcog"]
+[ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sprite Sheets/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_njcog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b34a1"]
 atlas = ExtResource("1_njcog")
@@ -102,4 +102,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 sprite_frames = SubResource("SpriteFrames_ugs6r")
 animation = &"Run"
-frame_progress = 0.6616457
+frame_progress = 0.95001066

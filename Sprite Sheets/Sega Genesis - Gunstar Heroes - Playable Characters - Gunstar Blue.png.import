@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwisdjivkbmtk"
-path="res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-16803c1fbdef5c0f941514f76375e478.ctex"
+path="res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-1351626e39c5581551bb36177b588d9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png"
-dest_files=["res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-16803c1fbdef5c0f941514f76375e478.ctex"]
+source_file="res://Sprite Sheets/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png"
+dest_files=["res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-1351626e39c5581551bb36177b588d9b.ctex"]
 
 [params]
 
