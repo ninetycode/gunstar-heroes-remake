@@ -25,12 +25,16 @@ offset_bottom = 360.0
 
 [node name="area de daño" type="Node2D" parent="." unique_id=1450878960]
 
-[node name="Sprite2D" type="Sprite2D" parent="area de daño" unique_id=1855568778]
-modulate = Color(0.019607844, 1, 1, 1)
-
 [node name="HitboxComponent" parent="area de daño" unique_id=597531608 instance=ExtResource("2_iu2og")]
 danio = 90
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="area de daño/HitboxComponent" unique_id=97117310]
 position = Vector2(526, 298)
 shape = SubResource("RectangleShape2D_iu2og")
+
+[node name="ColorRect" type="ColorRect" parent="area de daño" unique_id=1078540706]
+offset_left = 512.0
+offset_top = 289.0
+offset_right = 538.0
+offset_bottom = 308.0
+color = Color(1, 0.24705882, 0, 1)
