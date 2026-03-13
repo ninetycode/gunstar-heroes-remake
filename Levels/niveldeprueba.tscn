@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5hbqctwiqkk3"]
 
-[ext_resource type="PackedScene" uid="uid://dr6cjgdyweuyj" path="res://Entities/Player/gunstar_blue.tscn" id="1_3oxw8"]
+[ext_resource type="PackedScene" uid="uid://dr6cjgdyweuyj" path="res://Entities/Player/player.tscn" id="1_3oxw8"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_iu2og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
