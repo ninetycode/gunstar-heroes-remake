@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+
 func _on_stats_component_salud_agotada() -> void:
 	print("probando muerte. morido")
 	queue_free()
