@@ -1,49 +1,49 @@
 [gd_scene format=3 uid="uid://dr6cjgdyweuyj"]
 
-[ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sprite Sheets/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_njcog"]
+[ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sprite Sheets/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_7rnhd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b34a1"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(5, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hfcew"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(44, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmpay"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(73, 25, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gpa2c"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(117, 25, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xkfjv"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(161, 25, 44, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e040r"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(202, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tadvw"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(241, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1c81q"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(280, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jjv7i"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(319, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfowr"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(358, 25, 39, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aga14"]
-atlas = ExtResource("1_njcog")
+atlas = ExtResource("1_7rnhd")
 region = Rect2(397, 25, 39, 44)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ugs6r"]
