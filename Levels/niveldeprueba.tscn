@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c5hbqctwiqkk3"]
+
+[ext_resource type="PackedScene" uid="uid://dr6cjgdyweuyj" path="res://Entities/Player/player.tscn" id="1_3oxw8"]
+[ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_iu2og"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
+size = Vector2(669, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu2og"]
+
+[node name="Piso" type="StaticBody2D" unique_id=1195712201]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1034117185]
+position = Vector2(315, 331)
+shape = SubResource("RectangleShape2D_okj6t")
+
+[node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_3oxw8")]
+position = Vector2(326, 192)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=110644175]
+offset_left = 2.0
+offset_top = 320.0
+offset_right = 643.0
+offset_bottom = 360.0
+
+[node name="area de daño" type="Node2D" parent="." unique_id=1450878960]
+
+[node name="HitboxComponent" parent="area de daño" unique_id=597531608 instance=ExtResource("2_iu2og")]
+danio = 90
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="area de daño/HitboxComponent" unique_id=97117310]
+position = Vector2(526, 298)
+shape = SubResource("RectangleShape2D_iu2og")
+
+[node name="ColorRect" type="ColorRect" parent="area de daño" unique_id=1078540706]
+offset_left = 512.0
+offset_top = 289.0
+offset_right = 538.0
+offset_bottom = 308.0
+color = Color(1, 0.24705882, 0, 1)
