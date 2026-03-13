@@ -12,13 +12,21 @@ config_version=5
 
 config/name="Gunstar Heroes Remake"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="canvas_items"
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "blue",
+"res://Scripts/": "red",
+"res://Sprite Sheets/": "green",
+"res://Tilemaps & Backgrounds/": "teal"
+}
 
 [input]
 
