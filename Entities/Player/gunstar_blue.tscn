@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dr6cjgdyweuyj"]
 
 [ext_resource type="Texture2D" uid="uid://bwisdjivkbmtk" path="res://Sprite Sheets/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png" id="1_7rnhd"]
+[ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="2_fmlbe"]
+[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_3kua5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b34a1"]
 atlas = ExtResource("1_7rnhd")
@@ -97,9 +99,28 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmlbe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7imp"]
+radius = 11.0
+height = 32.0
+
 [node name="GunstarBlue" type="CharacterBody2D" unique_id=488555054]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 sprite_frames = SubResource("SpriteFrames_ugs6r")
 animation = &"Run"
 frame_progress = 0.95001066
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022022785]
+shape = SubResource("CapsuleShape2D_fmlbe")
+debug_color = Color(0.60444856, 0.50858676, 0.51715946, 0.41960785)
+
+[node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("2_fmlbe")]
+
+[node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent" unique_id=848332993]
+shape = SubResource("CapsuleShape2D_w7imp")
+debug_color = Color(0.8534828, 0.370072, 0, 0.41960785)
