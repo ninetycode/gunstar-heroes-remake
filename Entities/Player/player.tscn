@@ -176,7 +176,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hanging",
-"speed": 8.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -201,7 +201,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Jump",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -227,7 +227,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Run",
-"speed": 10.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmlbe"]
@@ -242,7 +242,8 @@ script = ExtResource("1_3kua5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo recto"
+animation = &"Crouch"
+frame_progress = 0.6911114
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
