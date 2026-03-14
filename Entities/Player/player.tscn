@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c38gywf8gabr0" path="res://Sprite Sheets/Character/Blueshot down.png" id="3_iplt1"]
 [ext_resource type="Texture2D" uid="uid://dbj7kssimttdg" path="res://Sprite Sheets/Character/Blueshot up.png" id="4_owvpp"]
 [ext_resource type="Texture2D" uid="uid://wmn1817p4ajn" path="res://Sprite Sheets/Character/blueshot f.png" id="5_ap3xn"]
+[ext_resource type="Texture2D" uid="uid://cib07sfwtcmge" path="res://Sprite Sheets/Character/blueshot oblicuo.png" id="5_iplt1"]
 [ext_resource type="Texture2D" uid="uid://bur8h675kt5a6" path="res://Sprite Sheets/Character/Blue hanging.png" id="6_r8fok"]
 [ext_resource type="Texture2D" uid="uid://cnrfm135yjdbl" path="res://Sprite Sheets/Character/Blue final.png" id="7_nhbkt"]
 [ext_resource type="Texture2D" uid="uid://clca1c0vsarn7" path="res://Sprite Sheets/Character/Bluesalto.png" id="8_vskfa"]
@@ -31,6 +32,10 @@ region = Rect2(0, 0, 22, 52)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr01m"]
 atlas = ExtResource("4_owvpp")
 region = Rect2(30, 0, 22, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01ng6"]
+atlas = ExtResource("5_iplt1")
+region = Rect2(0, 0, 47, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhbkt"]
 atlas = ExtResource("5_ap3xn")
@@ -146,6 +151,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_01ng6")
+}],
+"loop": true,
+"name": &"Disparo diagonal arriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nhbkt")
 }, {
 "duration": 1.0,
@@ -242,8 +255,7 @@ script = ExtResource("1_3kua5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Crouch"
-frame_progress = 0.6911114
+animation = &"Disparo diagonal arriba"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
