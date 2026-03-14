@@ -14,5 +14,5 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Run")
 		
 	# Si apretamos saltar, pasamos a "Jump"
-	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		state_machine.transition_to("Jump")

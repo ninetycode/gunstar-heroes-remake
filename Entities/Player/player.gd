@@ -1,11 +1,19 @@
-extends Node
+extends CharacterBody2D
 
+const BULLET_SCENE = preload("res://Bullet.tscn")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var speed = 300.0
+@export var jump_velocity = -500.0
+@export var gravity = 1200.0
 
+@onready var _animated_sprite = $AnimatedSprite2D
+@onready var muzzle = $AnimatedSprite2D/muzzle
+@onready var shooter_time = $ShooterTime
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta):
+	# La gravedad se aplica siempre
+	if not is_on_floor():
+		velocity.y += gravity * delta
+		
+	# Movemos al personaje según lo que digan los estados
+	move_and_slide()
