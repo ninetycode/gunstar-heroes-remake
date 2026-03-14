@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cnrfm135yjdbl" path="res://Sprite Sheets/Character/Blue final.png" id="7_nhbkt"]
 [ext_resource type="Texture2D" uid="uid://clca1c0vsarn7" path="res://Sprite Sheets/Character/Bluesalto.png" id="8_vskfa"]
 [ext_resource type="Texture2D" uid="uid://c3gvebdv7c2sh" path="res://Sprite Sheets/Character/Bluerun.png" id="9_iplt1"]
+[ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="11_owvpp"]
+[ext_resource type="Script" uid="uid://dwg6pvxenn1wu" path="res://Entities/Player/player_idle.gd" id="12_xr8lj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
@@ -254,6 +256,12 @@ shape = SubResource("CapsuleShape2D_fmlbe")
 debug_color = Color(0.60444856, 0.50858676, 0.51715946, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("2_fmlbe")]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1379360393]
+script = ExtResource("11_owvpp")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2058345030]
+script = ExtResource("12_xr8lj")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 stats_component = NodePath("../StatsComponent")
