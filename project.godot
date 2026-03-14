@@ -23,6 +23,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Entities/": "yellow",
 "res://Scenes/": "blue",
 "res://Scripts/": "red",
 "res://Sprite Sheets/": "green",

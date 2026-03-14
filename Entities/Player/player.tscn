@@ -259,10 +259,7 @@ script = ExtResource("1_owvpp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-
-
-animation = &"Disparo diagonal arriba"
-
+animation = &"Crouch"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
