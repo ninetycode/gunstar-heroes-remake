@@ -8,7 +8,9 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")
-	
+	if Input.is_action_pressed("disparo_fijo"):
+		state_machine.transition_to("FixedShoot")
+		return
 	# Si nos estamos moviendo, aplicamos velocidad y giramos el sprite
 	if direction != 0:
 		player.velocity.x = direction * player.speed
