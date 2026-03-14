@@ -26,3 +26,7 @@ func physics_update(_delta: float) -> void:
 		# Si aterrizamos sin tocar nada, pasamos a Idle
 		else:
 			state_machine.transition_to("Idle")
+			
+	# Si mantenemos apretado el botón, dispara
+	if Input.is_action_pressed("disparo"):
+		player.get_node("WeaponComponent").disparar()

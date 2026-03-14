@@ -20,3 +20,7 @@ func physics_update(_delta: float) -> void:
 	# Si apretamos saltar mientras corremos, pasamos a Jump
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		state_machine.transition_to("Jump")
+		
+	# Si mantenemos apretado el botón, dispara
+	if Input.is_action_pressed("disparo"):
+		player.get_node("WeaponComponent").disparar()

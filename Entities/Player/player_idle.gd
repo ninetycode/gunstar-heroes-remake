@@ -16,3 +16,17 @@ func physics_update(_delta: float) -> void:
 	# Si apretamos saltar, pasamos a "Jump"
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		state_machine.transition_to("Jump")
+		
+	# --- LÓGICA DE DISPARO ---
+	if Input.is_action_pressed("disparo"):
+		# Obtenemos la dirección desde nuestro componente de armas
+		var direccion = player.get_node("WeaponComponent").obtener_direccion_apuntado()
+		
+		# Disparamos (creamos la bala)
+		player.get_node("WeaponComponent").disparar()
+		
+		# Actualizamos el sprite
+		player.actualizar_animacion_apuntado(direccion)
+	else:
+		# Si no dispara, vuelve a la animación normal de Idle
+		player._animated_sprite.play("Idle")
