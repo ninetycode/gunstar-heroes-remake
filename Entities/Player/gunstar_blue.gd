@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # --- CONFIGURACIÓN DE ESCENAS Y NODOS ---
-const BULLET_SCENE = preload("res://Bullet.tscn") # Asegurate que la ruta sea esta
+const BULLET_SCENE = preload("res://Bullet.tscn") 
 
 @onready var speed = 300.0
 @onready var jump_velocity = -500.0

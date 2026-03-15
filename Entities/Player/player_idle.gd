@@ -14,6 +14,10 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Crouch")
 		return
 
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		state_machine.transition_to("Jump")
+		return
+
 	if Input.is_action_pressed("disparo_fijo"):
 		state_machine.transition_to("FixedShoot")
 		return
@@ -21,11 +25,7 @@ func physics_update(_delta: float) -> void:
 	# Si apretamos izquierda o derecha, le decimos a la máquina que pase a "Run"
 	if Input.get_axis("ui_left", "ui_right") != 0:
 		state_machine.transition_to("Run")
-		
-	# Si apretamos saltar, pasamos a "Jump"
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
-		state_machine.transition_to("Jump")
-		
+
 	# --- LÓGICA DE DISPARO ---
 	if Input.is_action_pressed("disparo"):
 		# Obtenemos la dirección desde nuestro componente de armas

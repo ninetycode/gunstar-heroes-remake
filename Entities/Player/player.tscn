@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c38gywf8gabr0" path="res://Sprite Sheets/Character/Blueshot down.png" id="3_iplt1"]
 [ext_resource type="Texture2D" uid="uid://dbj7kssimttdg" path="res://Sprite Sheets/Character/Blueshot up.png" id="4_owvpp"]
 [ext_resource type="Texture2D" uid="uid://wmn1817p4ajn" path="res://Sprite Sheets/Character/blueshot f.png" id="5_ap3xn"]
-[ext_resource type="Texture2D" uid="uid://cib07sfwtcmge" path="res://Sprite Sheets/Character/blueshot oblicuo.png" id="5_iplt1"]
+[ext_resource type="Texture2D" uid="uid://b6mnnpdtivo7y" path="res://Sprite Sheets/Character/blueshot oblicuo.png" id="5_iplt1"]
 [ext_resource type="Texture2D" uid="uid://bur8h675kt5a6" path="res://Sprite Sheets/Character/Blue hanging.png" id="6_r8fok"]
 [ext_resource type="Texture2D" uid="uid://cnrfm135yjdbl" path="res://Sprite Sheets/Character/Blue final.png" id="7_nhbkt"]
 [ext_resource type="Texture2D" uid="uid://clca1c0vsarn7" path="res://Sprite Sheets/Character/Bluesalto.png" id="8_vskfa"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" uid="uid://cgklqmvqxbqe1" path="res://Entities/Player/fixed_shoot.gd" id="16_pjcup"]
 [ext_resource type="Script" uid="uid://jgq60b6diyjx" path="res://Entities/Player/crouch.gd" id="17_0poeq"]
 [ext_resource type="Script" uid="uid://cxm32j07n0jm6" path="res://Entities/Player/weapon_component.gd" id="17_vskfa"]
+[ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
+[ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
@@ -42,7 +44,11 @@ region = Rect2(30, 0, 22, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01ng6"]
 atlas = ExtResource("5_iplt1")
-region = Rect2(0, 0, 47, 60)
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui1ln"]
+atlas = ExtResource("5_iplt1")
+region = Rect2(49, 0, 26, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhbkt"]
 atlas = ExtResource("5_ap3xn")
@@ -159,6 +165,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_01ng6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui1ln")
 }],
 "loop": true,
 "name": &"Disparo diagonal arriba",
@@ -263,6 +272,7 @@ script = ExtResource("1_owvpp")
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
 animation = &"Disparo abajo"
+frame_progress = 0.2901822
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
@@ -292,6 +302,12 @@ script = ExtResource("16_pjcup")
 
 [node name="Crouch" type="Node" parent="StateMachine" unique_id=726005073]
 script = ExtResource("17_0poeq")
+
+[node name="JumpShotDown" type="Node" parent="StateMachine" unique_id=780585309]
+script = ExtResource("18_ppdlg")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1070278169]
+script = ExtResource("19_v7p16")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 stats_component = NodePath("../StatsComponent")

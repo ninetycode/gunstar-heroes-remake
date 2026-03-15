@@ -1,3 +1,4 @@
+# weapon_component.gd
 extends Node
 
 const BULLET_SCENE = preload("res://Scenes/Bullet.tscn") 
@@ -5,36 +6,36 @@ const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @onready var cooldown_timer = $CooldownTimer
 @onready var player = owner
 
-# Agregamos un parámetro opcional 'direccion_externa'
-func disparar(direccion_externa: Vector2 = Vector2.ZERO):
+func disparar(direccion_fija: Vector2 = Vector2.ZERO):
 	if not cooldown_timer.is_stopped():
 		return
 
+	# Si no nos pasan dirección, la calculamos
+	var final_dir = direccion_fija
+	if final_dir == Vector2.ZERO:
+		final_dir = obtener_direccion_apuntado()
+
 	var bullet = BULLET_SCENE.instantiate()
 	
-	# Si el estado nos pasó una dirección, usamos esa. 
-	# Si no (es ZERO), usamos la lógica automática.
-	var direccion = direccion_externa
-	if direccion == Vector2.ZERO:
-		direccion = obtener_direccion_apuntado()
+	# USAMOS EL NODO MUZZLE QUE VEO EN TU CAPTURA
+	# Está adentro de AnimatedSprite2D
+	bullet.global_position = player.get_node("AnimatedSprite2D/muzzle").global_position
 	
-	# Posicionamiento nítido desde el muzzle
-	bullet.global_position = player.muzzle.global_position 
+	bullet.direction = final_dir
+	bullet.rotation = final_dir.angle()
 	
-	# Configuración de la bala
-	bullet.direction = direccion
-	bullet.rotation = direccion.angle()
-	
-	# Usar add_child en la escena actual es más seguro que en root
 	get_tree().current_scene.add_child(bullet)
 	cooldown_timer.start()
 
 func obtener_direccion_apuntado() -> Vector2:
-	var v = Input.get_axis("ui_up", "ui_down")
 	var h = Input.get_axis("ui_left", "ui_right")
+	var v = Input.get_axis("ui_up", "ui_down")
+	
+	if owner.is_on_floor() and v > 0: v = 0
+	
 	var dir = Vector2(h, v)
 	
-	if dir == Vector2.ZERO:
-		return Vector2.LEFT if player._animated_sprite.flip_h else Vector2.RIGHT
+	if dir.length() < 0.1:
+		return Vector2.LEFT if owner.get_node("AnimatedSprite2D").flip_h else Vector2.RIGHT
 		
 	return dir.normalized()
