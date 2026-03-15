@@ -9,6 +9,11 @@ func enter() -> void:
 	player._animated_sprite.play("Idle")
 
 func physics_update(_delta: float) -> void:
+
+	if Input.is_action_pressed("ui_down") and player.is_on_floor():
+		state_machine.transition_to("Crouch")
+		return
+
 	if Input.is_action_pressed("disparo_fijo"):
 		state_machine.transition_to("FixedShoot")
 		return

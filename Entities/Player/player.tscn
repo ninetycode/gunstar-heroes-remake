@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://dej2qts3e0soe" path="res://Entities/Player/player_run.gd" id="13_xr8lj"]
 [ext_resource type="Script" uid="uid://vf7xrclamyny" path="res://Entities/Player/player_jump.gd" id="14_r8fok"]
 [ext_resource type="Script" uid="uid://cgklqmvqxbqe1" path="res://Entities/Player/fixed_shoot.gd" id="16_pjcup"]
+[ext_resource type="Script" uid="uid://jgq60b6diyjx" path="res://Entities/Player/crouch.gd" id="17_0poeq"]
 [ext_resource type="Script" uid="uid://cxm32j07n0jm6" path="res://Entities/Player/weapon_component.gd" id="17_vskfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
@@ -261,7 +262,7 @@ script = ExtResource("1_owvpp")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo recto"
+animation = &"Disparo abajo"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
@@ -288,6 +289,9 @@ script = ExtResource("14_r8fok")
 
 [node name="FixedShoot" type="Node" parent="StateMachine" unique_id=286639086]
 script = ExtResource("16_pjcup")
+
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=726005073]
+script = ExtResource("17_0poeq")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 stats_component = NodePath("../StatsComponent")
