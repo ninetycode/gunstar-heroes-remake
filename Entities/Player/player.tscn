@@ -269,7 +269,8 @@ height = 32.0
 script = ExtResource("1_owvpp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
-position = Vector2(0, 16)
+position = Vector2(-0.08864224, 15.634404)
+scale = Vector2(0.76861113, 0.76861113)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
 animation = &"Disparo abajo"
 frame_progress = 0.2901822
@@ -326,5 +327,7 @@ script = ExtResource("17_vskfa")
 [node name="CooldownTimer" type="Timer" parent="WeaponComponent" unique_id=1771973270]
 wait_time = 0.13
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=9611633]
 
 [connection signal="salud_agotada" from="StatsComponent" to="." method="_on_stats_component_salud_agotada"]
