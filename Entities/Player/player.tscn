@@ -277,7 +277,7 @@ frame_progress = 0.2901822
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
-position = Vector2(-1.1857207, -29.448446)
+position = Vector2(-1.1857202, -26.846352)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1022022785]
 shape = SubResource("CapsuleShape2D_fmlbe")
