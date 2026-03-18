@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cxm32j07n0jm6" path="res://Entities/Player/weapon_component.gd" id="17_vskfa"]
 [ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
+[ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
@@ -296,7 +297,7 @@ position = Vector2(1.7711871, 15.600692)
 scale = Vector2(0.84888, 0.84888)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
 animation = &"Disparo arriba"
-frame_progress = 0.0525499
+frame_progress = 0.12876952
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
@@ -333,6 +334,9 @@ script = ExtResource("18_ppdlg")
 [node name="Fall" type="Node" parent="StateMachine" unique_id=1070278169]
 script = ExtResource("19_v7p16")
 
+[node name="Hanging" type="Node" parent="StateMachine" unique_id=1062696817]
+script = ExtResource("21_avsg8")
+
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 stats_component = NodePath("../StatsComponent")
 
@@ -350,5 +354,8 @@ script = ExtResource("17_vskfa")
 [node name="CooldownTimer" type="Timer" parent="WeaponComponent" unique_id=1771973270]
 wait_time = 0.13
 one_shot = true
+
+[node name="HangingRay" type="RayCast2D" parent="." unique_id=1301004567]
+target_position = Vector2(0, -30)
 
 [connection signal="salud_agotada" from="StatsComponent" to="." method="_on_stats_component_salud_agotada"]

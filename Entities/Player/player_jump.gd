@@ -22,3 +22,8 @@ func physics_update(_delta: float) -> void:
 
 	if player.is_on_floor():
 		state_machine.transition_to("Idle")
+
+	if Input.is_action_just_pressed("ui_up"): # Si el jugador intenta colgarse
+		var ray = player.get_node("HangingRay")
+		if ray.is_colliding():
+			state_machine.transition_to("Hanging")
