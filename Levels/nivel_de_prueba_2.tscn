@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fiud3qxa7mgh"]
+
+[ext_resource type="PackedScene" uid="uid://dim7r80onrvvt" path="res://Scenes/plataforma_de_prueba.tscn" id="1_b0dcr"]
+[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_fgyyg"]
+
+[node name="Nivel de Prueba 2" type="Node2D" unique_id=1066668907]
+
+[node name="Background" type="Parallax2D" parent="." unique_id=2042111787]
+
+[node name="Environment" type="Node2D" parent="." unique_id=2053170079]
+
+[node name="Map" type="Node2D" parent="." unique_id=518837416]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Map" unique_id=298925190]
+
+[node name="Plataforma de prueba" parent="Map" unique_id=224450662 instance=ExtResource("1_b0dcr")]
+position = Vector2(166, 285)
+collision_mask = 0
+
+[node name="Entities" type="Node2D" parent="." unique_id=1976199977]
+
+[node name="GunstarBlue" parent="Entities" unique_id=488555054 instance=ExtResource("2_fgyyg")]
+position = Vector2(187, 240)
+
+[node name="UI_HUD" type="CanvasLayer" parent="." unique_id=670983750]
