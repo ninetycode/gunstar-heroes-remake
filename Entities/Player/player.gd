@@ -44,3 +44,7 @@ func actualizar_animacion_apuntado(dir: Vector2):
 			
 	else: # Apuntando puramente a los costados
 		_animated_sprite.play("Disparo recto")
+
+
+func _on_lock_zone_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

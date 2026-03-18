@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="3_i8yv5"]
 [ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Sprite Sheets/Niveles/Parallax 1.png" id="4_fwb7x"]
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
+[ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Levels/CameraControl.gd" id="6_wfebu"]
+[ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Levels/lock_zone.gd" id="7_bn74d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5030,6 +5032,9 @@ texture = ExtResource("3_i8yv5")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_key22")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unhkn"]
+size = Vector2(20, 141)
+
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
 [node name="GunstarBlue2" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
@@ -5068,3 +5073,18 @@ repeat_size = Vector2(512, 0)
 z_index = -2
 position = Vector2(159, 155)
 texture = ExtResource("5_wfebu")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=224196049]
+position = Vector2(322, 181)
+position_smoothing_enabled = true
+script = ExtResource("6_wfebu")
+
+[node name="LockZone" type="Area2D" parent="." unique_id=1890728987]
+position = Vector2(1937, 278)
+script = ExtResource("7_bn74d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
+position = Vector2(1937, 281.5)
+shape = SubResource("RectangleShape2D_unhkn")
+
+[connection signal="body_entered" from="LockZone" to="GunstarBlue2" method="_on_lock_zone_body_entered"]

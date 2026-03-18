@@ -330,6 +330,4 @@ script = ExtResource("17_vskfa")
 wait_time = 0.13
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=9611633]
-
 [connection signal="salud_agotada" from="StatsComponent" to="." method="_on_stats_component_salud_agotada"]
