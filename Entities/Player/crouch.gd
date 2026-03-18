@@ -19,7 +19,7 @@ func physics_update(_delta: float) -> void:
 	if Input.is_action_pressed("disparo"):
 		# Forzamos que dispare horizontalmente según el flip
 		var dir = Vector2.LEFT if player._animated_sprite.flip_h else Vector2.RIGHT
-		player.get_node("WeaponComponent").disparar(dir)
+		player.get_node("WeaponComponent").disparar()
 	
 	# Transición a Salto
 	if Input.is_action_just_pressed("jump"):

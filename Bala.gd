@@ -1,43 +1,58 @@
 extends Area2D
 
-# --- CONFIGURACIÓN DE TIPOS ---
-enum WeaponType { FORCE, LIGHTNING, CHASER, FIRE }
-
-# --- VARIABLES ---
-@export var speed: float = 800.0
-@export var type: WeaponType = WeaponType.FORCE
-
-var direction: Vector2 = Vector2.RIGHT # Valor por defecto para evitar errores
+# Variables base que la bala va a usar en vuelo
+var speed: float = 800.0
+var direction: Vector2 = Vector2.RIGHT
 
 @onready var sprite = $Sprite2D
 
-# --- CARGA DE TEXTURAS ---
-# Asegurate de que esta ruta sea exacta (ojo con los espacios)
-var tex_force = preload("res://Sprite Sheets/Bullets/Force_bullet.png")
-
 func _ready():
-	# 1. Ajustamos la apariencia según el tipo
-	match type:
-		WeaponType.FORCE:
-			if sprite:
-				sprite.texture = tex_force
-				scale = Vector2(1, 1)
-		# Aquí irán los demás tipos (Lightning, etc) cuando los tengamos
-
-	# 2. Rotamos la bala para que "mire" hacia donde viaja
-	rotation = direction.angle()
+	# 1. Conectamos la señal de salir de pantalla
+	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_visible_on_screen_notifier_2d_screen_exited)
+	
+	# 2. Conectamos la señal de chocar contra una pared/piso
+#	body_entered.connect(_on_body_entered)
+	
+	# 3. Apenas nace en el cargador oculto del nivel, se apaga sola
+	desactivar()
 
 func _physics_process(delta):
-	# Movimiento constante en la dirección asignada
 	position += direction * speed * delta
 
-# --- SEÑALES (Asegurate de conectarlas en el editor) ---
+# --- FUNCIONES DEL POOLING ---
 
-# Se borra al salir de la pantalla
+# Esta función la va a llamar el BulletPool cuando apretes el gatillo
+func activar(pos: Vector2, dir: Vector2, nueva_velocidad: float, nueva_textura: Texture2D):
+	global_position = pos
+	direction = dir
+	rotation = dir.angle()
+	speed = nueva_velocidad
+	
+	# Si el arma le pasa una textura nueva (ej: fuego o láser), se la cambiamos
+	if sprite and nueva_textura:
+		sprite.texture = nueva_textura
+		
+	# La prendemos
+	visible = true
+	set_physics_process(true)
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
+
+# Esta función la apaga para reciclarla
+func desactivar():
+	visible = false
+	set_physics_process(false)
+	# Apagamos las colisiones para que no haga daño estando invisible
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
+
+# --- SEÑALES ---
+
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	# Salió de la pantalla: la reciclamos
+	desactivar()
 
-# Se borra al chocar con el suelo o paredes (opcional pero recomendado)
-func _on_body_entered(body):
-	if body.name != "GunstarBlue": # No queremos que Blue se dispare a sí mismo
-		queue_free()
+func _on_body_entered(_body):
+	# Chocó contra una pared o el piso: la reciclamos. 
+	# (Asegurate en el editor que la Mask de esta Area2D solo choque con el mundo/enemigos, no con el jugador)
+	desactivar()

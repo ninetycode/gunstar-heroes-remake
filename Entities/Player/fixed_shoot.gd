@@ -23,4 +23,4 @@ func physics_update(_delta: float) -> void:
 	player.actualizar_animacion_apuntado(input_dir)
 	
 	# 2. Ejecutamos el disparo a través del componente
-	player.get_node("WeaponComponent").disparar(input_dir)
+	player.get_node("WeaponComponent").disparar()

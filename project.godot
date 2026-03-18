@@ -14,6 +14,10 @@ config/name="Gunstar Heroes Remake"
 run/main_scene="uid://c5hbqctwiqkk3"
 config/features=PackedStringArray("4.6", "Mobile")
 
+[autoload]
+
+BulletPool="*uid://dxij5w0q5ifim"
+
 [display]
 
 window/size/viewport_width=640
@@ -100,6 +104,9 @@ disparo_fijo={
 [layer_names]
 
 2d_physics/layer_1="Solido"
+2d_physics/layer_2="Balas"
+2d_physics/layer_3="Enemigos"
+2d_physics/layer_4="Player"
 
 [physics]
 
