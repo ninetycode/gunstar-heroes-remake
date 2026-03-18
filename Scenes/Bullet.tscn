@@ -13,7 +13,6 @@ priority = 12
 script = ExtResource("1_4s4u5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=360125284]
-z_index = -1
 texture = ExtResource("2_7281b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397574564]

@@ -32,53 +32,52 @@ const MUZZLE_POSITIONS = {
 }
 
 func actualizar_animacion_apuntado(dir: Vector2):
-	# 1. Aplicamos la animación y elegimos la posición base del diccionario
+	# 1. CASO POR DEFECTO: Si no hay dirección (Idle), dispara recto
 	if dir == Vector2.ZERO:
 		_animated_sprite.play("Disparo recto")
 		muzzle.position = MUZZLE_POSITIONS["recto"]
-	else:
+		return # Cortamos acá para no procesar el resto
+
+	# 2. VOLTEO (FLIP): Orientamos el sprite según la dirección X
+	if dir.x != 0:
+		_animated_sprite.flip_h = dir.x < 0
+
+	# 3. LÓGICA VERTICAL: Determinamos si apunta arriba, abajo o neutro
+	if dir.y < 0:
+		# --- APUNTANDO HACIA ARRIBA ---
 		if dir.x != 0:
-			_animated_sprite.flip_h = dir.x < 0
-
-		if dir.y < 0:
-			if dir.x != 0:
-				_animated_sprite.play("Disparo diagonal arriba")
-				muzzle.position = MUZZLE_POSITIONS["diagonal_arriba"]
-			else:
-				_animated_sprite.play("Disparo arriba")
-				muzzle.position = MUZZLE_POSITIONS["arriba"]
-				
-		elif dir.y > 0:
-			if is_on_floor():
-				_animated_sprite.play("Crouch")
-				muzzle.position = MUZZLE_POSITIONS["agachado"] # Usamos la coordenada bajita
-			else:
-				_animated_sprite.play("Disparo abajo")
-				muzzle.position = MUZZLE_POSITIONS["abajo"]
-				
+			_animated_sprite.play("Disparo diagonal arriba")
+			muzzle.position = MUZZLE_POSITIONS["diagonal_arriba"]
 		else:
-
 			_animated_sprite.play("Disparo arriba")
+			muzzle.position = MUZZLE_POSITIONS["arriba"]
 			
-	elif dir.y > 0: # Apuntando hacia abajo
+	elif dir.y > 0:
+		# --- APUNTANDO HACIA ABAJO ---
 		if is_on_floor():
-			_animated_sprite.play("Crouch") # Se agacha si está en el piso
+			# Si está en el piso, se agacha
+			_animated_sprite.play("Crouch")
+			muzzle.position = MUZZLE_POSITIONS["agachado"]
 		else:
-			_animated_sprite.play("Disparo abajo") # Dispara para abajo en el aire
+			# Si está en el aire, usa la animación con espacio: "Disparo abajo"
+			_animated_sprite.play("Disparo abajo")
+			muzzle.position = MUZZLE_POSITIONS["abajo"]
 			
-	else: # Apuntando puramente a los costados
-		_animated_sprite.play("Disparo recto")
-
-
-func _on_lock_zone_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-			_animated_sprite.play("Disparo recto")
-			muzzle.position = MUZZLE_POSITIONS["recto"]
-
-	# 2. MAGIA ESCALABLE: Le decimos al cañón que siga el espejado del sprite
-	if _animated_sprite.flip_h:
-		muzzle.position.x = -abs(muzzle.position.x)
 	else:
-		muzzle.position.x = abs(muzzle.position.x)
+		# --- APUNTANDO RECTO (Eje Y es 0) ---
+		_animated_sprite.play("Disparo recto")
+		# Ajustamos el muzzle según el flip para que no salga del hombro de atrás
+		muzzle.position = MUZZLE_POSITIONS["recto"]
 
+	# 4. FIX DE POSICIÓN PARA MIRADA A LA IZQUIERDA
+	# Como tus coordenadas en el diccionario asumen mirada a la DERECHA,
+	# si el sprite está flipeado, invertimos la X del muzzle.
+	if _animated_sprite.flip_h:
+		muzzle.position.x = -muzzle.position.x
+
+# Esta es la función de la señal (Lock Zone)
+func _on_lock_zone_body_entered(body: Node2D) -> void:
+	if body.name == "GunstarBlue":
+		# Acá llamamos a la cámara para que se bloquee
+		# Asumiendo que tenés un nodo Camera2D en la escena
+		get_viewport().get_camera_2d().bloquear_camara()

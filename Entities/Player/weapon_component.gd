@@ -10,8 +10,11 @@ func disparar():
 	if cooldown_timer.is_stopped():
 		var direccion = obtener_direccion_apuntado()
 		
+		# Buscamos el muzzle dentro del AnimatedSprite2D del player
+		var muzzle_pos = player.get_node("AnimatedSprite2D/muzzle").global_position
+		
 		# Le pasamos la pelota al Autoload
-		BulletPool.disparar_bala(player.muzzle.global_position, direccion)
+		BulletPool.disparar_bala(muzzle_pos, direccion)
 		
 		cooldown_timer.start()
 
