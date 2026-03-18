@@ -5040,6 +5040,7 @@ size = Vector2(20, 237)
 [node name="GunstarBlue2" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
 z_index = 1
 position = Vector2(102, 337)
+speed = 200.0
 
 [node name="area de daño" type="Node2D" parent="." unique_id=1450878960]
 
@@ -5083,6 +5084,7 @@ script = ExtResource("6_wfebu")
 [node name="LockZone" type="Area2D" parent="." unique_id=1890728987]
 position = Vector2(1937, 278)
 script = ExtResource("7_bn74d")
+camara_path = NodePath("../Camera2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
 position = Vector2(0, -31.5)

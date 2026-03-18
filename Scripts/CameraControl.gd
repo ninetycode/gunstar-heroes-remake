@@ -1,25 +1,19 @@
 extends Camera2D
 
-@export var player_path: NodePath
-@onready var player = get_node(player_path)
-
+var player # Ya no usamos NodePath para evitar olvidos en el Inspector
 var bloqueada = false
-var limite_izquierdo_pantalla = 0.0
+
+func _ready():
+	# Buscamos a Blue automáticamente al arrancar
+	player = get_tree().current_scene.find_child("GunstarBlue2", true, false)
 
 func _process(_delta):
-	if player == null: return
+	if player == null or bloqueada: 
+		return
 	
-	# Solo seguimos al jugador si no está bloqueada y si el jugador va hacia la derecha
-	if not bloqueada:
-		if player.global_position.x > global_position.x:
-			global_position.x = player.global_position.x
-	
-	# Impedir que el jugador retroceda fuera de la vista de la cámara
-	# (Común en juegos de scroll lateral)
-	limite_izquierdo_pantalla = global_position.x - (get_viewport_rect().size.x / 2) / zoom.x
-	if player.global_position.x < limite_izquierdo_pantalla:
-		player.global_position.x = limite_izquierdo_pantalla
-
+	# SOLO seguimos en X si el jugador se mueve a la derecha de la cámara
+	if player.global_position.x > global_position.x:
+		global_position.x = player.global_position.x
 func bloquear_camara():
 	bloqueada = true
 
