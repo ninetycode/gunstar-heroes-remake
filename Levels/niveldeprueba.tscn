@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://c5hbqctwiqkk3"]
 
-[ext_resource type="PackedScene" path="res://Entities/Player/player.tscn" id="1_iu2og"]
+[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_iu2og"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_iu2og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu2og"]
+size = Vector2(23, 15)
 
 [node name="Piso" type="StaticBody2D" unique_id=1195712201]
 
@@ -26,10 +27,11 @@ offset_bottom = 360.0
 [node name="area de daño" type="Node2D" parent="." unique_id=1450878960]
 
 [node name="HitboxComponent" parent="area de daño" unique_id=597531608 instance=ExtResource("2_iu2og")]
-danio = 90
+collision_layer = 4
+collision_mask = 10
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="area de daño/HitboxComponent" unique_id=97117310]
-position = Vector2(526, 298)
+position = Vector2(524.5, 298.5)
 shape = SubResource("RectangleShape2D_iu2og")
 
 [node name="ColorRect" type="ColorRect" parent="area de daño" unique_id=1078540706]
