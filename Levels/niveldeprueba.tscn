@@ -10,6 +10,7 @@ size = Vector2(669, 20)
 size = Vector2(23, 15)
 
 [node name="Piso" type="StaticBody2D" unique_id=1195712201]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1034117185]
 position = Vector2(315, 331)
@@ -29,6 +30,7 @@ offset_bottom = 360.0
 [node name="HitboxComponent" parent="area de daño" unique_id=597531608 instance=ExtResource("2_iu2og")]
 collision_layer = 4
 collision_mask = 10
+danio = 90
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="area de daño/HitboxComponent" unique_id=97117310]
 position = Vector2(524.5, 298.5)
@@ -40,3 +42,5 @@ offset_top = 289.0
 offset_right = 538.0
 offset_bottom = 308.0
 color = Color(1, 0.24705882, 0, 1)
+
+[node name="Node" type="Node" parent="." unique_id=579350582]
