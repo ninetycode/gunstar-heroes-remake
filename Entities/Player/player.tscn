@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_3kua5"]
 [ext_resource type="Texture2D" uid="uid://c38gywf8gabr0" path="res://Sprite Sheets/Character/Blueshot down.png" id="3_iplt1"]
 [ext_resource type="Texture2D" uid="uid://dbj7kssimttdg" path="res://Sprite Sheets/Character/Blueshot up.png" id="4_owvpp"]
+[ext_resource type="Texture2D" uid="uid://bqt1j4lfcriv4" path="res://Sprite Sheets/Character/blueshot ovlicuo down f.png" id="5_a8wow"]
 [ext_resource type="Texture2D" uid="uid://wmn1817p4ajn" path="res://Sprite Sheets/Character/blueshot f.png" id="5_ap3xn"]
 [ext_resource type="Texture2D" uid="uid://b6mnnpdtivo7y" path="res://Sprite Sheets/Character/blueshot oblicuo.png" id="5_iplt1"]
 [ext_resource type="Texture2D" uid="uid://bur8h675kt5a6" path="res://Sprite Sheets/Character/Blue hanging.png" id="6_r8fok"]
@@ -41,6 +42,14 @@ region = Rect2(0, 0, 22, 52)
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr01m"]
 atlas = ExtResource("4_owvpp")
 region = Rect2(30, 0, 22, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og23y"]
+atlas = ExtResource("5_a8wow")
+region = Rect2(94, 0, 47, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u86q5"]
+atlas = ExtResource("5_a8wow")
+region = Rect2(143, 0, 47, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01ng6"]
 atlas = ExtResource("5_iplt1")
@@ -164,6 +173,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_og23y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u86q5")
+}],
+"loop": true,
+"name": &"Disparo diagonal abajo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_01ng6")
 }, {
 "duration": 1.0,
@@ -275,8 +295,9 @@ script = ExtResource("1_owvpp")
 position = Vector2(-0.08864224, 15.634404)
 scale = Vector2(0.76861113, 0.76861113)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo abajo"
-frame_progress = 0.2901822
+animation = &"Disparo diagonal abajo"
+frame = 1
+frame_progress = 0.03690091
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
