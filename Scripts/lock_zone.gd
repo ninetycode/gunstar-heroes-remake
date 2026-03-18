@@ -4,7 +4,7 @@ extends Area2D
 @onready var camara = get_node(camara_path)
 
 func _on_body_entered(body):
-	if body.name == "GunstarBlue":
+	if body.name == "GunstarBlue2":
 		camara.bloquear_camara()
 		# Aquí podrías disparar el evento: spawnear enemigos, etc.
 		iniciar_evento_combate()

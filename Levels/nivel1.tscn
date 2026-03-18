@@ -5033,7 +5033,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_key22")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unhkn"]
-size = Vector2(20, 141)
+size = Vector2(20, 237)
 
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
@@ -5076,6 +5076,7 @@ texture = ExtResource("5_wfebu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=224196049]
 position = Vector2(322, 181)
+limit_right = 276447232
 position_smoothing_enabled = true
 script = ExtResource("6_wfebu")
 
@@ -5084,7 +5085,7 @@ position = Vector2(1937, 278)
 script = ExtResource("7_bn74d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
-position = Vector2(1937, 281.5)
+position = Vector2(0, -31.5)
 shape = SubResource("RectangleShape2D_unhkn")
 
 [connection signal="body_entered" from="LockZone" to="GunstarBlue2" method="_on_lock_zone_body_entered"]
