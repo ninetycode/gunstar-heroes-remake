@@ -17,6 +17,22 @@
 position = Vector2(166, 285)
 collision_mask = 0
 
+[node name="Plataforma de prueba2" parent="Map" unique_id=977042926 instance=ExtResource("1_b0dcr")]
+position = Vector2(378, 234)
+collision_mask = 0
+
+[node name="Plataforma de prueba3" parent="Map" unique_id=1738039062 instance=ExtResource("1_b0dcr")]
+position = Vector2(496, 160)
+collision_mask = 0
+
+[node name="Plataforma de prueba4" parent="Map" unique_id=674095110 instance=ExtResource("1_b0dcr")]
+position = Vector2(282, 118)
+collision_mask = 0
+
+[node name="Plataforma de prueba5" parent="Map" unique_id=1025207672 instance=ExtResource("1_b0dcr")]
+position = Vector2(109, 81)
+collision_mask = 0
+
 [node name="Entities" type="Node2D" parent="." unique_id=1976199977]
 
 [node name="GunstarBlue" parent="Entities" unique_id=488555054 instance=ExtResource("2_fgyyg")]

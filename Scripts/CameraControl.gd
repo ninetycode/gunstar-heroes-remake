@@ -5,7 +5,7 @@ var bloqueada = false
 
 func _ready():
 	# Buscamos a Blue automáticamente al arrancar
-	player = get_tree().current_scene.find_child("GunstarBlue2", true, false)
+	player = get_tree().current_scene.find_child("GunstarBlue", true, false)
 
 func _process(_delta):
 	if player == null or bloqueada: 
