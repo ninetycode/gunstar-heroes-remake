@@ -11,6 +11,11 @@ func physics_update(_delta: float) -> void:
 	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	if direction != 0: player._animated_sprite.flip_h = direction < 0
 
+	if Input.is_action_just_pressed("ui_up"): # Si el jugador intenta colgarse
+		var ray = player.get_node("HangingRay")
+		if ray.is_colliding():
+			state_machine.transition_to("Hanging")
+
 	# Si apretamos disparo (cualquiera), vamos al estado de disparo aéreo
 	if Input.is_action_pressed("disparo"):
 		state_machine.transition_to("JumpShotDown")
@@ -22,8 +27,3 @@ func physics_update(_delta: float) -> void:
 
 	if player.is_on_floor():
 		state_machine.transition_to("Idle")
-
-	if Input.is_action_just_pressed("ui_up"): # Si el jugador intenta colgarse
-		var ray = player.get_node("HangingRay")
-		if ray.is_colliding():
-			state_machine.transition_to("Hanging")

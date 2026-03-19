@@ -357,5 +357,6 @@ one_shot = true
 
 [node name="HangingRay" type="RayCast2D" parent="." unique_id=1301004567]
 target_position = Vector2(0, -30)
+collision_mask = 3
 
 [connection signal="salud_agotada" from="StatsComponent" to="." method="_on_stats_component_salud_agotada"]

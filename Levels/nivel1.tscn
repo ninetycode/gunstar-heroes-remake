@@ -111,7 +111,7 @@ texture = ExtResource("3_i8yv5")
 32:8/0 = 0
 33:8/0 = 0
 60:8/0 = 0
-60:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+60:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.3957615, -3.5971737, 8, -8, 8, 8, -5.2159033, 8)
 60:8/0/physics_layer_0/polygon_0/one_way = true
 61:8/0 = 0
 61:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -127,8 +127,10 @@ texture = ExtResource("3_i8yv5")
 64:8/0/physics_layer_0/polygon_0/one_way = true
 65:8/0 = 0
 65:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+65:8/0/physics_layer_0/polygon_0/one_way = true
 66:8/0 = 0
 66:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+66:8/0/physics_layer_0/polygon_0/one_way = true
 67:8/0 = 0
 67:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 67:8/0/physics_layer_0/polygon_0/one_way = true
@@ -176,8 +178,10 @@ texture = ExtResource("3_i8yv5")
 68:9/0 = 0
 69:9/0 = 0
 70:9/0 = 0
+70:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, -8, 8, -1.2590103)
+70:9/0/physics_layer_0/polygon_0/one_way = true
 71:9/0 = 0
-71:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, -8)
+71:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, -1.4388695)
 71:9/0/physics_layer_0/polygon_0/one_way = true
 72:9/0 = 0
 72:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -3.2374563, 8, 8, -8, 8)
@@ -5029,7 +5033,8 @@ texture = ExtResource("3_i8yv5")
 58:103/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_fwb7x"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_key22")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unhkn"]

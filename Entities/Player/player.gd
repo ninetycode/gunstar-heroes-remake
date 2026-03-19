@@ -10,6 +10,8 @@ const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @onready var muzzle = $AnimatedSprite2D/muzzle
 @onready var shooter_time = $ShooterTime
 
+var gravity_enabled = true
+
 func _physics_process(delta):
 	# La gravedad se aplica siempre
 	if not is_on_floor():
