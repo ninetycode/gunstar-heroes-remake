@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://gh5cs7jtg3jc"]
+
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_x2nve"]
+[ext_resource type="Texture2D" uid="uid://ybmaw6fa4e3n" path="res://Assets/Sprite Sheets/Bullets/green_bullet.png" id="2_wpswv"]
+
+[resource]
+script = ExtResource("1_x2nve")
+nombre = "Bala que te sigue"
+velocidad_bala = 900.0
+textura_bala = ExtResource("2_wpswv")
+metadata/_custom_type_script = "uid://djdydvvm02506"

@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://pwieavbj4rwd"]
+
+[ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier-spritesheet.png" id="1_anyna"]
+[ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
+[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
+[ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anyna"]
+atlas = ExtResource("1_anyna")
+region = Rect2(0, 183, 68, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i8gr"]
+atlas = ExtResource("1_anyna")
+region = Rect2(68, 183, 68, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4owtx"]
+atlas = ExtResource("1_anyna")
+region = Rect2(128, 183, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_melc4"]
+atlas = ExtResource("1_anyna")
+region = Rect2(0, 0, 35, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h11n"]
+atlas = ExtResource("1_anyna")
+region = Rect2(35, 0, 35, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tslm2"]
+atlas = ExtResource("1_anyna")
+region = Rect2(0, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ybek"]
+atlas = ExtResource("1_anyna")
+region = Rect2(34, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lssco"]
+atlas = ExtResource("1_anyna")
+region = Rect2(68, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1mnv"]
+atlas = ExtResource("1_anyna")
+region = Rect2(102, 61, 34, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0h11n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anyna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i8gr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4owtx")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_melc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h11n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tslm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ybek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lssco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1mnv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wg8im"]
+
+[node name="EnemySoldier" type="CharacterBody2D" unique_id=992673902]
+collision_layer = 4
+collision_mask = 9
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
+sprite_frames = SubResource("SpriteFrames_0h11n")
+animation = &"attack"
+offset = Vector2(0, 10.54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
+position = Vector2(1, 8)
+shape = SubResource("CapsuleShape2D_wg8im")
+
+[node name="StateMachine" type="Node" parent="." unique_id=12875190]
+script = ExtResource("2_1i8gr")
+
+[node name="HurtboxComponent" parent="." unique_id=807576902 instance=ExtResource("3_4owtx")]
+collision_layer = 4
+collision_mask = 10
+
+[node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_melc4")]
+vida_maxima = 80
+vida_actual = 80
+
+[node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1783343090]
+target_position = Vector2(37, 0)

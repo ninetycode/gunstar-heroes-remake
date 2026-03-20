@@ -1,4 +1,5 @@
 extends Area2D
+class_name HurtboxComponent
 #ALERT ESTE SCRIPT VA A MANEJAR EL AREA DONDE SE RECIBE DAÑO
 @export var stats_component : Node 
 

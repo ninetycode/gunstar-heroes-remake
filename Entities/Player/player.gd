@@ -83,3 +83,10 @@ func _on_lock_zone_body_entered(body: Node2D) -> void:
 		# Acá llamamos a la cámara para que se bloquee
 		# Asumiendo que tenés un nodo Camera2D en la escena
 		get_viewport().get_camera_2d().bloquear_camara()
+		
+func _input(event):
+	if event.is_action_pressed("ui_focus_next"): # Tecla TAB
+		# Cambiamos entre el recurso de Fuerza y el de Láser
+		var laser = preload("res://Resources/arma_laser.tres")
+		$WeaponComponent.cambiar_arma(laser)
+		print("¡Arma cambiada a LÁSER!")

@@ -32,3 +32,8 @@ func obtener_direccion_apuntado() -> Vector2:
 	if dir == Vector2.ZERO:
 		return Vector2.LEFT if player._animated_sprite.flip_h else Vector2.RIGHT
 	return dir.normalized()
+	
+func cambiar_arma(nuevo_recurso: WeaponResource):
+	arma_actual = nuevo_recurso
+	# Actualizamos el tiempo de espera del disparo al instante
+	cooldown_timer.wait_time = arma_actual.fire_rate

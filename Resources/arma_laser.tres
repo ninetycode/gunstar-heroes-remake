@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://dbp5stx8ep1c0"]
 
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_jt3ri"]
-[ext_resource type="Texture2D" uid="uid://bg5mey1ik6cwu" path="res://Assets/Sprite Sheets/Bullets/laser_icon.png" id="2_56s86"]
+[ext_resource type="Texture2D" uid="uid://rilodl2v2vkc" path="res://Assets/Sprite Sheets/Bullets/laser_bullet.png" id="2_56s86"]
 
 [resource]
 script = ExtResource("1_jt3ri")

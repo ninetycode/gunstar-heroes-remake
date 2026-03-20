@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://c57ym65etteof"]
+
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_2hlfa"]
+[ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Assets/Sprite Sheets/Bullets/Force_bullet.png" id="2_v5kv0"]
+
+[resource]
+script = ExtResource("1_2hlfa")
+nombre = "Bala Redoda"
+danio = 20
+textura_bala = ExtResource("2_v5kv0")
+metadata/_custom_type_script = "uid://djdydvvm02506"

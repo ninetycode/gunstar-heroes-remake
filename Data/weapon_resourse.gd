@@ -6,3 +6,4 @@ class_name WeaponResource
 @export var fire_rate: float = 0.12 # Tiempo entre disparos
 @export var danio: int = 10
 @export var textura_bala: Texture2D
+@export var escala_bala: Vector2 = Vector2(1, 1)
