@@ -5056,13 +5056,13 @@ metadata/_edit_lock_ = true
 
 [node name="Midground" type="Parallax2D" parent="Background" unique_id=1440809474]
 texture_filter = 1
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(512, 0)
 repeat_times = 4
 
 [node name="Arbolada" type="Sprite2D" parent="Background/Midground" unique_id=1404398166]
 z_index = -1
-position = Vector2(161, 268)
+position = Vector2(1260, 250)
 texture = ExtResource("4_fwb7x")
 
 [node name="Background" type="Parallax2D" parent="Background" unique_id=1351464591]
@@ -5073,7 +5073,7 @@ limit_begin = Vector2(0, 0)
 
 [node name="Cielo" type="Sprite2D" parent="Background/Background" unique_id=1879112780]
 z_index = -2
-position = Vector2(159, 155)
+position = Vector2(1259, 130)
 texture = ExtResource("5_wfebu")
 
 [node name="LockZone" type="Area2D" parent="." unique_id=1890728987]
