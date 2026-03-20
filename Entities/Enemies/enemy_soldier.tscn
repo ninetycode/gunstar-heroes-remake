@@ -55,7 +55,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 3.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -66,7 +66,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -93,8 +93,11 @@ collision_layer = 4
 collision_mask = 9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
 animation = &"attack"
+frame = 2
+frame_progress = 1.0
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
