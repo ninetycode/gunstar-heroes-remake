@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://p6157ufvrp6h"]
 
 [ext_resource type="Script" uid="uid://mfdbt38jn4v4" path="res://Scripts/Bala.gd" id="1_4s4u5"]
-[ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Sprite Sheets/Bullets/Force_bullet.png" id="2_7281b"]
+[ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Assets/Sprite Sheets/Bullets/Force_bullet.png" id="2_7281b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8st5"]
 radius = 4.0

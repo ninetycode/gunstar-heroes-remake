@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clca1c0vsarn7"
-path="res://.godot/imported/Bluesalto.png-8cd8453fe824204312fb131b56c00ec3.ctex"
+uid="uid://bg5mey1ik6cwu"
+path="res://.godot/imported/laser_icon.png-a461920fbdbe72c87a7f112c72f2ea62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Bluesalto.png"
-dest_files=["res://.godot/imported/Bluesalto.png-8cd8453fe824204312fb131b56c00ec3.ctex"]
+source_file="res://Assets/Sprite Sheets/Bullets/laser_icon.png"
+dest_files=["res://.godot/imported/laser_icon.png-a461920fbdbe72c87a7f112c72f2ea62.ctex"]
 
 [params]
 

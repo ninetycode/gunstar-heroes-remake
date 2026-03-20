@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bur8h675kt5a6"
-path="res://.godot/imported/Blue hanging.png-2315f45905ce59a679e7bb775c3b2bf7.ctex"
+uid="uid://docnwg31idij3"
+path="res://.godot/imported/Spritesheet nivel 1.png-cbb41d51c00587d790fae2eb2194d31c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Blue hanging.png"
-dest_files=["res://.godot/imported/Blue hanging.png-2315f45905ce59a679e7bb775c3b2bf7.ctex"]
+source_file="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png"
+dest_files=["res://.godot/imported/Spritesheet nivel 1.png-cbb41d51c00587d790fae2eb2194d31c.ctex"]
 
 [params]
 

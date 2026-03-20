@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://7rxccjtdy28m"]
 
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_nimo5"]
-[ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="3_i8yv5"]
-[ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Sprite Sheets/Niveles/Parallax 1.png" id="4_fwb7x"]
-[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
+[ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="3_i8yv5"]
+[ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="4_fwb7x"]
+[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
 

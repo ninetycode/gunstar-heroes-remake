@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch5e4whe8c1b"
-path="res://.godot/imported/Blueshot.png-fe948a047149224bc4b17fc7f5626945.ctex"
+uid="uid://cbixglxmtet46"
+path="res://.godot/imported/Blueshot oblicuo arriba.png-9180cb8b6c7d11e31488a89232c99375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Blueshot.png"
-dest_files=["res://.godot/imported/Blueshot.png-fe948a047149224bc4b17fc7f5626945.ctex"]
+source_file="res://Assets/Sprite Sheets/Character/Blueshot oblicuo arriba.png"
+dest_files=["res://.godot/imported/Blueshot oblicuo arriba.png-9180cb8b6c7d11e31488a89232c99375.ctex"]
 
 [params]
 

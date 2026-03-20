@@ -27,10 +27,13 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Assets/Sprite Sheets/": "green",
+"res://Data/": "gray",
 "res://Entities/": "yellow",
+"res://Resources/": "orange",
 "res://Scenes/": "blue",
 "res://Scripts/": "red",
-"res://Sprite Sheets/": "green",
+"res://Systems/": "teal",
 "res://Tilemaps & Backgrounds/": "teal"
 }
 

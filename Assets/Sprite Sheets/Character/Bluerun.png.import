@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnrfm135yjdbl"
-path="res://.godot/imported/Blue final.png-de19eb5bf046afab9bfbab8b1c48f83c.ctex"
+uid="uid://c3gvebdv7c2sh"
+path="res://.godot/imported/Bluerun.png-6e734289985a9d54da144b5d8ac28e7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Blue final.png"
-dest_files=["res://.godot/imported/Blue final.png-de19eb5bf046afab9bfbab8b1c48f83c.ctex"]
+source_file="res://Assets/Sprite Sheets/Character/Bluerun.png"
+dest_files=["res://.godot/imported/Bluerun.png-6e734289985a9d54da144b5d8ac28e7b.ctex"]
 
 [params]
 

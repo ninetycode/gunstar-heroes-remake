@@ -14,10 +14,9 @@ func _ready():
 # El arma va a llamar a esta función en vez de instanciar
 # (El resto del código de bullet_pool.gd queda igual)
 
-func disparar_bala(pos: Vector2, dir: Vector2):
+func disparar_bala(pos: Vector2, dir: Vector2, data: WeaponResource):
 	for bala in balas_guardadas:
 		if not bala.visible:
-			# Por ahora le mandamos 800 de velocidad y null en la textura.
-			# Después, estos datos van a venir de tu Custom Resource de armas!
-			bala.activar(pos, dir, 800.0, null) 
+			# Le pasamos el objeto 'data' entero a la bala
+			bala.activar(pos, dir, data)
 			return

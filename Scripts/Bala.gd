@@ -12,14 +12,15 @@ func _ready():
 func _physics_process(delta):
 	global_position += direction * speed * delta
 
-func activar(pos: Vector2, dir: Vector2, nueva_velocidad: float, nueva_textura: Texture2D):
+func activar(pos: Vector2, dir: Vector2, data: WeaponResource):
 	global_position = pos
 	direction = dir
 	rotation = dir.angle()
-	speed = nueva_velocidad
 	
-	if sprite and nueva_textura:
-		sprite.texture = nueva_textura
+	# Usamos los datos del recurso! 
+	speed = data.velocidad_bala
+	if sprite and data.textura_bala:
+		sprite.texture = data.textura_bala
 		
 	visible = true
 	set_physics_process(true)

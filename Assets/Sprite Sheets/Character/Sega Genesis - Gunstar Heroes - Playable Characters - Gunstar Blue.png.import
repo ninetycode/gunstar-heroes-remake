@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qxrsxpqp8u8u"
-path="res://.godot/imported/Bluebarrido.png-60978a246a213cef7af1d229bcb822b6.ctex"
+uid="uid://bwisdjivkbmtk"
+path="res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-28684ce59db29aaf6417397d9eb9b4fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Bluebarrido.png"
-dest_files=["res://.godot/imported/Bluebarrido.png-60978a246a213cef7af1d229bcb822b6.ctex"]
+source_file="res://Assets/Sprite Sheets/Character/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png"
+dest_files=["res://.godot/imported/Sega Genesis - Gunstar Heroes - Playable Characters - Gunstar Blue.png-28684ce59db29aaf6417397d9eb9b4fa.ctex"]
 
 [params]
 

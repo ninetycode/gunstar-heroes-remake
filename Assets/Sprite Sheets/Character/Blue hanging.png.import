@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqt1j4lfcriv4"
-path="res://.godot/imported/blueshot ovlicuo down f.png-386843b8d440ad147c6f62e49a0be35c.ctex"
+uid="uid://bur8h675kt5a6"
+path="res://.godot/imported/Blue hanging.png-665d3837fe6f14d06f85e47249ddd4fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/blueshot ovlicuo down f.png"
-dest_files=["res://.godot/imported/blueshot ovlicuo down f.png-386843b8d440ad147c6f62e49a0be35c.ctex"]
+source_file="res://Assets/Sprite Sheets/Character/Blue hanging.png"
+dest_files=["res://.godot/imported/Blue hanging.png-665d3837fe6f14d06f85e47249ddd4fd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byygw5sib24tr"
-path="res://.godot/imported/Parallax 1.png-62ac978ed3c6de29c5390446a1c34947.ctex"
+uid="uid://cupkb545f1l67"
+path="res://.godot/imported/Force_bullet.png-ede8166dd35118abc5360b814b68e550.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Niveles/Parallax 1.png"
-dest_files=["res://.godot/imported/Parallax 1.png-62ac978ed3c6de29c5390446a1c34947.ctex"]
+source_file="res://Assets/Sprite Sheets/Bullets/Force_bullet.png"
+dest_files=["res://.godot/imported/Force_bullet.png-ede8166dd35118abc5360b814b68e550.ctex"]
 
 [params]
 

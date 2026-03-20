@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://docnwg31idij3"
-path="res://.godot/imported/Spritesheet nivel 1.png-f7fedb89b317c80a0ae596de03579bba.ctex"
+uid="uid://bltvvnks2kfrc"
+path="res://.godot/imported/parallax 0.png-367df9398f3182ecbe3f489ae35da1a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Niveles/Spritesheet nivel 1.png"
-dest_files=["res://.godot/imported/Spritesheet nivel 1.png-f7fedb89b317c80a0ae596de03579bba.ctex"]
+source_file="res://Assets/Sprite Sheets/Niveles/parallax 0.png"
+dest_files=["res://.godot/imported/parallax 0.png-367df9398f3182ecbe3f489ae35da1a8.ctex"]
 
 [params]
 

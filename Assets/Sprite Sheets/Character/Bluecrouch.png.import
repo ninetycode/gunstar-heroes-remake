@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3gvebdv7c2sh"
-path="res://.godot/imported/Bluerun.png-5626d63c12640d0c73a05dfbfafb7f55.ctex"
+uid="uid://dgkiiik7h1t4o"
+path="res://.godot/imported/Bluecrouch.png-e1329298d801377b287ee60a3ea1a61d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite Sheets/Character/Bluerun.png"
-dest_files=["res://.godot/imported/Bluerun.png-5626d63c12640d0c73a05dfbfafb7f55.ctex"]
+source_file="res://Assets/Sprite Sheets/Character/Bluecrouch.png"
+dest_files=["res://.godot/imported/Bluecrouch.png-e1329298d801377b287ee60a3ea1a61d.ctex"]
 
 [params]
 
