@@ -90,3 +90,11 @@ func _input(event):
 		var laser = preload("res://Resources/arma_laser.tres")
 		$WeaponComponent.cambiar_arma(laser)
 		print("¡Arma cambiada a LÁSER!")
+		
+func _on_stats_component_salud_agotada() -> void:
+	print("¡Blue ha muerto!")
+	# Como usamos la misma lógica, en vez de queue_free() lo "apagamos"
+	set_process(false)
+	set_physics_process(false)
+	hide()
+	# Acá después podés gatillar el estado de Game Over

@@ -105,12 +105,19 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wg8im"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ybek"]
+size = Vector2(26, 35)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lssco"]
+radius = 19.0
+
 [node name="EnemySoldier" type="CharacterBody2D" unique_id=992673902]
 collision_layer = 4
 collision_mask = 11
 platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
+attack_range = 25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(0, -13)
@@ -124,7 +131,7 @@ shape = SubResource("CapsuleShape2D_wg8im")
 
 [node name="StateMachine" type="Node" parent="." unique_id=12875190 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_1i8gr")
-initial_state = NodePath("Chase")
+initial_state = NodePath("Idle")
 
 [node name="Chase" type="Node" parent="StateMachine" unique_id=1050308885]
 script = ExtResource("6_melc4")
@@ -140,6 +147,11 @@ collision_layer = 4
 collision_mask = 10
 stats_component = NodePath("../StatsComponent")
 
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
+position = Vector2(2, 4.5)
+shape = SubResource("RectangleShape2D_5ybek")
+debug_color = Color(0.6775713, 0.5055773, 0, 0.41960785)
+
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_melc4")]
 vida_maxima = 80
 vida_actual = 80
@@ -150,3 +162,12 @@ target_position = Vector2(37, 0)
 [node name="HitboxComponent" parent="." unique_id=597531608 instance=ExtResource("6_4owtx")]
 collision_layer = 4
 collision_mask = 10
+danio = 25
+
+[node name="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1677833624]
+position = Vector2(3, 4)
+shape = SubResource("CircleShape2D_lssco")
+debug_color = Color(0.9413435, 1.21289495e-05, 0.61320996, 0.41960785)
+
+[editable path="HurtboxComponent"]
+[editable path="HitboxComponent"]
