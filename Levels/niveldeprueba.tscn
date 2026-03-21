@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_iu2og"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_iu2og"]
+[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="3_5wnxx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
@@ -44,3 +45,6 @@ offset_bottom = 308.0
 color = Color(1, 0.24705882, 0, 1)
 
 [node name="Node" type="Node" parent="." unique_id=579350582]
+
+[node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("3_5wnxx")]
+position = Vector2(296, 281)

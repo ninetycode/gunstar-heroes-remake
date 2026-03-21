@@ -1,5 +1,5 @@
 extends State
-
+#ALERT ESTE CODIGO HACE QUE TODO SE ROMPA NO ENTIENDO PORQUE.
 @onready var player = owner
 
 func enter(_msg := {}) -> void:
