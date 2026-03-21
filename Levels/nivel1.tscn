@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
+[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="7_unhkn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5090,3 +5091,9 @@ position = Vector2(322, 181)
 limit_right = 276447232
 position_smoothing_enabled = true
 script = ExtResource("6_wfebu")
+
+[node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("7_unhkn")]
+position = Vector2(853, 154)
+
+[node name="EnemySoldier2" parent="." unique_id=575483691 instance=ExtResource("7_unhkn")]
+position = Vector2(341, 312)

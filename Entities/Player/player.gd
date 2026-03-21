@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
+@onready var stats: Node = $StatsComponent
 
 @export var speed: float = 300.0
 @export var jump_velocity: float = -500.0
@@ -11,6 +12,9 @@ const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @onready var shooter_time = $ShooterTime
 
 var gravity_enabled = true
+
+func _ready() -> void:
+	stats.danio_recibido.connect(_on_danio_recibido)
 
 func _physics_process(delta):
 	# La gravedad se aplica siempre
@@ -99,3 +103,15 @@ func _on_stats_component_salud_agotada() -> void:
 	#hide()
 	queue_free()
 	# Acá después podés gatillar el estado de Game Over
+
+
+
+func _on_danio_recibido(_cantidad: int) -> void:
+	# Hacemos que el sprite del Player se ponga blanco brillante
+	_animated_sprite.modulate = Color(10, 10, 10)
+	
+	# Esperamos una fracción de segundo
+	await get_tree().create_timer(0.05).timeout
+	
+	# Lo devolvemos a su color normal
+	_animated_sprite.modulate = Color(1, 1, 1)
