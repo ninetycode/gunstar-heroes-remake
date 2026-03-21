@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var hitbox: Area2D = $HitboxComponent
+
 @export var speed: float = 150.0
 @export var attack_range: float = 40.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

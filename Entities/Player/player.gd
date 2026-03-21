@@ -94,7 +94,8 @@ func _input(event):
 func _on_stats_component_salud_agotada() -> void:
 	print("¡Blue ha muerto!")
 	# Como usamos la misma lógica, en vez de queue_free() lo "apagamos"
-	set_process(false)
-	set_physics_process(false)
-	hide()
+	#set_process(false)
+	#set_physics_process(false)
+	#hide()
+	queue_free()
 	# Acá después podés gatillar el estado de Game Over
