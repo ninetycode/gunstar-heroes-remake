@@ -1,22 +1,30 @@
-extends Node
+extends Node2D
 
-const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
-var pool_size = 200
-var balas_guardadas = []
+@export var max_bullets : int = 50
+var _pool = []
+var _current_index = 0
 
-func _ready():
-	# Cuando arranca el juego, fabricamos las balas y las escondemos
-	for i in range(pool_size):
-		var bala = BULLET_SCENE.instantiate()
-		add_child(bala) # Al agregarla, la bala ejecuta su propio _ready() y se apaga sola
-		balas_guardadas.append(bala)
-
-# El arma va a llamar a esta función en vez de instanciar
-# (El resto del código de bullet_pool.gd queda igual)
-
+func initialize_pool(bullet_scene: PackedScene, damage: int):
+	for i in range(max_bullets):
+		var bullet_instance = bullet_scene.instantiate()
+		add_child(bullet_instance)
+		
+		if bullet_instance.has_node("HitboxComponent"):
+			bullet_instance.get_node("HitboxComponent").danio = damage
+			
+		bullet_instance.global_position = Vector2(-9999, -9999)
+		bullet_instance.set_process(false)
+		bullet_instance.hide()
+		_pool.append(bullet_instance)
+		
 func disparar_bala(pos: Vector2, dir: Vector2, data: WeaponResource):
-	for bala in balas_guardadas:
-		if not bala.visible:
-			# Le pasamos el objeto 'data' entero a la bala
-			bala.activar(pos, dir, data)
-			return
+	if _pool.is_empty(): 
+		print("ERROR: El pool está vacío. ¿Llamaste a initialize_pool()?")
+		return
+		
+	# Agarramos la bala que toca según el índice
+	var bala = _pool[_current_index]
+	bala.activar(pos, dir, data)
+	
+	# Avanzamos el índice al siguiente. Si llega al máximo, vuelve a 0.
+	_current_index = (_current_index + 1) % _pool.size()

@@ -1,23 +1,26 @@
 [gd_scene format=3 uid="uid://p6157ufvrp6h"]
 
 [ext_resource type="Script" uid="uid://mfdbt38jn4v4" path="res://Scripts/Bala.gd" id="1_4s4u5"]
+[ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_14k46"]
 [ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Assets/Sprite Sheets/Bullets/Force_bullet.png" id="2_7281b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u8st5"]
-radius = 4.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvus8"]
+radius = 6.0
 
-[node name="Bullet" type="Area2D" unique_id=99186007]
-collision_layer = 2
-collision_mask = 4
-priority = 12
+[node name="Bullet" type="Node2D" unique_id=1398033574]
 script = ExtResource("1_4s4u5")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=360125284]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1226538519]
 texture = ExtResource("2_7281b")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=397574564]
-shape = SubResource("CircleShape2D_u8st5")
+[node name="HitboxComponent" parent="." unique_id=597531608 instance=ExtResource("2_14k46")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1677833624]
+shape = SubResource("CircleShape2D_qvus8")
+debug_color = Color(0.88054967, 0.3272745, 0.23354766, 0.41960785)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=137387606]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[editable path="HitboxComponent"]

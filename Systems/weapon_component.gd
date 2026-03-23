@@ -10,6 +10,9 @@ func _ready():
 	# Ajustamos el tiempo del timer según el arma que tengamos
 	if arma_actual:
 		cooldown_timer.wait_time = arma_actual.fire_rate
+		
+		# ¡Le damos la orden al Pool de fabricar las 50 balas al iniciar!
+		BulletPool.initialize_pool(arma_actual.bullet_scene, arma_actual.danio)
 
 func disparar():
 	if cooldown_timer.is_stopped() and arma_actual:
@@ -35,5 +38,8 @@ func obtener_direccion_apuntado() -> Vector2:
 	
 func cambiar_arma(nuevo_recurso: WeaponResource):
 	arma_actual = nuevo_recurso
-	# Actualizamos el tiempo de espera del disparo al instante
 	cooldown_timer.wait_time = arma_actual.fire_rate
+	
+	# Le avisamos al Pool que mate las balas viejas y cree 50 nuevas
+	# de la nueva escena y con el nuevo daño.
+	BulletPool.initialize_pool(arma_actual.bullet_scene, arma_actual.danio)
