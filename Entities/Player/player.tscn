@@ -295,8 +295,8 @@ script = ExtResource("1_owvpp")
 position = Vector2(1.7711871, 15.600692)
 scale = Vector2(0.84888, 0.84888)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo arriba"
-frame_progress = 0.12876952
+animation = &"Disparo diagonal abajo"
+frame_progress = 0.30596533
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
