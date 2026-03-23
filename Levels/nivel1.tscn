@@ -5053,7 +5053,6 @@ tile_set = SubResource("TileSet_fwb7x")
 
 [node name="Background" type="Node2D" parent="." unique_id=843750829]
 z_index = -2
-metadata/_edit_lock_ = true
 
 [node name="Midground" type="Parallax2D" parent="Background" unique_id=1440809474]
 texture_filter = 1
@@ -5063,7 +5062,7 @@ repeat_times = 4
 
 [node name="Arbolada" type="Sprite2D" parent="Background/Midground" unique_id=1404398166]
 z_index = -1
-position = Vector2(1260, 250)
+position = Vector2(1260, 271.285)
 texture = ExtResource("4_fwb7x")
 
 [node name="Background" type="Parallax2D" parent="Background" unique_id=1351464591]
