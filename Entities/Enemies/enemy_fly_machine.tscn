@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://t8q8lblr4q78"]
+
+[ext_resource type="Script" uid="uid://r05a1457x14c" path="res://enemy_fly_machine.gd" id="1_8uimj"]
+[ext_resource type="Texture2D" uid="uid://ck2wrrfkcjesv" path="res://Assets/Sprite Sheets/Enemies/Fly machine/shot enemy.png" id="2_ts7ci"]
+[ext_resource type="Texture2D" uid="uid://djhtj3t4gq5bf" path="res://Assets/Sprite Sheets/Enemies/Fly machine/fly enemy.png" id="3_alrwe"]
+[ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="4_o5lgy"]
+[ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="5_og1r4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl02l"]
+atlas = ExtResource("2_ts7ci")
+region = Rect2(46, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yade"]
+atlas = ExtResource("2_ts7ci")
+region = Rect2(3, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q20n"]
+atlas = ExtResource("2_ts7ci")
+region = Rect2(88, 0, 33, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0pkl"]
+atlas = ExtResource("3_alrwe")
+region = Rect2(42, 0, 30, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1ram"]
+atlas = ExtResource("3_alrwe")
+region = Rect2(6, 0, 32, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_257u4"]
+atlas = ExtResource("3_alrwe")
+region = Rect2(79, 0, 30, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_au720"]
+atlas = ExtResource("4_o5lgy")
+region = Rect2(1, 0, 33, 33)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2wv7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl02l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yade")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q20n")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0pkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1ram")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_257u4")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_au720")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}]
+
+[node name="enemy_fly_machine" type="CharacterBody2D" unique_id=1995836615]
+script = ExtResource("1_8uimj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38438922]
+sprite_frames = SubResource("SpriteFrames_s2wv7")
+animation = &"Fly"
+frame_progress = 0.2872177
+
+[node name="StateMachine" type="Node" parent="." unique_id=632130209 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_og1r4")
+initial_state = NodePath("Idle")
+
+[node name="Chase" type="Node" parent="StateMachine" unique_id=194367423]
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=933860445]
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1395556040]

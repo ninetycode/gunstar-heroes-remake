@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pwieavbj4rwd"]
 
 [ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/enemy_soldier.gd" id="1_1i8gr"]
-[ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier-spritesheet.png" id="1_anyna"]
+[ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="1_anyna"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
