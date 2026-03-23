@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://uok54apmvkgc"]
+
+[ext_resource type="PackedScene" uid="uid://p6157ufvrp6h" path="res://Scenes/Bullet.tscn" id="1_2uacj"]
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_qqcy1"]
+[ext_resource type="Texture2D" uid="uid://lrxkww2biide" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRE1.png" id="2_xoxyw"]
+[ext_resource type="Texture2D" uid="uid://48a1n1tqt48h" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRE2.png" id="3_mt2xd"]
+[ext_resource type="Texture2D" uid="uid://34bapnq3eco8" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/fire3.png" id="4_myot6"]
+[ext_resource type="Texture2D" uid="uid://5ssfhnw8wmxj" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRE4.png" id="5_1fo71"]
+
+[resource]
+script = ExtResource("1_qqcy1")
+weapon_type = 1
+bullet_scene = ExtResource("1_2uacj")
+bullet_textures = Array[Texture2D]([ExtResource("2_xoxyw"), ExtResource("3_mt2xd"), ExtResource("4_myot6"), ExtResource("5_1fo71")])
+metadata/_custom_type_script = "uid://djdydvvm02506"
