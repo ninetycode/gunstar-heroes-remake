@@ -5096,4 +5096,4 @@ script = ExtResource("6_wfebu")
 position = Vector2(853, 154)
 
 [node name="EnemySoldier2" parent="." unique_id=575483691 instance=ExtResource("7_unhkn")]
-position = Vector2(341, 312)
+position = Vector2(490, 316)
