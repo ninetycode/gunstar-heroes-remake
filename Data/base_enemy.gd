@@ -17,6 +17,8 @@ func _ready():
 	if stats:
 		stats.salud_agotada.connect(_on_death)
 		stats.danio_recibido.connect(_on_danio_recibido)
+		
+	add_to_group("Enemies")
 
 func _on_danio_recibido(_cantidad: int):
 	# El parpadeo blanco genérico para cualquier enemigo
