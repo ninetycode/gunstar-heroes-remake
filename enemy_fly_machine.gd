@@ -1,9 +1,11 @@
-extends CharacterBody2D
+extends BaseEnemy
+@onready var hitbox: Area2D = $HitboxComponent
+@onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 @export var velocidad = 100.0
 @export var distancia_ideal = 250.0  # La distancia que quiere mantener de Blue
 @export var margen_error = 50.0      # Para que no esté vibrando constantemente
-@onready var player = get_tree().get_first_node_in_group("player")
+#@onready var player = get_tree().get_first_node_in_group("player")
 
 var tiempo_onda = 0.0
 

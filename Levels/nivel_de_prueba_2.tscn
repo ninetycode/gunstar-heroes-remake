@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dim7r80onrvvt" path="res://Scenes/plataforma_de_prueba.tscn" id="1_b0dcr"]
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_fgyyg"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/enemy_fly_machine.tscn" id="3_fgyyg"]
 
 [node name="Nivel de Prueba 2" type="Node2D" unique_id=1066668907]
 
@@ -39,3 +40,6 @@ collision_mask = 0
 position = Vector2(187, 240)
 
 [node name="UI_HUD" type="CanvasLayer" parent="." unique_id=670983750]
+
+[node name="enemy_fly_machine" parent="." unique_id=1995836615 instance=ExtResource("3_fgyyg")]
+position = Vector2(310, 64)
