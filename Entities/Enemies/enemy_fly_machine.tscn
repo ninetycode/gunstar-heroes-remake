@@ -122,6 +122,7 @@ debug_color = Color(0.91797113, 0.21856305, 0.47122675, 0.41960785)
 
 [node name="StatsComponent" type="Node" parent="." unique_id=1394624701]
 script = ExtResource("8_jl02l")
+vida_maxima = 60
 
 [editable path="HurtboxComponent"]
 [editable path="HitboxComponent"]
