@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bqlwft448gve6"]
+
+[ext_resource type="Script" uid="uid://ebbl54lqrwhc" path="res://UI/boss_ui.gd" id="1_sc4l6"]
+
+[sub_resource type="FontFile" id="FontFile_lq4o8"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_u7ao1"]
+font = SubResource("FontFile_lq4o8")
+outline_size = 5
+outline_color = Color(0.119563945, 0.029724319, 0.014572376, 1)
+
+[node name="BossUI" type="CanvasLayer" unique_id=1851858112]
+script = ExtResource("1_sc4l6")
+
+[node name="Label" type="Label" parent="." unique_id=1331552771]
+anchors_preset = -1
+anchor_left = 0.46875
+anchor_top = 0.1388889
+anchor_right = 0.53125
+anchor_bottom = 0.20277777
+grow_horizontal = 2
+size_flags_vertical = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_u7ao1")
+metadata/_edit_use_anchors_ = true

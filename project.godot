@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 [autoload]
 
 BulletPool="*uid://dxij5w0q5ifim"
+GameEvents="*uid://baay76cbjy0em"
 
 [display]
 

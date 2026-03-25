@@ -124,7 +124,6 @@ attack_range = 25.0
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
 animation = &"walk"
-frame_progress = 0.86817646
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
