@@ -1,50 +1,77 @@
 [gd_scene format=3 uid="uid://c5hbqctwiqkk3"]
 
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_iu2og"]
-[ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_iu2og"]
+[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="3_5wnxx"]
+[ext_resource type="Texture2D" uid="uid://lrxkww2biide" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRE1.png" id="3_a8wek"]
+[ext_resource type="Script" uid="uid://dmwkuqg5ijcm4" path="res://Entities/Enemies/enemigo_de_prueba.gd" id="3_vjo2d"]
+[ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_a8wek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu2og"]
-size = Vector2(23, 15)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8wek"]
+atlas = ExtResource("3_a8wek")
+region = Rect2(0, 0, 24, 23)
 
-[node name="Piso" type="StaticBody2D" unique_id=1195712201]
-collision_mask = 0
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ufvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8wek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1034117185]
-position = Vector2(315, 331)
-shape = SubResource("RectangleShape2D_okj6t")
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjo2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ufvc"]
+
+[node name="Piso" type="Node2D" unique_id=1117653153]
 
 [node name="GunstarBlue2" parent="." unique_id=488555054 instance=ExtResource("1_iu2og")]
 position = Vector2(154, 297)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=110644175]
-offset_left = 2.0
-offset_top = 320.0
-offset_right = 643.0
-offset_bottom = 360.0
-
-[node name="area de daño" type="Node2D" parent="." unique_id=1450878960]
-
-[node name="HitboxComponent" parent="area de daño" unique_id=597531608 instance=ExtResource("2_iu2og")]
-collision_layer = 4
-collision_mask = 10
-danio = 90
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="area de daño/HitboxComponent" unique_id=97117310]
-position = Vector2(524.5, 298.5)
-shape = SubResource("RectangleShape2D_iu2og")
-
-[node name="ColorRect" type="ColorRect" parent="area de daño" unique_id=1078540706]
-offset_left = 512.0
-offset_top = 289.0
-offset_right = 538.0
-offset_bottom = 308.0
-color = Color(1, 0.24705882, 0, 1)
-
-[node name="Node" type="Node" parent="." unique_id=579350582]
-
 [node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("3_5wnxx")]
 position = Vector2(296, 281)
+
+[node name="Piso" type="StaticBody2D" parent="." unique_id=274467790]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso" unique_id=1034117185]
+position = Vector2(312, 336)
+shape = SubResource("RectangleShape2D_okj6t")
+
+[node name="Suelo" type="ColorRect" parent="Piso/CollisionShape2D" unique_id=110644175]
+offset_left = -313.0
+offset_top = -11.0
+offset_right = 328.0
+offset_bottom = 29.0
+
+[node name="Enemigo de prueba" type="CharacterBody2D" parent="." unique_id=233554457 groups=["Enemies"]]
+position = Vector2(506, 305)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_vjo2d")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemigo de prueba" unique_id=1572009899]
+sprite_frames = SubResource("SpriteFrames_4ufvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemigo de prueba" unique_id=2098458205]
+shape = SubResource("CircleShape2D_vjo2d")
+
+[node name="HurtboxComponent" parent="Enemigo de prueba" unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_4ufvc")]
+collision_layer = 4
+collision_mask = 2
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D" parent="Enemigo de prueba/HurtboxComponent" index="0" unique_id=489208994]
+shape = SubResource("CircleShape2D_4ufvc")
+debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
+
+[node name="StatsComponent" parent="Enemigo de prueba" unique_id=575655358 instance=ExtResource("4_a8wek")]
+vida_maxima = 99999
+
+[editable path="Enemigo de prueba/HurtboxComponent"]
