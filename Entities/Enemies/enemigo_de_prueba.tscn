@@ -46,6 +46,6 @@ shape = SubResource("CircleShape2D_4ufvc")
 debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_urfqd")]
-vida_maxima = 99999
+vida_maxima = 9999
 
 [editable path="HurtboxComponent"]

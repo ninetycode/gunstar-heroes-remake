@@ -1,22 +1,12 @@
-extends BaseEnemy
-class_name BossEnemy
+extends BossEnemy # <-- ¡Hereda del nuevo molde de jefes!
 
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
-@export var nombre_boss: String = "Boss Prueba"
+# ¡Y listo! No tenés que poner NADA de la interfaz acá.
+# Todo el código de las señales ya lo maneja 'BossEnemy'.
 
 func _ready():
-	super() 
+	super() # Es obligatorio llamar a super() para que el molde haga su magia.
 	
-	# Usamos call_deferred para que espere al final del frame para avisar
-	GameEvents.boss_fight_started.emit.call_deferred(nombre_boss, stats.vida_maxima, stats.vida_actual)
-
-func _on_danio_recibido(cantidad: int):
-	super(cantidad) # Mantenemos el parpadeo blanco
-	
-	# Avisamos a la UI cuánta vida nos queda
-	GameEvents.boss_health_changed.emit(stats.vida_actual)
-
-func _on_death():
-	GameEvents.boss_died.emit() # Avisamos que ganaste
-	super() # Nos destruimos
+	# Acá abajo solo pondrías cosas únicas de este jefe de prueba
+	# (por ejemplo, iniciar su propia máquina de estados).
