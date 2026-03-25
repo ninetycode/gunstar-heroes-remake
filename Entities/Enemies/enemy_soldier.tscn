@@ -123,7 +123,7 @@ attack_range = 25.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"walk"
+animation = &"idle"
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
@@ -159,7 +159,7 @@ vida_maxima = 80
 [node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1783343090]
 target_position = Vector2(37, 0)
 
-[node name="HitboxComponent" parent="." unique_id=597531608 instance=ExtResource("6_4owtx")]
+[node name="HitboxComponent" parent="." unique_id=597531608 groups=["Enemies_melee"] instance=ExtResource("6_4owtx")]
 collision_layer = 4
 collision_mask = 8
 danio = 25
