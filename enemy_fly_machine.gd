@@ -5,8 +5,11 @@ extends BaseEnemy
 @export var fuerza_separacion = 400.0
 @onready var state_machine: StateMachine = $StateMachine
 @onready var shoot_timer: Timer = $ShootTimer # Necesitás crear este nodo en la escena
+@export var altura_minima_suelo = 150.0 # Distancia mínima sobre el suelo
+@export var bullet_scene: PackedScene = preload("res://Scenes/Bullet.tscn")
+@export var mi_arma_resource : WeaponResource
+var can_shoot: bool = false
 
-var can_shoot: bool = false # <--- ESTA ES LA QUE FALTA
 func _ready() -> void:
 	super() # Esto ejecuta el _ready de BaseEnemy (busca al player y conecta señales)
 	add_to_group("enemigos")
@@ -47,8 +50,22 @@ func limitar_a_camara():
 	if cam:
 		var screen_size = get_viewport_rect().size / cam.zoom
 		var cam_pos = cam.get_screen_center_position()
+		
+		# Límites laterales
 		global_position.x = clamp(global_position.x, cam_pos.x - screen_size.x/2 + 30, cam_pos.x + screen_size.x/2 - 30)
-		global_position.y = clamp(global_position.y, cam_pos.y - screen_size.y/2 + 30, cam_pos.y + screen_size.y/2 - 30)
+		
+		# Límite vertical: No dejar que baje del 70% de la altura de la cámara
+		var techo = cam_pos.y - screen_size.y/2 + 50
+		var suelo_maximo = cam_pos.y + (screen_size.y/2) * 0.4 # Esto lo mantiene en la mitad superior
+		
+		global_position.y = clamp(global_position.y, techo, suelo_maximo)
+
+func disparar_a_jugador():
+	if mi_arma_resource == null: return # Seguridad
+	
+	var dir = (player.global_position - global_position).normalized()
+	# Invocamos la bala con el parpadeo y los datos del láser
+	BulletPool.get_bullet(global_position, dir, mi_arma_resource, true)
 
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true # Le avisamos al estado que ya podemos disparar

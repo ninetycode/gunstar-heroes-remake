@@ -8,23 +8,17 @@ func initialize_pool(bullet_scene: PackedScene, damage: int):
 	for i in range(max_bullets):
 		var bullet_instance = bullet_scene.instantiate()
 		add_child(bullet_instance)
-		
-		if bullet_instance.has_node("HitboxComponent"):
-			bullet_instance.get_node("HitboxComponent").danio = damage
-			
-		bullet_instance.global_position = Vector2(-9999, -9999)
-		bullet_instance.set_process(false)
-		bullet_instance.hide()
 		_pool.append(bullet_instance)
-		
-func disparar_bala(pos: Vector2, dir: Vector2, data: WeaponResource):
+		bullet_instance.desactivar() # Usamos la función que ya tiene la bala
+
+# CAMBIO: Renombramos a 'get_bullet' y aceptamos el parámetro 'de_enemigo'
+func get_bullet(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool = false):
 	if _pool.is_empty(): 
-		print("ERROR: El pool está vacío. ¿Llamaste a initialize_pool()?")
+		print("ERROR: Pool vacío")
 		return
 		
-	# Agarramos la bala que toca según el índice
 	var bala = _pool[_current_index]
-	bala.activar(pos, dir, data)
+	# Pasamos el recurso 'arma_laser.tres' y si es de enemigo
+	bala.activar(pos, dir, data, de_enemigo)
 	
-	# Avanzamos el índice al siguiente. Si llega al máximo, vuelve a 0.
 	_current_index = (_current_index + 1) % _pool.size()

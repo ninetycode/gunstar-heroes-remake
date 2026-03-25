@@ -42,6 +42,7 @@ folder_colors={
 
 Player=""
 Enemies=""
+Enemies_melee=""
 
 [input]
 
