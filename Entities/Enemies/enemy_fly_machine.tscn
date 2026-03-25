@@ -5,8 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://djhtj3t4gq5bf" path="res://Assets/Sprite Sheets/Enemies/Fly machine/fly enemy.png" id="3_alrwe"]
 [ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="4_o5lgy"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="5_og1r4"]
+[ext_resource type="Script" uid="uid://48y53nl431af" path="res://Entities/Enemies/fly_state.gd" id="6_0yade"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="6_o5lgy"]
+[ext_resource type="Script" uid="uid://dh8dinwh6ady6" path="res://Entities/Enemies/attack_state.gd" id="7_3q20n"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="7_og1r4"]
+[ext_resource type="Script" uid="uid://sud6csg31gnn" path="res://Entities/Enemies/hit_state.gd" id="8_b0pkl"]
 [ext_resource type="Script" uid="uid://6wy1i5if0nu4" path="res://Systems/stats_component.gd" id="8_jl02l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl02l"]
@@ -82,7 +85,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0pkl"]
 
-[node name="enemy_fly_machine" type="CharacterBody2D" unique_id=1995836615]
+[node name="enemy_fly_machine" type="CharacterBody2D" unique_id=1995836615 groups=["Enemies"]]
 script = ExtResource("1_8uimj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38438922]
@@ -96,13 +99,16 @@ debug_color = Color(0.6689844, 0.510288, 0, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=632130209 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_og1r4")
-initial_state = NodePath("Idle")
+initial_state = NodePath("HitState")
 
-[node name="Chase" type="Node" parent="StateMachine" unique_id=194367423]
+[node name="FlyState" type="Node" parent="StateMachine" unique_id=194367423]
+script = ExtResource("6_0yade")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=933860445]
+[node name="AttackState" type="Node" parent="StateMachine" unique_id=933860445]
+script = ExtResource("7_3q20n")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1395556040]
+[node name="HitState" type="Node" parent="StateMachine" unique_id=1395556040]
+script = ExtResource("8_b0pkl")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("6_o5lgy")]
 collision_layer = 4
@@ -123,6 +129,8 @@ debug_color = Color(0.91797113, 0.21856305, 0.47122675, 0.41960785)
 [node name="StatsComponent" type="Node" parent="." unique_id=1394624701]
 script = ExtResource("8_jl02l")
 vida_maxima = 60
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=207838812]
 
 [editable path="HurtboxComponent"]
 [editable path="HitboxComponent"]
