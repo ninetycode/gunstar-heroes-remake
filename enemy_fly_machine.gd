@@ -23,17 +23,7 @@ func _on_danio_recibido(_cantidad: int):
 	if state_machine:
 		state_machine.transition_to("HitState")
 
-# Conectamos la señal del HurtboxComponent (desde el Editor o por código)
-func _on_hurtbox_component_area_entered(hitbox: Area2D) -> void:
-	if hitbox.is_in_group("player_bullet"):
-		# Llamamos a la función de tu StatsComponent
-		stats.recibir_danio(1) 
-		
-		# Forzamos la transición al estado de Hit
-		state_machine.transition_to("HitState")
-		
-		if hitbox.has_method("destroy"):
-			hitbox.destroy()
+
 
 # Estas funciones las usaremos dentro de los Estados (FlyState)
 func calcular_separacion() -> Vector2:

@@ -11,7 +11,7 @@ func _ready():
 	if arma_actual:
 		cooldown_timer.wait_time = arma_actual.fire_rate
 		# ¡Le damos la orden al Pool de fabricar las balas al iniciar!
-		BulletPool.initialize_pool(arma_actual.bullet_scene, arma_actual.danio)
+		BulletPool.initialize_pool(arma_actual.bullet_scene)
 
 func disparar():
 	if cooldown_timer.is_stopped() and arma_actual:
@@ -45,4 +45,4 @@ func cambiar_arma(nuevo_recurso: WeaponResource):
 	cooldown_timer.wait_time = arma_actual.fire_rate
 	
 	# Reiniciamos el Pool con la nueva escena de bala (ej: lanzallamas o green bullet)
-	BulletPool.initialize_pool(arma_actual.bullet_scene, arma_actual.danio)
+	BulletPool.initialize_pool(arma_actual.bullet_scene)

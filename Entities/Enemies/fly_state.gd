@@ -8,6 +8,8 @@ func enter(_msg := {}) -> void:
 	enemy.sprite.play("Fly") #
 
 func physics_update(delta: float) -> void:
+	if not is_instance_valid(enemy.player):
+		return
 	change_timer -= delta
 	if change_timer <= 0:
 		var angle = randf() * TAU

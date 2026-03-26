@@ -4,7 +4,7 @@ extends Node2D
 var _pool = []
 var _current_index = 0
 
-func initialize_pool(bullet_scene: PackedScene, damage: int):
+func initialize_pool(bullet_scene: PackedScene):
 	for i in range(max_bullets):
 		var bullet_instance = bullet_scene.instantiate()
 		add_child(bullet_instance)
