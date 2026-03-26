@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://dba7bb07785qo"]
+
+[ext_resource type="PackedScene" uid="uid://p6157ufvrp6h" path="res://Scenes/Bullet.tscn" id="1_fd3q5"]
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_m4wfs"]
+[ext_resource type="Texture2D" uid="uid://csvnmofw83p3p" path="res://Assets/Sprite Sheets/Enemies/etc/maddummy.png" id="3_c1mfa"]
+
+[resource]
+script = ExtResource("1_m4wfs")
+bullet_scene = ExtResource("1_fd3q5")
+textura_bala = ExtResource("3_c1mfa")
+metadata/_custom_type_script = "uid://djdydvvm02506"

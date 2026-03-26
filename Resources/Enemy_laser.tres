@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponResource" format=3 uid="uid://dsbmu1ciokmbv"]
+
+[ext_resource type="PackedScene" uid="uid://p6157ufvrp6h" path="res://Scenes/Bullet.tscn" id="1_iki7d"]
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="2_7ve3e"]
+[ext_resource type="Texture2D" uid="uid://rilodl2v2vkc" path="res://Assets/Sprite Sheets/Bullets/laser_bullet.png" id="3_yg7pn"]
+
+[resource]
+script = ExtResource("2_7ve3e")
+bullet_scene = ExtResource("1_iki7d")
+textura_bala = ExtResource("3_yg7pn")
+danio = 25
+velocidad_bala = 700.0
+fire_rate = 0.03
+balas_por_rafaga = 9
+tiempo_entre_rafagas = 0.3
+metadata/_custom_type_script = "uid://djdydvvm02506"

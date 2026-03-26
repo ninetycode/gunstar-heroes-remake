@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://o0kngude3gup"]
+
+[ext_resource type="Script" uid="uid://bh0nlqb5eynj0" path="res://papaya_boss.gd" id="1_butei"]
+[ext_resource type="Texture2D" uid="uid://demlgejdfdc2u" path="res://Entities/Enemies/Bosses/Papaya Dance.png" id="2_lg5pe"]
+[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_kps04"]
+[ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_tcckm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ip8"]
+atlas = ExtResource("2_lg5pe")
+region = Rect2(124, 0, 44, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey0wo"]
+atlas = ExtResource("2_lg5pe")
+region = Rect2(40, 0, 44, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hj22k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ip8")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey0wo")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgdt1"]
+size = Vector2(24, 164)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02yxe"]
+size = Vector2(24, 164)
+
+[node name="PapayaBoss" type="CharacterBody2D" unique_id=408038176]
+script = ExtResource("1_butei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
+sprite_frames = SubResource("SpriteFrames_hj22k")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1933672566]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_fgdt1")
+
+[node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_kps04")]
+collision_layer = 4
+collision_mask = 2
+stats_component = NodePath("")
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_02yxe")
+debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
+
+[node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_tcckm")]
+vida_maxima = 9999
+
+[editable path="HurtboxComponent"]
