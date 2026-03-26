@@ -11,7 +11,7 @@ func _ready():
 	GameEvents.boss_health_changed.connect(_on_health_changed)
 	GameEvents.boss_died.connect(_on_boss_died)
 
-func _on_boss_started(nombre_boss: String, _vida_max: int, vida_actual: int):
+func _on_boss_started(nombre_boss: String, _vida_max: int, _vida_actual: int):
 	health_label.text = nombre_boss
 	show() # Hacemos visible la interfaz
 

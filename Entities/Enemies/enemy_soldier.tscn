@@ -50,6 +50,22 @@ region = Rect2(68, 61, 34, 61)
 atlas = ExtResource("1_anyna")
 region = Rect2(102, 61, 34, 61)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xhp5"]
+atlas = ExtResource("1_anyna")
+region = Rect2(0, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qbwr"]
+atlas = ExtResource("1_anyna")
+region = Rect2(34, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beh8p"]
+atlas = ExtResource("1_anyna")
+region = Rect2(68, 61, 34, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmj0v"]
+atlas = ExtResource("1_anyna")
+region = Rect2(102, 61, 34, 61)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0h11n"]
 animations = [{
 "frames": [{
@@ -97,6 +113,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p1mnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xhp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qbwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beh8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmj0v")
 }],
 "loop": true,
 "name": &"walk",
@@ -123,7 +151,8 @@ attack_range = 25.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"idle"
+animation = &"walk"
+frame_progress = 0.76347816
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
