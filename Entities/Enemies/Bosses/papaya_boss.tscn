@@ -39,6 +39,8 @@ size = Vector2(24, 164)
 size = Vector2(24, 164)
 
 [node name="PapayaBoss" type="CharacterBody2D" unique_id=408038176]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_butei")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
@@ -52,7 +54,7 @@ shape = SubResource("RectangleShape2D_fgdt1")
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_kps04")]
 collision_layer = 4
 collision_mask = 2
-stats_component = NodePath("")
+stats_component = NodePath("../StatsComponent")
 
 [node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
 position = Vector2(0, -2)
@@ -60,6 +62,6 @@ shape = SubResource("RectangleShape2D_02yxe")
 debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_tcckm")]
-vida_maxima = 9999
+vida_maxima = 2000
 
 [editable path="HurtboxComponent"]

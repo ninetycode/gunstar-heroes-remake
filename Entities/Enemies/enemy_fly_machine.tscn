@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t8q8lblr4q78"]
 
 [ext_resource type="Script" uid="uid://r05a1457x14c" path="res://enemy_fly_machine.gd" id="1_8uimj"]
-[ext_resource type="Resource" uid="uid://dbp5stx8ep1c0" path="res://Resources/arma_laser.tres" id="2_3q20n"]
+[ext_resource type="Resource" uid="uid://dsbmu1ciokmbv" path="res://Resources/Enemy_laser.tres" id="2_3q20n"]
 [ext_resource type="Texture2D" uid="uid://ck2wrrfkcjesv" path="res://Assets/Sprite Sheets/Enemies/Fly machine/shot enemy.png" id="2_ts7ci"]
 [ext_resource type="Texture2D" uid="uid://djhtj3t4gq5bf" path="res://Assets/Sprite Sheets/Enemies/Fly machine/fly enemy.png" id="3_alrwe"]
 [ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="4_o5lgy"]

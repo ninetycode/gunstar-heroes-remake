@@ -8,7 +8,7 @@
 script = ExtResource("2_7ve3e")
 bullet_scene = ExtResource("1_iki7d")
 textura_bala = ExtResource("3_yg7pn")
-danio = 25
+danio = 5
 velocidad_bala = 700.0
 fire_rate = 0.03
 balas_por_rafaga = 9
