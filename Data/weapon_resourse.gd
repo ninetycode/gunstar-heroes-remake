@@ -12,3 +12,5 @@ enum WeaponType { NORMAL, FIRE, HOMING }
 @export var turn_speed: float = 15.0
 @export var fire_rate : float = 0.2  # <-- Volvemos al original que busca weapon_component
 @export var escala_bala : Vector2 = Vector2(1, 1) # <-- Faltaba agregarla según tu imagen
+@export var balas_por_rafaga : int = 0 # 0 significa infinito (como tu arma verde)
+@export var tiempo_entre_rafagas : float = 0.5 # Tiempo de pausa al terminar la ráfaga

@@ -22,7 +22,6 @@
 [ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 [ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
-[ext_resource type="Resource" uid="uid://c57ym65etteof" path="res://Resources/bullet.tres" id="23_avsg8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
@@ -348,7 +347,6 @@ one_shot = true
 
 [node name="WeaponComponent" type="Node" parent="." unique_id=690649829]
 script = ExtResource("17_vskfa")
-arma_actual = ExtResource("23_avsg8")
 
 [node name="CooldownTimer" type="Timer" parent="WeaponComponent" unique_id=1771973270]
 wait_time = 0.355
