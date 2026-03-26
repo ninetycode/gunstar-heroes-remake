@@ -8,7 +8,7 @@ var danio_actual: int = 0
 
 var tipo_arma: WeaponResource.WeaponType
 var target: Node2D = null
-var turn_speed: float = 6.0 
+var turn_speed: float 
 
 # Para el efecto de parpadeo
 var tiempo_parpadeo: float = 0.0
@@ -70,6 +70,7 @@ func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool 
 	speed = data.velocidad_bala
 	danio_actual = data.danio 
 	scale = data.escala_bala 
+	turn_speed = data.turn_speed
 	sprite.texture = data.textura_bala
 	tipo_arma = data.weapon_type
 	

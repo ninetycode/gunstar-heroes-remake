@@ -9,5 +9,6 @@ enum WeaponType { NORMAL, FIRE, HOMING }
 @export var bullet_textures : Array[Texture2D] # 
 @export var danio : int = 10         # 
 @export var velocidad_bala : float = 400.0 # <-- Volvemos al original
+@export var turn_speed: float = 15.0
 @export var fire_rate : float = 0.2  # <-- Volvemos al original que busca weapon_component
 @export var escala_bala : Vector2 = Vector2(1, 1) # <-- Faltaba agregarla según tu imagen
