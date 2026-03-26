@@ -18,6 +18,7 @@ position = Vector2(154, 297)
 position = Vector2(608, 300)
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("3_qewk2")]
+z_index = -1
 position = Vector2(506, 313)
 
 [node name="Piso" type="StaticBody2D" parent="." unique_id=274467790]
