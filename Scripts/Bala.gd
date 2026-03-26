@@ -111,30 +111,28 @@ func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool 
 	
 	hitbox_colision.set_deferred("disabled", true)
 	
-	# --- BLINDAJE DE COLISIONES (LA MAGIA ACÁ) ---
-	# 1. Por las dudas, apagamos todas las capas problemáticas para limpiar la bala reciclada
-	$HitboxComponent.set_collision_mask_value(1, false) # Paredes
-	$HitboxComponent.set_collision_mask_value(2, false) # Enemigos
-	$HitboxComponent.set_collision_mask_value(4, false) # Player
+	# --- BLINDAJE DE COLISIONES PROFESIONAL ---
+	# 1. Reseteamos la máscara a 0 (No busca NADA). Esto borra la basura de la bala reciclada.
+	$HitboxComponent.collision_mask = 0
 	
 	if es_de_enemigo:
-		# BALA ENEMIGA: Solo busca al Player (Capa 4)
+		# BALA ENEMIGA: Solo busca a Blue (Capa 4)
 		$HitboxComponent.set_collision_mask_value(4, true)  
 		
 		$HitboxComponent.add_to_group("enemy_bullet")
 		$HitboxComponent.remove_from_group("player_bullet")
 		modulate = Color.RED
 	else:
-		# BALA DE BLUE: Siempre busca enemigos (Capa 2)
-		$HitboxComponent.set_collision_mask_value(2, true) 
-		
-		# ¿Es el lanzallamas? Entonces TAMBIÉN busca paredes (Capa 1)
-		if tipo_arma == WeaponResource.WeaponType.FIRE:
-			$HitboxComponent.set_collision_mask_value(1, true)
+		# BALA DE BLUE: Siempre busca enemigos (Capa 3)
+		$HitboxComponent.set_collision_mask_value(3, true) 
 		
 		$HitboxComponent.add_to_group("player_bullet")
 		$HitboxComponent.remove_from_group("enemy_bullet")
 		modulate = Color.WHITE
+
+	# 2. Si es el lanzallamas, ADEMÁS le prendemos la búsqueda de paredes (Capa 1)
+	if tipo_arma == WeaponResource.WeaponType.FIRE:
+		$HitboxComponent.set_collision_mask_value(1, true)
 
 	$HitboxComponent.danio = danio_actual
 	visible = true
