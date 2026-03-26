@@ -1,14 +1,21 @@
 extends Node
 
-@export var arma_actual: WeaponResource = preload("res://Resources/arma_laser.tres")
+# Creamos el inventario: una lista vacía que vamos a llenar desde el Inspector
+@export var inventario_armas: Array[WeaponResource] = []
+var indice_arma_actual: int = 0
+
+@export var arma_actual: WeaponResource
 
 @onready var cooldown_timer = $CooldownTimer
 @onready var player = owner
 
-# Agregamos un contador para las ráfagas
 var balas_disparadas : int = 0
 
 func _ready():
+	# Al nacer, si tenemos armas en el inventario, nos equipamos la primera (índice 0)
+	if inventario_armas.size() > 0:
+		arma_actual = inventario_armas[0]
+		
 	if arma_actual:
 		cooldown_timer.wait_time = arma_actual.fire_rate
 		BulletPool.initialize_pool(arma_actual.bullet_scene)
@@ -17,7 +24,6 @@ func disparar():
 	if cooldown_timer.is_stopped() and arma_actual:
 		var direccion = obtener_direccion_apuntado()
 		
-		# Disparamos normalmente, sea el arma que sea
 		BulletPool.get_bullet(
 			player.muzzle.global_position, 
 			direccion, 
@@ -25,10 +31,8 @@ func disparar():
 			false 
 		)
 		
-		# --- LÓGICA DE RÁFAGAS ---
 		if arma_actual.balas_por_rafaga > 0:
 			balas_disparadas += 1
-			
 			if balas_disparadas >= arma_actual.balas_por_rafaga:
 				cooldown_timer.wait_time = arma_actual.tiempo_entre_rafagas
 				balas_disparadas = 0 
@@ -52,7 +56,18 @@ func cambiar_arma(nuevo_recurso: WeaponResource):
 	if nuevo_recurso == null: return
 	
 	arma_actual = nuevo_recurso
-	balas_disparadas = 0 # Reseteamos la ráfaga al cambiar de arma
+	balas_disparadas = 0 
 	cooldown_timer.wait_time = arma_actual.fire_rate
-	
 	BulletPool.initialize_pool(arma_actual.bullet_scene)
+
+# --- NUEVA FUNCIÓN PARA ROTAR EL INVENTARIO ---
+func rotar_arma():
+	# Si no hay armas o hay solo 1, no hacemos nada
+	if inventario_armas.size() <= 1: 
+		return 
+		
+	# Sumamos 1 al índice. El "%" hace que si nos pasamos del límite, vuelva a 0.
+	indice_arma_actual = (indice_arma_actual + 1) % inventario_armas.size()
+	
+	# Cambiamos al arma que toca
+	cambiar_arma(inventario_armas[indice_arma_actual])

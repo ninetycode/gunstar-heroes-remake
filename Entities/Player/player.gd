@@ -90,10 +90,8 @@ func _on_lock_zone_body_entered(body: Node2D) -> void:
 		
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"): # Tecla TAB
-		# Cambiamos entre el recurso de Fuerza y el de Láser
-		var laser = preload("res://Resources/arma_laser.tres")
-		$WeaponComponent.cambiar_arma(laser)
-		print("¡Arma cambiada a LÁSER!")
+		# Le avisamos al componente que pase a la siguiente arma
+		$WeaponComponent.rotar_arma()
 		
 func _on_stats_component_salud_agotada() -> void:
 	print("¡Blue ha muerto!")

@@ -33,9 +33,12 @@ func _physics_process(delta):
 		modulate = Color.RED if int(tiempo_parpadeo) % 2 == 0 else Color.CYAN
 
 	if tipo_arma == WeaponResource.WeaponType.HOMING:
-		# ... (Tu lógica homing queda igual) ...
-		pass
-			
+		actualizar_target_homing()
+		if is_instance_valid(target):
+			var desired_dir = (target.global_position - global_position).normalized()
+			# El lerp hace que la bala doble suavemente hacia el enemigo
+			direction = direction.lerp(desired_dir, turn_speed * delta).normalized()
+			rotation = direction.angle()
 	elif tipo_arma == WeaponResource.WeaponType.FIRE:
 		# --- LA MAGIA DEL LANZALLAMAS ---
 		tiempo_vida -= delta

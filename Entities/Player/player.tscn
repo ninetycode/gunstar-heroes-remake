@@ -22,7 +22,11 @@
 [ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 [ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
-[ext_resource type="Resource" uid="uid://uok54apmvkgc" path="res://Resources/lanzallamas.tres" id="23_avsg8"]
+[ext_resource type="Resource" uid="uid://c57ym65etteof" path="res://Resources/bullet.tres" id="23_avsg8"]
+[ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="23_og23y"]
+[ext_resource type="Resource" uid="uid://gh5cs7jtg3jc" path="res://Resources/green_bullet.tres" id="24_dv6dp"]
+[ext_resource type="Resource" uid="uid://dbp5stx8ep1c0" path="res://Resources/arma_laser.tres" id="26_u86q5"]
+[ext_resource type="Resource" uid="uid://uok54apmvkgc" path="res://Resources/lanzallamas.tres" id="27_80ryp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
@@ -348,7 +352,8 @@ one_shot = true
 
 [node name="WeaponComponent" type="Node" parent="." unique_id=690649829]
 script = ExtResource("17_vskfa")
-arma_actual = ExtResource("23_avsg8")
+inventario_armas = Array[ExtResource("23_og23y")]([ExtResource("24_dv6dp"), ExtResource("23_avsg8"), ExtResource("26_u86q5"), ExtResource("27_80ryp")])
+arma_actual = ExtResource("27_80ryp")
 
 [node name="CooldownTimer" type="Timer" parent="WeaponComponent" unique_id=1771973270]
 wait_time = 0.355
