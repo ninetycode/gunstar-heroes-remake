@@ -102,28 +102,36 @@ func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool 
 	
 	# --- ASIGNACIÓN DE TEXTURAS SEGÚN EL ARMA ---
 	if tipo_arma == WeaponResource.WeaponType.FIRE:
-		# Le damos un tiempo de vida fijo (0.35s es buen alcance)
 		tiempo_vida = 0.35 
 		if data.bullet_textures.size() > 0:
-			sprite.texture = data.bullet_textures[0] # Siempre nace chiquita
+			sprite.texture = data.bullet_textures[0] 
 	else:
 		sprite.texture = data.textura_bala
 		sprite.rotation = 0 
 	
-	hitbox_colision.set_deferred("disabled", true) 
+	hitbox_colision.set_deferred("disabled", true)
 	
-	# Capa 1 es fundamental para que escuche a las paredes
-	$HitboxComponent.set_collision_mask_value(1, true) 
+	# --- BLINDAJE DE COLISIONES (LA MAGIA ACÁ) ---
+	# 1. Por las dudas, apagamos todas las capas problemáticas para limpiar la bala reciclada
+	$HitboxComponent.set_collision_mask_value(1, false) # Paredes
+	$HitboxComponent.set_collision_mask_value(2, false) # Enemigos
+	$HitboxComponent.set_collision_mask_value(4, false) # Player
 	
 	if es_de_enemigo:
-		$HitboxComponent.set_collision_mask_value(2, false) 
+		# BALA ENEMIGA: Solo busca al Player (Capa 4)
 		$HitboxComponent.set_collision_mask_value(4, true)  
+		
 		$HitboxComponent.add_to_group("enemy_bullet")
 		$HitboxComponent.remove_from_group("player_bullet")
 		modulate = Color.RED
 	else:
-		$HitboxComponent.set_collision_mask_value(4, false)
+		# BALA DE BLUE: Siempre busca enemigos (Capa 2)
 		$HitboxComponent.set_collision_mask_value(2, true) 
+		
+		# ¿Es el lanzallamas? Entonces TAMBIÉN busca paredes (Capa 1)
+		if tipo_arma == WeaponResource.WeaponType.FIRE:
+			$HitboxComponent.set_collision_mask_value(1, true)
+		
 		$HitboxComponent.add_to_group("player_bullet")
 		$HitboxComponent.remove_from_group("enemy_bullet")
 		modulate = Color.WHITE

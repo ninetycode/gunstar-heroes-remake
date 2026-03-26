@@ -14,6 +14,7 @@ func _on_area_entered(areachocada: Area2D) -> void:
 		golpe_acertado.emit()
 
 func _on_body_entered(body: Node2D) -> void:
-	# Magia acá: Solo frena el fuego SI el cuerpo que tocamos está en la Capa 1 (Sólido)
-	if body.get_collision_layer_value(1):
+	# Magia acá: Usamos 'is' para saber si es el TileMap o chequeamos la capa de forma segura
+	# Si el cuerpo está en la Capa 1 (Suelo/Paredes)
+	if body is TileMapLayer or body.get_collision_layer_value(1):
 		choco_pared.emit()

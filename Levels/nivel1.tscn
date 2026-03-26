@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
 [ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="7_unhkn"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/enemy_fly_machine.tscn" id="8_unhkn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5091,8 +5092,19 @@ limit_right = 276447232
 position_smoothing_enabled = true
 script = ExtResource("6_wfebu")
 
-[node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("7_unhkn")]
-position = Vector2(853, 154)
+[node name="Enemies" type="Node2D" parent="." unique_id=1679779527]
 
-[node name="EnemySoldier2" parent="." unique_id=575483691 instance=ExtResource("7_unhkn")]
+[node name="EnemySoldier2" parent="Enemies" unique_id=575483691 instance=ExtResource("7_unhkn")]
 position = Vector2(490, 316)
+
+[node name="EnemySoldier" parent="Enemies" unique_id=992673902 instance=ExtResource("7_unhkn")]
+position = Vector2(905, 159)
+
+[node name="enemy_fly_machine" parent="Enemies" unique_id=1995836615 instance=ExtResource("8_unhkn")]
+position = Vector2(288, 91)
+
+[node name="enemy_fly_machine2" parent="Enemies" unique_id=787910308 instance=ExtResource("8_unhkn")]
+position = Vector2(510, 153)
+
+[node name="enemy_fly_machine3" parent="Enemies" unique_id=2039055265 instance=ExtResource("8_unhkn")]
+position = Vector2(765, 95)
