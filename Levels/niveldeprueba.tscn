@@ -15,7 +15,7 @@ size = Vector2(669, 20)
 position = Vector2(154, 297)
 
 [node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("3_5wnxx")]
-position = Vector2(803, 351)
+position = Vector2(608, 300)
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("3_qewk2")]
 position = Vector2(506, 313)
