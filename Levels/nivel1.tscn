@@ -5118,6 +5118,6 @@ position = Vector2(510, 153)
 position = Vector2(765, 95)
 
 [node name="PapayaBoss" parent="." unique_id=408038176 instance=ExtResource("9_fwgol")]
-position = Vector2(1937, 266)
+position = Vector2(1936, 266)
 
 [node name="BossUI" parent="PapayaBoss" unique_id=1851858112 instance=ExtResource("10_7j7t0")]
