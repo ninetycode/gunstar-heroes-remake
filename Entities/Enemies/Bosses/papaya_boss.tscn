@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://o0kngude3gup"]
 
 [ext_resource type="Script" uid="uid://bh0nlqb5eynj0" path="res://papaya_boss.gd" id="1_butei"]
-[ext_resource type="Texture2D" uid="uid://demlgejdfdc2u" path="res://Entities/Enemies/Bosses/Papaya Dance.png" id="2_lg5pe"]
+[ext_resource type="Texture2D" uid="uid://58kdyf4dqmtb" path="res://Entities/Enemies/Bosses/Papaya Boss.png" id="2_8bipj"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_kps04"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_tcckm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3ip8"]
-atlas = ExtResource("2_lg5pe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oteit"]
+atlas = ExtResource("2_8bipj")
 region = Rect2(124, 0, 44, 184)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ey0wo"]
-atlas = ExtResource("2_lg5pe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_accin"]
+atlas = ExtResource("2_8bipj")
 region = Rect2(40, 0, 44, 184)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hj22k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f3ip8")
+"texture": SubResource("AtlasTexture_oteit")
 }],
 "loop": true,
 "name": &"Death",
@@ -25,7 +25,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ey0wo")
+"texture": SubResource("AtlasTexture_accin")
 }],
 "loop": true,
 "name": &"Idle",
@@ -42,6 +42,7 @@ size = Vector2(24, 164)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_butei")
+nombre_boss = "Jefe Papaya"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
 sprite_frames = SubResource("SpriteFrames_hj22k")
