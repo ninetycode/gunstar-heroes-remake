@@ -18,9 +18,12 @@ var tiempo_vida: float = 0.0
 
 func _ready():
 	$VisibleOnScreenNotifier2D.screen_exited.connect(desactivar)
-	# Conectamos las señales de nuestra Hitbox actualizadas
+	
 	if $HitboxComponent.has_signal("golpe_acertado"):
+		# ¡Ojo acá! Cambiamos .connect(desactivar) por nuestra función personalizada
 		$HitboxComponent.golpe_acertado.connect(_on_golpe_acertado)
+		
+	# Mantenemos también la de la pared por las dudas
 	if $HitboxComponent.has_signal("choco_pared"):
 		$HitboxComponent.choco_pared.connect(_on_choco_pared)
 
@@ -78,7 +81,7 @@ func buscar_enemigo_mas_cercano() -> Node2D:
 				closest = enemy
 	return closest
 
-func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool = false, fire_index: int = -1):
+func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool = false, _fire_index: int = -1):
 	if data == null: return
 	data_recurso = data
 	global_position = pos
@@ -135,17 +138,14 @@ func desactivar():
 	modulate = Color.WHITE 
 	global_position = Vector2(-9999, -9999) 
 
-# --- MANEJO DE COLISIONES ---
 func _on_golpe_acertado():
-	# Si es fuego, no hacemos NADA para que atraviese a los enemigos.
-	# Si es láser o homing, se destruye.
+	# Si es FUEGO, NO se desactiva (lo atraviesa y sigue de largo).
+	# Si es otra arma, desaparece.
 	if tipo_arma != WeaponResource.WeaponType.FIRE:
 		desactivar()
-
+		
 func _on_choco_pared():
 	if tipo_arma == WeaponResource.WeaponType.FIRE:
-		# Si el fuego toca pared, su velocidad cae a 0 y se "amontona" ahí quemando
-		speed = 0
+		speed = 0 # Se amontona en la pared
 	else:
-		# Si un láser toca pared, explota/desaparece
 		desactivar()

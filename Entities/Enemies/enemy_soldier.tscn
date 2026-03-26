@@ -152,7 +152,7 @@ attack_range = 25.0
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
 animation = &"walk"
-frame_progress = 0.76347816
+frame_progress = 0.5595509
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
@@ -183,7 +183,6 @@ shape = SubResource("RectangleShape2D_5ybek")
 debug_color = Color(0.6775713, 0.5055773, 0, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_melc4")]
-vida_maxima = 80
 
 [node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1783343090]
 target_position = Vector2(37, 0)
@@ -191,7 +190,7 @@ target_position = Vector2(37, 0)
 [node name="HitboxComponent" parent="." unique_id=597531608 groups=["Enemies_melee"] instance=ExtResource("6_4owtx")]
 collision_layer = 4
 collision_mask = 8
-danio = 25
+danio = 5
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1677833624]
 position = Vector2(3, 4)
