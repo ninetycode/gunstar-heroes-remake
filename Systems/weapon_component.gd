@@ -17,6 +17,7 @@ func disparar():
 	if cooldown_timer.is_stopped() and arma_actual:
 		var direccion = obtener_direccion_apuntado()
 		
+		# Disparamos normalmente, sea el arma que sea
 		BulletPool.get_bullet(
 			player.muzzle.global_position, 
 			direccion, 
@@ -29,14 +30,11 @@ func disparar():
 			balas_disparadas += 1
 			
 			if balas_disparadas >= arma_actual.balas_por_rafaga:
-				# Llegamos al límite de la ráfaga: aplicamos la pausa larga
 				cooldown_timer.wait_time = arma_actual.tiempo_entre_rafagas
-				balas_disparadas = 0 # Reseteamos el contador
+				balas_disparadas = 0 
 			else:
-				# Seguimos disparando rápido dentro de la misma ráfaga
 				cooldown_timer.wait_time = arma_actual.fire_rate
 		else:
-			# Si balas_por_rafaga es 0, dispara infinito siempre a la misma velocidad
 			cooldown_timer.wait_time = arma_actual.fire_rate
 			
 		cooldown_timer.start()
