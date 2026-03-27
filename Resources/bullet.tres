@@ -9,5 +9,6 @@ script = ExtResource("1_2hlfa")
 bullet_scene = ExtResource("1_v5kv0")
 textura_bala = ExtResource("2_v5kv0")
 velocidad_bala = 1500.0
+turn_speed = 25.0
 fire_rate = 0.05
 metadata/_custom_type_script = "uid://djdydvvm02506"
