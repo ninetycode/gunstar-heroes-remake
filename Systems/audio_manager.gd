@@ -2,12 +2,15 @@ extends Node
 
 # Acá registramos todos los sonidos del juego con un nombre clave.
 var sonidos: Dictionary = {
-	#"disparo_laser": preload("res://Assets/Audio/SFX/laser_shoot.wav"),
+	"jump": preload("res://Assets/Audio/SFX/action_jump.mp3"),
+	"change_weapon": preload("res://Assets/Audio/SFX/SCIMisc_Throw_Grenade_02.wav"),
+	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Laser_Gun_Burst_Shot_03.wav"),
+	"disparo_verde" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_03.wav")
 	#"disparo_fuego": preload("res://Assets/Audio/SFX/flame_shoot.wav"),
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	#"hit": preload("res://Assets/Audio/SFX/hit.wav")
-}
+	}
 
 # Pool de reproductores (nuestra "orquesta")
 var reproductores: Array[AudioStreamPlayer] = []

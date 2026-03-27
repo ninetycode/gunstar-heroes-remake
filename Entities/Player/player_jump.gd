@@ -4,7 +4,9 @@ extends State
 
 func enter(_msg := {}) -> void:
 	player._animated_sprite.play("Jump")
+	AudioManager.play_sfx("jump")
 	player.velocity.y = player.jump_velocity
+	
 
 func physics_update(_delta: float) -> void:
 	var direction = Input.get_axis("ui_left", "ui_right")

@@ -24,9 +24,6 @@ func _physics_process(delta):
 	# Movemos al personaje según lo que digan los estados
 	move_and_slide()
 
-# Le pasamos el Vector2 que nos calcula el WeaponComponent
-# En player.gd, reemplazá actualizar_animacion_apuntado con esto:
-
 # Posiciones del muzzle por dirección (ajustá los valores a tu sprite)
 # Posiciones base asumiendo ÚNICAMENTE que el personaje mira a la DERECHA
 const MUZZLE_POSITIONS = {
@@ -92,6 +89,7 @@ func _input(event):
 	if event.is_action_pressed("ui_focus_next"): # Tecla TAB
 		# Le avisamos al componente que pase a la siguiente arma
 		$WeaponComponent.rotar_arma()
+		AudioManager.play_sfx("change_weapon" , -5.0, randf_range(0.9, 1.1))
 		
 func _on_stats_component_salud_agotada() -> void:
 	print("¡Blue ha muerto!")

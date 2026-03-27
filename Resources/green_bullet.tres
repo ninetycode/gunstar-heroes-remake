@@ -13,4 +13,5 @@ danio = 5
 velocidad_bala = 500.0
 fire_rate = 0.05
 tiempo_entre_rafagas = 0.6
+sonido_disparo = "disparo_verde"
 metadata/_custom_type_script = "uid://djdydvvm02506"

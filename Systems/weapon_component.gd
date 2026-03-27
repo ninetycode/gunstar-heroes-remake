@@ -5,7 +5,7 @@ extends Node
 var indice_arma_actual: int = 0
 
 @export var arma_actual: WeaponResource
-
+var _ultimo_sonido_msec : int = 0
 @onready var cooldown_timer = $CooldownTimer
 @onready var player = owner
 
@@ -24,6 +24,7 @@ func disparar():
 	if cooldown_timer.is_stopped() and arma_actual:
 		var direccion = obtener_direccion_apuntado()
 		
+		# 1. Disparamos la bala físicamente
 		BulletPool.get_bullet(
 			player.muzzle.global_position, 
 			direccion, 
@@ -31,6 +32,29 @@ func disparar():
 			false 
 		)
 		
+		# --- LÓGICA DE SONIDO EXPERIMENTAL ---
+		if arma_actual.sonido_disparo != "":
+			var reproducir_sonido = false
+			
+			# Si el arma usa ráfagas, SOLO suena en la primera bala (cuando el contador es 0)
+			if arma_actual.balas_por_rafaga > 0:
+				if balas_disparadas == 0:
+					reproducir_sonido = true
+			else:
+				# Si el arma es infinita (como el lanzallamas) o tiro a tiro, suena siempre
+				reproducir_sonido = true
+				
+			if reproducir_sonido:
+				var ahora = Time.get_ticks_msec() 
+				
+				if arma_actual.weapon_type == WeaponResource.WeaponType.FIRE:
+					if ahora - _ultimo_sonido_msec > 150:
+						AudioManager.play_sfx(arma_actual.sonido_disparo, -8.0, randf_range(0.8, 1.2))
+						_ultimo_sonido_msec = ahora
+				else:
+					AudioManager.play_sfx(arma_actual.sonido_disparo, -5.0, randf_range(0.9, 1.1))
+		
+		# --- LÓGICA DE RÁFAGAS (El contador) ---
 		if arma_actual.balas_por_rafaga > 0:
 			balas_disparadas += 1
 			if balas_disparadas >= arma_actual.balas_por_rafaga:
