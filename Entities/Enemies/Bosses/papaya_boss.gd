@@ -27,16 +27,17 @@ func ataque_patron_lluvia_zigzag():
 	if not arma_espora: return
 	
 	var spawn_pos = muzzle_marker.global_position
-	var cantidad = 4 # Cuántas esporas tira por ráfaga
+	var cantidad_esporas = 15 # <--- Subimos a 15 para que sea una lluvia real
 	
-	for i in range(cantidad):
-		# Generamos un ángulo que no sea 100% vertical para que no se escapen tan rápido
-		# -0.8 a 0.8 radianes hace un abanico hacia arriba
-		var angulo_random = randf_range(-0.8, 0.8)
-		var dir = Vector2.UP.rotated(angulo_random)
+	for i in range(cantidad_esporas):
+		# Ángulo bien abierto para que cubra la pantalla
+		var dir = Vector2.UP.rotated(randf_range(-1.2, 1.2))
+		# Variamos velocidad para que no caigan todas en fila
+		var recurso_temp = arma_espora.duplicate()
+		recurso_temp.velocidad_bala = arma_espora.velocidad_bala * randf_range(0.7, 1.3)
 		
-		# Usamos tu BulletPool
-		BulletPool.get_bullet(spawn_pos, dir, arma_espora, true)
+		BulletPool.get_bullet(spawn_pos, dir, recurso_temp, true)
+
 func _on_danio_recibido(cantidad: int):
 	super(cantidad) # Mantiene el parpadeo blanco
 	
@@ -51,3 +52,12 @@ func _on_danio_recibido(cantidad: int):
 	var tween_scale = create_tween()
 	tween_scale.tween_property(sprite, "scale", Vector2(1.1, 0.8), 0.05) # Se aplasta
 	tween_scale.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.1) # Vuelve al original
+
+func _on_death():
+	# Buscamos la cámara en el grupo o por referencia para desbloquearla
+	var camara = get_viewport().get_camera_2d()
+	if camara and camara.has_method("desbloquear_camara"):
+		camara.desbloquear_camara()
+	
+	# Llamamos al super para que ejecute la lógica de BossEnemy (partículas, morir, etc.)
+	super()
