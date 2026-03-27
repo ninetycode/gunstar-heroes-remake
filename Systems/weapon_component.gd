@@ -32,29 +32,20 @@ func disparar():
 			false 
 		)
 		
-		# --- LÓGICA DE SONIDO EXPERIMENTAL ---
+		# --- LÓGICA DE SONIDO PROFESIONAL ---
 		if arma_actual.sonido_disparo != "":
-			var reproducir_sonido = false
+			var ahora = Time.get_ticks_msec() 
 			
-			# Si el arma usa ráfagas, SOLO suena en la primera bala (cuando el contador es 0)
-			if arma_actual.balas_por_rafaga > 0:
-				if balas_disparadas == 0:
-					reproducir_sonido = true
+			if arma_actual.weapon_type == WeaponResource.WeaponType.FIRE:
+				# El fuego mantiene su limitador anti-saturación
+				if ahora - _ultimo_sonido_msec > 150:
+					AudioManager.play_sfx(arma_actual.sonido_disparo, -8.0, randf_range(0.8, 1.2))
+					_ultimo_sonido_msec = ahora
 			else:
-				# Si el arma es infinita (como el lanzallamas) o tiro a tiro, suena siempre
-				reproducir_sonido = true
-				
-			if reproducir_sonido:
-				var ahora = Time.get_ticks_msec() 
-				
-				if arma_actual.weapon_type == WeaponResource.WeaponType.FIRE:
-					if ahora - _ultimo_sonido_msec > 150:
-						AudioManager.play_sfx(arma_actual.sonido_disparo, -8.0, randf_range(0.8, 1.2))
-						_ultimo_sonido_msec = ahora
-				else:
-					AudioManager.play_sfx(arma_actual.sonido_disparo, -5.0, randf_range(0.9, 1.1))
+				# El láser (y misiles, etc) suenan por CADA bala que sale
+				AudioManager.play_sfx(arma_actual.sonido_disparo, -5.0, randf_range(0.9, 1.1))
 		
-		# --- LÓGICA DE RÁFAGAS (El contador) ---
+		# --- LÓGICA DE RÁFAGAS ---
 		if arma_actual.balas_por_rafaga > 0:
 			balas_disparadas += 1
 			if balas_disparadas >= arma_actual.balas_por_rafaga:
@@ -95,3 +86,7 @@ func rotar_arma():
 	
 	# Cambiamos al arma que toca
 	cambiar_arma(inventario_armas[indice_arma_actual])
+	
+func detener_disparo():
+	# Reseteamos la ráfaga para que el próximo click arranque desde cero
+	balas_disparadas = 0

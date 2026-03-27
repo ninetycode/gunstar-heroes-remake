@@ -90,7 +90,8 @@ func _input(event):
 		# Le avisamos al componente que pase a la siguiente arma
 		$WeaponComponent.rotar_arma()
 		AudioManager.play_sfx("change_weapon" , -5.0, randf_range(0.9, 1.1))
-		
+	if event.is_action_released("disparo"):
+		$WeaponComponent.detener_disparo()
 func _on_stats_component_salud_agotada() -> void:
 	print("¡Blue ha muerto!")
 	# Como usamos la misma lógica, en vez de queue_free() lo "apagamos"

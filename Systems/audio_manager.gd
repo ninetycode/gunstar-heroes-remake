@@ -4,7 +4,7 @@ extends Node
 var sonidos: Dictionary = {
 	"jump": preload("res://Assets/Audio/SFX/action_jump.mp3"),
 	"change_weapon": preload("res://Assets/Audio/SFX/SCIMisc_Throw_Grenade_02.wav"),
-	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Laser_Gun_Burst_Shot_03.wav"),
+	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Blaster_Busrt_Fast_Shot_02.wav"),
 	"disparo_verde" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_03.wav")
 	#"disparo_fuego": preload("res://Assets/Audio/SFX/flame_shoot.wav"),
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
@@ -41,3 +41,15 @@ func play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0
 	
 	# Avanzamos al siguiente. Si llegamos al 12, volvemos al 0.
 	indice_actual = (indice_actual + 1) % cantidad_reproductores
+	
+# --- NUEVA FUNCIÓN PARA CORTAR SONIDOS ---
+func stop_sfx(nombre_sonido: String):
+	if not sonidos.has(nombre_sonido):
+		return
+		
+	var audio_stream = sonidos[nombre_sonido]
+	
+	# Buscamos en nuestra "orquesta" quién está tocando este sonido y lo callamos
+	for reproductor in reproductores:
+		if reproductor.stream == audio_stream and reproductor.playing:
+			reproductor.stop()
