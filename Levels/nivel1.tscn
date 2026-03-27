@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
-[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="7_unhkn"]
-[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/enemy_fly_machine.tscn" id="8_unhkn"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 
@@ -5046,7 +5044,7 @@ size = Vector2(20, 237)
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(1737, 296)
+position = Vector2(1415, 213)
 platform_wall_layers = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996007758]
@@ -5085,12 +5083,16 @@ position = Vector2(1259, 130)
 texture = ExtResource("5_wfebu")
 metadata/_edit_lock_ = true
 
-[node name="LockZone" type="Area2D" parent="." unique_id=1890728987]
+[node name="LockZone" type="Area2D" parent="." unique_id=1890728987 node_paths=PackedStringArray("camara", "jefe_papaya")]
 position = Vector2(1937, 278)
+collision_mask = 8
 script = ExtResource("7_bn74d")
-camara_path = NodePath("../Camera2D")
+camara = NodePath("../Camera2D")
+jefe_papaya = NodePath("../Enemies/PapayaBoss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
+light_mask = 9
+visibility_layer = 8
 position = Vector2(0, -31)
 shape = SubResource("RectangleShape2D_unhkn")
 
@@ -5102,22 +5104,7 @@ script = ExtResource("6_wfebu")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1679779527]
 
-[node name="EnemySoldier2" parent="Enemies" unique_id=575483691 instance=ExtResource("7_unhkn")]
-position = Vector2(490, 316)
-
-[node name="EnemySoldier" parent="Enemies" unique_id=992673902 instance=ExtResource("7_unhkn")]
-position = Vector2(905, 159)
-
-[node name="enemy_fly_machine" parent="Enemies" unique_id=1995836615 instance=ExtResource("8_unhkn")]
-position = Vector2(288, 91)
-
-[node name="enemy_fly_machine2" parent="Enemies" unique_id=787910308 instance=ExtResource("8_unhkn")]
-position = Vector2(510, 153)
-
-[node name="enemy_fly_machine3" parent="Enemies" unique_id=2039055265 instance=ExtResource("8_unhkn")]
-position = Vector2(765, 95)
-
-[node name="PapayaBoss" parent="." unique_id=408038176 instance=ExtResource("9_fwgol")]
+[node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
 position = Vector2(1936, 266)
 
-[node name="BossUI" parent="PapayaBoss" unique_id=1851858112 instance=ExtResource("10_7j7t0")]
+[node name="BossUI" parent="Enemies/PapayaBoss" unique_id=1851858112 instance=ExtResource("10_7j7t0")]

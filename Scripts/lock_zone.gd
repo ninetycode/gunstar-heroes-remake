@@ -1,20 +1,19 @@
 extends Area2D
 
-@export var camara_path: NodePath
-@onready var camara = get_node(camara_path)
+@export var camara: Camera2D 
+@export var jefe_papaya: CharacterBody2D # Arrastrá al Jefe Papaya acá
 
-func _on_body_entered(body):
-	if body.name == "GunstarBlue2":
-		camara.bloquear_camara()
-		# Aquí podrías disparar el evento: spawnear enemigos, etc.
-		iniciar_evento_combate()
+func _ready():
+	body_entered.connect(_on_body_entered)
 
-func iniciar_evento_combate():
-	# Ejemplo: Esperar a que los enemigos mueran
-	# Por ahora, simulamos un tiempo para probar:
-	await get_tree().create_timer(5.0).timeout
-	finalizar_evento()
-
-func finalizar_evento():
-	camara.desbloquear_camara()
-	queue_free() # Eliminamos la zona para que no se bloquee de nuevo
+func _on_body_entered(body: Node2D):
+	# Usamos grupos para que sea infalible
+	if body.is_in_group("Player"):
+		if camara and camara.has_method("bloquear_camara"):
+			camara.bloquear_camara()
+		
+		# ESTO ES LO QUE ACTIVA AL JEFE
+		if jefe_papaya and jefe_papaya.has_method("empezar_pelea"):
+			jefe_papaya.empezar_pelea()
+			
+		set_deferred("monitoring", false) # Se apaga para no repetir

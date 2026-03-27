@@ -1,7 +1,7 @@
 extends Resource
 class_name WeaponResource
 
-enum WeaponType { NORMAL, FIRE, HOMING }
+enum WeaponType { NORMAL, FIRE, HOMING, SPORE }
 
 @export var weapon_type : WeaponType = WeaponType.NORMAL
 @export var bullet_scene : PackedScene 

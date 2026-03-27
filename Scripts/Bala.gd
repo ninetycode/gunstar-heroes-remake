@@ -32,6 +32,19 @@ func _physics_process(delta):
 		tiempo_parpadeo += delta * 20.0
 		modulate = Color.RED if int(tiempo_parpadeo) % 2 == 0 else Color.CYAN
 
+	if tipo_arma == WeaponResource.WeaponType.SPORE:
+		tiempo_vida += delta
+		
+		# GRAVEDAD: Hacemos que la dirección 'Y' caiga más fuerte con el tiempo
+		# 800.0 es la fuerza de caída, podés subirlo si querés que caigan como piedras
+		direction.y += 800.0 * delta / speed 
+		
+		# Movimiento directo sin zigzag
+		global_position += direction * speed * delta
+		
+		# Hacemos que la espora rote según su caída para que quede prolijo
+		sprite.rotation = direction.angle()
+
 	if tipo_arma == WeaponResource.WeaponType.HOMING:
 		actualizar_target_homing()
 		if is_instance_valid(target):

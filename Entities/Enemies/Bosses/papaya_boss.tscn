@@ -2,8 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bh0nlqb5eynj0" path="res://papaya_boss.gd" id="1_butei"]
 [ext_resource type="Texture2D" uid="uid://58kdyf4dqmtb" path="res://Entities/Enemies/Bosses/Papaya Boss.png" id="2_8bipj"]
+[ext_resource type="Resource" uid="uid://dba7bb07785qo" path="res://Resources/enemybossespora.tres" id="2_w5xfj"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_kps04"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_tcckm"]
+[ext_resource type="Script" uid="uid://ifxnaq32a81w" path="res://Entities/Enemies/Bosses/state_machine_papaya.gd" id="6_f3msw"]
+[ext_resource type="Script" uid="uid://ioc3pibkehmn" path="res://Entities/Enemies/Bosses/idle_state.gd" id="7_uedpc"]
+[ext_resource type="Script" uid="uid://c4toik1ea3v5s" path="res://Entities/Enemies/Bosses/pre_attack_state.gd" id="8_ql0fo"]
+[ext_resource type="Script" uid="uid://dhan1x3uyqt4d" path="res://Entities/Enemies/Bosses/spore_rain_state.gd" id="9_firwx"]
+[ext_resource type="Script" uid="uid://ccgs13q5hovam" path="res://Entities/Enemies/Bosses/hurt_state.gd" id="10_uq7uw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oteit"]
 atlas = ExtResource("2_8bipj")
@@ -38,10 +44,11 @@ size = Vector2(24, 164)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02yxe"]
 size = Vector2(24, 164)
 
-[node name="PapayaBoss" type="CharacterBody2D" unique_id=408038176]
+[node name="PapayaBoss" type="CharacterBody2D" unique_id=408038176 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_butei")
+arma_espora = ExtResource("2_w5xfj")
 nombre_boss = "Jefe Papaya"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
@@ -64,5 +71,27 @@ debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_tcckm")]
 vida_maxima = 2000
+
+[node name="StateMachinePapaya" type="Node" parent="." unique_id=2242083]
+script = ExtResource("6_f3msw")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachinePapaya" unique_id=558440445]
+script = ExtResource("7_uedpc")
+tiempo_espera = null
+
+[node name="PreAttackState" type="Node" parent="StateMachinePapaya" unique_id=1865183848]
+script = ExtResource("8_ql0fo")
+
+[node name="SporeRainState" type="Node" parent="StateMachinePapaya" unique_id=1447634216]
+script = ExtResource("9_firwx")
+
+[node name="HurtState" type="Node" parent="StateMachinePapaya" unique_id=570070173]
+script = ExtResource("10_uq7uw")
+
+[node name="DeathState" type="Node" parent="StateMachinePapaya" unique_id=1421408087]
+
+[node name="MuzzleMarker" type="Marker2D" parent="." unique_id=1969177314]
+position = Vector2(0, -72)
 
 [editable path="HurtboxComponent"]

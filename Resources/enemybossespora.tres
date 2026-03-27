@@ -2,10 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://p6157ufvrp6h" path="res://Scenes/Bullet.tscn" id="1_fd3q5"]
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_m4wfs"]
-[ext_resource type="Texture2D" uid="uid://csvnmofw83p3p" path="res://Assets/Sprite Sheets/Enemies/etc/maddummy.png" id="3_c1mfa"]
+[ext_resource type="Texture2D" uid="uid://fbd32p723o8v" path="res://Assets/Sprite Sheets/Bullets/Esporas.png" id="3_fd3q5"]
 
 [resource]
 script = ExtResource("1_m4wfs")
+weapon_type = 3
 bullet_scene = ExtResource("1_fd3q5")
-textura_bala = ExtResource("3_c1mfa")
+textura_bala = ExtResource("3_fd3q5")
+velocidad_bala = 200.0
+turn_speed = 10.0
+tiempo_entre_rafagas = 2.0
 metadata/_custom_type_script = "uid://djdydvvm02506"
