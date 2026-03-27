@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://pwieavbj4rwd"]
 
-[ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/enemy_soldier.gd" id="1_1i8gr"]
+[ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.gd" id="1_1i8gr"]
 [ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="1_anyna"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="6_4owtx"]
-[ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Soldier_idle_state.gd" id="6_5ybek"]
-[ext_resource type="Script" uid="uid://v6s18h2d810q" path="res://Entities/Enemies/chase_state.gd" id="6_melc4"]
-[ext_resource type="Script" uid="uid://bh661m0ryjvhq" path="res://Entities/Enemies/solider_attack_state.gd" id="7_tslm2"]
+[ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Normals/Soldier/Soldier_idle_state.gd" id="6_5ybek"]
+[ext_resource type="Script" uid="uid://v6s18h2d810q" path="res://Entities/Enemies/Normals/Soldier/chase_state.gd" id="6_melc4"]
+[ext_resource type="Script" uid="uid://bh661m0ryjvhq" path="res://Entities/Enemies/Normals/Soldier/solider_attack_state.gd" id="7_tslm2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anyna"]
 atlas = ExtResource("1_anyna")

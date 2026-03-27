@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c5hbqctwiqkk3"]
 
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_iu2og"]
-[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/enemy_soldier.tscn" id="3_5wnxx"]
-[ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/enemigo_de_prueba.tscn" id="3_qewk2"]
-[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/enemy_fly_machine.tscn" id="4_4ufvc"]
+[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.tscn" id="3_5wnxx"]
+[ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="3_qewk2"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="5_4ufvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]

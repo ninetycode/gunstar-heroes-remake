@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djiukb0odcry8"]
 
-[ext_resource type="Script" uid="uid://dmwkuqg5ijcm4" path="res://Entities/Enemies/enemigo_de_prueba.gd" id="1_i457a"]
+[ext_resource type="Script" uid="uid://dmwkuqg5ijcm4" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.gd" id="1_i457a"]
 [ext_resource type="Texture2D" uid="uid://csvnmofw83p3p" path="res://Assets/Sprite Sheets/Enemies/etc/maddummy.png" id="2_i457a"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_jpb47"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_urfqd"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dim7r80onrvvt" path="res://Scenes/plataforma_de_prueba.tscn" id="1_b0dcr"]
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_fgyyg"]
-[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/enemy_fly_machine.tscn" id="3_fgyyg"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="3_fgyyg"]
 
 [node name="Nivel de Prueba 2" type="Node2D" unique_id=1066668907]
 

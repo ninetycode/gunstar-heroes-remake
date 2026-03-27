@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 
 BulletPool="*uid://dxij5w0q5ifim"
 GameEvents="*uid://baay76cbjy0em"
+AudioManager="*uid://cxh46sm6t23gg"
 
 [display]
 
