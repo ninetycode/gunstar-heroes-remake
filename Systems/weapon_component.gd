@@ -40,7 +40,7 @@ func disparar():
 				# El fuego mantiene su limitador anti-saturación
 				if ahora - _ultimo_sonido_msec > 150:
 					# REEMPLAZAMOS EL NÚMERO POR LA VARIABLE DEL RECURSO
-					AudioManager.play_sfx(arma_actual.sonido_disparo, arma_actual.volumen_sonido, randf_range(0.8, 1.2))
+					AudioManager.play_sfx(arma_actual.sonido_disparo, arma_actual.volumen_sonido, randf_range(1.1, 1.5))
 					_ultimo_sonido_msec = ahora
 			else:
 				# Las demás armas también usan la variable del recurso
