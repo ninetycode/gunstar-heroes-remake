@@ -5,10 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Assets/Sprite Sheets/Bullets/Force_bullet.png" id="2_v5kv0"]
 
 [resource]
+resource_name = "disparo_force"
 script = ExtResource("1_2hlfa")
 bullet_scene = ExtResource("1_v5kv0")
 textura_bala = ExtResource("2_v5kv0")
 velocidad_bala = 1500.0
 turn_speed = 25.0
 fire_rate = 0.05
+sonido_disparo = "disparo_force"
+volumen_sonido = -5.0
 metadata/_custom_type_script = "uid://djdydvvm02506"

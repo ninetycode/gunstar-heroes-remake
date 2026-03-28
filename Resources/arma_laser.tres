@@ -8,9 +8,10 @@
 script = ExtResource("1_jt3ri")
 bullet_scene = ExtResource("1_rpkpp")
 textura_bala = ExtResource("2_56s86")
-danio = 25
+danio = 110
 velocidad_bala = 700.0
-fire_rate = 0.03
-balas_por_rafaga = 9
+fire_rate = 0.3
 tiempo_entre_rafagas = 0.3
+sonido_disparo = "disparo_laser"
+volumen_sonido = -8.0
 metadata/_custom_type_script = "uid://djdydvvm02506"

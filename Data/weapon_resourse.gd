@@ -15,3 +15,4 @@ enum WeaponType { NORMAL, FIRE, HOMING, SPORE }
 @export var balas_por_rafaga : int = 0 # 0 significa infinito (como tu arma verde)
 @export var tiempo_entre_rafagas : float = 0.5 # Tiempo de pausa al terminar la ráfaga
 @export var sonido_disparo : String = ""
+@export var volumen_sonido : float = 0.0

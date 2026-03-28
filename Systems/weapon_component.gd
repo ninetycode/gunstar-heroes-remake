@@ -39,11 +39,12 @@ func disparar():
 			if arma_actual.weapon_type == WeaponResource.WeaponType.FIRE:
 				# El fuego mantiene su limitador anti-saturación
 				if ahora - _ultimo_sonido_msec > 150:
-					AudioManager.play_sfx(arma_actual.sonido_disparo, -8.0, randf_range(0.8, 1.2))
+					# REEMPLAZAMOS EL NÚMERO POR LA VARIABLE DEL RECURSO
+					AudioManager.play_sfx(arma_actual.sonido_disparo, arma_actual.volumen_sonido, randf_range(0.8, 1.2))
 					_ultimo_sonido_msec = ahora
 			else:
-				# El láser (y misiles, etc) suenan por CADA bala que sale
-				AudioManager.play_sfx(arma_actual.sonido_disparo, -5.0, randf_range(0.9, 1.1))
+				# Las demás armas también usan la variable del recurso
+				AudioManager.play_sfx(arma_actual.sonido_disparo, arma_actual.volumen_sonido, randf_range(0.9, 1.1))
 		
 		# --- LÓGICA DE RÁFAGAS ---
 		if arma_actual.balas_por_rafaga > 0:

@@ -14,4 +14,5 @@ velocidad_bala = 500.0
 fire_rate = 0.05
 tiempo_entre_rafagas = 0.6
 sonido_disparo = "disparo_verde"
+volumen_sonido = -5.0
 metadata/_custom_type_script = "uid://djdydvvm02506"

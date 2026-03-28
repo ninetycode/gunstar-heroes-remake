@@ -4,8 +4,9 @@ extends Node
 var sonidos: Dictionary = {
 	"jump": preload("res://Assets/Audio/SFX/action_jump.mp3"),
 	"change_weapon": preload("res://Assets/Audio/SFX/SCIMisc_Throw_Grenade_02.wav"),
-	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Blaster_Busrt_Fast_Shot_02.wav"),
-	"disparo_verde" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_03.wav")
+	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Blaster_Single_Shot_02.wav"),
+	"disparo_verde" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_03.wav"),
+	"disparo_force" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_02.wav")
 	#"disparo_fuego": preload("res://Assets/Audio/SFX/flame_shoot.wav"),
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
