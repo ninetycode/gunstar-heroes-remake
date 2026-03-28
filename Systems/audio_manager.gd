@@ -1,6 +1,14 @@
 extends Node
 
 # Acá registramos todos los sonidos del juego con un nombre clave.
+# En el diccionario de sonidos o uno nuevo
+var musicas: Dictionary = {
+	#"nivel_1": preload("res://Assets/Audio/Music/stage_1_theme.ogg"),
+	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
+}
+
+var music_player: AudioStreamPlayer # El reproductor exclusivo de música
+
 var sonidos: Dictionary = {
 	"jump": preload("res://Assets/Audio/SFX/action_jump.mp3"),
 	"change_weapon": preload("res://Assets/Audio/SFX/SCIMisc_Throw_Grenade_02.wav"),
@@ -20,11 +28,17 @@ var cantidad_reproductores: int = 12 # Cuántos sonidos pueden sonar exactamente
 var indice_actual: int = 0
 
 func _ready():
-	# Al iniciar el juego, instanciamos los reproductores invisibles
+	# 1. Creamos el pool de SFX (Los 12 canales)
 	for i in range(cantidad_reproductores):
 		var reproductor = AudioStreamPlayer.new()
+		reproductor.bus = "SFX"
 		add_child(reproductor)
 		reproductores.append(reproductor)
+	
+	# 2. Creamos EL reproductor de música (UNO SOLO, afuera del bucle)
+	music_player = AudioStreamPlayer.new()
+	music_player.bus = "Music" 
+	add_child(music_player)
 
 # Función universal que cualquier script puede llamar
 func play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0):
@@ -55,3 +69,15 @@ func stop_sfx(nombre_sonido: String):
 	for reproductor in reproductores:
 		if reproductor.stream == audio_stream and reproductor.playing:
 			reproductor.stop()
+			
+func play_music(nombre_track: String, volumen: float = 0.0):
+	if not musicas.has(nombre_track):
+		return
+	
+	# Si ya está sonando ese tema, no lo reinicies
+	if music_player.stream == musicas[nombre_track] and music_player.playing:
+		return
+		
+	music_player.stream = musicas[nombre_track]
+	music_player.volume_db = volumen
+	music_player.play()
