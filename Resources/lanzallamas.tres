@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c0yvbw1b2a87c" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIREMEDIANO1.png" id="5_myot6"]
 [ext_resource type="Texture2D" uid="uid://bjkbjq5sgel0p" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRESMALL1.png" id="6_1fo71"]
 [ext_resource type="Texture2D" uid="uid://b05gm5x0rmso" path="res://Assets/Sprite Sheets/Bullets/Lanzallamas/FIRESMALL2.png" id="7_qgi42"]
+[ext_resource type="Texture2D" uid="uid://bet4hxwxsris2" path="res://Assets/Sprite Sheets/Bullets/icon-bullet-fire.png" id="8_1fo71"]
 
 [resource]
 script = ExtResource("1_qqcy1")
 weapon_type = 1
 bullet_scene = ExtResource("1_2uacj")
+icono_arma = ExtResource("8_1fo71")
 textura_bala = ExtResource("2_xoxyw")
 bullet_textures = Array[Texture2D]([ExtResource("6_1fo71"), ExtResource("7_qgi42"), ExtResource("5_myot6"), ExtResource("2_xoxyw"), ExtResource("3_mt2xd"), ExtResource("4_myot6")])
 velocidad_bala = 500.0

@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="1_2hlfa"]
 [ext_resource type="PackedScene" uid="uid://p6157ufvrp6h" path="res://Scenes/Bullet.tscn" id="1_v5kv0"]
+[ext_resource type="Texture2D" uid="uid://f4j4oew3kfyx" path="res://Assets/Sprite Sheets/Bullets/icon-bullet-force.png" id="2_i3dn8"]
 [ext_resource type="Texture2D" uid="uid://cupkb545f1l67" path="res://Assets/Sprite Sheets/Bullets/Force_bullet.png" id="2_v5kv0"]
 
 [resource]
 resource_name = "disparo_force"
 script = ExtResource("1_2hlfa")
 bullet_scene = ExtResource("1_v5kv0")
+icono_arma = ExtResource("2_i3dn8")
 textura_bala = ExtResource("2_v5kv0")
 velocidad_bala = 1500.0
 turn_speed = 25.0

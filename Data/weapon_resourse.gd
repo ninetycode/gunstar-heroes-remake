@@ -5,6 +5,7 @@ enum WeaponType { NORMAL, FIRE, HOMING, SPORE }
 
 @export var weapon_type : WeaponType = WeaponType.NORMAL
 @export var bullet_scene : PackedScene 
+@export var icono_arma : Texture2D
 @export var textura_bala : Texture2D # 
 @export var bullet_textures : Array[Texture2D] # 
 @export var danio : int = 10         # 

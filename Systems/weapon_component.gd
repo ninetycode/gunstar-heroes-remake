@@ -3,7 +3,7 @@ extends Node
 # Creamos el inventario: una lista vacía que vamos a llenar desde el Inspector
 @export var inventario_armas: Array[WeaponResource] = []
 var indice_arma_actual: int = 0
-
+signal inventario_cambiado(lista_armas, indice_activo)
 @export var arma_actual: WeaponResource
 var _ultimo_sonido_msec : int = 0
 @onready var cooldown_timer = $CooldownTimer
@@ -13,6 +13,7 @@ var balas_disparadas : int = 0
 
 func _ready():
 	# Al nacer, si tenemos armas en el inventario, nos equipamos la primera (índice 0)
+	inventario_cambiado.emit(inventario_armas, indice_arma_actual)
 	if inventario_armas.size() > 0:
 		arma_actual = inventario_armas[0]
 		
@@ -87,7 +88,7 @@ func rotar_arma():
 	
 	# Cambiamos al arma que toca
 	cambiar_arma(inventario_armas[indice_arma_actual])
-	
+	inventario_cambiado.emit(inventario_armas, indice_arma_actual)
 func detener_disparo():
 	# Reseteamos la ráfaga para que el próximo click arranque desde cero
 	balas_disparadas = 0
