@@ -4,11 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="1_anyna"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
+[ext_resource type="Texture2D" uid="uid://bc62khvisdlnk" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier mueltto sprite sheet.png" id="3_pvaoj"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="6_4owtx"]
 [ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Normals/Soldier/Soldier_idle_state.gd" id="6_5ybek"]
 [ext_resource type="Script" uid="uid://v6s18h2d810q" path="res://Entities/Enemies/Normals/Soldier/chase_state.gd" id="6_melc4"]
 [ext_resource type="Script" uid="uid://bh661m0ryjvhq" path="res://Entities/Enemies/Normals/Soldier/solider_attack_state.gd" id="7_tslm2"]
+[ext_resource type="Script" uid="uid://dlkmxaesa0hu6" path="res://Entities/Enemies/Normals/Soldier/death_state.gd" id="8_h5em0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anyna"]
 atlas = ExtResource("1_anyna")
@@ -21,6 +23,38 @@ region = Rect2(68, 183, 68, 61)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4owtx"]
 atlas = ExtResource("1_anyna")
 region = Rect2(128, 183, 64, 61)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnp20"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(2, 0, 34, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpcu0"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(45, 0, 33, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5104v"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(91, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6mr6"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(137, 0, 34, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygrj3"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(183, 0, 33, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngsse"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(227, 0, 30, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ratdh"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(264, 0, 29, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lmq8"]
+atlas = ExtResource("3_pvaoj")
+region = Rect2(293, 0, 29, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wg8im"]
 atlas = ExtResource("1_anyna")
@@ -81,6 +115,35 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnp20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpcu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5104v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6mr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygrj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngsse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ratdh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lmq8")
+}],
+"loop": false,
+"name": &"death",
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,8 +214,7 @@ attack_range = 25.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"walk"
-frame_progress = 0.5595509
+animation = &"idle"
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
@@ -171,6 +233,9 @@ script = ExtResource("7_tslm2")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1955699241]
 script = ExtResource("6_5ybek")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=2105275861]
+script = ExtResource("8_h5em0")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_4owtx")]
 collision_layer = 4
