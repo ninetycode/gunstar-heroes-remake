@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://ebbl54lqrwhc" path="res://UI/boss_ui.gd" id="1_sc4l6"]
 
 [sub_resource type="FontFile" id="FontFile_lq4o8"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
