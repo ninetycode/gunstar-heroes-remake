@@ -23,6 +23,7 @@ func _physics_process(delta):
 func _on_death():
 	if esta_muerto: return
 	esta_muerto = true
+	enemy_died.emit(self)
 	
 	# --- SOLUCIÓN POST-MORTEM (CON SET_DEFERRED) ---
 	if hitbox:

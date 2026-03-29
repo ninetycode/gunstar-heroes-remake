@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djbvgbrmlypof"]
+
+[ext_resource type="Script" uid="uid://cp6ncuiy8i5j7" path="res://Scripts/area_manager.gd" id="1_pjbhi"]
+[ext_resource type="PackedScene" uid="uid://dw6wloee1571m" path="res://Scenes/spawner_manager.tscn" id="2_qvxqk"]
+[ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="3_hamhk"]
+[ext_resource type="Resource" uid="uid://d2pgtsk5i61a3" path="res://Resources/wave_soldados.tres" id="4_u5xqm"]
+[ext_resource type="Resource" uid="uid://ch6xylifrbowi" path="res://Resources/wave_flymachine.tres" id="5_nvu1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbhi"]
+size = Vector2(20, 375)
+
+[node name="AreaManager" type="Node2D" unique_id=7629039 node_paths=PackedStringArray("trigger_zone", "spawner")]
+script = ExtResource("1_pjbhi")
+trigger_zone = NodePath("TriggerZone")
+spawner = NodePath("SpawnerManager")
+
+[node name="TriggerZone" type="Area2D" parent="." unique_id=329029428]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone" unique_id=1165107301]
+position = Vector2(0, 177.5)
+shape = SubResource("RectangleShape2D_pjbhi")
+
+[node name="SpawnerManager" parent="." unique_id=311363804 instance=ExtResource("2_qvxqk")]
+waves = Array[ExtResource("3_hamhk")]([ExtResource("4_u5xqm"), ExtResource("5_nvu1y")])
+max_concurrent_enemies = 3

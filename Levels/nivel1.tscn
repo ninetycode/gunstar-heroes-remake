@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
+[ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="10_taqlu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5225,7 +5226,7 @@ physics_layer_0/collision_mask = 14
 sources/0 = SubResource("TileSetAtlasSource_key22")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unhkn"]
-size = Vector2(32, 237)
+size = Vector2(22, 237)
 
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
@@ -5278,7 +5279,7 @@ jefe_papaya = NodePath("../Enemies/PapayaBoss")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
 light_mask = 9
 visibility_layer = 8
-position = Vector2(5, -30)
+position = Vector2(6, -31)
 shape = SubResource("RectangleShape2D_unhkn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=224196049]
@@ -5291,8 +5292,16 @@ script = ExtResource("6_wfebu")
 
 [node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
 position = Vector2(1943, 344)
-platform_floor_layers = 4294901761
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("10_7j7t0")]
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("9_7j7t0")]
+
+[node name="AreaManager" parent="." unique_id=7629039 node_paths=PackedStringArray("camera") instance=ExtResource("10_taqlu")]
+position = Vector2(482, 0)
+camera = NodePath("../Camera2D")
+
+[node name="SpawnerManager" parent="AreaManager" index="1" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
+enemy_container = NodePath("../../Enemies")
+
+[editable path="AreaManager"]
