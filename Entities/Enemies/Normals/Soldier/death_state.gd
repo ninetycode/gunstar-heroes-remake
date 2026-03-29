@@ -16,11 +16,10 @@ func enter(_msg := {}) -> void:
 	
 	# 3. APAGAR TODO EL DAÑO (Para que no sea un Sion)
 	if enemy.hitbox:
-		enemy.hitbox.monitoring = false
-		enemy.hitbox.monitorable = false
+		enemy.hitbox.set_deferred("monitoring", false)
+		enemy.hitbox.set_deferred("monitorable", false)
 	
-	# Desactivamos la colisión con el jugador pero dejamos la del suelo
-	# (Capa 4 suele ser la Hurtbox en tu setup)
+	# La desactivación de la Hurtbox ya la tenías bien con set_deferred!
 	if enemy.has_node("HurtboxComponent/CollisionShape2D"):
 		enemy.get_node("HurtboxComponent/CollisionShape2D").set_deferred("disabled", true)
 

@@ -24,12 +24,12 @@ func _on_death():
 	if esta_muerto: return
 	esta_muerto = true
 	
-	# --- SOLUCIÓN POST-MORTEM ---
-	# Apagamos la hitbox de raíz para que deje de detectar al jugador YA
+	# --- SOLUCIÓN POST-MORTEM (CON SET_DEFERRED) ---
 	if hitbox:
-		hitbox.monitoring = false
-		hitbox.monitorable = false
-		# Por si las moscas, buscamos el hijo y lo desactivamos
+		# Le decimos al motor que lo apague en el próximo frame seguro
+		hitbox.set_deferred("monitoring", false)
+		hitbox.set_deferred("monitorable", false)
+		
 		var shape = hitbox.get_node_or_null("CollisionShape2D")
 		if shape: shape.set_deferred("disabled", true)
 	
