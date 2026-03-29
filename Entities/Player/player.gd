@@ -23,6 +23,7 @@ func _physics_process(delta):
 		
 	# Movemos al personaje según lo que digan los estados
 	move_and_slide()
+	limitar_a_camara()
 
 # Posiciones del muzzle por dirección (ajustá los valores a tu sprite)
 # Posiciones base asumiendo ÚNICAMENTE que el personaje mira a la DERECHA
@@ -78,13 +79,7 @@ func actualizar_animacion_apuntado(dir: Vector2):
 	if _animated_sprite.flip_h:
 		muzzle.position.x = -muzzle.position.x
 
-# Esta es la función de la señal (Lock Zone)
-func _on_lock_zone_body_entered(body: Node2D) -> void:
-	if body.name == "GunstarBlue":
-		# Acá llamamos a la cámara para que se bloquee
-		# Asumiendo que tenés un nodo Camera2D en la escena
-		get_viewport().get_camera_2d().bloquear_camara()
-		
+
 func _input(event):
 	if event.is_action_pressed("ui_focus_next"): # Tecla TAB
 		# Le avisamos al componente que pase a la siguiente arma
@@ -112,3 +107,18 @@ func _on_danio_recibido(_cantidad: int) -> void:
 	
 	# Lo devolvemos a su color normal
 	_animated_sprite.modulate = Color(1, 1, 1)
+	
+func limitar_a_camara():
+	var cam = get_viewport().get_camera_2d()
+	if cam:
+		# Calculamos el tamaño real de la pantalla según el zoom
+		var screen_size = get_viewport_rect().size / cam.zoom
+		var cam_pos = cam.get_screen_center_position()
+		
+		# Calculamos dónde están los bordes izquierdo y derecho de la pantalla
+		var limite_izq = cam_pos.x - (screen_size.x / 2.0)
+		var limite_der = cam_pos.x + (screen_size.x / 2.0)
+		
+		# Clampeamos la posición X del jugador. 
+		# Le sumamos/restamos 20 píxeles para que frene justo en el borde y no quede el sprite cortado por la mitad.
+		global_position.x = clamp(global_position.x, limite_izq + 20.0, limite_der - 20.0)

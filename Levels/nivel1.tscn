@@ -5230,7 +5230,7 @@ size = Vector2(32, 237)
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(1755, 270)
+position = Vector2(84, 270)
 platform_wall_layers = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996007758]
