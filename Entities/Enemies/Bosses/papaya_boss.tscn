@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c4toik1ea3v5s" path="res://Entities/Enemies/Bosses/pre_attack_state.gd" id="8_ql0fo"]
 [ext_resource type="Script" uid="uid://dhan1x3uyqt4d" path="res://Entities/Enemies/Bosses/spore_rain_state.gd" id="9_firwx"]
 [ext_resource type="Script" uid="uid://ccgs13q5hovam" path="res://Entities/Enemies/Bosses/hurt_state.gd" id="10_uq7uw"]
+[ext_resource type="Script" uid="uid://bxh3ckb7kp6c3" path="res://Entities/Enemies/Bosses/death_state.gd" id="11_f3msw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oteit"]
 atlas = ExtResource("2_8bipj")
@@ -79,7 +80,6 @@ initial_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachinePapaya" unique_id=558440445]
 script = ExtResource("7_uedpc")
-tiempo_espera = null
 
 [node name="PreAttackState" type="Node" parent="StateMachinePapaya" unique_id=1865183848]
 script = ExtResource("8_ql0fo")
@@ -91,6 +91,7 @@ script = ExtResource("9_firwx")
 script = ExtResource("10_uq7uw")
 
 [node name="DeathState" type="Node" parent="StateMachinePapaya" unique_id=1421408087]
+script = ExtResource("11_f3msw")
 
 [node name="MuzzleMarker" type="Marker2D" parent="." unique_id=1969177314]
 position = Vector2(0, -152.965)
