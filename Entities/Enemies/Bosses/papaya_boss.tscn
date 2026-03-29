@@ -53,6 +53,7 @@ arma_espora = ExtResource("2_w5xfj")
 nombre_boss = "Jefe Papaya"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_hj22k")
 animation = &"Idle"
 offset = Vector2(0, -79.895)

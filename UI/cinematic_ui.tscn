@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://benweppcqqcm4"]
+
+[ext_resource type="Script" uid="uid://c5ga1rqfxt6n7" path="res://cinematic_ui.gd" id="1_ktpbi"]
+
+[node name="CinematicUI" type="CanvasLayer" unique_id=167348668]
+layer = 10
+script = ExtResource("1_ktpbi")
+
+[node name="BarsContainer" type="Control" parent="." unique_id=921217726]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="ColorRect" parent="BarsContainer" unique_id=1362019359]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BottomBar" type="ColorRect" parent="BarsContainer" unique_id=1037592407]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
