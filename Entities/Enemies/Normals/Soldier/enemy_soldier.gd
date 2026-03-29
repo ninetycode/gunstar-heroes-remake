@@ -1,24 +1,37 @@
-extends BaseEnemy # <-- ¡Acá está la magia de la herencia!
+extends BaseEnemy
 
 @onready var hitbox: Area2D = $HitboxComponent
-@onready var state_machine: StateMachine = $StateMachine
-# Estas variables son únicas del soldado
+@onready var state_machine = $StateMachine
+
 @export var speed: float = 150.0
 @export var attack_range: float = 40.0
 
+var esta_muerto: bool = false
+
 func _physics_process(delta):
-	# La variable gravity la hereda directamente de BaseEnemy
+	if esta_muerto:
+		# Si está muerto, solo cae por gravedad, nada de seguir al player
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		move_and_slide()
+		return
+
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		
 	move_and_slide()
-	
-# Si el soldado necesita hacer algo extra en el _ready(), podés usar:
-# func _ready():
-# 	super() # <-- Esto llama al _ready() de BaseEnemy primero
-#   print("El soldado está listo")
+
 func _on_death():
-	# En lugar de llamar a super(), que haría queue_free() directo,
-	# forzamos la transición al estado de muerte.
+	if esta_muerto: return
+	esta_muerto = true
+	
+	# --- SOLUCIÓN POST-MORTEM ---
+	# Apagamos la hitbox de raíz para que deje de detectar al jugador YA
+	if hitbox:
+		hitbox.monitoring = false
+		hitbox.monitorable = false
+		# Por si las moscas, buscamos el hijo y lo desactivamos
+		var shape = hitbox.get_node_or_null("CollisionShape2D")
+		if shape: shape.set_deferred("disabled", true)
+	
 	if state_machine:
 		state_machine.transition_to("Death")

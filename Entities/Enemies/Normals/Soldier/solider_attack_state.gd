@@ -3,16 +3,21 @@ extends State
 @onready var enemy = owner
 
 func enter(_msg := {}) -> void:
-	print("Soldado: Entrando a ATTACK")
 	enemy.velocity = Vector2.ZERO 
 	enemy.sprite.play("attack")
 	
-	# Prendemos la Hitbox al empezar el ataque
-	enemy.hitbox.get_node("CollisionShape2D").set_deferred("disabled", false)
+	# Solo prendemos si no está muerto (doble chequeo)
+	if not enemy.esta_muerto:
+		var shape = enemy.hitbox.get_node_or_null("CollisionShape2D")
+		if shape: shape.set_deferred("disabled", false)
 	
 	await enemy.sprite.animation_finished
-	state_machine.transition_to("Chase")
+	
+	# Si murió durante el ataque, no hacemos la transición a Chase
+	if not enemy.esta_muerto:
+		state_machine.transition_to("Chase")
 
 func exit() -> void:
-	# La apagamos al salir del estado para que no lastime por accidente mientras camina
-	enemy.hitbox.get_node("CollisionShape2D").set_deferred("disabled", true)
+	# Apagamos SIEMPRE al salir
+	var shape = enemy.hitbox.get_node_or_null("CollisionShape2D")
+	if shape: shape.set_deferred("disabled", true)
