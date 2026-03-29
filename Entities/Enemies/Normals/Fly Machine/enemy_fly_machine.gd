@@ -53,6 +53,11 @@ func limitar_a_camara():
 func disparar_a_jugador():
 	if mi_arma_resource == null: return # Seguridad
 	
+	# --- VALIDACIÓN CRÍTICA DE ARQUITECTURA ---
+	# Previene el crash verificando que el nodo del jugador siga vivo en la memoria.
+	if not is_instance_valid(player):
+		return
+	
 	var dir = (player.global_position - global_position).normalized()
 	# Invocamos la bala con el parpadeo y los datos del láser
 	BulletPool.get_bullet(global_position, dir, mi_arma_resource, true)

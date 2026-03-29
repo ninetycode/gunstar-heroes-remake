@@ -9,18 +9,29 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbhi"]
 size = Vector2(20, 375)
 
-[node name="AreaManager" type="Node2D" unique_id=7629039 node_paths=PackedStringArray("trigger_zone", "spawner")]
+[node name="AreaManager" type="Node2D" unique_id=7629039 node_paths=PackedStringArray("zona_inicio", "zona_fin", "spawner")]
 script = ExtResource("1_pjbhi")
-trigger_zone = NodePath("TriggerZone")
+zona_inicio = NodePath("Zona Inicio")
+zona_fin = NodePath("Zona Fin")
 spawner = NodePath("SpawnerManager")
 
-[node name="TriggerZone" type="Area2D" parent="." unique_id=329029428]
+[node name="Zona Inicio" type="Area2D" parent="." unique_id=329029428]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerZone" unique_id=1165107301]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zona Inicio" unique_id=1165107301]
 position = Vector2(0, 177.5)
 shape = SubResource("RectangleShape2D_pjbhi")
+debug_color = Color(0, 0.6505365, 0.10516455, 0.41960785)
+
+[node name="Zona Fin" type="Area2D" parent="." unique_id=1457722739]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zona Fin" unique_id=1989812521]
+position = Vector2(639, 178)
+shape = SubResource("RectangleShape2D_pjbhi")
+debug_color = Color(0.890137, 0.21091738, 0.62374073, 0.41960785)
 
 [node name="SpawnerManager" parent="." unique_id=311363804 instance=ExtResource("2_qvxqk")]
 waves = Array[ExtResource("3_hamhk")]([ExtResource("4_u5xqm"), ExtResource("5_nvu1y")])

@@ -4,5 +4,3 @@
 
 [node name="SpawnerManager" type="Node2D" unique_id=311363804]
 script = ExtResource("1_5egxj")
-
-[node name="SpawnTimer" type="Timer" parent="." unique_id=2038831044]

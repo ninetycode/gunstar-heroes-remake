@@ -1,78 +1,71 @@
 class_name SpawnerManager
 extends Node2D
 
-signal wave_finished
 signal all_waves_completed
 
-@export_category("Configuración de Oleadas")
-## Arreglo de recursos creados en la Fase 3
+@export_category("Configuración de la Arena")
+## Arreglo de recursos (ahora todos saldrán al mismo tiempo)
 @export var waves: Array[WaveConfig]
-## Límite de enemigos simultáneos en pantalla para evitar saturación
+## Límite global de enemigos simultáneos en pantalla
 @export var max_concurrent_enemies: int = 5
-## Nodo o grupo donde se instanciarán los enemigos para mantener limpio el árbol
 @export var enemy_container: Node2D
 
-var current_wave_index: int = 0
-var enemies_spawned_current_wave: int = 0
 var active_enemies: int = 0
+var is_spawning: bool = false
 
-@onready var spawn_timer: Timer = $SpawnTimer
+# Array de diccionarios para llevar el control independiente de cada WaveConfig
+var wave_trackers: Array[Dictionary] = []
 
 func _ready() -> void:
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
-	
-	# [Inferencia] Si no defines un contenedor específico, usamos la escena actual
 	if not enemy_container:
 		enemy_container = get_tree().current_scene
 
-# Método público que llamará el ArenaManager al bloquear la cámara
 func start_spawning() -> void:
-	current_wave_index = 0
-	_start_current_wave()
+	# Inicializamos los rastreadores para cada tipo de enemigo
+	wave_trackers.clear()
+	for config in waves:
+		wave_trackers.append({
+			"config": config,
+			"spawned_count": 0,
+			"timer": 0.0
+		})
+	
+	is_spawning = true
 
-func _start_current_wave() -> void:
-	if current_wave_index >= waves.size():
-		all_waves_completed.emit()
+func _process(delta: float) -> void:
+	if not is_spawning:
 		return
 		
-	enemies_spawned_current_wave = 0
-	var current_wave = waves[current_wave_index]
+	var all_spawns_finished = true
 	
-	spawn_timer.wait_time = current_wave.time_between_spawns
-	spawn_timer.start()
-
-func _on_spawn_timer_timeout() -> void:
-	var current_wave = waves[current_wave_index]
-	
-	# Pausa el spawn si se alcanzó el límite concurrente
-	if active_enemies >= max_concurrent_enemies:
-		return 
-		
-	if enemies_spawned_current_wave < current_wave.enemy_count:
-		_spawn_enemy(current_wave)
-		enemies_spawned_current_wave += 1
-		active_enemies += 1
-		
-	# Si ya salieron todos los de esta oleada, detenemos el reloj
-	if enemies_spawned_current_wave >= current_wave.enemy_count:
-		spawn_timer.stop()
+	for tracker in wave_trackers:
+		# Verificamos si este tipo de enemigo en particular ya terminó de spawnear
+		if tracker["spawned_count"] < tracker["config"].enemy_count:
+			all_spawns_finished = false
+			
+			# Avanzamos su temporizador individual
+			tracker["timer"] += delta
+			
+			# Si pasó su tiempo de espera y no superamos el límite global
+			if tracker["timer"] >= tracker["config"].time_between_spawns and active_enemies < max_concurrent_enemies:
+				tracker["timer"] = 0.0 # Reiniciamos su reloj
+				tracker["spawned_count"] += 1
+				active_enemies += 1
+				_spawn_enemy(tracker["config"])
+				
+	# Si TODOS los recursos ya instanciaron su cantidad máxima y no quedan enemigos vivos
+	if all_spawns_finished and active_enemies <= 0:
+		is_spawning = false
+		all_waves_completed.emit()
 
 func _spawn_enemy(config: WaveConfig) -> void:
 	var enemy = config.enemy_scene.instantiate() as BaseEnemy
 	if not enemy: return
 	
-	# Suscripción a la señal de muerte
 	enemy.enemy_died.connect(_on_enemy_died)
-	
-	# Cálculo de posición dinámica
 	enemy.global_position = _calculate_spawn_position(config)
 	
 	enemy_container.add_child(enemy)
-	
-	# --- NUEVA INYECCIÓN DE ESTADO ---
-	# Obligamos al enemigo a volverse agresivo al spawnear en una arena
-	if enemy.get("state_machine") and enemy.state_machine.has_node("Chase"):
-		enemy.state_machine.transition_to("Chase")
 
 func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 	var cam = get_viewport().get_camera_2d()
@@ -82,9 +75,8 @@ func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 		var screen_size = get_viewport_rect().size / cam.zoom
 		var cam_pos = cam.get_screen_center_position()
 		
-		# Determinar lado aleatorio (0 = izquierda, 1 = derecha)
 		var is_left = randi() % 2 == 0
-		var offset_x = (screen_size.x / 2) + 60 # 60 píxeles fuera del límite visual
+		var offset_x = (screen_size.x / 2) + 60 
 		
 		spawn_pos.x = cam_pos.x - offset_x if is_left else cam_pos.x + offset_x
 		
@@ -92,17 +84,21 @@ func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 			var techo = cam_pos.y - screen_size.y / 2
 			spawn_pos.y = techo + config.spawn_height_offset
 		else:
-			# Para unidades terrestres, se toma la altura Y del propio nodo SpawnerManager
 			spawn_pos.y = global_position.y 
 			
 	return spawn_pos
 
 func _on_enemy_died(_enemy_node: Node) -> void:
 	active_enemies -= 1
-	var current_wave = waves[current_wave_index]
 	
-	# Verificamos si la oleada actual fue eliminada por completo
-	if enemies_spawned_current_wave >= current_wave.enemy_count and active_enemies <= 0:
-		wave_finished.emit()
-		current_wave_index += 1
-		_start_current_wave()
+	
+# Función pública para que el ArenaManager corte el chorro de enemigos
+func stop_spawning() -> void:
+	is_spawning = false
+	all_waves_completed.emit()
+	
+	# Opcional: Si querés que al cruzar la meta los enemigos vivos exploten o desaparezcan
+	# podés descomentar las siguientes líneas:
+	# for enemy in enemy_container.get_children():
+	# 	if enemy is BaseEnemy and enemy.has_method("_on_death"):
+	# 		enemy._on_death()

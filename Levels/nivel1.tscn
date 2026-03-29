@@ -5231,7 +5231,7 @@ size = Vector2(22, 237)
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(155, 281)
+position = Vector2(45, 306)
 platform_wall_layers = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996007758]
@@ -5297,11 +5297,16 @@ position = Vector2(1943, 344)
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("9_7j7t0")]
 
-[node name="AreaManager" parent="." unique_id=7629039 node_paths=PackedStringArray("camera") instance=ExtResource("10_taqlu")]
+[node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("10_taqlu")]
 position = Vector2(482, 0)
-camera = NodePath("../Camera2D")
 
-[node name="SpawnerManager" parent="AreaManager" index="1" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
+[node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
+position = Vector2(-340, 0)
+
+[node name="Zona Fin" parent="AreaManager" index="1" unique_id=1457722739]
+position = Vector2(389, 9)
+
+[node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
 max_concurrent_enemies = 14
 enemy_container = NodePath("../../Enemies")
 
