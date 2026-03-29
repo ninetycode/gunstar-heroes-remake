@@ -6,10 +6,10 @@ extends BossEnemy
 @onready var hurtbox_col: CollisionShape2D = $HurtboxComponent/CollisionShape2D
 
 var pelea_activa: bool = false
+var esta_muerto: bool = false # <--- NUEVO: Control de muerte
 
 func _ready():
 	super()
-	# Al empezar, el jefe es invulnerable
 	if hurtbox_col:
 		hurtbox_col.disabled = true
 
@@ -17,7 +17,6 @@ func empezar_pelea():
 	print("LockZone activada, preparando jefe...")
 	await get_tree().create_timer(2.0).timeout
 	
-	# Activamos la pelea y el daño
 	pelea_activa = true
 	if hurtbox_col:
 		hurtbox_col.disabled = false
@@ -25,10 +24,13 @@ func empezar_pelea():
 	print("¡Papaya lista para el combate!")
 
 func _on_death():
+	if esta_muerto: return # <--- Evita que muera dos veces
+	esta_muerto = true
+	
 	state_machine.transition_to("DeathState")
 
 func ataque_patron_lluvia_zigzag():
-	if not arma_espora or not pelea_activa: return
+	if not arma_espora or not pelea_activa or esta_muerto: return # <--- Seguro extra
 	
 	var spawn_pos = muzzle_marker.global_position
 	for i in range(20):
