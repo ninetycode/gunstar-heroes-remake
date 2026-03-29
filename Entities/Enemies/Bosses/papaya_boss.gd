@@ -31,16 +31,11 @@ func empezar_pelea():
 		
 	print("¡Papaya lista para el combate!")
 
-
 func _on_death():
-	if esta_muerto: return # <--- Evita que muera dos veces
-	esta_muerto = true
+	# Combinamos los seguros de vida: Evitamos que corra dos veces si ya está muerto o si la pelea ni arrancó
+	if esta_muerto or not pelea_activa: return 
 	
-	state_machine.transition_to("DeathState")
-
-func _on_death():
-	# Si ya lo matamos, evitamos que este código corra dos veces
-	if not pelea_activa: return 
+	esta_muerto = true
 	pelea_activa = false
 	
 	# ¡VITAL! Le apagamos la hitbox YA MISMO para que los tiros lo atraviesen
@@ -53,6 +48,12 @@ func _on_death():
 	# Mandamos a la máquina a hacer la explosión final
 	if state_machine:
 		state_machine.transition_to("DeathState")
+
+# Función puente: Pasa los datos de vida del stats a la barra del jefe
+func _on_mi_vida_cambio(_maxima: int, actual: int):
+	if pelea_activa:
+		GameEvents.boss_health_changed.emit(actual)
+
 func ataque_patron_lluvia_zigzag():
 	if not arma_espora or not pelea_activa or esta_muerto: return # <--- Seguro extra
 	
