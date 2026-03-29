@@ -8,7 +8,10 @@ func enter(_msg := {}) -> void:
 		enemy.ataque_patron_lluvia_zigzag()
 	
 	await get_tree().create_timer(1.5).timeout
-	state_machine.transition_to("IdleState")
+	
+	# <--- CHEQUEO CLAVE: No volver al Idle si ya es un cadáver
+	if not enemy.esta_muerto:
+		state_machine.transition_to("IdleState")
 
 func exit() -> void:
 	pass

@@ -6,6 +6,7 @@ extends BossEnemy
 @onready var hurtbox_col: CollisionShape2D = $HurtboxComponent/CollisionShape2D
 
 var pelea_activa: bool = false
+var esta_muerto: bool = false # <--- NUEVO: Control de muerte
 
 func _ready():
 	super()
@@ -30,10 +31,12 @@ func empezar_pelea():
 		
 	print("¡Papaya lista para el combate!")
 
-# Función puente: Pasa los datos de vida del stats a la barra del jefe
-func _on_mi_vida_cambio(_maxima: int, actual: int):
-	if pelea_activa:
-		GameEvents.boss_health_changed.emit(actual)
+
+func _on_death():
+	if esta_muerto: return # <--- Evita que muera dos veces
+	esta_muerto = true
+	
+	state_machine.transition_to("DeathState")
 
 func _on_death():
 	# Si ya lo matamos, evitamos que este código corra dos veces
@@ -51,7 +54,7 @@ func _on_death():
 	if state_machine:
 		state_machine.transition_to("DeathState")
 func ataque_patron_lluvia_zigzag():
-	if not arma_espora or not pelea_activa: return
+	if not arma_espora or not pelea_activa or esta_muerto: return # <--- Seguro extra
 	
 	var spawn_pos = muzzle_marker.global_position
 	for i in range(20):
