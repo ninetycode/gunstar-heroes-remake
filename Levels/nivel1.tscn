@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
+[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 
@@ -5280,4 +5281,6 @@ script = ExtResource("6_wfebu")
 [node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
 position = Vector2(1943, 344)
 
-[node name="BossUI" parent="Enemies/PapayaBoss" unique_id=1851858112 instance=ExtResource("10_7j7t0")]
+[node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("10_7j7t0")]
+
+[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("9_7j7t0")]

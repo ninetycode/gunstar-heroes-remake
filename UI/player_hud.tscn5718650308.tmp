@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bxf0bylam6w4o"]
+
+[ext_resource type="Texture2D" uid="uid://bims2labmd0ce" path="res://Assets/IU-HUD/02.png" id="1_pi8qp"]
+[ext_resource type="Script" uid="uid://b2jyaj77e0nur" path="res://UI/player_hud.gd" id="1_pmtv2"]
+[ext_resource type="Texture2D" uid="uid://dm747rdneng7" path="res://Assets/IU-HUD/minifotoblue.png" id="2_fneal"]
+[ext_resource type="Script" uid="uid://cflmhuebpntvk" path="res://UI/animated_sprite_2d.gd" id="3_miyt4"]
+[ext_resource type="Texture2D" uid="uid://dnkewgsaqn23m" path="res://Assets/IU-HUD/barra-vacia.png" id="3_pmtv2"]
+[ext_resource type="Texture2D" uid="uid://dcqcodtd612uc" path="res://Assets/IU-HUD/barra-marco.png" id="4_miyt4"]
+[ext_resource type="Texture2D" uid="uid://dfpyvvh5kapq3" path="res://Assets/IU-HUD/barra-progreso.png" id="5_4gvqm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o0p8"]
+atlas = ExtResource("1_pi8qp")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpci0"]
+atlas = ExtResource("1_pi8qp")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhy1a"]
+atlas = ExtResource("1_pi8qp")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fneal"]
+atlas = ExtResource("1_pi8qp")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmtv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o0p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpci0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhy1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fneal")
+}],
+"loop": true,
+"name": &"anima",
+"speed": 5.0
+}]
+
+[node name="player_hud" type="CanvasLayer" unique_id=1489847109]
+script = ExtResource("1_pmtv2")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=249220428]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1893319687]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer" unique_id=1814524912]
+position = Vector2(25, 26)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pmtv2")
+animation = &"anima"
+frame_progress = 0.25257152
+script = ExtResource("3_miyt4")
+
+[node name="BluePortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/AnimatedSprite2D" unique_id=1288420801]
+offset_left = -11.499999
+offset_top = -10.999998
+offset_right = 188.5
+offset_bottom = 189.0
+scale = Vector2(0.11030606, 0.11037779)
+texture = ExtResource("2_fneal")
+stretch_mode = 6
+flip_h = true
+
+[node name="BarsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1741272371]
+layout_mode = 2
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=1855159343]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.1109375
+anchor_top = 0.047222216
+anchor_right = 0.38693878
+anchor_bottom = 0.1645561
+offset_left = -1.0
+offset_top = -3.9999962
+offset_right = 558.3592
+offset_bottom = 129.7598
+scale = Vector2(0.16000113, 0.16000113)
+value = 100.0
+texture_under = ExtResource("3_pmtv2")
+texture_over = ExtResource("4_miyt4")
+texture_progress = ExtResource("5_4gvqm")
+metadata/_edit_use_anchors_ = true

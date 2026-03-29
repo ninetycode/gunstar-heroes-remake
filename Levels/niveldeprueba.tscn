@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="3_qewk2"]
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="5_4ufvc"]
+[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
@@ -41,3 +42,5 @@ position = Vector2(177, 85)
 position = Vector2(493, 85)
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("5_4ufvc")]
+
+[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("6_a8wek")]
