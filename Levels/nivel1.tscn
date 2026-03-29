@@ -5302,6 +5302,7 @@ position = Vector2(482, 0)
 camera = NodePath("../Camera2D")
 
 [node name="SpawnerManager" parent="AreaManager" index="1" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
+max_concurrent_enemies = 14
 enemy_container = NodePath("../../Enemies")
 
 [editable path="AreaManager"]

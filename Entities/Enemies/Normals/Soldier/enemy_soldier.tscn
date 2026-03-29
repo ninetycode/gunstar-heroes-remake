@@ -234,7 +234,7 @@ debug_color = Color(0.6775713, 0.5055773, 0, 0.41960785)
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_melc4")]
 
 [node name="PlayerDetector" type="RayCast2D" parent="." unique_id=1783343090]
-target_position = Vector2(37, 0)
+target_position = Vector2(65, 0)
 
 [node name="HitboxComponent" parent="." unique_id=597531608 groups=["Enemies_melee"] instance=ExtResource("6_4owtx")]
 collision_layer = 4

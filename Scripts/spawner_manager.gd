@@ -61,13 +61,18 @@ func _spawn_enemy(config: WaveConfig) -> void:
 	var enemy = config.enemy_scene.instantiate() as BaseEnemy
 	if not enemy: return
 	
-	# Suscripción a la señal de muerte creada en la Fase 3
+	# Suscripción a la señal de muerte
 	enemy.enemy_died.connect(_on_enemy_died)
 	
 	# Cálculo de posición dinámica
 	enemy.global_position = _calculate_spawn_position(config)
 	
 	enemy_container.add_child(enemy)
+	
+	# --- NUEVA INYECCIÓN DE ESTADO ---
+	# Obligamos al enemigo a volverse agresivo al spawnear en una arena
+	if enemy.get("state_machine") and enemy.state_machine.has_node("Chase"):
+		enemy.state_machine.transition_to("Chase")
 
 func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 	var cam = get_viewport().get_camera_2d()
