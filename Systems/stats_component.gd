@@ -14,11 +14,19 @@ func _ready():
 	health_changed.emit(vida_maxima, vida_actual) 
 
 func recibir_danio(cantidad):
-	vida_actual -= cantidad
-	danio_recibido.emit(cantidad)
-	
-	# 3. Avisamos al HUD que la vida bajó
-	health_changed.emit(vida_maxima, vida_actual) 
-	
+	# 1. Si ya estamos muertos, ignoramos las balas (Chau zombies)
 	if vida_actual <= 0:
+		return 
+		
+	vida_actual -= cantidad
+	
+	# 2. Clampeamos a 0 para que la UI no muestre números negativos
+	if vida_actual < 0:
+		vida_actual = 0 
+		
+	danio_recibido.emit(cantidad)
+	health_changed.emit(vida_maxima, vida_actual) # (La señal de tu HUD)
+	
+	# 3. Solo emitimos la muerte si llegamos EXACTAMENTE a 0
+	if vida_actual == 0:
 		salud_agotada.emit()
