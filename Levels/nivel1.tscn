@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
-[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
+[ext_resource type="PackedScene" path="res://UI/player_hud.tscn" id="9_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 
@@ -1431,16 +1431,27 @@ texture = ExtResource("3_i8yv5")
 73:34/0 = 0
 73:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.030511, -8, 8, 8, 8, 8, 2.0057983)
 76:34/0 = 0
+76:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.030511, 8, 2.030511, 8, 8, -8, 8)
 77:34/0 = 0
+77:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 78:34/0 = 0
+78:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 79:34/0 = 0
+79:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 80:34/0 = 0
+80:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 81:34/0 = 0
+81:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 82:34/0 = 0
+82:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 83:34/0 = 0
+83:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 84:34/0 = 0
+84:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 85:34/0 = 0
+85:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 86:34/0 = 0
+86:34/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1320372, -8, 8, 8, 8, 8, 2.1320372)
 87:34/0 = 0
 71:35/0 = 0
 71:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.057598, -8, 3.057598, 8, 8, 8, 8, -8)
@@ -1449,7 +1460,7 @@ texture = ExtResource("3_i8yv5")
 73:35/0 = 0
 73:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 76:35/0 = 0
-76:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+76:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9.712372, -7.913783, 8, -8, 8, 8, -9.712372, 7.913784)
 77:35/0 = 0
 77:35/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 78:35/0 = 0
@@ -5219,7 +5230,7 @@ size = Vector2(32, 237)
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(1415, 213)
+position = Vector2(3276, 270)
 platform_wall_layers = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996007758]
