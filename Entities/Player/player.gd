@@ -122,3 +122,7 @@ func limitar_a_camara():
 		# Clampeamos la posición X del jugador. 
 		# Le sumamos/restamos 20 píxeles para que frene justo en el borde y no quede el sprite cortado por la mitad.
 		global_position.x = clamp(global_position.x, limite_izq + 20.0, limite_der - 20.0)
+
+
+func _on_piramid_trigger_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
