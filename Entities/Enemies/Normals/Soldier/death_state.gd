@@ -4,14 +4,16 @@ extends State
 
 func enter(_msg := {}) -> void:
 	if randf() <= 0.5:
-		# Armamos una lista con los nombres exactos que pusiste en el AudioManager
+		# Lista de sonidos registrados en el AudioManager [cite: 59]
 		var opciones_grito = ["soldier_death1", "soldier_death2"]
-		
-		# Le decimos a Godot que elija uno al azar de esa lista
 		var grito_elegido = opciones_grito.pick_random()
 		
-		# Lo mandamos a reproducir
-		AudioManager.play_sfx(grito_elegido)
+		# VARIACIÓN DE PITCH Y VOLUMEN:
+		# Generamos un pitch aleatorio entre 0.9 (más grave) y 1.1 (más agudo)
+		var pitch_variado = randf_range(0.9, 1.1)
+		
+		# Llamamos al AudioManager pasando el volumen deseado (-1.0) y el pitch calculado
+		AudioManager.play_sfx(grito_elegido, -1.0, pitch_variado)
 
 	# 2. FRENAR CUALQUIER MOVIMIENTO PREVIO
 	enemy.velocity = Vector2.ZERO
