@@ -3,7 +3,7 @@ extends Node
 # Acá registramos todos los sonidos del juego con un nombre clave.
 # En el diccionario de sonidos o uno nuevo
 var musicas: Dictionary = {
-	#"nivel_1": preload("res://Assets/Audio/Music/stage_1_theme.ogg"),
+	"nivel_1_zone_1": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3")
 	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
 }
 
@@ -81,3 +81,23 @@ func play_music(nombre_track: String, volumen: float = 0.0):
 	music_player.stream = musicas[nombre_track]
 	music_player.volume_db = volumen
 	music_player.play()
+	
+func stop_music(fade_out_duration: float = 1.0):
+	# Si no hay música sonando, no hacemos nada
+	if not music_player.playing:
+		return
+		
+	# Si nos piden que se corte de golpe (tiempo 0)
+	if fade_out_duration <= 0.0:
+		music_player.stop()
+		return
+		
+	# Creamos un Tween para bajar el volumen de a poco
+	var tween = create_tween()
+	# Le decimos que baje el volume_db a -80 (que es silencio total en Godot) en X segundos
+	tween.tween_property(music_player, "volume_db", -80.0, fade_out_duration)
+	
+	# Cuando el tween termina de bajar el volumen, frenamos el reproductor y restauramos el volumen base
+	await tween.finished
+	music_player.stop()
+	music_player.volume_db = 0.0 # Lo dejamos listo para la próxima canción

@@ -5299,6 +5299,7 @@ position = Vector2(1943, 344)
 
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("10_taqlu")]
 position = Vector2(482, 0)
+arena_music = "nivel_1_zone_1"
 
 [node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
 position = Vector2(-340, 0)

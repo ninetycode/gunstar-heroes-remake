@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://slkeleh87ox3"
+path="res://.godot/imported/Doom (1993) OST — At Doom's Gate (Extended).mp3-1c4cf2deba9be2bcc55b2412ce4e458a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3"
+dest_files=["res://.godot/imported/Doom (1993) OST — At Doom's Gate (Extended).mp3-1c4cf2deba9be2bcc55b2412ce4e458a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

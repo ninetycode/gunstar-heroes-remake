@@ -11,6 +11,7 @@ script = ExtResource("1_2hlfa")
 bullet_scene = ExtResource("1_v5kv0")
 icono_arma = ExtResource("2_i3dn8")
 textura_bala = ExtResource("2_v5kv0")
+danio = 20
 velocidad_bala = 1500.0
 turn_speed = 25.0
 fire_rate = 0.05

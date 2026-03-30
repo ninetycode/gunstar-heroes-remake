@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ukwyv")
 enemy_scene = ExtResource("1_fw1lf")
-enemy_count = 6
+enemy_count = 3
 time_between_spawns = 3.0
 is_flying_enemy = true
 metadata/_custom_type_script = "uid://cnebxd8onhlsi"
