@@ -3,38 +3,45 @@ extends State
 @onready var enemy = owner
 
 func enter(_msg := {}) -> void:
-	# 1. FRENAR CUALQUIER MOVIMIENTO PREVIO
+	if randf() <= 0.5:
+		# Armamos una lista con los nombres exactos que pusiste en el AudioManager
+		var opciones_grito = ["soldier_death1", "soldier_death2"]
+		
+		# Le decimos a Godot que elija uno al azar de esa lista
+		var grito_elegido = opciones_grito.pick_random()
+		
+		# Lo mandamos a reproducir
+		AudioManager.play_sfx(grito_elegido)
+
+	# 2. FRENAR CUALQUIER MOVIMIENTO PREVIO
 	enemy.velocity = Vector2.ZERO
 	
-	# 2. EL SALTITO (Retroceso y Salto)
-	# Si flip_h es true, mira a la izquierda, entonces salta a la derecha (1)
+	# 3. EL SALTITO (Retroceso y Salto)
 	var dir_salto = 1 if enemy.sprite.flip_h else -1
+	enemy.velocity.x = dir_salto * 180 
+	enemy.velocity.y = -500           
 	
-	# Valores más polenta para que se note
-	enemy.velocity.x = dir_salto * 180  # Fuerza hacia atrás
-	enemy.velocity.y = -500            # Fuerza hacia arriba
-	
-	# 3. APAGAR TODO EL DAÑO (Para que no sea un Sion)
+	# 4. APAGAR TODO EL DAÑO
 	if enemy.hitbox:
 		enemy.hitbox.set_deferred("monitoring", false)
 		enemy.hitbox.set_deferred("monitorable", false)
 	
-	# La desactivación de la Hurtbox ya la tenías bien con set_deferred!
 	if enemy.has_node("HurtboxComponent/CollisionShape2D"):
 		enemy.get_node("HurtboxComponent/CollisionShape2D").set_deferred("disabled", true)
 
-	# 4. ANIMACIÓN
+	# 5. ANIMACIÓN
 	if enemy.sprite.sprite_frames.has_animation("death"):
 		enemy.sprite.play("death")
 	
-	# 5. DESVANECIMIENTO Y BORRADO
-	# Esperamos a que termine el salto y la animación
+	# 6. DESVANECIMIENTO Y BORRADO
+	# El código se "pausa" acá, por eso el sonido debía estar arriba.
 	await get_tree().create_timer(1.2).timeout
 	
 	var tween = create_tween()
 	tween.tween_property(enemy, "modulate:a", 0.0, 0.5)
 	await tween.finished
 	
+	# La entidad se elimina de la memoria
 	enemy.queue_free()
 
 func physics_update(_delta: float) -> void:

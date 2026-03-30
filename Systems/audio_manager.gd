@@ -15,8 +15,9 @@ var sonidos: Dictionary = {
 	"disparo_laser": preload("res://Assets/Audio/SFX/LASRGun_Blaster_Single_Shot_02.wav"),
 	"disparo_verde" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_03.wav"),
 	"disparo_fuego" : preload("res://Assets/Audio/SFX/Fire_Hit_01.wav"),
-	"disparo_force" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_02.wav")
-	#"disparo_fuego": preload("res://Assets/Audio/SFX/flame_shoot.wav"),
+	"disparo_force" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_02.wav"),
+	"soldier_death1": preload("res://Assets/Audio/SFX/metal-slug-fire-scream.mp3"),
+	"soldier_death2" : preload("res://Assets/Audio/SFX/metal-slug-scream.wav")
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	#"hit": preload("res://Assets/Audio/SFX/hit.wav")
