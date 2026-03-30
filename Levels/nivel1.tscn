@@ -5307,7 +5307,7 @@ position = Vector2(-340, 0)
 position = Vector2(389, 9)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
-max_concurrent_enemies = 14
+max_concurrent_enemies = 50
 enemy_container = NodePath("../../Enemies")
 
 [editable path="AreaManager"]

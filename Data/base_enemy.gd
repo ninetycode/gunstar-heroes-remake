@@ -5,7 +5,7 @@ signal enemy_died(enemy_node: Node) # NUEVA SEÑAL
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var player = null
-
+var is_ambush: bool = false 
 @onready var sprite = $AnimatedSprite2D
 @onready var stats = $StatsComponent
 

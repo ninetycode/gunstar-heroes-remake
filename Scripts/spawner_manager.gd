@@ -65,6 +65,8 @@ func _spawn_enemy(config: WaveConfig) -> void:
 	enemy.enemy_died.connect(_on_enemy_died)
 	enemy.global_position = _calculate_spawn_position(config)
 	
+	enemy.is_ambush = true 
+	
 	enemy_container.add_child(enemy)
 
 func _calculate_spawn_position(config: WaveConfig) -> Vector2:
