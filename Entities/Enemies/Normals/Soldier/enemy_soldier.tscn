@@ -93,6 +93,11 @@ region = Rect2(161, 3, 49, 46)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0h11n"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r7gy5")
@@ -196,9 +201,7 @@ attack_range = 25.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"attack"
-frame = 3
-frame_progress = 1.0
+animation = &"Fly"
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
