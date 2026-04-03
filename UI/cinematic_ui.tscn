@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://benweppcqqcm4"]
+[gd_scene format=3 uid="uid://84tmcvdkfogl"]
 
-[ext_resource type="Script" uid="uid://c5ga1rqfxt6n7" path="res://cinematic_ui.gd" id="1_ktpbi"]
+[ext_resource type="Script" path="res://cinematic_ui.gd" id="1_ktpbi"]
 
 [node name="CinematicUI" type="CanvasLayer" unique_id=167348668]
 layer = 10

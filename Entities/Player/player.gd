@@ -124,5 +124,5 @@ func limitar_a_camara():
 		global_position.x = clamp(global_position.x, limite_izq + 20.0, limite_der - 20.0)
 
 
-func _on_piramid_trigger_area_entered(area: Area2D) -> void:
+func _on_piramid_trigger_area_entered(_area):
 	pass # Replace with function body.

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="10_taqlu"]
-[ext_resource type="PackedScene" uid="uid://benweppcqqcm4" path="res://UI/cinematic_ui.tscn" id="12_7q4wo"]
+[ext_resource type="PackedScene" uid="uid://84tmcvdkfogl" path="res://UI/cinematic_ui.tscn" id="12_7q4wo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5237,7 +5237,7 @@ size = Vector2(32, 487)
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(3199, 177)
+position = Vector2(-520, 235)
 platform_wall_layers = 1
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1996007758]
