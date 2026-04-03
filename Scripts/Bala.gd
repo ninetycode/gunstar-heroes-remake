@@ -83,19 +83,41 @@ func actualizar_target_homing():
 	if es_de_enemigo:
 		target = get_tree().get_first_node_in_group("Player")
 	elif not is_instance_valid(target):
-		target = buscar_enemigo_mas_cercano()
+		target = obtener_enemigo_visible_cercano()
 
-func buscar_enemigo_mas_cercano() -> Node2D:
-	var enemies = get_tree().get_nodes_in_group("Enemies")
-	var closest = null
-	var min_dist = INF 
-	for enemy in enemies:
-		if is_instance_valid(enemy):
-			var dist = global_position.distance_squared_to(enemy.global_position)
-			if dist < min_dist:
-				min_dist = dist
-				closest = enemy
-	return closest
+func obtener_enemigo_visible_cercano() -> Node2D:
+	# Asegurate de que este sea el nombre exacto de tu grupo de enemigos
+	var enemigos = get_tree().get_nodes_in_group("Enemies") 
+	var objetivo_valido = null
+	var distancia_minima = INF
+	
+	var cam = get_viewport().get_camera_2d()
+	if not cam:
+		return null
+		
+	# 1. Calculamos el rectángulo exacto que está viendo el jugador
+	var screen_size = get_viewport_rect().size / cam.zoom
+	var pos_esquina_superior_izq = cam.get_screen_center_position() - (screen_size / 2)
+	var rectangulo_camara = Rect2(pos_esquina_superior_izq, screen_size)
+
+	# 2. Filtramos la lista de enemigos
+	for enemigo in enemigos:
+		# Filtro de seguridad (no apuntar a muertos)
+		if "esta_muerto" in enemigo and enemigo.esta_muerto:
+			continue
+			
+		# EL FILTRO MÁGICO: Si la posición global del enemigo no está 
+		# adentro del rectángulo de la cámara, pasamos al siguiente
+		if not rectangulo_camara.has_point(enemigo.global_position):
+			continue
+			
+		# 3. Si pasó el filtro, nos fijamos si es el más cercano
+		var dist = global_position.distance_squared_to(enemigo.global_position)
+		if dist < distancia_minima:
+			distancia_minima = dist
+			objetivo_valido = enemigo
+			
+	return objetivo_valido
 
 func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool = false, _fire_index: int = -1):
 	if data == null: return
