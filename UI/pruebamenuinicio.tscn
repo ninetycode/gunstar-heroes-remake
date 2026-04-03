@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dyf620lpmt3br"]
+
+[ext_resource type="Script" uid="uid://dmrb5ahhqlyi0" path="res://UI/pruebamenuinicio.gd" id="1_olaee"]
+[ext_resource type="Texture2D" uid="uid://crnh30at5wbck" path="res://Assets/Captura de pantalla 2026-04-02 235011.png" id="2_hg8sn"]
+
+[node name="Control" type="Control" unique_id=17156782]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_olaee")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1012186476]
+layout_mode = 0
+offset_right = 687.0
+offset_bottom = 449.0
+scale = Vector2(0.9446877, 0.8052123)
+texture = ExtResource("2_hg8sn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=219647107]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 219.0
+offset_right = 498.0
+offset_bottom = 259.0
+scale = Vector2(4.3199997, 3.28)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1881827845]
+layout_mode = 0
+offset_left = 11.999999
+offset_top = 7.0000005
+offset_right = 52.0
+offset_bottom = 47.0
+scale = Vector2(6.9726315, 1.9920001)
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1807644531]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 224.0
+offset_right = 542.0
+offset_bottom = 247.0
+text = "Controles:"
+
+[node name="Label" type="Label" parent="Label" unique_id=1683092986]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 153.0
+offset_bottom = 124.0
+text = "X (disparar)
+TAB (cambiar arma)
+Flechitas (moverse)
+ESPACIO (saltar)"
+
+[node name="Label2" type="Label" parent="Label" unique_id=756323410]
+layout_mode = 0
+offset_left = -438.0
+offset_top = -214.0
+offset_right = -203.0
+offset_bottom = -113.0
+text = "ENTER: para comenzar partida
+R: para reiniciar
+P: Para pausar"

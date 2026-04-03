@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gunstar Heroes Remake"
-run/main_scene="uid://c5hbqctwiqkk3"
+run/main_scene="uid://dyf620lpmt3br"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [autoload]
