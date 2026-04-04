@@ -6,7 +6,7 @@ func physics_update(_delta: float) -> void:
 	# PRIORIDAD: Si aprieta disparar, frenamos y cambiamos de estado
 	# Usamos 'disparo' o 'disparo_fijo' según tu Input Map
 
-	if Input.is_action_pressed("ui_down") and player.is_on_floor():
+	if Input.is_action_pressed("move_down") and player.is_on_floor():
 		state_machine.transition_to("Crouch")
 		return
 
@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 
 
 	# Movimiento normal
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	
 	if direction != 0:
 		player.velocity.x = direction * player.speed

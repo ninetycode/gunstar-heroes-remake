@@ -7,7 +7,7 @@ func enter(_msg := {}) -> void:
 		player._animated_sprite.play("Jump")
 
 func physics_update(_delta: float) -> void:
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	if direction != 0: player._animated_sprite.flip_h = direction < 0
 

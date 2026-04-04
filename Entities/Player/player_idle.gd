@@ -10,7 +10,7 @@ func enter() -> void:
 
 func physics_update(_delta: float) -> void:
 
-	if Input.is_action_pressed("ui_down") and player.is_on_floor():
+	if Input.is_action_pressed("move_down") and player.is_on_floor():
 		state_machine.transition_to("Crouch")
 		return
 
@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 		return
 	
 	# Si apretamos izquierda o derecha, le decimos a la máquina que pase a "Run"
-	if Input.get_axis("ui_left", "ui_right") != 0:
+	if Input.get_axis("move_left", "move_right") != 0:
 		state_machine.transition_to("Run")
 
 	# --- LÓGICA DE DISPARO ---

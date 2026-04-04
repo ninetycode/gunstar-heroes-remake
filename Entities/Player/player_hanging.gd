@@ -10,7 +10,7 @@ func enter(_msg := {}) -> void:
 
 func physics_update(_delta: float) -> void:
 	# 1. Movimiento lateral mientras cuelga
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = direction * (player.speed * 0.6) # Más lento al colgar
 	
 	if direction != 0:
@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 		return
 
 	# 3. SALIDA: Si presiona abajo, se deja caer
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("move_down"):
 		player.gravity_enabled = true
 		state_machine.transition_to("Fall")
 		return

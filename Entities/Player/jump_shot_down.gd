@@ -3,7 +3,7 @@ extends State
 @onready var player = owner
 
 func physics_update(_delta: float) -> void:
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("move_left", "move_right")
 	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	
 	if direction != 0: 
@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 
 	# Lógica de disparo y animación
 	if Input.is_action_pressed("disparo"):
-		var v = Input.get_axis("ui_up", "ui_down")
+		var v = Input.get_axis("move_up", "move_down")
 		
 		if v > 0.5:
 			if player._animated_sprite.animation != "Disparo abajo":

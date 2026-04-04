@@ -13,7 +13,7 @@ func physics_update(_delta: float) -> void:
 		return
 
 	# Obtenemos la dirección de la palanca/teclado para las 8 direcciones
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# Si no hay dirección (solo aprieta disparo), disparamos al frente según el flip
 	if input_dir == Vector2.ZERO:
