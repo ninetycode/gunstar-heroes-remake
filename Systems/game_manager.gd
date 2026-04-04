@@ -2,14 +2,29 @@ extends Node
 
 signal game_paused(is_paused: bool)
 
+# 1. Cargamos la escena de la UI
+const PAUSE_MENU_SCENE = preload("res://UI/pause_menu.tscn") # <- ¡Chequeá esta ruta!
+var pause_menu_instance: CanvasLayer
+
 func _ready() -> void:
-	# Fundamental: El GameManager nunca debe congelarse
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	# 2. Instanciamos el menú, lo agregamos al juego y lo ocultamos
+	pause_menu_instance = PAUSE_MENU_SCENE.instantiate()
+	add_child(pause_menu_instance)
+	pause_menu_instance.hide()
 
 func toggle_pause() -> void:
 	var nuevo_estado = not get_tree().paused
 	get_tree().paused = nuevo_estado
+	
+	# 3. Prendemos o apagamos el menú visual
+	if pause_menu_instance:
+		pause_menu_instance.visible = nuevo_estado
+		
 	game_paused.emit(nuevo_estado)
+
+# ... (El resto de tus funciones restart_current_level e _input quedan exactamente igual)
 
 func restart_current_level() -> void:
 	# 1. Despausar siempre antes de reiniciar
