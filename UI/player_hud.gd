@@ -3,6 +3,7 @@ extends CanvasLayer
 # Usamos % para acceso rápido a nodos únicos
 @onready var health_bar = %HealthBar
 @onready var weapon_icons: HBoxContainer = %WeaponIcons
+var tween_retrato: Tween
 
 func _ready():
 	# Primero nos aseguramos de que el HUD esté escondido hasta saber la vida
@@ -15,9 +16,11 @@ func _ready():
 	if player:
 		# Buscamos su StatsComponent para conectar la señal
 		var stats = player.get_node("StatsComponent")
+
 		if stats:
-			# Nos conectamos a la señal de cambio de vida
 			stats.health_changed.connect(_on_player_health_changed)
+			stats.danio_recibido.connect(_on_player_danio_recibido) 
+			stats.salud_agotada.connect(_on_player_salud_agotada)
 			
 			# Inicializamos la barra con los valores actuales
 			actualizar_barra(stats.vida_maxima, stats.vida_actual)
@@ -64,3 +67,38 @@ func _on_inventario_cambiado(lista_armas: Array[WeaponResource], indice_activo: 
 			
 		# Lo agregamos al contenedor de la pantalla
 		weapon_icons.add_child(rect)
+		
+		
+func _on_player_danio_recibido(_cantidad: int):
+	var retrato = get_node_or_null("MarginContainer/HBoxContainer/portrait_container/BluePortrait")
+	
+	if retrato:
+		# Si hay una animación de color ejecutándose, la cancelamos
+		if tween_retrato and tween_retrato.is_valid():
+			tween_retrato.kill()
+			
+		retrato.modulate = Color.RED
+		
+		# Guardamos el nuevo tween en nuestra variable
+		tween_retrato = create_tween()
+		tween_retrato.tween_property(retrato, "modulate", Color.WHITE, 0.3)
+	else:
+		print("HUD: No se encontró la imagen BluePortrait en la ruta especificada.")
+
+# --- NUEVA FUNCIÓN DE MUERTE ---
+func _on_player_salud_agotada():
+	# 1. Buscamos el contenedor animado (el marco) y la foto
+	var animacion_marco = get_node_or_null("MarginContainer/HBoxContainer/portrait_container")
+	var retrato = get_node_or_null("MarginContainer/HBoxContainer/portrait_container/BluePortrait")
+	
+	# 2. Detenemos la animación del marco
+	if animacion_marco and animacion_marco is AnimatedSprite2D:
+		animacion_marco.stop() 
+		
+	# 3. Teñimos la foto de gris oscuro y matamos cualquier destello rojo
+	if retrato:
+		if tween_retrato and tween_retrato.is_valid():
+			tween_retrato.kill()
+		
+		# Color gris apagado (RGB: 0.3, 0.3, 0.3)
+		retrato.modulate = Color(0.3, 0.3, 0.3)

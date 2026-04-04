@@ -16,6 +16,7 @@ var gravity_enabled = true
 func _ready() -> void:
 	stats.danio_recibido.connect(_on_danio_recibido)
 
+
 func _physics_process(delta):
 	# La gravedad se aplica siempre
 	if not is_on_floor():

@@ -56,7 +56,7 @@ theme_override_constants/margin_top = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1893319687]
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer" unique_id=1814524912]
+[node name="portrait_container" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer" unique_id=1814524912]
 position = Vector2(25, 26)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pmtv2")
@@ -64,7 +64,7 @@ animation = &"anima"
 frame_progress = 0.7558418
 script = ExtResource("3_miyt4")
 
-[node name="BluePortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/AnimatedSprite2D" unique_id=1288420801]
+[node name="BluePortrait" type="TextureRect" parent="MarginContainer/HBoxContainer/portrait_container" unique_id=1288420801]
 offset_left = -11.499999
 offset_top = -10.999998
 offset_right = 188.5

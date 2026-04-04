@@ -36,7 +36,11 @@ func _input(event):
 	# REINICIAR CON LA R
 	if event is InputEventKey and event.pressed and event.keycode == KEY_R:
 		get_tree().paused = false
-		# SOLUCIÓN AL CRASHEO: call_deferred hace que reinicie de forma segura
+		
+		# --- NUEVA LÍNEA DE AUDIO ---
+		# Le decimos al AudioManager que frene la música al instante (0.0 segundos de fade out)
+		AudioManager.stop_music(0.0) 
+		
 		get_tree().call_deferred("reload_current_scene")
 	
 	# PAUSAR CON LA P
