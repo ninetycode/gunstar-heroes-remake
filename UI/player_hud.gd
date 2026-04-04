@@ -101,4 +101,4 @@ func _on_player_salud_agotada():
 			tween_retrato.kill()
 		
 		# Color gris apagado (RGB: 0.3, 0.3, 0.3)
-		retrato.modulate = Color(0.3, 0.3, 0.3)
+		retrato.modulate = Color(0.296, 0.288, 0.309, 1.0)

@@ -5234,7 +5234,6 @@ size = Vector2(22, 237)
 size = Vector2(32, 487)
 
 [node name="Nivel 1" type="Node2D" unique_id=1423359174]
-process_mode = 3
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
