@@ -37,9 +37,9 @@ func _physics_process(delta):
 		
 		# GRAVEDAD: Hacemos que la dirección 'Y' caiga más fuerte con el tiempo
 		# 800.0 es la fuerza de caída, podés subirlo si querés que caigan como piedras
-		direction.y += 800.0 * delta / speed 
+		direction.y += 600.0 * delta / speed 
 		
-		# Movimiento directo sin zigzag
+		# Movimiento directo 
 		global_position += direction * speed * delta
 		
 		# Hacemos que la espora rote según su caída para que quede prolijo
