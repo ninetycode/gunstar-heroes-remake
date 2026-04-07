@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://226x1j5jx5xh"]
 
-[ext_resource type="Script" uid="uid://dvfuv73wnwamu" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier_fly.gd" id="1_2h4mj"]
+[ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.gd" id="1_rwnkk"]
 [ext_resource type="Texture2D" uid="uid://c673q6e26h5op" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier Wait.png" id="2_gbeiq"]
 [ext_resource type="Texture2D" uid="uid://ph6tovwnq16s" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier atack.png" id="2_rmc0d"]
 [ext_resource type="Texture2D" uid="uid://bc62khvisdlnk" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier mueltto sprite sheet.png" id="3_gbeiq"]
@@ -8,10 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://cwc4qd5hkbbb7" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier Fly.png" id="6_58nuq"]
 [ext_resource type="Texture2D" uid="uid://yfmm12bjfjdn" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier Walk.png" id="6_yut0s"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="7_pnm17"]
+[ext_resource type="Script" uid="uid://v6s18h2d810q" path="res://Entities/Enemies/Normals/Soldier/chase_state.gd" id="8_vl88x"]
+[ext_resource type="Script" uid="uid://bh661m0ryjvhq" path="res://Entities/Enemies/Normals/Soldier/solider_attack_state.gd" id="9_lpxd3"]
+[ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Normals/Soldier/Soldier_idle_state.gd" id="10_txdu3"]
+[ext_resource type="Script" uid="uid://dlkmxaesa0hu6" path="res://Entities/Enemies/Normals/Soldier/death_state.gd" id="11_xaym7"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="12_ahald"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="13_5lu1u"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="14_xiacp"]
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="16_4hij8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yut0s"]
+atlas = ExtResource("2_gbeiq")
+region = Rect2(0, 0, 35, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7gy5"]
 atlas = ExtResource("2_rmc0d")
@@ -28,10 +36,6 @@ region = Rect2(117, 4, 53, 46)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wlkov"]
 atlas = ExtResource("2_rmc0d")
 region = Rect2(170, 4, 53, 46)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yut0s"]
-atlas = ExtResource("2_gbeiq")
-region = Rect2(0, 0, 35, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnp20"]
 atlas = ExtResource("3_gbeiq")
@@ -65,10 +69,6 @@ region = Rect2(264, 0, 29, 48)
 atlas = ExtResource("3_gbeiq")
 region = Rect2(293, 0, 29, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pnm17"]
-atlas = ExtResource("6_58nuq")
-region = Rect2(0, 0, 35, 45)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg012"]
 atlas = ExtResource("5_4hij8")
 region = Rect2(0, 0, 34, 35)
@@ -76,6 +76,10 @@ region = Rect2(0, 0, 34, 35)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwqla"]
 atlas = ExtResource("5_4hij8")
 region = Rect2(36, 0, 32, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnm17"]
+atlas = ExtResource("6_58nuq")
+region = Rect2(0, 0, 35, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kgq6m"]
 atlas = ExtResource("6_yut0s")
@@ -97,6 +101,14 @@ region = Rect2(161, 3, 49, 46)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yut0s")
+}],
+"loop": true,
+"name": &"agachado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_r7gy5")
 }, {
 "duration": 1.0,
@@ -111,14 +123,6 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yut0s")
-}],
-"loop": true,
-"name": &"await",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,14 +155,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pnm17")
-}],
-"loop": true,
-"name": &"flying",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dg012")
 }, {
 "duration": 1.0,
@@ -167,6 +163,14 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnm17")
+}],
+"loop": true,
+"name": &"volando",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -187,45 +191,50 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lssco"]
-size = Vector2(29, 38)
+size = Vector2(20, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ybek"]
 size = Vector2(26, 35)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lssco"]
-radius = 15.033297
+radius = 19.0
 
 [node name="EnemySoldierFly" type="CharacterBody2D" unique_id=992673902 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 3
 platform_floor_layers = 4294901761
 platform_wall_layers = 1
-script = ExtResource("1_2h4mj")
+script = ExtResource("1_rwnkk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"await"
+animation = &"volando"
 offset = Vector2(0, 10.54)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="AnimatedSprite2D" unique_id=1818881609]
 position = Vector2(-2.69, 14.315)
 remote_path = NodePath("../../enemy_fly_machine")
-use_global_coordinates = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
-position = Vector2(2.5, 4)
+position = Vector2(1, 10.5)
 shape = SubResource("RectangleShape2D_lssco")
 
 [node name="StateMachine" type="Node" parent="." unique_id=12875190 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_pnm17")
-initial_state = NodePath("")
+initial_state = NodePath("Idle")
 
-[node name="Await" type="Node" parent="StateMachine" unique_id=744555991]
+[node name="Chase" type="Node" parent="StateMachine" unique_id=1050308885]
+script = ExtResource("8_vl88x")
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=148693642]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1005479066]
+script = ExtResource("9_lpxd3")
 
-[node name="Flying" type="Node" parent="StateMachine" unique_id=1305318]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1955699241]
+script = ExtResource("10_txdu3")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=2105275861]
+script = ExtResource("11_xaym7")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("12_ahald")]
 collision_layer = 4
@@ -248,13 +257,13 @@ collision_mask = 8
 danio = 5
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1677833624]
-position = Vector2(3, 1)
+position = Vector2(3, 4)
 shape = SubResource("CircleShape2D_lssco")
 debug_color = Color(0.9413435, 1.21289495e-05, 0.61320996, 0.41960785)
 
 [node name="enemy_fly_machine" parent="." unique_id=1995836615 instance=ExtResource("16_4hij8")]
 z_index = -1
-position = Vector2(-2.69, 14.315)
+position = Vector2(-0.69000006, 9.315)
 
 [editable path="HurtboxComponent"]
 [editable path="HitboxComponent"]

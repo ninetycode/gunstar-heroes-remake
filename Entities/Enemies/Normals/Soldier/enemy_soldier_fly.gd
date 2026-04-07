@@ -1,42 +1,25 @@
 extends CharacterBody2D
 
-enum States { AWAIT, FLYING }
-var current_state = States.AWAIT
 
-@onready var sprite = $AnimatedSprite2D
-@onready var remote_transform = $AnimatedSprite2D/RemoteTransform2D
-@onready var mochila = $EnemyFlyMachine # Asegurate que se llame así en el árbol
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
 
-# Ajustes de posición para la mochila (Puntos de la espalda)
-const OFFSET_AGACHADO = Vector2(0, 10)
-const OFFSET_VOLANDO = Vector2(-3, -8)
 
-func _ready():
-	current_state = States.AWAIT
-	sprite.play("agachado")
-	actualizar_posicion_mochila()
-	# Que no haga nada hasta que la cinemática le avise
-	set_physics_process(false) 
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-func actualizar_posicion_mochila():
-	if sprite.animation == "agachado":
-		remote_transform.position = OFFSET_AGACHADO
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("ui_left", "ui_right")
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		remote_transform.position = OFFSET_VOLANDO
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-func despegar():
-	current_state = States.FLYING
-	sprite.play("volando")
-	actualizar_posicion_mochila()
-	set_physics_process(true) # Activamos el movimiento
-
-func _physics_process(delta):
-	if current_state == States.FLYING:
-		# "Derechito por Y y que no rompa las bolas"
-		velocity.y = -250 # Velocidad hacia arriba
-		velocity.x = 0
-		move_and_slide()
-		
-		# Si se sale de la pantalla por arriba, lo borramos para no gastar memoria
-		if global_position.y < -100:
-			queue_free()
+	move_and_slide()
