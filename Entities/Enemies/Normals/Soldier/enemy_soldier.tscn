@@ -139,11 +139,6 @@ animations = [{
 "name": &"death",
 "speed": 11.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"fly",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wg8im")
@@ -196,11 +191,12 @@ collision_mask = 3
 platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
+attack_range = 25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"fly"
+animation = &"Fly"
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]
