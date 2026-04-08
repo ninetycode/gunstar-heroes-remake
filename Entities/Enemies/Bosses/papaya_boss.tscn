@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgdt1"]
-size = Vector2(24, 43)
+size = Vector2(24, 164)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3msw"]
 radius = 21.00595
@@ -60,7 +60,7 @@ animation = &"Idle"
 offset = Vector2(0, -79.895)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1933672566]
-position = Vector2(0, -142.5)
+position = Vector2(0, -82)
 shape = SubResource("RectangleShape2D_fgdt1")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_kps04")]
