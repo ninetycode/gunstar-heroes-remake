@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://58kdyf4dqmtb" path="res://Entities/Enemies/Bosses/Papaya Boss.png" id="2_8bipj"]
 [ext_resource type="Resource" uid="uid://dba7bb07785qo" path="res://Resources/enemybossespora.tres" id="2_w5xfj"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_kps04"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="3_uedpc"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_tcckm"]
 [ext_resource type="Script" uid="uid://ifxnaq32a81w" path="res://Entities/Enemies/Bosses/state_machine_papaya.gd" id="6_f3msw"]
 [ext_resource type="Script" uid="uid://ioc3pibkehmn" path="res://Entities/Enemies/Bosses/idle_state.gd" id="7_uedpc"]
@@ -51,6 +52,7 @@ collision_mask = 2
 platform_floor_layers = 4294901761
 script = ExtResource("1_butei")
 arma_espora = ExtResource("2_w5xfj")
+enemy_scene = ExtResource("3_uedpc")
 nombre_boss = "Jefe Papaya"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]

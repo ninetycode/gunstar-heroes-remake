@@ -3,10 +3,11 @@ extends Node
 # Acá registramos todos los sonidos del juego con un nombre clave.
 # En el diccionario de sonidos o uno nuevo
 var musicas: Dictionary = {
-	"nivel_1_zone_1": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3")
+	#"nivel_1_zone_1": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3")
 	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
+	"nivel_1": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3")
 }
-
+ 
 var music_player: AudioStreamPlayer # El reproductor exclusivo de música
 
 var sonidos: Dictionary = {

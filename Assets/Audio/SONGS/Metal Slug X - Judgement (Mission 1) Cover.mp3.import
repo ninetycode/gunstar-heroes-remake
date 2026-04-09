@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsktqpnuu5w3q"
+path="res://.godot/imported/Metal Slug X - Judgement (Mission 1) Cover.mp3-f7cad9c0e1be28071e0d1a7a435ccc78.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3"
+dest_files=["res://.godot/imported/Metal Slug X - Judgement (Mission 1) Cover.mp3-f7cad9c0e1be28071e0d1a7a435ccc78.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

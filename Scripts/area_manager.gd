@@ -24,7 +24,7 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 		
 		# [Inferencia] Asumo que tu AudioManager tiene un método parecido a este. 
 		# Cambiá "play_music" por la función real que usen con Facu.
-		if arena_music != "":
+		if arena_music != "nivel_1":
 			AudioManager.play_music(arena_music)
 			
 		spawner.start_spawning()
@@ -35,5 +35,5 @@ func _on_fin_body_entered(body: Node2D) -> void:
 		spawner.stop_spawning()
 		
 		# Detenemos la música al cruzar la meta con un fade_out de 2 segundos
-		if arena_music != "":
-			AudioManager.stop_music(2.0)
+		#if arena_music != "":
+			#AudioManager.stop_music(2.0)
