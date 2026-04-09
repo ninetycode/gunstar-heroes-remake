@@ -21,7 +21,7 @@ func _ready():
 			stats.health_changed.connect(_on_player_health_changed)
 			stats.danio_recibido.connect(_on_player_danio_recibido) 
 			stats.salud_agotada.connect(_on_player_salud_agotada)
-			
+			stats.salud_recuperada.connect(_on_player_salud_recuperada)
 			# Inicializamos la barra con los valores actuales
 			actualizar_barra(stats.vida_maxima, stats.vida_actual)
 		var weapon_comp = player.get_node("WeaponComponent")
@@ -102,3 +102,20 @@ func _on_player_salud_agotada():
 		
 		# Color gris apagado (RGB: 0.3, 0.3, 0.3)
 		retrato.modulate = Color(0.296, 0.288, 0.309, 1.0)
+		
+func _on_player_salud_recuperada(_cantidad: int):
+	var retrato = get_node_or_null("MarginContainer/HBoxContainer/portrait_container/BluePortrait")
+	
+	if retrato:
+		# Si hay una animación de color ejecutándose (ej: justo lo atacaron), la cancelamos
+		if tween_retrato and tween_retrato.is_valid():
+			tween_retrato.kill()
+			
+		# Teñimos de verde puro (podés usar Color.GREEN o Color(0.2, 1.0, 0.2) si querés un verde más suave)
+		retrato.modulate = Color.GREEN
+		
+		# Animamos la vuelta al blanco normal igual que con el daño
+		tween_retrato = create_tween()
+		tween_retrato.tween_property(retrato, "modulate", Color.WHITE, 0.3)
+	else:
+		print("HUD: No se encontró la imagen BluePortrait para la curación.")
