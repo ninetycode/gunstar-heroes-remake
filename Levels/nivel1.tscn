@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
+[ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="9_7q4wo"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="10_taqlu"]
@@ -5237,7 +5238,7 @@ size = Vector2(32, 487)
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(3192, 175)
+position = Vector2(-1185, 247)
 collision_mask = 17
 platform_wall_layers = 1
 speed = 200.0
@@ -5300,7 +5301,9 @@ script = ExtResource("6_wfebu")
 [node name="Enemies" type="Node2D" parent="." unique_id=1679779527]
 
 [node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
-position = Vector2(1943, 344)
+position = Vector2(1946, 344)
+drop_chance = 100.0
+loot_scene = ExtResource("9_7q4wo")
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("10_7j7t0")]
 
