@@ -5323,7 +5323,7 @@ position = Vector2(-1127, 185)
 position = Vector2(389, 9)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
-max_concurrent_enemies = 50
+max_concurrent_enemies = 8
 enemy_container = NodePath("../../Enemies")
 
 [node name="CinematicUI" parent="." unique_id=167348668 instance=ExtResource("12_7q4wo")]
