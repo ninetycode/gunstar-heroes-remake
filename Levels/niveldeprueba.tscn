@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="5_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
+[ext_resource type="PackedScene" uid="uid://8u4rforfjmak" path="res://Entities/Enemies/Bosses/Rino/Rino.tscn" id="7_vjo2d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
@@ -13,14 +14,14 @@ size = Vector2(669, 20)
 [node name="Piso" type="Node2D" unique_id=1117653153]
 
 [node name="GunstarBlue2" parent="." unique_id=488555054 instance=ExtResource("1_iu2og")]
-position = Vector2(154, 297)
+position = Vector2(339, 295)
 
 [node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("3_5wnxx")]
-position = Vector2(608, 300)
+position = Vector2(789, 212)
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("3_qewk2")]
 z_index = -1
-position = Vector2(506, 313)
+position = Vector2(876, 395)
 
 [node name="Piso" type="StaticBody2D" parent="." unique_id=274467790]
 collision_mask = 0
@@ -44,3 +45,7 @@ position = Vector2(493, 85)
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("5_4ufvc")]
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("6_a8wek")]
+
+[node name="Enemigo de prueba2" parent="." unique_id=1686137679 instance=ExtResource("7_vjo2d")]
+position = Vector2(66, 266)
+scale = Vector2(2, 2)

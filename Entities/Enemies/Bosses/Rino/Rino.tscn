@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://8u4rforfjmak"]
+
+[ext_resource type="Script" uid="uid://8k5xvhxd6ur3" path="res://Entities/Enemies/Bosses/Rino/rino.gd" id="1_d7dxe"]
+[ext_resource type="Texture2D" uid="uid://45i73sf6y7oh" path="res://Entities/Enemies/Bosses/Rino/idle.png" id="1_wy8xv"]
+[ext_resource type="Texture2D" uid="uid://dvbn1jpmftpv" path="res://Entities/Enemies/Bosses/Rino/moving.png" id="2_d7dxe"]
+[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_axayp"]
+[ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_nxwnh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ktsk"]
+atlas = ExtResource("1_wy8xv")
+region = Rect2(0, 0, 175, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2q6sd"]
+atlas = ExtResource("1_wy8xv")
+region = Rect2(183, 0, 129, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44akr"]
+atlas = ExtResource("1_wy8xv")
+region = Rect2(366, 0, 111, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t06n3"]
+atlas = ExtResource("1_wy8xv")
+region = Rect2(541, 0, 110, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f47r"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(60, 0, 120, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6c8o"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(198, 0, 117, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvv06"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(344, 0, 111, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdrkg"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(475, 0, 108, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7aws"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(615, 0, 108, 83)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urc5o"]
+atlas = ExtResource("2_d7dxe")
+region = Rect2(741, 0, 108, 83)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ufvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ktsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2q6sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44akr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t06n3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f47r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6c8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvv06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7aws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urc5o")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fc5l"]
+size = Vector2(77, 59)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bww6w"]
+radius = 39.56008
+
+[node name="Rino" type="CharacterBody2D" unique_id=1736553888 groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_d7dxe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=117444472]
+position = Vector2(3.8146973e-06, 0)
+scale = Vector2(0.711506, 0.711506)
+sprite_frames = SubResource("SpriteFrames_4ufvc")
+animation = &"Idle"
+frame_progress = 0.18612988
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721000768]
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_5fc5l")
+
+[node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_axayp")]
+collision_layer = 4
+collision_mask = 2
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
+position = Vector2(-1, 7)
+shape = SubResource("CircleShape2D_bww6w")
+debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
+
+[node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_nxwnh")]
+vida_maxima = 9999
+
+[editable path="HurtboxComponent"]
