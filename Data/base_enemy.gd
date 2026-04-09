@@ -31,19 +31,19 @@ func _on_death():
 	generar_drop()
 	queue_free()
 	
-func generar_drop() -> void:
+func generar_drop(es_vip: bool = false) -> void:
 	if loot_scene == null:
 		return
 		
 	# --- LÍMITE DE DROPS ---
-	# Preguntamos cuántos ítems existen actualmente en todo el nivel
 	var items_activos = get_tree().get_nodes_in_group("LootItems")
 	
-	# Si ya hay 1 (o más), cortamos la ejecución y el enemigo no suelta nada
-	if items_activos.size() >= 1:
+	# LA CLAVE: Si NO es vip y ya hay ítems, cortamos. 
+	# (Si ES vip, "not es_vip" da falso, ignora este if y sigue de largo)
+	if not es_vip and items_activos.size() >= 1:
 		return
 		
-	# Si pasamos el filtro (size es 0), recién ahí tiramos los dados
+	# Si pasamos el filtro (o si somos VIP), tiramos los dados
 	var roll = randf_range(0.0, 100.0)
 	
 	if roll <= drop_chance:

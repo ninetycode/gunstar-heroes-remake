@@ -69,6 +69,10 @@ func _on_death():
 		
 	GameEvents.boss_died.emit()
 	
+	# --- GENERACIÓN DE LOOT ---
+	# Llamamos a la función que heredó del BaseEnemy
+	generar_drop(true)
+	
 	if state_machine:
 		state_machine.transition_to("DeathState")
 

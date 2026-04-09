@@ -12,6 +12,7 @@ var start_y: float = 0.0
 
 func _ready() -> void:
 	add_to_group("LootItems")
+	
 	if item_texture:
 		$Sprite2D.texture = item_texture
 		
@@ -19,6 +20,12 @@ func _ready() -> void:
 	start_y = position.y
 		
 	body_entered.connect(_on_body_entered)
+	
+	# --- AUTODESTRUCCIÓN FUERA DE PANTALLA ---
+	# Buscamos el notificador. Si existe, conectamos su señal "screen_exited" 
+	# directamente a la función de borrado (queue_free) del propio ítem.
+	if has_node("VisibleOnScreenNotifier2D"):
+		$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
 func _process(delta: float) -> void:
 	# --- ANIMACIÓN DE FLOTE MATEMÁTICA ---
@@ -35,8 +42,6 @@ func _on_body_entered(body: Node2D) -> void:
 			player_stats.curar(heal_amount)
 			
 			# --- EFECTO DE SONIDO ---
-			# Llamamos a tu AudioManager global justo antes de destruirnos.
-			# (Asegurate de cambiar "heal_sound" por el nombre real de tu pista en el AudioManager)
 			AudioManager.play_sfx("curacion", -1.0)
 			
 			# Nos destruimos

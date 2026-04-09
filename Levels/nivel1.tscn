@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
+[ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="9_7q4wo"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="10_taqlu"]
@@ -5239,7 +5240,11 @@ size = Vector2(32, 487)
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
+
 position = Vector2(-1162, 273)
+
+position = Vector2(-1185, 247)
+df287ed92393e58b5625ee0e9ca46bc3f6cd6a42
 collision_mask = 17
 platform_wall_layers = 1
 speed = 200.0
@@ -5302,7 +5307,9 @@ script = ExtResource("6_wfebu")
 [node name="Enemies" type="Node2D" parent="." unique_id=1679779527]
 
 [node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
-position = Vector2(1943, 344)
+position = Vector2(1946, 344)
+drop_chance = 100.0
+loot_scene = ExtResource("9_7q4wo")
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("10_7j7t0")]
 
@@ -5310,10 +5317,10 @@ position = Vector2(1943, 344)
 
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("10_taqlu")]
 position = Vector2(482, 0)
-arena_music = "nivel_1_zone_1"
+arena_music = "nivel_1_zona1"
 
 [node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
-position = Vector2(-340, 0)
+position = Vector2(-450, -6)
 
 [node name="CollisionShape2D" parent="AreaManager/Zona Inicio" index="0" unique_id=1165107301]
 position = Vector2(-1127, 185)
@@ -5322,7 +5329,7 @@ position = Vector2(-1127, 185)
 position = Vector2(389, 9)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
-max_concurrent_enemies = 50
+max_concurrent_enemies = 8
 enemy_container = NodePath("../../Enemies")
 
 [node name="CinematicUI" parent="." unique_id=167348668 instance=ExtResource("12_7q4wo")]
