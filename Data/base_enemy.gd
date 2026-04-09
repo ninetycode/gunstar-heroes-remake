@@ -50,3 +50,14 @@ func generar_drop(es_vip: bool = false) -> void:
 		var item = loot_scene.instantiate()
 		item.global_position = self.global_position
 		get_tree().current_scene.call_deferred("add_child", item)
+		
+func obtener_punto_apuntado() -> Vector2:
+	# Buscamos si el enemigo tiene un HurtboxComponent
+	var hurtbox = get_node_or_null("HurtboxComponent")
+	
+	if hurtbox:
+		# Si lo tiene, devolvemos las coordenadas de esa caja de daño (la cabeza de tu jefe)
+		return hurtbox.global_position
+		
+	# Si por algún motivo no tiene, devolvemos la posición normal como plan B
+	return global_position

@@ -48,7 +48,14 @@ func _physics_process(delta):
 	if tipo_arma == WeaponResource.WeaponType.HOMING:
 		actualizar_target_homing()
 		if is_instance_valid(target):
-			var desired_dir = (target.global_position - global_position).normalized()
+			
+			# --- NUEVA LÓGICA DE APUNTADO ---
+			var punto_objetivo = target.global_position
+			# Le preguntamos al target si tiene nuestra función AAA
+			if target.has_method("obtener_punto_apuntado"):
+				punto_objetivo = target.obtener_punto_apuntado()
+				
+			var desired_dir = (punto_objetivo - global_position).normalized()
 			# El lerp hace que la bala doble suavemente hacia el enemigo
 			direction = direction.lerp(desired_dir, turn_speed * delta).normalized()
 			rotation = direction.angle()
@@ -86,7 +93,6 @@ func actualizar_target_homing():
 		target = obtener_enemigo_visible_cercano()
 
 func obtener_enemigo_visible_cercano() -> Node2D:
-	# Asegurate de que este sea el nombre exacto de tu grupo de enemigos
 	var enemigos = get_tree().get_nodes_in_group("Enemies") 
 	var objetivo_valido = null
 	var distancia_minima = INF
@@ -95,24 +101,25 @@ func obtener_enemigo_visible_cercano() -> Node2D:
 	if not cam:
 		return null
 		
-	# 1. Calculamos el rectángulo exacto que está viendo el jugador
 	var screen_size = get_viewport_rect().size / cam.zoom
 	var pos_esquina_superior_izq = cam.get_screen_center_position() - (screen_size / 2)
 	var rectangulo_camara = Rect2(pos_esquina_superior_izq, screen_size)
 
-	# 2. Filtramos la lista de enemigos
 	for enemigo in enemigos:
-		# Filtro de seguridad (no apuntar a muertos)
 		if "esta_muerto" in enemigo and enemigo.esta_muerto:
 			continue
 			
-		# EL FILTRO MÁGICO: Si la posición global del enemigo no está 
-		# adentro del rectángulo de la cámara, pasamos al siguiente
-		if not rectangulo_camara.has_point(enemigo.global_position):
+		# Obtenemos el punto real al que queremos apuntar (el Hurtbox)
+		var punto_real = enemigo.global_position
+		if enemigo.has_method("obtener_punto_apuntado"):
+			punto_real = enemigo.obtener_punto_apuntado()
+			
+		# Chequeamos si ESE PUNTO (y no los pies) está en la cámara
+		if not rectangulo_camara.has_point(punto_real):
 			continue
 			
-		# 3. Si pasó el filtro, nos fijamos si es el más cercano
-		var dist = global_position.distance_squared_to(enemigo.global_position)
+		# Calculamos la distancia hacia el Hurtbox
+		var dist = global_position.distance_squared_to(punto_real)
 		if dist < distancia_minima:
 			distancia_minima = dist
 			objetivo_valido = enemigo

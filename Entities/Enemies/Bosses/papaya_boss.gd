@@ -89,3 +89,12 @@ func ataque_patron_lluvia_zigzag():
 		var recurso_temp = arma_espora.duplicate()
 		recurso_temp.velocidad_bala = arma_espora.velocidad_bala * randf_range(0.7, 1.3)
 		BulletPool.get_bullet(spawn_pos, dir, recurso_temp, true)
+		
+func obtener_punto_apuntado() -> Vector2:
+	# En vez de devolver el Area2D, devolvemos la posición global 
+	# exacta de la caja de colisión (CollisionShape2D) que está en la cabeza.
+	if hurtbox_col:
+		return hurtbox_col.global_position
+		
+	# Plan B por si acaso
+	return global_position
