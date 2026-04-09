@@ -9,7 +9,8 @@ extends Node2D
 func _ready() -> void:
 	# Llamamos al AudioManager para que empiece a sonar el tema del nivel
 	# El nombre "nivel_1" tiene que ser igual al que pusiste en el diccionario del AudioManager
-	AudioManager.play_music("nivel_1", -5.0)
+	#AudioManager.play_music("nivel_1", -5.0)
+	pass
 
 func _on_pyramid_trigger_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") or body.name == "GunstarBlue":

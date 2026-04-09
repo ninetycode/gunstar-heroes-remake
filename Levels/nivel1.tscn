@@ -5311,10 +5311,10 @@ loot_scene = ExtResource("9_7q4wo")
 
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("10_taqlu")]
 position = Vector2(482, 0)
-arena_music = "nivel_1_zone_1"
+arena_music = "nivel_1_zona1"
 
 [node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
-position = Vector2(-340, 0)
+position = Vector2(-450, -6)
 
 [node name="CollisionShape2D" parent="AreaManager/Zona Inicio" index="0" unique_id=1165107301]
 position = Vector2(-1127, 185)
