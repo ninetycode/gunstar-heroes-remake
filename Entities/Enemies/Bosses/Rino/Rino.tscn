@@ -93,7 +93,7 @@ animations = [{
 size = Vector2(77, 59)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bww6w"]
-radius = 39.56008
+radius = 50.0
 
 [node name="Rino" type="CharacterBody2D" unique_id=1736553888 groups=["Enemies"]]
 collision_layer = 4
@@ -117,7 +117,7 @@ collision_mask = 2
 stats_component = NodePath("../StatsComponent")
 
 [node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
-position = Vector2(-1, 7)
+position = Vector2(-13, 21)
 shape = SubResource("CircleShape2D_bww6w")
 debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
 

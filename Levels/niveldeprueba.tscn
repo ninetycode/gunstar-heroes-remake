@@ -47,5 +47,5 @@ position = Vector2(493, 85)
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("6_a8wek")]
 
 [node name="Enemigo de prueba2" parent="." unique_id=1686137679 instance=ExtResource("7_vjo2d")]
-position = Vector2(66, 266)
+position = Vector2(70, 265)
 scale = Vector2(2, 2)
