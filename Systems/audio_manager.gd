@@ -1,15 +1,17 @@
 extends Node
 
-# Acá registramos todos los sonidos del juego con un nombre clave.
-# En el diccionario de sonidos o uno nuevo
+var _registro_tiempos: Dictionary = {}
+var music_player: AudioStreamPlayer 
+var reproductores: Array[AudioStreamPlayer] = []
+var cantidad_reproductores: int = 12 # Cuántos sonidos pueden sonar exactamente al mismo tiempo
+var indice_actual: int = 0
+
 var musicas: Dictionary = {
 	"nivel_1_zone_2": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3"),
 	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
 	"nivel_1_zona1": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3")
 }
  
-var music_player: AudioStreamPlayer # El reproductor exclusivo de música
-
 var sonidos: Dictionary = {
 	"jump": preload("res://Assets/Audio/SFX/action_jump.mp3"),
 	"change_weapon": preload("res://Assets/Audio/SFX/SCIMisc_Throw_Grenade_02.wav"),
@@ -19,16 +21,13 @@ var sonidos: Dictionary = {
 	"disparo_force" : preload("res://Assets/Audio/SFX/Earth_Shooting_NoReverb_02.wav"),
 	"soldier_death1": preload("res://Assets/Audio/SFX/metal-slug-fire-scream.mp3"),
 	"soldier_death2" : preload("res://Assets/Audio/SFX/metal-slug-scream.wav"),
-	"curacion" : preload("res://Assets/Audio/SFX/Positive_Pop_06.wav")
+	"curacion" : preload("res://Assets/Audio/SFX/Positive_Pop_06.wav"),
+	"laser_fly_enemy" : preload("res://Assets/Audio/SFX/LASRGun_Laser_Gun_Single_Shot_04.wav")
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	#"hit": preload("res://Assets/Audio/SFX/hit.wav")
 	}
 
-# Pool de reproductores (nuestra "orquesta")
-var reproductores: Array[AudioStreamPlayer] = []
-var cantidad_reproductores: int = 12 # Cuántos sonidos pueden sonar exactamente al mismo tiempo
-var indice_actual: int = 0
 
 func _ready():
 	# 1. Creamos el pool de SFX (Los 12 canales)
@@ -46,19 +45,27 @@ func _ready():
 # Función universal que cualquier script puede llamar
 func play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0):
 	if not sonidos.has(nombre_sonido):
-		print("ERROR: El sonido '", nombre_sonido, "' no existe en el AudioManager.")
+		print("ERROR: El sonido '", nombre_sonido, "' no existe.")
 		return
 		
-	# Agarramos el reproductor que toca en la lista
-	var reproductor = reproductores[indice_actual]
+	# --- ESCUDO ANTI-SATURACIÓN (THROTTLING) ---
+	var ahora = Time.get_ticks_msec()
 	
-	# Le pasamos los datos y le damos play
+	if _registro_tiempos.has(nombre_sonido):
+		# Si pasaron menos de 50 milisegundos desde que sonó ESTE mismo sonido, lo ignoramos
+		if ahora - _registro_tiempos[nombre_sonido] < 50:
+			return 
+			
+	# Actualizamos el registro con el tiempo actual
+	_registro_tiempos[nombre_sonido] = ahora
+	
+	# ... (El resto de tu código queda igual) ...
+	var reproductor = reproductores[indice_actual]
 	reproductor.stream = sonidos[nombre_sonido]
 	reproductor.volume_db = volumen_db
 	reproductor.pitch_scale = pitch
 	reproductor.play()
 	
-	# Avanzamos al siguiente. Si llegamos al 12, volvemos al 0.
 	indice_actual = (indice_actual + 1) % cantidad_reproductores
 	
 # --- NUEVA FUNCIÓN PARA CORTAR SONIDOS ---

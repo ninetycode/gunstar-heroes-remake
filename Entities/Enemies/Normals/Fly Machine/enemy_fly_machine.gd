@@ -13,6 +13,8 @@ var can_shoot: bool = false
 func _ready() -> void:
 	super() # Esto ejecuta el _ready de BaseEnemy (busca al player y conecta señales)
 	add_to_group("enemigos")
+	if shoot_timer:
+		shoot_timer.wait_time += randf_range(-0.5, 0.5)
 
 # SOBREESCRIBIMOS la función de daño para que use la StateMachine
 func _on_danio_recibido(_cantidad: int):

@@ -12,6 +12,7 @@ func enter(_msg := {}) -> void:
 	# DISPARO ÚNICO
 	if owner.has_method("disparar_a_jugador"):
 		owner.disparar_a_jugador()
+		AudioManager.play_sfx("laser_fly_enemy", -3.5, 2.0)
 	
 	# Esperamos a que termine la animación o un breve delay
 	await get_tree().create_timer(0.3).timeout
