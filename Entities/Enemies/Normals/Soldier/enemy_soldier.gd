@@ -35,4 +35,5 @@ func _on_death():
 		if shape: shape.set_deferred("disabled", true)
 	
 	if state_machine:
+		generar_drop()
 		state_machine.transition_to("Death")
