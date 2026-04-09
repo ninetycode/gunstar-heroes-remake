@@ -41,21 +41,10 @@ func _on_final_piramide_trigger_entered(body: Node2D) -> void:
 
 func finalizar_momento_epico() -> void:
 	var camara_activa = get_viewport().get_camera_2d()
-	
 	if camara_activa:
-		# 1. Le decimos que deje de seguir en vertical
 		if camara_activa.has_method("desactivar_diagonal"):
 			camara_activa.desactivar_diagonal()
 		
-		# 2. Tween para volver a la normalidad suavemente
 		var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-		
-		# Volvemos el zoom a 1.0 (o el valor que tengas por defecto)
 		tween.tween_property(camara_activa, "zoom", Vector2(1.0, 1.0), 2.0)
-		
-		# Volvemos el offset a 0
-		tween.tween_property(camara_activa, "offset", Vector2(0, 0), 2.0)
-		
-		# Si querés que el HUD vuelva a aparecer si lo habías ocultado:
-		var hud = find_child("player_hud", true, false)
-		if hud: hud.show()
+		tween.tween_property(camara_activa, "offset", Vector2(0, -199), 2.0) # Vuelve al centro

@@ -5237,7 +5237,7 @@ size = Vector2(32, 487)
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(-1164, 277)
+position = Vector2(3192, 175)
 platform_wall_layers = 1
 speed = 200.0
 
