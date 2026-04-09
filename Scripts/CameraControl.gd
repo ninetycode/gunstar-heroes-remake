@@ -2,33 +2,31 @@ extends Camera2D
 
 var player 
 var bloqueada = false
-var seguimiento_vertical = false # Nuestro nuevo modo pirámide
+var seguimiento_vertical = false 
+
+# Ajustá este valor en el Inspector hasta que lo gris desaparezca.
+# Es la coordenada Y "máxima" que la cámara puede mostrar.
+@export var limite_suelo_y: int = 600 
 
 func _ready():
 	player = get_tree().current_scene.find_child("GunstarBlue", true, false)
+	# Inicialmente, ponemos el límite para que no se vea el fondo gris desde el segundo 1
+	limit_bottom = limite_suelo_y
 
 func _process(_delta):
 	if player == null or bloqueada: 
 		return
 	
-	# 1. Movimiento Horizontal (Siempre activo hacia la derecha)
+	# 1. Seguimiento Horizontal
 	if player.global_position.x > global_position.x:
 		global_position.x = player.global_position.x
 		
-	# 2. Movimiento Vertical (Solo se activa en la pirámide)
+	# 2. Seguimiento Vertical (Diagonal)
 	if seguimiento_vertical:
-		# Hacemos que la cámara iguale la altura de Blue.
-		# Como tu nodo Camera2D tiene "Position Smoothing" activado, 
-		# este movimiento hacia arriba se va a ver súper fluido.
+		# Al seguir a Blue en Y, limit_bottom impedirá automáticamente 
+		# que la cámara baje de la cuenta.
 		global_position.y = player.global_position.y
 
-func bloquear_camara():
-	bloqueada = true
-
-func desbloquear_camara():
-	bloqueada = false
-
-# --- NUEVAS FUNCIONES ---
 func activar_diagonal():
 	seguimiento_vertical = true
 
