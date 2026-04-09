@@ -94,11 +94,6 @@ region = Rect2(161, 3, 49, 46)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0h11n"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"Fly",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r7gy5")
@@ -204,7 +199,7 @@ loot_scene = ExtResource("2_5104v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)
 sprite_frames = SubResource("SpriteFrames_0h11n")
-animation = &"Fly"
+animation = &"idle"
 offset = Vector2(0, 10.54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=518359292]

@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="10_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="10_taqlu"]
 [ext_resource type="PackedScene" uid="uid://84tmcvdkfogl" path="res://UI/cinematic_ui.tscn" id="12_7q4wo"]
+[ext_resource type="Script" uid="uid://ble1u73ytmcme" path="res://Levels/slide_path.gd" id="13_vq6oh"]
+[ext_resource type="Texture2D" uid="uid://buy6mhk100ed5" path="res://Assets/Sprite Sheets/Niveles/Rampa.png" id="14_175x6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5237,7 +5239,7 @@ size = Vector2(32, 487)
 script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
-position = Vector2(3192, 175)
+position = Vector2(-1162, 273)
 collision_mask = 17
 platform_wall_layers = 1
 speed = 200.0
@@ -5336,8 +5338,25 @@ shape = SubResource("RectangleShape2D_vq6oh")
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinalPyramidTrigger" unique_id=389303355]
-position = Vector2(4253, -790)
+position = Vector2(4252, -794)
 shape = SubResource("RectangleShape2D_vq6oh")
+
+[node name="SlidePath" type="Node2D" parent="." unique_id=2086191115]
+script = ExtResource("13_vq6oh")
+
+[node name="Background2" type="Parallax2D" parent="SlidePath" unique_id=781301902]
+texture_filter = 1
+repeat_size = Vector2(603, 414)
+limit_begin = Vector2(0, 0)
+
+[node name="Rampa" type="Sprite2D" parent="SlidePath/Background2" unique_id=520808333]
+z_index = -2
+position = Vector2(5336, 555)
+texture = ExtResource("14_175x6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SlidePath" unique_id=550196296]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SlidePath/StaticBody2D" unique_id=1354357236]
 
 [connection signal="body_entered" from="PyramidTrigger" to="." method="_on_pyramid_trigger_entered"]
 [connection signal="body_entered" from="FinalPyramidTrigger" to="." method="_on_final_piramide_trigger_entered"]
