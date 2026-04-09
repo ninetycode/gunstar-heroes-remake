@@ -5238,6 +5238,7 @@ script = ExtResource("1_lf5fg")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("1_nimo5")]
 position = Vector2(3192, 175)
+collision_mask = 17
 platform_wall_layers = 1
 speed = 200.0
 
@@ -5335,7 +5336,7 @@ shape = SubResource("RectangleShape2D_vq6oh")
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinalPyramidTrigger" unique_id=389303355]
-position = Vector2(4252, -775)
+position = Vector2(4253, -790)
 shape = SubResource("RectangleShape2D_vq6oh")
 
 [connection signal="body_entered" from="PyramidTrigger" to="." method="_on_pyramid_trigger_entered"]
