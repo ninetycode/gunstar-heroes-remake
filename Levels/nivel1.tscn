@@ -5338,7 +5338,7 @@ shape = SubResource("RectangleShape2D_vq6oh")
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinalPyramidTrigger" unique_id=389303355]
-position = Vector2(4252, -794)
+position = Vector2(4253, -806)
 shape = SubResource("RectangleShape2D_vq6oh")
 
 [connection signal="body_entered" from="PyramidTrigger" to="." method="_on_pyramid_trigger_entered"]

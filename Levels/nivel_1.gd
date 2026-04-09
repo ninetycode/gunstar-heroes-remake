@@ -48,4 +48,4 @@ func finalizar_momento_epico() -> void:
 		
 		var tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 		tween.tween_property(camara_activa, "zoom", Vector2(1.0, 1.0), 2.0)
-		tween.tween_property(camara_activa, "offset", Vector2(0, -199), 2.0) # Vuelve al centro
+		tween.tween_property(camara_activa, "offset", Vector2(0, -200), 2.0) # Vuelve al centro

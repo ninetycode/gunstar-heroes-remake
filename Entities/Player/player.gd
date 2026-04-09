@@ -28,10 +28,10 @@ func _physics_process(delta):
 # Posiciones del muzzle por dirección (ajustá los valores a tu sprite)
 # Posiciones base asumiendo ÚNICAMENTE que el personaje mira a la DERECHA
 const MUZZLE_POSITIONS = {
-	"recto":            Vector2(26.0, -26.0),
+	"recto":            Vector2(22.0, -20.0),
 	"arriba":           Vector2(0.0,  -45.0),
 	"abajo":            Vector2(0.0,    5.0),
-	"diagonal_arriba":  Vector2(22.0, -40.0),
+	"diagonal_arriba":  Vector2(20.0, -45.0),
 	"agachado":         Vector2(0.0, 0.0) # <-- Ajustá estos números en base a tu sprite agachado
 }
 
