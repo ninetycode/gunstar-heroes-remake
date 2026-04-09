@@ -3,7 +3,7 @@ extends CharacterBody2D
 const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @onready var stats: Node = $StatsComponent
 @export var speed: float = 300.0
-@export var jump_velocity: float = -500.0
+@export var jump_velocity: float = -400.0
 @export var gravity: float = 1200.0
 
 @onready var _animated_sprite = $AnimatedSprite2D
