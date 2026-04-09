@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 [ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
+[ext_resource type="Script" uid="uid://bnoyoi7dw8mss" path="res://Entities/Player/player_crouch.gd" id="21_u86q5"]
 [ext_resource type="Resource" uid="uid://c57ym65etteof" path="res://Resources/bullet.tres" id="23_avsg8"]
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="23_og23y"]
 [ext_resource type="Resource" uid="uid://gh5cs7jtg3jc" path="res://Resources/green_bullet.tres" id="24_dv6dp"]
@@ -292,7 +293,7 @@ size = Vector2(19, 29)
 [node name="GunstarBlue" type="CharacterBody2D" unique_id=488555054 groups=["Player"]]
 z_index = 4
 collision_layer = 8
-collision_mask = 17
+collision_mask = 49
 platform_floor_layers = 4278190081
 script = ExtResource("1_owvpp")
 
@@ -300,8 +301,7 @@ script = ExtResource("1_owvpp")
 position = Vector2(1.7711871, 15.600692)
 scale = Vector2(0.84888, 0.84888)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Disparo diagonal abajo"
-frame_progress = 0.30596533
+animation = &"Crouch"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
@@ -337,6 +337,9 @@ script = ExtResource("19_v7p16")
 
 [node name="Hanging" type="Node" parent="StateMachine" unique_id=1062696817]
 script = ExtResource("21_avsg8")
+
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=1857395241]
+script = ExtResource("21_u86q5")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 collision_layer = 8

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.gd" id="1_1i8gr"]
 [ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="1_anyna"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
+[ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="2_5104v"]
 [ext_resource type="Texture2D" uid="uid://ph6tovwnq16s" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier atack.png" id="2_mnp20"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
 [ext_resource type="Texture2D" uid="uid://bc62khvisdlnk" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier mueltto sprite sheet.png" id="3_pvaoj"]
@@ -197,6 +198,8 @@ platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
 attack_range = 25.0
+drop_chance = 5.0
+loot_scene = ExtResource("2_5104v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)

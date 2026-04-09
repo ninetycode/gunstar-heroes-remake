@@ -21,6 +21,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_death():
+	super()
 	if esta_muerto: return
 	esta_muerto = true
 	enemy_died.emit(self)
