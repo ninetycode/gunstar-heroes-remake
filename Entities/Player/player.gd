@@ -99,14 +99,28 @@ func _on_stats_component_salud_agotada() -> void:
 
 
 func _on_danio_recibido(_cantidad: int) -> void:
-	# Hacemos que el sprite del Player se ponga blanco brillante
+	# 1. El flash blanco del impacto inicial (Esto ya lo tenías, está perfecto)
 	_animated_sprite.modulate = Color(10, 10, 10)
-	
-	# Esperamos una fracción de segundo
 	await get_tree().create_timer(0.05).timeout
-	
-	# Lo devolvemos a su color normal
 	_animated_sprite.modulate = Color(1, 1, 1)
+	
+	# 2. El Parpadeo de Invulnerabilidad (Feedback visual)
+	if stats.tiempo_invulnerabilidad > 0.0:
+		# Usamos un Tween para animar el canal Alfa (transparencia) del modulate
+		var tween = create_tween()
+		
+		# Calculamos cuántas veces tiene que parpadear en ese tiempo
+		# (0.2 segundos por cada ciclo completo de ida y vuelta)
+		var cantidad_parpadeos = int(stats.tiempo_invulnerabilidad / 0.2)
+		
+		for i in range(cantidad_parpadeos):
+			# Lo hacemos semitransparente rápido
+			tween.tween_property(_animated_sprite, "modulate:a", 0.3, 0.1)
+			# Lo volvemos a hacer opaco
+			tween.tween_property(_animated_sprite, "modulate:a", 1.0, 0.1)
+			
+		# Por seguridad, al final del Tween nos aseguramos que quede totalmente visible
+		tween.tween_callback(func(): _animated_sprite.modulate.a = 1.0)
 	
 func limitar_a_camara():
 	var cam = get_viewport().get_camera_2d()

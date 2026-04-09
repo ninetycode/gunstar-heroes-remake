@@ -5229,7 +5229,7 @@ physics_layer_0/collision_mask = 14
 sources/0 = SubResource("TileSetAtlasSource_key22")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unhkn"]
-size = Vector2(22, 237)
+size = Vector2(22, 726)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq6oh"]
 size = Vector2(32, 487)
@@ -5288,8 +5288,9 @@ jefe_papaya = NodePath("../Enemies/PapayaBoss")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
 light_mask = 9
 visibility_layer = 8
-position = Vector2(6, -31)
+position = Vector2(6, -123)
 shape = SubResource("RectangleShape2D_unhkn")
+debug_color = Color(0.9764706, 0, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=224196049]
 position = Vector2(-900, 181)
