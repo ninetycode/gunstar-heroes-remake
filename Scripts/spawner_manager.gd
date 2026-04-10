@@ -10,6 +10,11 @@ signal all_waves_completed
 @export var max_concurrent_enemies: int = 5
 @export var enemy_container: Node2D
 
+@export_category("Dirección de Spawn")
+## Si ambas están marcadas, salen aleatoriamente de cualquier lado.
+@export var spawn_lado_izquierdo: bool = true
+@export var spawn_lado_derecho: bool = true
+
 var active_enemies: int = 0
 var is_spawning: bool = false
 
@@ -77,11 +82,27 @@ func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 		var screen_size = get_viewport_rect().size / cam.zoom
 		var cam_pos = cam.get_screen_center_position()
 		
-		var is_left = randi() % 2 == 0
+		# --- LÓGICA DE DIRECCIÓN ---
+		var is_left = true
+		
+		if spawn_lado_izquierdo and spawn_lado_derecho:
+			# Si ambos están marcados, tiramos la moneda (50/50)
+			is_left = randi() % 2 == 0
+		elif spawn_lado_izquierdo:
+			is_left = true
+		elif spawn_lado_derecho:
+			is_left = false
+		else:
+			# Por seguridad, si te olvidás de marcar ambos en el inspector, 
+			# forzamos a que salgan aleatorios para que el juego no se rompa.
+			is_left = randi() % 2 == 0
+			
 		var offset_x = (screen_size.x / 2) + 60 
 		
+		# Aplicamos la posición en base a la decisión anterior
 		spawn_pos.x = cam_pos.x - offset_x if is_left else cam_pos.x + offset_x
 		
+		# Lógica de altura (tu booleano is_flying_enemy en acción)
 		if config.is_flying_enemy:
 			var techo = cam_pos.y - screen_size.y / 2
 			spawn_pos.y = techo + config.spawn_height_offset
@@ -93,14 +114,7 @@ func _calculate_spawn_position(config: WaveConfig) -> Vector2:
 func _on_enemy_died(_enemy_node: Node) -> void:
 	active_enemies -= 1
 	
-	
 # Función pública para que el ArenaManager corte el chorro de enemigos
 func stop_spawning() -> void:
 	is_spawning = false
 	all_waves_completed.emit()
-	
-	# Opcional: Si querés que al cruzar la meta los enemigos vivos exploten o desaparezcan
-	# podés descomentar las siguientes líneas:
-	# for enemy in enemy_container.get_children():
-	# 	if enemy is BaseEnemy and enemy.has_method("_on_death"):
-	# 		enemy._on_death()

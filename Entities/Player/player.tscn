@@ -296,6 +296,7 @@ collision_layer = 8
 collision_mask = 49
 platform_floor_layers = 4278190081
 script = ExtResource("1_owvpp")
+jump_velocity = -450.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
 position = Vector2(1.7711871, 15.600692)

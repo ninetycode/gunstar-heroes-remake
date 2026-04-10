@@ -87,8 +87,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0pkl"]
 
 [node name="enemy_fly_machine" type="CharacterBody2D" unique_id=1995836615 groups=["Enemies"]]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 4
+collision_mask = 6
 script = ExtResource("1_8uimj")
 altura_minima_suelo = 500.0
 mi_arma_resource = ExtResource("2_3q20n")
