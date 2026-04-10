@@ -38,7 +38,7 @@ func physics_update(delta: float) -> void:
 
 	enemy.velocity = enemy.velocity.lerp(dir * enemy.velocidad + separation, delta * 2.0)
 	
-	enemy.limitar_a_camara() 
+	enemy.limitar_a_camara(delta)
 	enemy.move_and_slide()
 	
 	enemy.sprite.flip_h = (enemy.player.global_position.x - enemy.global_position.x) > 0

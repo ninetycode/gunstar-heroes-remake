@@ -173,13 +173,24 @@ func activar(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bool 
 		modulate = Color.WHITE
 
 	# 2. Si es el lanzallamas, ADEMÁS le prendemos la búsqueda de paredes (Capa 1)
+	# 2. LÓGICA DIRECCIONAL DEL LANZALLAMAS
 	if tipo_arma == WeaponResource.WeaponType.FIRE:
-		$HitboxComponent.set_collision_mask_value(1, true)
+		# dir.y >= 0 significa que dispara para abajo o a los costados horizontales
+		if dir.y >= 0:
+			# Prendemos la búsqueda de paredes (Capa 1)
+			$HitboxComponent.set_collision_mask_value(1, true)
+		else:
+			# Si dispara hacia arriba (dir.y < 0), apagamos la colisión con la pared
+			# para que el fuego atraviese el techo y no se amontone.
+			$HitboxComponent.set_collision_mask_value(1, false)
 
+	# --- ESTAS 4 LÍNEAS SE TE HABÍAN BORRADO ---
 	$HitboxComponent.danio = danio_actual
 	visible = true
 	set_physics_process(true)
 	hitbox_colision.set_deferred("disabled", false)
+	# --------------------------------------------
+
 
 func desactivar():
 	if not visible: return

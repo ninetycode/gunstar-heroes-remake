@@ -37,20 +37,25 @@ func calcular_separacion() -> Vector2:
 			fuerza += dif.normalized() * (fuerza_separacion / max(dif.length(), 1.0))
 	return fuerza
 
-func limitar_a_camara():
+# Le agregamos 'delta' para hacer el movimiento fluido
+func limitar_a_camara(delta: float):
 	var cam = get_viewport().get_camera_2d()
 	if cam:
 		var screen_size = get_viewport_rect().size / cam.zoom
 		var cam_pos = cam.get_screen_center_position()
 		
-		# Límites laterales
-		global_position.x = clamp(global_position.x, cam_pos.x - screen_size.x/2 + 30, cam_pos.x + screen_size.x/2 - 30)
-		
-		# Límite vertical: No dejar que baje del 70% de la altura de la cámara
+		var limite_izq = cam_pos.x - screen_size.x/2 + 30
+		var limite_der = cam_pos.x + screen_size.x/2 - 30
 		var techo = cam_pos.y - screen_size.y/2 + 50
-		var suelo_maximo = cam_pos.y + (screen_size.y/2) * 0.4 # Esto lo mantiene en la mitad superior
+		var suelo_maximo = cam_pos.y + (screen_size.y/2) * 0.4 
 		
-		global_position.y = clamp(global_position.y, techo, suelo_maximo)
+		# Punto objetivo
+		var target_x = clamp(global_position.x, limite_izq, limite_der)
+		var target_y = clamp(global_position.y, techo, suelo_maximo)
+		
+		# Movimiento suave hacia el límite en vez de teletransporte (Snap)
+		global_position.x = move_toward(global_position.x, target_x, velocidad * 3.0 * delta)
+		global_position.y = move_toward(global_position.y, target_y, velocidad * 3.0 * delta)
 
 func disparar_a_jugador():
 	if mi_arma_resource == null: return # Seguridad
