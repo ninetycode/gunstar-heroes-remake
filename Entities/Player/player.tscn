@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 [ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
 [ext_resource type="Script" uid="uid://bnoyoi7dw8mss" path="res://Entities/Player/player_crouch.gd" id="21_u86q5"]
+[ext_resource type="Script" uid="uid://devxfp0hs3jn4" path="res://Entities/Player/death.gd" id="22_80ryp"]
 [ext_resource type="Resource" uid="uid://c57ym65etteof" path="res://Resources/bullet.tres" id="23_avsg8"]
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="23_og23y"]
 [ext_resource type="Resource" uid="uid://gh5cs7jtg3jc" path="res://Resources/green_bullet.tres" id="24_dv6dp"]
@@ -32,6 +33,22 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_owvpp"]
 atlas = ExtResource("2_ap3xn")
 region = Rect2(116, 0, 52, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v27kq"]
+atlas = ExtResource("7_nhbkt")
+region = Rect2(0, 752, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kx1i7"]
+atlas = ExtResource("7_nhbkt")
+region = Rect2(44, 752, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w51ui"]
+atlas = ExtResource("7_nhbkt")
+region = Rect2(88, 752, 44, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slvv8"]
+atlas = ExtResource("7_nhbkt")
+region = Rect2(132, 752, 44, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xr8lj"]
 atlas = ExtResource("3_iplt1")
@@ -153,6 +170,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v27kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kx1i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w51ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slvv8")
+}],
+"loop": false,
+"name": &"Death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -302,7 +336,9 @@ jump_velocity = -450.0
 position = Vector2(1.7711871, 15.600692)
 scale = Vector2(0.84888, 0.84888)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Crouch"
+animation = &"Death"
+frame = 3
+frame_progress = 1.0
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
@@ -342,6 +378,9 @@ script = ExtResource("21_avsg8")
 
 [node name="Crouch" type="Node" parent="StateMachine" unique_id=1857395241]
 script = ExtResource("21_u86q5")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=155676221]
+script = ExtResource("22_80ryp")
 
 [node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_3kua5")]
 collision_layer = 8

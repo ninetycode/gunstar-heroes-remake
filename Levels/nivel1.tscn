@@ -5539,7 +5539,7 @@ _bundled = {
 [sub_resource type="Resource" id="Resource_vc7mf"]
 script = ExtResource("13_175x6")
 enemy_scene = SubResource("PackedScene_it0fy")
-time_between_spawns = 7.0
+time_between_spawns = 5.0
 is_flying_enemy = true
 metadata/_custom_type_script = "uid://cnebxd8onhlsi"
 
