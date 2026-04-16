@@ -22,7 +22,8 @@ var sonidos: Dictionary = {
 	"soldier_death1": preload("res://Assets/Audio/SFX/metal-slug-fire-scream.mp3"),
 	"soldier_death2" : preload("res://Assets/Audio/SFX/metal-slug-scream.wav"),
 	"curacion" : preload("res://Assets/Audio/SFX/Positive_Pop_06.wav"),
-	"laser_fly_enemy" : preload("res://Assets/Audio/SFX/LASRGun_Laser_Gun_Single_Shot_04.wav")
+	"laser_fly_enemy" : preload("res://Assets/Audio/SFX/LASRGun_Laser_Gun_Single_Shot_04.wav"),
+	"game_over_sound" : preload("res://Assets/Audio/SFX/SciFi_Teleportation_Arrival_ShortWarpPop_Volume_1_2_2.wav")
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	#"hit": preload("res://Assets/Audio/SFX/hit.wav")
