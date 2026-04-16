@@ -5650,7 +5650,7 @@ position = Vector2(-1127, 185)
 position = Vector2(389, 9)
 
 [node name="SpawnerManager" parent="AreaManager1" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
-waves = Array[ExtResource("13_175x6")]([SubResource("Resource_vydoo"), SubResource("Resource_vc7mf"), null])
+waves = Array[ExtResource("13_175x6")]([SubResource("Resource_vydoo"), SubResource("Resource_vc7mf")])
 max_concurrent_enemies = 8
 enemy_container = NodePath("../../Enemies")
 

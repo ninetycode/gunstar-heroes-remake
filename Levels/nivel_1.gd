@@ -4,7 +4,7 @@ extends Node2D
 @onready var pyramid_trigger = $PyramidTrigger
 
 # Ajustalo acá directamente. 1.0 es normal, 1.2 es un poquito de zoom.
-@export var zoom_nivel = 1.2 
+@export var zoom_nivel: float = 1.2 
 
 func _ready() -> void:
 	# Llamamos al AudioManager para que empiece a sonar el tema del nivel
