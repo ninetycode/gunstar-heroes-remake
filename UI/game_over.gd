@@ -57,7 +57,7 @@ func _animar_aparicion() -> void:
 	
 	# Fase 1: Aparece la galaxia en 2 segundos
 	tween.tween_property(fondo_galaxia, "modulate:a", 1.0, 2.0)
-	AudioManager.play_sfx("game_over_sound")
+	AudioManager.play_sfx("game_over_sound", -1.6)
 	# Fase 2: Inmediatamente después de llegar a 1.0, aparecen los botones en 0.5 seg
 	tween.tween_property(contenedor_ui, "modulate:a", 1.0, 0.5)
 	
