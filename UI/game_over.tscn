@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cb2vm7ompgc7s"]
+
+[ext_resource type="Script" uid="uid://bvta743atsfbf" path="res://UI/game_over.gd" id="1_3y5qq"]
+[ext_resource type="Texture2D" uid="uid://bxgmk87u3afuy" path="res://Assets/IU-HUD/Gemini_Generated_Image_1dsdni.png" id="1_jawqf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jawqf"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_3y5qq"]
+font_size = 29
+
+[node name="GameOverScreen" type="CanvasLayer" unique_id=1447691403]
+layer = 101
+script = ExtResource("1_3y5qq")
+
+[node name="Galaxy" type="TextureRect" parent="." unique_id=1844497214]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_jawqf")
+expand_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=77480431]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -42.5
+offset_right = 78.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2100254407]
+layout_mode = 2
+theme_override_constants/separation = 19
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1746998869]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_jawqf")
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1663442071]
+layout_mode = 2
+text = "       ¿Rendirse?"
+label_settings = SubResource("LabelSettings_3y5qq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1639142206]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="si" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1883482941]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8784314, 0.6117647, 0.25490198, 1)
+theme_override_colors/font_focus_color = Color(0.5505728, 0.26948237, 0.7179437, 1)
+theme_override_colors/font_pressed_color = Color(0.2, 0.49411765, 0.6784314, 1)
+theme_override_font_sizes/font_size = 26
+text = "SÍ"
+
+[node name="no" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1168899058]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8784314, 0.6117647, 0.25490198, 1)
+theme_override_colors/font_focus_color = Color(0.54901963, 0.27058825, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.200275, 0.4957201, 0.6799418, 1)
+theme_override_font_sizes/font_size = 25
+text = "NO"

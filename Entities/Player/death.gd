@@ -1,5 +1,5 @@
 extends State
-
+const GAME_OVER_SCENE = preload("res://UI/game_over.tscn")
 @onready var player = owner
 
 func enter(_msg := {}) -> void:
@@ -27,15 +27,13 @@ func physics_update(_delta: float) -> void:
 	pass
 
 func _on_animation_finished():
-	# Verificamos que la animación que terminó sea la de muerte
 	if player._animated_sprite.animation == "Death":
-		
-		# Desconectamos la señal por prolijidad
 		player._animated_sprite.animation_finished.disconnect(_on_animation_finished)
 		
-		# --- ACÁ OCURRE EL VERDADERO FINAL ---
-		print("Animación de muerte terminada. Game Over.")
+		# Instanciamos la pantalla de Game Over y la pegamos en el nivel principal
+		var game_over = GAME_OVER_SCENE.instantiate()
+		player.get_tree().current_scene.add_child(game_over)
 		
-		# Podés llamar a un GameManager, emitir una señal global, o borrar el nodo.
-		# Por ahora, volvemos a poner el queue_free() acá:
+		# Ahora sí, enterramos a Blue
+		player.queue_free()
 		
