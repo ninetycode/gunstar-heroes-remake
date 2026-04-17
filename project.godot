@@ -46,6 +46,7 @@ folder_colors={
 Player=""
 Enemies=""
 Enemies_melee=""
+HUD_Group=""
 
 [input]
 

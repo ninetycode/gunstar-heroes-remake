@@ -3,6 +3,7 @@ extends CanvasLayer
 # Usamos % para acceso rápido a nodos únicos
 @onready var health_bar = %HealthBar
 @onready var weapon_icons: HBoxContainer = %WeaponIcons
+var tween_go: Tween # Para controlar el parpadeo del cartel
 var tween_retrato: Tween
 
 func _ready():
@@ -137,3 +138,36 @@ func _on_player_salud_recuperada(_cantidad: int):
 		tween_retrato.tween_property(retrato, "modulate", Color.WHITE, 0.3)
 	else:
 		print("HUD: No se encontró la imagen BluePortrait para la curación.")
+		
+		
+func mostrar_cartel_go(mostrar: bool):
+	var cartel = get_node_or_null("GoSign")
+	var sonido = get_node_or_null("GoSound")
+	
+	# Si ya había un parpadeo funcionando, lo matamos para que no se amontonen
+	if tween_go and tween_go.is_valid():
+		tween_go.kill()
+	
+	if cartel:
+		cartel.visible = mostrar
+		
+		if mostrar:
+			# Creamos el metrónomo visual
+			tween_go = create_tween().set_loops()
+			
+			# 1. Se desvanece (0.5 segundos)
+			tween_go.tween_property(cartel, "modulate:a", 0.2, 0.5)
+			
+			# 2. Aparece (0.5 segundos)
+			tween_go.tween_property(cartel, "modulate:a", 1.0, 0.5)
+			
+			# 3. ¡MOMENTO CLAVE!: Justo cuando termina de aparecer, tiramos el sonido
+			tween_go.tween_callback(func(): 
+				if sonido: 
+					sonido.play()
+			)
+		else:
+			# Si lo apagamos, lo dejamos opaco y frenamos el sonido
+			cartel.modulate.a = 1.0
+			if sonido and sonido.playing:
+				sonido.stop()

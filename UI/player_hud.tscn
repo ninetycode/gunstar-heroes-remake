@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dfpyvvh5kapq3" path="res://Assets/IU-HUD/barra-progreso.png" id="5_4gvqm"]
 [ext_resource type="Texture2D" uid="uid://bvbfarlxqciiw" path="res://Assets/IU-HUD/barra-vacia2.png" id="5_l43u3"]
 [ext_resource type="Texture2D" uid="uid://dvewobju7ra88" path="res://Assets/IU-HUD/barra-progreso-escudo2.png" id="8_o4fqs"]
+[ext_resource type="AudioStream" uid="uid://dguxi7hfxtye" path="res://Assets/Audio/SFX/Power_Up_Bar_02.wav" id="9_l43u3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o0p8"]
 atlas = ExtResource("1_pi8qp")
@@ -45,7 +46,12 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="player_hud" type="CanvasLayer" unique_id=1489847109]
+[sub_resource type="LabelSettings" id="LabelSettings_4gvqm"]
+font_size = 23
+shadow_size = 19
+shadow_color = Color(0, 0, 0, 0.8392157)
+
+[node name="player_hud" type="CanvasLayer" unique_id=1489847109 groups=["HUD_Group"]]
 script = ExtResource("1_pmtv2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=249220428]
@@ -120,3 +126,17 @@ offset_bottom = 43.0
 [node name="WeaponIcons" type="HBoxContainer" parent="BarsContainer" unique_id=863191403]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="GoSign" type="Label" parent="." unique_id=442165224]
+visible = false
+anchors_preset = -1
+anchor_left = 0.840625
+anchor_top = 0.05
+anchor_right = 0.9484375
+anchor_bottom = 0.1388889
+text = "GO -->"
+label_settings = SubResource("LabelSettings_4gvqm")
+metadata/_edit_use_anchors_ = true
+
+[node name="GoSound" type="AudioStreamPlayer" parent="." unique_id=1169344139]
+stream = ExtResource("9_l43u3")

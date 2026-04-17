@@ -59,9 +59,25 @@ func _process(delta: float) -> void:
 				_spawn_enemy(tracker["config"])
 				
 	# Si TODOS los recursos ya instanciaron su cantidad máxima y no quedan enemigos vivos
-	if all_spawns_finished and active_enemies <= 0:
-		is_spawning = false
-		all_waves_completed.emit()
+	# Si TODOS los recursos ya instanciaron su cantidad máxima
+	if all_spawns_finished:
+		if active_enemies <= 0:
+			is_spawning = false
+			all_waves_completed.emit()
+		else:
+			# --- FIX ANTI-TRABAS (Limpieza de Cobardes) ---
+			# Buscamos enemigos que estén absurdamente lejos y los eliminamos
+			var cam = get_viewport().get_camera_2d()
+			if cam:
+				# Calculamos una distancia de "pantalla y media"
+				var max_dist = (get_viewport_rect().size.x / cam.zoom.x) * 1.5 
+				for enemy in enemy_container.get_children():
+					if enemy.is_in_group("Enemies") and "is_ambush" in enemy and enemy.is_ambush:
+						# Si está vivo pero a kilómetros de distancia, lo borramos
+						if enemy.global_position.distance_to(cam.global_position) > max_dist:
+							enemy.queue_free() 
+							# Nota: Al hacer queue_free, se emite _on_enemy_died 
+							# y bajará active_enemies automáticamente.
 
 func _spawn_enemy(config: WaveConfig) -> void:
 	var enemy = config.enemy_scene.instantiate() as BaseEnemy

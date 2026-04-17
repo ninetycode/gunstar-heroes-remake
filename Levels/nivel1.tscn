@@ -5616,8 +5616,6 @@ script = ExtResource("6_wfebu")
 
 [node name="PapayaBoss" parent="Enemies" unique_id=408038176 instance=ExtResource("9_fwgol")]
 position = Vector2(1946, 344)
-drop_chance = 100.0
-loot_scene = ExtResource("9_7q4wo")
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("10_7j7t0")]
 

@@ -17,6 +17,9 @@ func _ready() -> void:
 
 	zona_inicio.body_entered.connect(_on_inicio_body_entered)
 	zona_fin.body_entered.connect(_on_fin_body_entered)
+	
+	# NUEVO: Conectamos la victoria de la arena
+	spawner.all_waves_completed.connect(_on_arena_completada)
 
 func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -33,7 +36,11 @@ func _on_fin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		zona_fin.set_deferred("monitoring", false)
 		spawner.stop_spawning()
-		
+		get_tree().call_group("HUD_Group", "mostrar_cartel_go", false)
 		# Detenemos la música al cruzar la meta con un fade_out de 2 segundos
 		#if arena_music != "":
 			#AudioManager.stop_music(2.0)
+			
+func _on_arena_completada():
+	# Usamos un grupo para no tener que buscar la ruta exacta del HUD
+	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
