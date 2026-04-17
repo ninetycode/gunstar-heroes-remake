@@ -1,110 +1,11 @@
 [gd_resource type="Resource" script_class="WaveConfig" format=3 uid="uid://ch6xylifrbowi"]
 
-[ext_resource type="Script" uid="uid://r05a1457x14c" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.gd" id="1_it0fy"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="1_fw1lf"]
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="1_ukwyv"]
-[ext_resource type="Resource" uid="uid://dsbmu1ciokmbv" path="res://Resources/Enemy_laser.tres" id="2_6qfbq"]
-[ext_resource type="Texture2D" uid="uid://ck2wrrfkcjesv" path="res://Assets/Sprite Sheets/Enemies/Fly machine/shot enemy.png" id="3_qe41f"]
-[ext_resource type="Texture2D" uid="uid://djhtj3t4gq5bf" path="res://Assets/Sprite Sheets/Enemies/Fly machine/fly enemy.png" id="4_60dxw"]
-[ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="5_pn5ty"]
-[ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="6_513sk"]
-[ext_resource type="Script" uid="uid://48y53nl431af" path="res://Entities/Enemies/Normals/Fly Machine/fly_state.gd" id="7_bjn1e"]
-[ext_resource type="Script" uid="uid://dh8dinwh6ady6" path="res://Entities/Enemies/Normals/Fly Machine/attack_state.gd" id="8_vntor"]
-[ext_resource type="Script" uid="uid://sud6csg31gnn" path="res://Entities/Enemies/Normals/Fly Machine/hit_state.gd" id="9_s6fck"]
-[ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="10_4vcf3"]
-[ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="11_k7bc3"]
-[ext_resource type="Script" uid="uid://6wy1i5if0nu4" path="res://Systems/stats_component.gd" id="12_a5kqh"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jl02l"]
-atlas = ExtResource("3_qe41f")
-region = Rect2(46, 0, 33, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0yade"]
-atlas = ExtResource("3_qe41f")
-region = Rect2(3, 0, 33, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3q20n"]
-atlas = ExtResource("3_qe41f")
-region = Rect2(88, 0, 33, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b0pkl"]
-atlas = ExtResource("4_60dxw")
-region = Rect2(42, 0, 30, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i1ram"]
-atlas = ExtResource("4_60dxw")
-region = Rect2(6, 0, 32, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_257u4"]
-atlas = ExtResource("4_60dxw")
-region = Rect2(79, 0, 30, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_au720"]
-atlas = ExtResource("5_pn5ty")
-region = Rect2(1, 0, 33, 33)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s2wv7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jl02l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0yade")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3q20n")
-}],
-"loop": true,
-"name": &"Attack",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b0pkl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i1ram")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_257u4")
-}],
-"loop": true,
-"name": &"Fly",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_au720")
-}],
-"loop": true,
-"name": &"Hit",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0yade"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_3q20n"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_b0pkl"]
-
-[sub_resource type="PackedScene" id="PackedScene_it0fy"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(12, 0, 31, 30, 2, 0, 0),
-"editable_instances": [NodePath("HurtboxComponent"), NodePath("HitboxComponent")],
-"id_paths": [],
-"names": PackedStringArray("enemy_fly_machine", "collision_layer", "collision_mask", "script", "altura_minima_suelo", "mi_arma_resource", "Enemies", "CharacterBody2D", "AnimatedSprite2D", "sprite_frames", "animation", "frame_progress", "CollisionShape2D", "shape", "debug_color", "StateMachine", "initial_state", "Node", "FlyState", "AttackState", "HitState", "HurtboxComponent", "stats_component", "HitboxComponent", "StatsComponent", "vida_maxima", "ShootTimer", "wait_time", "autostart", "Timer", "_on_shoot_timer_timeout", "timeout"),
-"node_count": 13,
-"node_ids": PackedInt32Array(1995836615, 38438922, 1021333631, 632130209, 194367423, 933860445, 1395556040, 807576902, 489208994, 597531608, 1677833624, 1394624701, 207838812),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 7, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 1, 6, 0, 0, 8, 8, -1, 3, 9, 5, 10, 6, 11, 7, 0, 0, 0, 12, 12, -1, 2, 13, 8, 14, 9, 0, 0, 0, 17, 15, -1, 2, 3, 10, 1073741840, 11, 0, 3, 0, 17, 18, -1, 1, 3, 12, 0, 3, 0, 17, 19, -1, 1, 3, 13, 0, 3, 0, 17, 20, -1, 1, 3, 14, 0, 0, 0, 2147483647, 21, 15, 3, 1, 16, 2, 0, 1073741846, 17, 0, 7, -1, 2147483647, 262156, -1, 1, 13, 18, 0, 0, 0, 2147483647, 23, 19, 2, 1, 16, 2, 20, 0, 9, -1, 2147483647, 262156, -1, 2, 13, 21, 14, 22, 0, 0, 0, 17, 24, -1, 2, 3, 23, 25, 24, 0, 0, 0, 29, 26, -1, 2, 27, 25, 28, 26, 0),
-"variants": [2, 0, ExtResource("1_it0fy"), 500.0, ExtResource("2_6qfbq"), SubResource("SpriteFrames_s2wv7"), &"Fly", 0.2872177, SubResource("CircleShape2D_0yade"), Color(0.6689844, 0.510288, 0, 0.41960785), ExtResource("6_513sk"), NodePath("HitState"), ExtResource("7_bjn1e"), ExtResource("8_vntor"), ExtResource("9_s6fck"), ExtResource("10_4vcf3"), 4, NodePath("../StatsComponent"), SubResource("CircleShape2D_3q20n"), ExtResource("11_k7bc3"), 8, SubResource("CircleShape2D_b0pkl"), Color(0.91797113, 0.21856305, 0.47122675, 0.41960785), ExtResource("12_a5kqh"), 60, 2.0, true],
-"version": 3
-}
 
 [resource]
 script = ExtResource("1_ukwyv")
-enemy_scene = SubResource("PackedScene_it0fy")
+enemy_scene = ExtResource("1_fw1lf")
 enemy_count = 50
 time_between_spawns = 7.0
 is_flying_enemy = true

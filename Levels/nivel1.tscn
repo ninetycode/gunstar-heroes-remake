@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://84tmcvdkfogl" path="res://UI/cinematic_ui.tscn" id="12_7q4wo"]
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="13_175x6"]
 [ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.gd" id="14_43i4d"]
+[ext_resource type="Resource" uid="uid://d2pgtsk5i61a3" path="res://Resources/wave_soldados.tres" id="14_oom0o"]
+[ext_resource type="Resource" uid="uid://ch6xylifrbowi" path="res://Resources/wave_flymachine.tres" id="15_hwk1i"]
 [ext_resource type="Texture2D" uid="uid://ph6tovwnq16s" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier atack.png" id="15_pbmci"]
 [ext_resource type="Texture2D" uid="uid://bc62khvisdlnk" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier mueltto sprite sheet.png" id="16_ti0j5"]
 [ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="17_7h70w"]
@@ -5440,12 +5442,11 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_vydoo"]
+[sub_resource type="Resource" id="Resource_ok23f"]
 script = ExtResource("13_175x6")
 enemy_scene = SubResource("PackedScene_hdtag")
 enemy_count = 50
 time_between_spawns = 0.7
-is_flying_enemy = true
 metadata/_custom_type_script = "uid://cnebxd8onhlsi"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl02l"]
@@ -5535,20 +5536,6 @@ _bundled = {
 "variants": [2, 0, ExtResource("28_bxriq"), 500.0, ExtResource("29_bfke0"), SubResource("SpriteFrames_s2wv7"), &"Fly", 0.2872177, SubResource("CircleShape2D_0yade"), Color(0.6689844, 0.510288, 0, 0.41960785), ExtResource("20_6vl30"), NodePath("HitState"), ExtResource("33_dfhql"), ExtResource("34_ok23f"), ExtResource("35_hw5gt"), ExtResource("25_hwk1i"), 4, NodePath("../StatsComponent"), SubResource("CircleShape2D_3q20n"), ExtResource("27_dfhql"), 8, SubResource("CircleShape2D_b0pkl"), Color(0.91797113, 0.21856305, 0.47122675, 0.41960785), ExtResource("36_8ktmq"), 60, 2.0, true],
 "version": 3
 }
-
-[sub_resource type="Resource" id="Resource_vc7mf"]
-script = ExtResource("13_175x6")
-enemy_scene = SubResource("PackedScene_it0fy")
-time_between_spawns = 5.0
-is_flying_enemy = true
-metadata/_custom_type_script = "uid://cnebxd8onhlsi"
-
-[sub_resource type="Resource" id="Resource_ok23f"]
-script = ExtResource("13_175x6")
-enemy_scene = SubResource("PackedScene_hdtag")
-enemy_count = 50
-time_between_spawns = 0.7
-metadata/_custom_type_script = "uid://cnebxd8onhlsi"
 
 [sub_resource type="Resource" id="Resource_26seu"]
 script = ExtResource("13_175x6")
@@ -5650,7 +5637,7 @@ position = Vector2(-1127, 185)
 position = Vector2(389, 9)
 
 [node name="SpawnerManager" parent="AreaManager1" index="2" unique_id=311363804 node_paths=PackedStringArray("enemy_container")]
-waves = Array[ExtResource("13_175x6")]([SubResource("Resource_vydoo"), SubResource("Resource_vc7mf")])
+waves = Array[ExtResource("13_175x6")]([ExtResource("14_oom0o"), ExtResource("15_hwk1i")])
 max_concurrent_enemies = 8
 enemy_container = NodePath("../../Enemies")
 

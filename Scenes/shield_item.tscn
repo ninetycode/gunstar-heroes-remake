@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://defpltfbk7j7b"]
+
+[ext_resource type="Script" uid="uid://bqss01i8g7rfd" path="res://Scripts/shield_item.gd" id="1_6djvc"]
+[ext_resource type="Texture2D" uid="uid://c4pattr70lu7d" path="res://Assets/Sprite Sheets/Items/escusao.png" id="2_6djvc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o505d"]
+radius = 9.0
+
+[node name="ShieldItem" type="Area2D" unique_id=712430850]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_6djvc")
+shield_amount = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=915152040]
+texture = ExtResource("2_6djvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1950912639]
+shape = SubResource("CircleShape2D_o505d")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1407302912]
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=1177129794]
+target_position = Vector2(0, 20)

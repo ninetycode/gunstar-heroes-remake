@@ -32,23 +32,23 @@ func _on_death():
 	queue_free()
 	
 func generar_drop(es_vip: bool = false) -> void:
+	# 1. Seguridad básica
 	if loot_scene == null:
 		return
 		
-	# --- LÍMITE DE DROPS ---
-	var items_activos = get_tree().get_nodes_in_group("LootItems")
-	
-	# LA CLAVE: Si NO es vip y ya hay ítems, cortamos. 
-	# (Si ES vip, "not es_vip" da falso, ignora este if y sigue de largo)
-	if not es_vip and items_activos.size() >= 1:
-		return
-		
-	# Si pasamos el filtro (o si somos VIP), tiramos los dados
+	# --- VIEJO LÍMITE ELIMINADO PARA EL ROGUE-LITE ---
+	# Borramos la lógica de "items_activos >= 1" para que todos 
+	# los enemigos puedan dropear libremente sus escudos y joyas.
+
+	# 2. Tiramos los dados
 	var roll = randf_range(0.0, 100.0)
 	
-	if roll <= drop_chance:
+	# 3. Si sacamos menos que la chance (o si es el jefe VIP que siempre dropea)
+	if roll <= drop_chance or es_vip:
 		var item = loot_scene.instantiate()
 		item.global_position = self.global_position
+		
+		# Lo agregamos al mundo de forma segura
 		get_tree().current_scene.call_deferred("add_child", item)
 		
 func obtener_punto_apuntado() -> Vector2:

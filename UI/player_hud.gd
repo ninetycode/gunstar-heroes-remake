@@ -6,15 +6,16 @@ extends CanvasLayer
 var tween_retrato: Tween
 
 func _ready():
-	# Primero nos aseguramos de que el HUD esté escondido hasta saber la vida
+	# Primero nos aseguramos de que el HUD esté escondido/vacío hasta saber la vida
 	health_bar.value = 0
 	
-	# [Cite: player.gd] Buscamos al jugador en el árbol de escena para conectarnos
-	# Asumimos que el jugador está en el grupo "Player"
+	# Vaciamos la barra de escudo por defecto
+	if %ShieldBar:
+		%ShieldBar.value = 0
+	
 	var player = get_tree().get_first_node_in_group("Player")
 	
 	if player:
-		# Buscamos su StatsComponent para conectar la señal
 		var stats = player.get_node("StatsComponent")
 
 		if stats:
@@ -22,8 +23,14 @@ func _ready():
 			stats.danio_recibido.connect(_on_player_danio_recibido) 
 			stats.salud_agotada.connect(_on_player_salud_agotada)
 			stats.salud_recuperada.connect(_on_player_salud_recuperada)
-			# Inicializamos la barra con los valores actuales
+			
+			# Inicializamos la barra de VIDA con los valores actuales
 			actualizar_barra(stats.vida_maxima, stats.vida_actual)
+			
+			# --- NUEVO: Inicializamos la barra de ESCUDO con los valores actuales ---
+			if %ShieldBar:
+				%ShieldBar.max_value = stats.vida_maxima
+				%ShieldBar.value = stats.escudo_actual
 		var weapon_comp = player.get_node("WeaponComponent")
 		if weapon_comp:
 			weapon_comp.inventario_cambiado.connect(_on_inventario_cambiado)
@@ -35,8 +42,19 @@ func _ready():
 	else:
 		print("ERROR: El HUD no encontró al Player en la escena")
 
-func _on_player_health_changed(vida_max: int, vida_actual: int):
-	actualizar_barra(vida_max, vida_actual)
+# En player_hud.gd
+func _on_player_health_changed(vida_max: int, vida_actual: int, escudo_actual: int):
+	# La barra roja normal
+	health_bar.max_value = vida_max
+	health_bar.value = vida_actual
+	
+	# La barra de escudo (gris)
+	# Como el escudo puede superar la vida, podés hacer que la ShieldBar 
+	# sea más larga o simplemente mostrar el número.
+	if %ShieldBar:
+		%ShieldBar.max_value = vida_max # O un tope arbitrario
+		%ShieldBar.value = escudo_actual
+		#%ShieldLabel.text = str(escudo_actual) # Para ver el número exacto
 
 func actualizar_barra(maxima: int, actual: int):
 	# Configuramos el tope de la barra dinámicamente

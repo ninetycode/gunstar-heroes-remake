@@ -76,7 +76,7 @@ func _on_death():
 	if state_machine:
 		state_machine.transition_to("DeathState")
 
-func _on_mi_vida_cambio(_maxima: int, actual: int):
+func _on_mi_vida_cambio(_maxima: int, actual: int, _escudo: int):
 	if pelea_activa:
 		GameEvents.boss_health_changed.emit(actual)
 
