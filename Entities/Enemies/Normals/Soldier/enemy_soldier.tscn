@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cvli7qfj8qopl" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.gd" id="1_1i8gr"]
 [ext_resource type="Texture2D" uid="uid://dk8p3ui1eqvi8" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier-spritesheet.png" id="1_anyna"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="2_1i8gr"]
-[ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="2_5104v"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="2_5104v"]
 [ext_resource type="Texture2D" uid="uid://ph6tovwnq16s" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier atack.png" id="2_mnp20"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_4owtx"]
 [ext_resource type="Texture2D" uid="uid://bc62khvisdlnk" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier mueltto sprite sheet.png" id="3_pvaoj"]
+[ext_resource type="Resource" uid="uid://d2b26mid6stsp" path="res://Resources/item_vida.tres" id="3_ygrj3"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
+[ext_resource type="Resource" uid="uid://onxd572u1omr" path="res://Resources/item_escudo.tres" id="4_ngsse"]
 [ext_resource type="Texture2D" uid="uid://dttnap6he8odf" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier idle.png" id="5_xpcu0"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="6_4owtx"]
 [ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Normals/Soldier/Soldier_idle_state.gd" id="6_5ybek"]
@@ -193,8 +195,8 @@ platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
 attack_range = 25.0
-drop_chance = 5.0
-loot_scene = ExtResource("2_5104v")
+probabilidad_dropear_algo = 5.0
+posibles_drops = Array[ExtResource("2_5104v")]([ExtResource("3_ygrj3"), ExtResource("4_ngsse")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)

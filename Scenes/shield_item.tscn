@@ -10,7 +10,7 @@ radius = 9.0
 collision_layer = 32
 collision_mask = 8
 script = ExtResource("1_6djvc")
-shield_amount = 10
+shield_amount = 25
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=915152040]
 texture = ExtResource("2_6djvc")

@@ -3,9 +3,10 @@
 [ext_resource type="Script" uid="uid://r05a1457x14c" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.gd" id="1_8uimj"]
 [ext_resource type="Resource" uid="uid://dsbmu1ciokmbv" path="res://Resources/Enemy_laser.tres" id="2_3q20n"]
 [ext_resource type="Texture2D" uid="uid://ck2wrrfkcjesv" path="res://Assets/Sprite Sheets/Enemies/Fly machine/shot enemy.png" id="2_ts7ci"]
-[ext_resource type="PackedScene" uid="uid://defpltfbk7j7b" path="res://Scenes/shield_item.tscn" id="3_6fgmb"]
 [ext_resource type="Texture2D" uid="uid://djhtj3t4gq5bf" path="res://Assets/Sprite Sheets/Enemies/Fly machine/fly enemy.png" id="3_alrwe"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="3_seyq7"]
 [ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="4_o5lgy"]
+[ext_resource type="Resource" uid="uid://d2b26mid6stsp" path="res://Resources/item_vida.tres" id="4_r2c7j"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="5_og1r4"]
 [ext_resource type="Script" uid="uid://48y53nl431af" path="res://Entities/Enemies/Normals/Fly Machine/fly_state.gd" id="6_0yade"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="6_o5lgy"]
@@ -94,7 +95,8 @@ script = ExtResource("1_8uimj")
 altura_minima_suelo = 500.0
 mi_arma_resource = ExtResource("2_3q20n")
 drop_chance = 10.0
-loot_scene = ExtResource("3_6fgmb")
+probabilidad_dropear_algo = 10.0
+posibles_drops = Array[ExtResource("3_seyq7")]([ExtResource("4_r2c7j")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38438922]
 sprite_frames = SubResource("SpriteFrames_s2wv7")

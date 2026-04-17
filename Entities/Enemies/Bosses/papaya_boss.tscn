@@ -5,7 +5,9 @@
 [ext_resource type="Resource" uid="uid://dba7bb07785qo" path="res://Resources/enemybossespora.tres" id="2_w5xfj"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_kps04"]
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="3_uedpc"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="4_firwx"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_tcckm"]
+[ext_resource type="Resource" uid="uid://d2b26mid6stsp" path="res://Resources/item_vida.tres" id="5_uq7uw"]
 [ext_resource type="Script" uid="uid://ifxnaq32a81w" path="res://Entities/Enemies/Bosses/state_machine_papaya.gd" id="6_f3msw"]
 [ext_resource type="Script" uid="uid://ioc3pibkehmn" path="res://Entities/Enemies/Bosses/idle_state.gd" id="7_uedpc"]
 [ext_resource type="Script" uid="uid://c4toik1ea3v5s" path="res://Entities/Enemies/Bosses/pre_attack_state.gd" id="8_ql0fo"]
@@ -54,6 +56,8 @@ script = ExtResource("1_butei")
 arma_espora = ExtResource("2_w5xfj")
 enemy_scene = ExtResource("3_uedpc")
 nombre_boss = "Jefe Papaya"
+probabilidad_dropear_algo = 100.0
+posibles_drops = Array[ExtResource("4_firwx")]([ExtResource("5_uq7uw")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875313672]
 z_index = -1
@@ -76,7 +80,7 @@ shape = SubResource("CircleShape2D_f3msw")
 debug_color = Color(0.93966174, 0.116844065, 0.54242563, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("4_tcckm")]
-vida_maxima = 2500
+vida_maxima = 4500
 
 [node name="StateMachinePapaya" type="Node" parent="." unique_id=2242083]
 script = ExtResource("6_f3msw")
