@@ -1467,7 +1467,8 @@ tile_set = SubResource("TileSet_f5k8n")
 position = Vector2(33, 315)
 
 [node name="Camera2D" type="Camera2D" parent="GunstarBlue" unique_id=474955854]
-offset = Vector2(0, -130)
+limit_left = -100
+limit_bottom = 360
 
 [node name="Background" type="Node2D" parent="." unique_id=861346463]
 visible = false
