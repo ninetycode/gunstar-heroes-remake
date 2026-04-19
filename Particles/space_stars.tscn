@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://d0m8dmmhyv3q2"]
+
+[sub_resource type="Gradient" id="Gradient_ssgro"]
+offsets = PackedFloat32Array(0, 0.7044025)
+colors = PackedColorArray(0.83554965, 0.79913694, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_li6ba"]
+gradient = SubResource("Gradient_ssgro")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1fxkx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 300, 1)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_li6ba")
+
+[node name="Fondo Espacial" type="CanvasLayer" unique_id=865269841]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=755755648]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.014930333, 0.009424732, 0.11640806, 1)
+
+[node name="Estrellas" type="GPUParticles2D" parent="." unique_id=1505466412]
+position = Vector2(743, 181)
+amount = 500
+lifetime = 10.0
+preprocess = 15.0
+visibility_rect = Rect2(-2000, -1000, 4000, 2000)
+process_material = SubResource("ParticleProcessMaterial_1fxkx")
