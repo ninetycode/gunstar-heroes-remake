@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcqcodtd612uc" path="res://Assets/IU-HUD/barra-marco.png" id="4_miyt4"]
 [ext_resource type="Texture2D" uid="uid://dfpyvvh5kapq3" path="res://Assets/IU-HUD/barra-progreso.png" id="5_4gvqm"]
 [ext_resource type="Texture2D" uid="uid://bvbfarlxqciiw" path="res://Assets/IU-HUD/barra-vacia2.png" id="5_l43u3"]
+[ext_resource type="Shader" uid="uid://c8wbike8yc6e7" path="res://Shaders/player_hud.gdshader" id="8_4g3o5"]
 [ext_resource type="Texture2D" uid="uid://dvewobju7ra88" path="res://Assets/IU-HUD/barra-progreso-escudo2.png" id="8_o4fqs"]
 [ext_resource type="AudioStream" uid="uid://dguxi7hfxtye" path="res://Assets/Audio/SFX/Power_Up_Bar_02.wav" id="9_l43u3"]
 
@@ -45,6 +46,12 @@ animations = [{
 "name": &"anima",
 "speed": 7.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0gj7"]
+shader = ExtResource("8_4g3o5")
+shader_parameter/brillo_color = Color(1, 1, 1, 0.2901961)
+shader_parameter/velocidad = 3.1050001474875
+shader_parameter/ancho = 0.0010000000475
 
 [sub_resource type="LabelSettings" id="LabelSettings_4gvqm"]
 font_size = 23
@@ -101,6 +108,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShieldBar" type="TextureProgressBar" parent="." unique_id=1715291356]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_b0gj7")
 anchors_preset = -1
 anchor_left = 0.1109375
 anchor_top = 0.047222216
@@ -113,7 +121,6 @@ offset_bottom = 132.7598
 scale = Vector2(0.16000113, 0.16000113)
 value = 100.0
 fill_mode = 1
-texture_over = ExtResource("4_miyt4")
 texture_progress = ExtResource("8_o4fqs")
 metadata/_edit_use_anchors_ = true
 
