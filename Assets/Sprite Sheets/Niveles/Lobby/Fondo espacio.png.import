@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj3v1fjf7yk4h"
-path="res://.godot/imported/Lobby Sprite sheet.png-e4cb0d5487c3cfa11306acb997559f30.ctex"
+uid="uid://c2734rrwtvdbj"
+path="res://.godot/imported/Fondo espacio.png-f5b8a5e386683ae2c196f4bc48948fc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite Sheets/Niveles/Lobby Sprite sheet.png"
-dest_files=["res://.godot/imported/Lobby Sprite sheet.png-e4cb0d5487c3cfa11306acb997559f30.ctex"]
+source_file="res://Assets/Sprite Sheets/Niveles/Lobby/Fondo espacio.png"
+dest_files=["res://.godot/imported/Fondo espacio.png-f5b8a5e386683ae2c196f4bc48948fc3.ctex"]
 
 [params]
 
