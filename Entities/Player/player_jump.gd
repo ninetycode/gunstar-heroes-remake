@@ -6,6 +6,7 @@ func enter(_msg := {}) -> void:
 	player._animated_sprite.play("Jump")
 	AudioManager.play_sfx("jump")
 	player.velocity.y = player.jump_velocity
+	player.coyote_timer_counter = 0.0
 	
 
 func physics_update(_delta: float) -> void:
