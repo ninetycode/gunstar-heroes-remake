@@ -16,4 +16,10 @@ func physics_update(_delta: float) -> void:
 		return
 
 	if player.is_on_floor():
-		state_machine.transition_to("Run" if direction != 0 else "Idle")
+		# Si tocó el piso y tenía el salto guardado en la memoria...
+		if player.jump_buffer_counter > 0.0:
+			player.jump_buffer_counter = 0.0 # Consumimos el buffer
+			state_machine.transition_to("Jump") # ¡Rebota al instante!
+		else:
+			# Si no había apretado nada, cae normal
+			state_machine.transition_to("Idle")

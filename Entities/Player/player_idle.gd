@@ -14,7 +14,8 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Crouch")
 		return
 
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+	if player.jump_buffer_counter > 0.0 and player.is_on_floor():
+		player.jump_buffer_counter = 0.0 # ¡Importante! Consumimos el buffer para no saltar doble
 		state_machine.transition_to("Jump")
 		return
 

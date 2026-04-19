@@ -5,7 +5,8 @@ const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @export var speed: float = 300.0
 @export var jump_velocity: float = -400.0
 @export var gravity: float = 1200.0
-
+@export var jump_buffer_time: float = 0.15 # 150 milisegundos de tolerancia
+var jump_buffer_counter: float = 0.0
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var muzzle = $AnimatedSprite2D/muzzle
 @onready var shooter_time = $ShooterTime
@@ -17,11 +18,15 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	# La gravedad se aplica siempre
+	# 1. Actualizamos el reloj del buffer
+	if jump_buffer_counter > 0.0:
+		jump_buffer_counter -= delta
+		
+	# 2. La gravedad se aplica siempre
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	# Movemos al personaje según lo que digan los estados
+	# 3. Movemos al personaje
 	move_and_slide()
 	limitar_a_camara()
 
@@ -87,6 +92,8 @@ func _input(event):
 		AudioManager.play_sfx("change_weapon" , -5.0, randf_range(0.9, 1.1))
 	if event.is_action_released("disparo"):
 		$WeaponComponent.detener_disparo()
+	if event.is_action_pressed("jump"):
+		jump_buffer_counter = jump_buffer_time
 		
 func _on_stats_component_salud_agotada() -> void:
 	print("¡Blue ha muerto!")
