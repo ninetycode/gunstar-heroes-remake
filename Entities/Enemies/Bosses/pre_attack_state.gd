@@ -5,6 +5,7 @@ var state_machine: StateMachineBoss
 
 func enter(_msg := {}) -> void:
 	var tween = create_tween().set_loops(3)
+	AudioManager.play_sfx("estiramiento_papaya", 8.0)
 	tween.tween_property(enemy.sprite, "scale", Vector2(1.1, 1.3), 0.15)
 	tween.tween_property(enemy.sprite, "scale", Vector2(1.0, 1.0), 0.15)
 	
