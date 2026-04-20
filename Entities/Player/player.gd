@@ -156,7 +156,3 @@ func limitar_a_camara():
 func _on_piramid_trigger_area_entered(_area):
 	pass # Replace with function body.
 	
-
-
-func _on_interactable_component_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.

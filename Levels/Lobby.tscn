@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_3aojn"]
 [ext_resource type="Texture2D" uid="uid://b82jndudbnaww" path="res://Assets/Sprite Sheets/Niveles/Lobby/Super computadora.png" id="4_j83j6"]
 [ext_resource type="PackedScene" uid="uid://d0m8dmmhyv3q2" path="res://Particles/space_stars.tscn" id="4_ueq3s"]
+[ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_j83j6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1455,6 +1456,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 14
 sources/0 = SubResource("TileSetAtlasSource_3aojn")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
+size = Vector2(270.8837, 56.643677)
+
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2023188512]
@@ -1478,3 +1482,12 @@ z_index = -1
 position = Vector2(298, 312.25)
 scale = Vector2(0.7678572, 0.7767856)
 texture = ExtResource("4_j83j6")
+
+[node name="InteractableComponent" parent="SuperComputadora" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuperComputadora/InteractableComponent" unique_id=1494060409]
+position = Vector2(0, -0.32183838)
+shape = SubResource("RectangleShape2D_v81qt")
+
+[connection signal="area_entered" from="SuperComputadora/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_area_entered"]
