@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cpy6euh37t6vt"]
+
+[ext_resource type="Texture2D" uid="uid://dccb0cqu30a2o" path="res://Assets/Sprite Sheets/Enemies/Helicopter/Idle.png" id="1_gpsyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w41u5"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(0, 0, 38, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0s7k"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(52, 0, 38, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77si2"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(103, 0, 38, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c5an"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(153, 0, 38, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6wrn"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(202, 0, 38, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yco4w"]
+atlas = ExtResource("1_gpsyc")
+region = Rect2(252, 0, 38, 44)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o76bm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w41u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0s7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77si2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c5an")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6wrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yco4w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="idle" type="AnimatedSprite2D" unique_id=2110763872]
+sprite_frames = SubResource("SpriteFrames_o76bm")
+animation = &"idle"
+frame_progress = 0.8382458

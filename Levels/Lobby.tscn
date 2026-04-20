@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b82jndudbnaww" path="res://Assets/Sprite Sheets/Niveles/Lobby/Super computadora.png" id="4_j83j6"]
 [ext_resource type="PackedScene" uid="uid://d0m8dmmhyv3q2" path="res://Particles/space_stars.tscn" id="4_ueq3s"]
 [ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_j83j6"]
+[ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
+[ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1456,6 +1458,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 14
 sources/0 = SubResource("TileSetAtlasSource_3aojn")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r50g8"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
 size = Vector2(270.8837, 56.643677)
 
@@ -1479,9 +1483,11 @@ limit_bottom = 360
 
 [node name="SuperComputadora" type="Sprite2D" parent="." unique_id=1314192690]
 z_index = -1
+material = SubResource("ShaderMaterial_r50g8")
 position = Vector2(298, 312.25)
 scale = Vector2(0.7678572, 0.7767856)
 texture = ExtResource("4_j83j6")
+script = ExtResource("5_v81qt")
 
 [node name="InteractableComponent" parent="SuperComputadora" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
 sprite_visual = NodePath("..")
@@ -1490,4 +1496,9 @@ sprite_visual = NodePath("..")
 position = Vector2(0, -0.32183838)
 shape = SubResource("RectangleShape2D_v81qt")
 
-[connection signal="area_entered" from="SuperComputadora/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_area_entered"]
+[node name="FerQsjNwqau92Hf" type="Sprite2D" parent="." unique_id=73491738]
+position = Vector2(403.5, 315.73077)
+scale = Vector2(0.15769234, 0.15769233)
+texture = ExtResource("7_r50g8")
+
+[connection signal="interaccion_activada" from="SuperComputadora/InteractableComponent" to="SuperComputadora" method="_on_interactable_component_interaccion_activada"]

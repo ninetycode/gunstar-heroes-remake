@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bab6igk8kk665"]
+
+[ext_resource type="Script" uid="uid://tr4qmj77xi1c" path="res://character_body_2d.gd" id="1_p3bv6"]
+[ext_resource type="Texture2D" uid="uid://cdb3xc30m54qt" path="res://Assets/Sprite Sheets/Enemies/Helicopter/Spaceship idle.png" id="2_lfnb3"]
+[ext_resource type="PackedScene" uid="uid://cpy6euh37t6vt" path="res://Assets/Sprite Sheets/Enemies/Helicopter/helice.tscn" id="3_d5xpn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl1xu"]
+atlas = ExtResource("2_lfnb3")
+region = Rect2(0, 0, 203, 114)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1l3s"]
+atlas = ExtResource("2_lfnb3")
+region = Rect2(230, 0, 203, 114)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylfav"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl1xu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1l3s")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_me7o2"]
+radius = 60.0005
+height = 211.99933
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1197175743]
+script = ExtResource("1_p3bv6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1700349020]
+z_index = 1
+position = Vector2(25, 58)
+sprite_frames = SubResource("SpriteFrames_ylfav")
+animation = &"Idle"
+frame_progress = 0.6906567
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1892163152]
+position = Vector2(-0.2, 0)
+remote_path = NodePath("Helice")
+
+[node name="Helice" parent="RemoteTransform2D" unique_id=2110763872 instance=ExtResource("3_d5xpn")]
+z_index = -1
+position = Vector2(1, 22)
+animation = &"idle"
+frame_progress = 0.92685497
+centered = false
+offset = Vector2(-18.78, -44.125)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=793471017]
+z_index = 1
+position = Vector2(24, 50)
+rotation = 1.5709635
+shape = SubResource("CapsuleShape2D_me7o2")

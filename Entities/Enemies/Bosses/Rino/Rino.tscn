@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://45i73sf6y7oh" path="res://Entities/Enemies/Bosses/Rino/idle.png" id="1_wy8xv"]
 [ext_resource type="Texture2D" uid="uid://dvbn1jpmftpv" path="res://Entities/Enemies/Bosses/Rino/moving.png" id="2_d7dxe"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_axayp"]
+[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_6ktsk"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_nxwnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ktsk"]
@@ -104,8 +105,16 @@ script = ExtResource("1_d7dxe")
 position = Vector2(3.8146973e-06, 0)
 scale = Vector2(0.711506, 0.711506)
 sprite_frames = SubResource("SpriteFrames_4ufvc")
-animation = &"Idle"
-frame_progress = 0.18612988
+animation = &"Moving"
+frame_progress = 0.08397723
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="AnimatedSprite2D" unique_id=1419910209]
+position = Vector2(-45.37, -49.69)
+remote_path = NodePath("enemy_fly_machine")
+
+[node name="enemy_fly_machine" parent="AnimatedSprite2D/RemoteTransform2D" unique_id=1995836615 instance=ExtResource("4_6ktsk")]
+position = Vector2(-5.361441e-06, 0)
+scale = Vector2(1.4054695, 1.4054695)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721000768]
 position = Vector2(1.5, 0.5)
