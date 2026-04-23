@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var cinematic_ui = $CinematicUI
+#@onready var cinematic_ui = $CinematicUI
 @onready var pyramid_trigger = $PyramidTrigger
 
 # Ajustalo acá directamente. 1.0 es normal, 1.2 es un poquito de zoom.
