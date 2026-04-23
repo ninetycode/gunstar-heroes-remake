@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://c7m7fe51faqjy"]
 
 [ext_resource type="Script" uid="uid://cqrfm8j8wa28" path="res://Scripts/coin_item.gd" id="1_h80dy"]
+[ext_resource type="Texture2D" uid="uid://c4pattr70lu7d" path="res://Assets/Sprite Sheets/Items/escusao.png" id="2_jjfvq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jjfvq"]
 
 [node name="coin_item" type="Area2D" unique_id=945099877]
+collision_layer = 32
+collision_mask = 8
 script = ExtResource("1_h80dy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344847667]
 shape = SubResource("CircleShape2D_jjfvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1518966917]
+modulate = Color(3.045841, 3.045841, 0, 1)
+self_modulate = Color(0.98039216, 0.5764706, 0.29803923, 1)
+texture = ExtResource("2_jjfvq")
 
 [node name="FloorDetector" type="RayCast2D" parent="." unique_id=746302306]

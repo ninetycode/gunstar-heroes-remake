@@ -3,13 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="1_iu2og"]
 [ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.tscn" id="3_5wnxx"]
 [ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="3_qewk2"]
-[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="5_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
-[ext_resource type="PackedScene" uid="uid://8u4rforfjmak" path="res://Entities/Enemies/Bosses/Helicopter/Rino.tscn" id="7_vjo2d"]
+[ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="6_vjo2d"]
+[ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="7_ycm45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
+
+[sub_resource type="Resource" id="Resource_vnbqc"]
+script = ExtResource("7_ycm45")
+enemy_scene = ExtResource("3_5wnxx")
+enemy_count = 20
+metadata/_custom_type_script = "uid://cnebxd8onhlsi"
 
 [node name="Piso" type="Node2D" unique_id=1117653153]
 
@@ -36,16 +42,17 @@ offset_top = -11.0
 offset_right = 328.0
 offset_bottom = 29.0
 
-[node name="enemy_fly_machine" parent="." unique_id=1995836615 instance=ExtResource("4_4ufvc")]
-position = Vector2(177, 85)
-
-[node name="enemy_fly_machine2" parent="." unique_id=265739146 instance=ExtResource("4_4ufvc")]
-position = Vector2(493, 85)
-
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("5_4ufvc")]
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("6_a8wek")]
 
-[node name="Enemigo de prueba2" parent="." unique_id=1686137679 instance=ExtResource("7_vjo2d")]
-position = Vector2(70, 265)
-scale = Vector2(2, 2)
+[node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("6_vjo2d")]
+
+[node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
+position = Vector2(336, 0)
+
+[node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
+waves = Array[ExtResource("7_ycm45")]([SubResource("Resource_vnbqc")])
+max_concurrent_enemies = 5
+
+[editable path="AreaManager"]

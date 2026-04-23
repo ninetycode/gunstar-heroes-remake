@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://d2b26mid6stsp" path="res://Resources/item_vida.tres" id="3_ygrj3"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_melc4"]
 [ext_resource type="Resource" uid="uid://onxd572u1omr" path="res://Resources/item_escudo.tres" id="4_ngsse"]
+[ext_resource type="Resource" uid="uid://clpi504w6b8ox" path="res://Resources/item_coin.tres" id="5_ngsse"]
 [ext_resource type="Texture2D" uid="uid://dttnap6he8odf" path="res://Assets/Sprite Sheets/Enemies/Soldier/Soldier idle.png" id="5_xpcu0"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="6_4owtx"]
 [ext_resource type="Script" uid="uid://cg54u2cn10iib" path="res://Entities/Enemies/Normals/Soldier/Soldier_idle_state.gd" id="6_5ybek"]
@@ -195,8 +196,8 @@ platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
 attack_range = 25.0
-probabilidad_dropear_algo = 5.0
-posibles_drops = Array[ExtResource("2_5104v")]([ExtResource("3_ygrj3"), ExtResource("4_ngsse")])
+probabilidad_dropear_algo = 50.0
+posibles_drops = Array[ExtResource("2_5104v")]([ExtResource("3_ygrj3"), ExtResource("4_ngsse"), ExtResource("5_ngsse")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]
 position = Vector2(2, -5)
