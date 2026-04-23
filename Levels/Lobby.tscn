@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bb51jhte3f4dm" path="res://outline.gdshader" id="4_1tyf7"]
 [ext_resource type="Texture2D" uid="uid://b82jndudbnaww" path="res://Assets/Sprite Sheets/Niveles/Lobby/Super computadora.png" id="4_j83j6"]
 [ext_resource type="PackedScene" uid="uid://d0m8dmmhyv3q2" path="res://Particles/space_stars.tscn" id="4_ueq3s"]
+[ext_resource type="Texture2D" uid="uid://g5cleqbiptbn" path="res://Assets/Sprite Sheets/Niveles/Lobby/Animated-RadarMonitor-Sheet.png" id="5_2uni1"]
 [ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_j83j6"]
 [ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
 [ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
@@ -1465,7 +1466,107 @@ shader_parameter/line_color = Color(1, 0.9254902, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
-size = Vector2(270.8837, 56.643677)
+size = Vector2(272.10388, 57.491463)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2uni1"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(0, 1, 0.8, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrkt0"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(0, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v025o"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(144, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh5bn"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(288, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cax11"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(0, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71c17"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(144, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3gjx"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(288, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o6w2"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(0, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71j2y"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(144, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qno8"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(288, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qomtn"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(0, 288, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o54r"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(144, 288, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj22p"]
+atlas = ExtResource("5_2uni1")
+region = Rect2(288, 288, 144, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwutw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrkt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v025o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh5bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cax11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71c17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3gjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o6w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71j2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qno8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qomtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o54r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj22p")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
+size = Vector2(94.15385, 84.92288)
 
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 
@@ -1485,24 +1586,41 @@ limit_bottom = 360
 
 [node name="Fondo Espacial" parent="." unique_id=865269841 instance=ExtResource("4_ueq3s")]
 
-[node name="SuperComputadora" type="Sprite2D" parent="." unique_id=1314192690]
-z_index = -1
-material = SubResource("ShaderMaterial_r50g8")
-position = Vector2(300.196, 315.562)
-scale = Vector2(0.56740123, 0.5739988)
-texture = ExtResource("4_j83j6")
-script = ExtResource("5_v81qt")
-
-[node name="InteractableComponent" parent="SuperComputadora" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
-sprite_visual = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SuperComputadora/InteractableComponent" unique_id=1494060409]
-position = Vector2(0, -0.32183838)
-shape = SubResource("RectangleShape2D_v81qt")
-
-[node name="FerQsjNwqau92Hf" type="Sprite2D" parent="." unique_id=73491738]
+[node name="Profesor Oak" type="Sprite2D" parent="." unique_id=73491738]
 position = Vector2(397, 312)
 scale = Vector2(0.15769234, 0.15769233)
 texture = ExtResource("7_r50g8")
 
-[connection signal="interaccion_activada" from="SuperComputadora/InteractableComponent" to="SuperComputadora" method="_on_interactable_component_interaccion_activada"]
+[node name="Interactuables" type="Node2D" parent="." unique_id=1707674572]
+position = Vector2(9, 310)
+scale = Vector2(0.5416667, 0.5416667)
+
+[node name="SuperComputadora" type="Sprite2D" parent="Interactuables" unique_id=1314192690]
+z_index = -1
+material = SubResource("ShaderMaterial_r50g8")
+position = Vector2(537.59265, 10.268372)
+scale = Vector2(1.04751, 1.0596901)
+texture = ExtResource("4_j83j6")
+script = ExtResource("5_v81qt")
+
+[node name="InteractableComponent" parent="Interactuables/SuperComputadora" unique_id=1507458313 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/SuperComputadora/InteractableComponent" unique_id=1494060409]
+position = Vector2(0, -0.10809326)
+scale = Vector2(0.99999976, 0.99999964)
+shape = SubResource("RectangleShape2D_v81qt")
+
+[node name="Mesa de mejoras" type="AnimatedSprite2D" parent="Interactuables" unique_id=1359552944]
+material = SubResource("ShaderMaterial_2uni1")
+sprite_frames = SubResource("SpriteFrames_fwutw")
+animation = &"Idle"
+
+[node name="InteractableComponent" parent="Interactuables/Mesa de mejoras" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+sprite_visual = NodePath("../../SuperComputadora")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/Mesa de mejoras/InteractableComponent" unique_id=1006339786]
+position = Vector2(-2.7692308, 5.538513)
+shape = SubResource("RectangleShape2D_xrkt0")
+
+[connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
