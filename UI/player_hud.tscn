@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://c8wbike8yc6e7" path="res://Shaders/player_hud.gdshader" id="8_4g3o5"]
 [ext_resource type="Texture2D" uid="uid://dvewobju7ra88" path="res://Assets/IU-HUD/barra-progreso-escudo2.png" id="8_o4fqs"]
 [ext_resource type="AudioStream" uid="uid://dguxi7hfxtye" path="res://Assets/Audio/SFX/Power_Up_Bar_02.wav" id="9_l43u3"]
+[ext_resource type="Texture2D" uid="uid://dwwnbpahq2cil" path="res://Assets/Sprite Sheets/Items/corazao.png" id="11_4g3o5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o0p8"]
 atlas = ExtResource("1_pi8qp")
@@ -57,6 +58,11 @@ shader_parameter/ancho = 0.0010000000475
 font_size = 23
 shadow_size = 19
 shadow_color = Color(0, 0, 0, 0.8392157)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4fqs"]
+font_size = 17
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
 
 [node name="player_hud" type="CanvasLayer" unique_id=1489847109 groups=["HUD_Group"]]
 script = ExtResource("1_pmtv2")
@@ -154,11 +160,15 @@ anchor_left = 0.91875
 anchor_top = 0.85833335
 anchor_right = 0.98125
 anchor_bottom = 0.96944445
+theme_override_constants/separation = 12
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Coin" unique_id=539027779]
 layout_mode = 2
+texture = ExtResource("11_4g3o5")
 
 [node name="CoinLabel" type="Label" parent="Coin" unique_id=785477333]
 unique_name_in_owner = true
 layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_o4fqs")
