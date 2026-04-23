@@ -7,6 +7,7 @@ signal interaccion_activada
 # Referencia al Sprite del objeto padre para prenderle el shader
 @export var sprite_visual: Sprite2D 
 
+
 func enfocar():
 	# El jugador lo está mirando. Prendemos el shader a 1 píxel de grosor.
 	if sprite_visual and sprite_visual.material:
