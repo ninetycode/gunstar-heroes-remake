@@ -10,7 +10,7 @@ signal interaccion_activada
 func enfocar():
 	# El jugador lo está mirando. Prendemos el shader a 1 píxel de grosor.
 	if sprite_visual and sprite_visual.material:
-		sprite_visual.material.set_shader_parameter("line_thickness", 1.0) 
+		sprite_visual.material.set_shader_parameter("line_thickness", 2.0) 
 
 func desenfocar():
 	# El jugador miró para otro lado. Apagamos el outline (grosor 0).
