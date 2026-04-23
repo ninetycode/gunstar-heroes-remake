@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="5_4ufvc"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
-[ext_resource type="PackedScene" uid="uid://8u4rforfjmak" path="res://Entities/Enemies/Bosses/Rino/Rino.tscn" id="7_vjo2d"]
+[ext_resource type="PackedScene" uid="uid://8u4rforfjmak" path="res://Entities/Enemies/Bosses/Helicopter/Rino.tscn" id="7_vjo2d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)

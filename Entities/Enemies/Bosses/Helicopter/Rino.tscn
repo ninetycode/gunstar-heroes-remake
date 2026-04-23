@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://8u4rforfjmak"]
 
-[ext_resource type="Script" uid="uid://8k5xvhxd6ur3" path="res://Entities/Enemies/Bosses/Rino/rino.gd" id="1_d7dxe"]
-[ext_resource type="Texture2D" uid="uid://45i73sf6y7oh" path="res://Entities/Enemies/Bosses/Rino/idle.png" id="1_wy8xv"]
-[ext_resource type="Texture2D" uid="uid://dvbn1jpmftpv" path="res://Entities/Enemies/Bosses/Rino/moving.png" id="2_d7dxe"]
+[ext_resource type="Script" uid="uid://8k5xvhxd6ur3" path="res://Entities/Enemies/Bosses/Helicopter/rino.gd" id="1_d7dxe"]
+[ext_resource type="Texture2D" uid="uid://45i73sf6y7oh" path="res://Entities/Enemies/Bosses/Helicopter/idle.png" id="1_wy8xv"]
+[ext_resource type="Texture2D" uid="uid://dvbn1jpmftpv" path="res://Entities/Enemies/Bosses/Helicopter/moving.png" id="2_d7dxe"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_axayp"]
 [ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="4_6ktsk"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_nxwnh"]

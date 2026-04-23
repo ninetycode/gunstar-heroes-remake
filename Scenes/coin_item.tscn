@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c7m7fe51faqjy"]
+
+[ext_resource type="Script" uid="uid://cqrfm8j8wa28" path="res://Scripts/coin_item.gd" id="1_h80dy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjfvq"]
+
+[node name="coin_item" type="Area2D" unique_id=945099877]
+script = ExtResource("1_h80dy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344847667]
+shape = SubResource("CircleShape2D_jjfvq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1518966917]
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=746302306]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bab6igk8kk665"]
 
-[ext_resource type="Script" uid="uid://tr4qmj77xi1c" path="res://character_body_2d.gd" id="1_p3bv6"]
+[ext_resource type="Script" uid="uid://tr4qmj77xi1c" path="res://Entities/Enemies/Bosses/Helicopter/helicopter_boss.gd" id="1_p3bv6"]
 [ext_resource type="Texture2D" uid="uid://cdb3xc30m54qt" path="res://Assets/Sprite Sheets/Enemies/Helicopter/Spaceship idle.png" id="2_lfnb3"]
 [ext_resource type="PackedScene" uid="uid://cpy6euh37t6vt" path="res://Assets/Sprite Sheets/Enemies/Helicopter/helice.tscn" id="3_d5xpn"]
 
