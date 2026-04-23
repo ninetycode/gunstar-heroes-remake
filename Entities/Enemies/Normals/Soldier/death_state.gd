@@ -14,6 +14,21 @@ func enter(_msg := {}) -> void:
 		
 		# Llamamos al AudioManager pasando el volumen deseado (-1.0) y el pitch calculado
 		AudioManager.play_sfx(grito_elegido, -1.0, pitch_variado)
+		
+		# death_state.gd
+	# 4. APAGAR TODO EL DAÑO Y LA FÍSICA (Para que no "tosqueen")
+	
+	# Primero: Apagamos las capas de colisión del cuerpo principal.
+	# Al ponerlas en 0, el enemigo deja de chocar con paredes y otros enemigos.
+		enemy.collision_layer = 0
+		enemy.collision_mask = 0
+	
+
+	# Tercero: Lo que ya tenías de la Hurtbox (esto está bien para que no le sigan pegando)
+	if enemy.has_node("HurtboxComponent/CollisionShape2D"):
+		enemy.get_node("HurtboxComponent/CollisionShape2D").set_deferred("disabled", true)
+
+	# ... (el resto de tu lógica de animación y desvanecimiento)
 
 	# 2. FRENAR CUALQUIER MOVIMIENTO PREVIO
 	enemy.velocity = Vector2.ZERO
@@ -30,7 +45,8 @@ func enter(_msg := {}) -> void:
 	
 	if enemy.has_node("HurtboxComponent/CollisionShape2D"):
 		enemy.get_node("HurtboxComponent/CollisionShape2D").set_deferred("disabled", true)
-
+	if enemy.has_node("CollisionShape2D"):
+		enemy.get_node("CollisionShape2D").set_deferred("disabled", true)
 	# 5. ANIMACIÓN
 	if enemy.sprite.sprite_frames.has_animation("death"):
 		enemy.sprite.play("death")
