@@ -170,6 +170,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Sprite2D" type="TextureRect" parent="CoinContainer" unique_id=955838094]
 layout_mode = 2
 texture = ExtResource("11_4g3o5")
+expand_mode = 3
 
 [node name="CoinLabel" type="Label" parent="CoinContainer" unique_id=785477333]
 unique_name_in_owner = true
