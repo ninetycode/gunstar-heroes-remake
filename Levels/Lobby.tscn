@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dj3v1fjf7yk4h" path="res://Assets/Sprite Sheets/Niveles/Lobby/Lobby Sprite sheet.png" id="1_vit0s"]
 [ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_3aojn"]
-[ext_resource type="Shader" uid="uid://bb51jhte3f4dm" path="res://outline.gdshader" id="4_1tyf7"]
+[ext_resource type="Shader" uid="uid://bb51jhte3f4dm" path="res://Shaders/outline.gdshader" id="4_1tyf7"]
 [ext_resource type="Texture2D" uid="uid://b82jndudbnaww" path="res://Assets/Sprite Sheets/Niveles/Lobby/Super computadora.png" id="4_j83j6"]
 [ext_resource type="PackedScene" uid="uid://d0m8dmmhyv3q2" path="res://Particles/space_stars.tscn" id="4_ueq3s"]
 [ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_j83j6"]

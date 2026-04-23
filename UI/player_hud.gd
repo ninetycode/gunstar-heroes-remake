@@ -24,6 +24,7 @@ func _ready():
 			stats.danio_recibido.connect(_on_player_danio_recibido) 
 			stats.salud_agotada.connect(_on_player_salud_agotada)
 			stats.salud_recuperada.connect(_on_player_salud_recuperada)
+			stats.monedas_cambiadas.connect(_on_player_monedas_cambiadas)
 			
 			# Inicializamos la barra de VIDA con los valores actuales
 			actualizar_barra(stats.vida_maxima, stats.vida_actual)
@@ -140,6 +141,12 @@ func _on_player_salud_recuperada(_cantidad: int):
 		print("HUD: No se encontró la imagen BluePortrait para la curación.")
 		
 		
+func _on_player_monedas_cambiadas(total: int):
+	if %CoinLabel:
+		# Actualizamos el texto con el numerito
+		%CoinLabel.text = str(total)
+
+
 func mostrar_cartel_go(mostrar: bool):
 	var cartel = get_node_or_null("GoSign")
 	var sonido = get_node_or_null("GoSound")

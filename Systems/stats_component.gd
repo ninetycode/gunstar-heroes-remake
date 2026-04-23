@@ -10,7 +10,8 @@ var vida_actual : int
 @export var tiempo_invulnerabilidad: float# 1 segundo de protección por defecto
 var es_invulnerable: bool = false
 var escudo_actual : int = 0 # El escudo empieza en 0 hasta que agarres uno
-
+signal monedas_cambiadas(total_monedas)
+var monedas_actuales : int = 0
 func _ready():
 	vida_actual = vida_maxima
 	# 2. Avisamos al HUD cómo arrancamos
@@ -75,3 +76,7 @@ func curar(cantidad: int) -> void:
 	salud_recuperada.emit(cantidad)
 	# Avisamos al HUD para que actualice la barra/números
 	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
+	
+func agregar_monedas(cantidad: int):
+	monedas_actuales += cantidad
+	monedas_cambiadas.emit(monedas_actuales)

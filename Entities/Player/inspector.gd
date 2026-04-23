@@ -23,5 +23,5 @@ func _process(_delta):
 			objetivo_actual.enfocar() # Prende el borde nuevo
 
 	# Si apretamos el botón de interactuar (ej: "E" o "U")
-	if Input.is_action_just_pressed("interact") and objetivo_actual:
-		objetivo_actual.interactuar()
+	#if Input.is_action_just_pressed("interact") and objetivo_actual:
+		#objetivo_actual.interactuar()
