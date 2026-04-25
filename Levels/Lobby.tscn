@@ -1506,7 +1506,7 @@ limit_bottom = 360
 [node name="Fondo Espacial" parent="." unique_id=865269841 instance=ExtResource("4_ueq3s")]
 
 [node name="Profesor Oak" type="Sprite2D" parent="." unique_id=73491738]
-position = Vector2(397, 312)
+position = Vector2(598, 210.00002)
 scale = Vector2(0.15769234, 0.15769233)
 texture = ExtResource("7_r50g8")
 
