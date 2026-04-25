@@ -28,7 +28,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Run")
 
 	# --- LÓGICA DE DISPARO ---
-	if Input.is_action_pressed("disparo"):
+	if Input.is_action_pressed("disparo") and not player.en_lobby:
 		# Obtenemos la dirección desde nuestro componente de armas
 		var direccion = player.get_node("WeaponComponent").obtener_direccion_apuntado()
 		

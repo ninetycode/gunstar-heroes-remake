@@ -1,7 +1,7 @@
-# computer_lobby.gd
 extends Sprite2D
 
+@export var menu_selector: CanvasLayer # Te va a aparecer en el Inspector
+
 func _on_interactable_component_interaccion_activada():
-	print("Abriendo terminal de misiones...")
-	# Acá llamás a tu escena de UI para elegir el nivel
-	# MenuMisiones.aparecer()
+	if menu_selector:
+		menu_selector.abrir_menu()

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b6jj6eg0f02qw"]
+
+[ext_resource type="Script" uid="uid://cytemibjs552v" path="res://UI/menu_niveles.gd" id="1_0oagj"]
+[ext_resource type="Texture2D" uid="uid://crnh30at5wbck" path="res://Assets/Captura de pantalla 2026-04-02 235011.png" id="2_0oagj"]
+
+[node name="MenuNiveles" type="CanvasLayer" unique_id=414099976]
+process_mode = 3
+script = ExtResource("1_0oagj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1545858209]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 18.0
+offset_right = 20.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=2056843208]
+layout_mode = 2
+texture = ExtResource("2_0oagj")
+expand_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=939120911]
+layout_mode = 2
+text = "Nivel"

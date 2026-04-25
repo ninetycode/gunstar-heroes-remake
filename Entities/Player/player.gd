@@ -12,7 +12,7 @@ var coyote_timer_counter: float = 0.0
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var muzzle = $AnimatedSprite2D/muzzle
 @onready var shooter_time = $ShooterTime
-
+@export var en_lobby: bool = false
 var gravity_enabled = true
 
 func _ready() -> void:

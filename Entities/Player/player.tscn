@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://c0h3tk6x65i36" path="res://Entities/Player/jump_shot_down.gd" id="18_ppdlg"]
 [ext_resource type="Script" uid="uid://cmoh75wlhvbhd" path="res://Entities/Player/player_fall.gd" id="19_v7p16"]
 [ext_resource type="Script" uid="uid://b0phbo8chjtu3" path="res://Entities/Player/player_hanging.gd" id="21_avsg8"]
-[ext_resource type="Script" path="res://Entities/Player/player_crouch.gd" id="21_u86q5"]
+[ext_resource type="Script" uid="uid://bnoyoi7dw8mss" path="res://Entities/Player/player_crouch.gd" id="21_u86q5"]
 [ext_resource type="Script" uid="uid://devxfp0hs3jn4" path="res://Entities/Player/death.gd" id="22_80ryp"]
 [ext_resource type="Resource" uid="uid://c57ym65etteof" path="res://Resources/bullet.tres" id="23_avsg8"]
 [ext_resource type="Script" uid="uid://djdydvvm02506" path="res://Data/weapon_resourse.gd" id="23_og23y"]
@@ -330,7 +330,7 @@ size = Vector2(19, 29)
 [node name="GunstarBlue" type="CharacterBody2D" unique_id=488555054 groups=["Player"]]
 z_index = 4
 collision_layer = 8
-collision_mask = 49
+collision_mask = 113
 platform_floor_layers = 4278190081
 script = ExtResource("1_owvpp")
 jump_velocity = -450.0

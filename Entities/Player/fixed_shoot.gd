@@ -7,6 +7,9 @@ func enter(_msg := {}) -> void:
 	player.velocity = Vector2.ZERO
 
 func physics_update(_delta: float) -> void:
+	if player.en_lobby:
+		state_machine.transition_to("Idle")
+		return
 	# Si suelta el botón de disparo, volvemos a Idle
 	if not Input.is_action_pressed("disparo") and not Input.is_action_pressed("disparo_fijo"):
 		state_machine.transition_to("Idle")

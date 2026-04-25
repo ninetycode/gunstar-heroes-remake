@@ -9,6 +9,13 @@
 [ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
 [ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
 [ext_resource type="Texture2D" uid="uid://dntvshojxd7q" path="res://Assets/Sprite Sheets/Niveles/Lobby/mesa de mejoras.png" id="9_2uni1"]
+[ext_resource type="PackedScene" uid="uid://b6jj6eg0f02qw" path="res://UI/menu_niveles.tscn" id="10_v025o"]
+[ext_resource type="PackedScene" uid="uid://7rxccjtdy28m" path="res://Levels/nivel1.tscn" id="11_mh5bn"]
+[ext_resource type="PackedScene" uid="uid://c5hbqctwiqkk3" path="res://Levels/niveldeprueba.tscn" id="12_71c17"]
+[ext_resource type="Texture2D" uid="uid://cjwin66kghxrd" path="res://Assets/IU-HUD/Captura de pantalla 2026-04-25 175900.png" id="12_mh5bn"]
+[ext_resource type="PackedScene" uid="uid://fiud3qxa7mgh" path="res://Levels/nivel_de_prueba_2.tscn" id="13_4o6w2"]
+[ext_resource type="Texture2D" uid="uid://dm747rdneng7" path="res://Assets/IU-HUD/minifotoblue.png" id="16_4o6w2"]
+[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="16_71j2y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1489,6 +1496,7 @@ tile_set = SubResource("TileSet_f5k8n")
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_3aojn")]
 position = Vector2(33, 315)
 jump_velocity = -500.0
+en_lobby = true
 
 [node name="Camera2D" type="Camera2D" parent="GunstarBlue" unique_id=474955854]
 zoom = Vector2(1.5, 1.5)
@@ -1506,15 +1514,19 @@ texture = ExtResource("7_r50g8")
 position = Vector2(9, 310)
 scale = Vector2(0.5416667, 0.5416667)
 
-[node name="SuperComputadora" type="Sprite2D" parent="Interactuables" unique_id=1314192690]
+[node name="SuperComputadora" type="Sprite2D" parent="Interactuables" unique_id=1314192690 node_paths=PackedStringArray("menu_selector")]
 z_index = -1
 material = SubResource("ShaderMaterial_r50g8")
-position = Vector2(537.59265, 10.268372)
-scale = Vector2(1.04751, 1.0596901)
+position = Vector2(537.5927, 10.268433)
+scale = Vector2(1.04751, 1.05969)
 texture = ExtResource("4_j83j6")
 script = ExtResource("5_v81qt")
+menu_selector = NodePath("../../MenuNiveles")
 
 [node name="InteractableComponent" parent="Interactuables/SuperComputadora" unique_id=1507458313 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+scale = Vector2(1.0000001, 1.0000002)
+collision_layer = 64
+collision_mask = 8
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/SuperComputadora/InteractableComponent" unique_id=1494060409]
@@ -1537,5 +1549,10 @@ sprite_visual = NodePath("..")
 position = Vector2(-17.538536, -575.3843)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_xrkt0")
+
+[node name="MenuNiveles" parent="." unique_id=414099976 instance=ExtResource("10_v025o")]
+niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
+miniaturas = Array[Texture2D]([ExtResource("12_mh5bn"), ExtResource("16_71j2y"), ExtResource("16_4o6w2")])
+nombres_niveles = Array[String](["Nivel 1", "Nivel 2", "Nivel 3"])
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]

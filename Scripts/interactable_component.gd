@@ -21,3 +21,15 @@ func desenfocar():
 func interactuar():
 	# El jugador apretó la tecla. Disparamos la señal.
 	interaccion_activada.emit()
+	
+func _input(event):
+	# Si aprietan el botón de disparo...
+	if event.is_action_pressed("disparo"):
+		# Revisamos todos los cuerpos que están tocando esta Area2D
+		for body in get_overlapping_bodies():
+			# Si uno de esos cuerpos es el jugador...
+			if body.is_in_group("Player"):
+				interactuar() # ¡Disparamos la señal de la computadora!
+				
+				# Consumimos el input para que el juego no intente hacer otra cosa
+				get_viewport().set_input_as_handled()

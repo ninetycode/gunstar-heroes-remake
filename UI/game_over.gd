@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var btn_no: Button = $CenterContainer/VBoxContainer/HBoxContainer/no
 
 # Reemplazá esto por la ruta real a tu pantalla de inicio
-const RUTA_MENU_PRINCIPAL = "res://UI/pruebamenuinicio.tscn" 
+const RUTA_LOBBY = "res://Levels/Lobby.tscn" 
 
 func _ready() -> void:
 	# 1. Hacemos todo invisible al arrancar
@@ -70,4 +70,4 @@ func _on_btn_no_pressed() -> void:
 
 func _on_btn_si_pressed() -> void:
 	# Volvemos al menú
-	get_tree().change_scene_to_file(RUTA_MENU_PRINCIPAL)
+	get_tree().change_scene_to_file(RUTA_LOBBY)
