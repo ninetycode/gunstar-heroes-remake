@@ -1,10 +1,16 @@
 extends Node
 
 signal game_paused(is_paused: bool)
+signal monedas_globales_actualizadas(cantidad)
 
-# 1. Cargamos la escena de la UI
+
 const PAUSE_MENU_SCENE = preload("res://UI/pause_menu.tscn") # <- ¡Chequeá esta ruta!
 var pause_menu_instance: CanvasLayer
+
+var monedas_totales: int = 0
+var vida_persistente: int = -1 # -1 significa "llena" (primera vez)
+var escudo_persistente: int = 0
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -54,3 +60,16 @@ func _input(event: InputEvent) -> void:
 			toggle_pause()
 		elif event.keycode == KEY_R:
 			restart_current_level()
+			
+func guardar_estado_jugador(vida: int, escudo: int, monedas: int):
+	vida_persistente = vida
+	escudo_persistente = escudo
+	monedas_totales = monedas
+	monedas_globales_actualizadas.emit(monedas_totales)
+	print("GameManager: Estado guardado. Monedas: ", monedas_totales)
+	
+func resetear_stats_rogue():
+	# Para cuando Blue muere de verdad y vuelve a la nave
+	vida_persistente = -1
+	escudo_persistente = 0
+	monedas_totales = 0

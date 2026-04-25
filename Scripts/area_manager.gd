@@ -34,6 +34,14 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 
 func _on_fin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		var stats = body.get_node_or_null("StatsComponent")
+		if stats:
+			# Le pasamos los datos al Autoload antes de cambiar de escena
+			GameManager.guardar_estado_jugador(
+				stats.vida_actual, 
+				stats.escudo_actual, 
+				stats.monedas_actuales
+			)
 		zona_fin.set_deferred("monitoring", false)
 		spawner.stop_spawning()
 		get_tree().call_group("HUD_Group", "mostrar_cartel_go", false)

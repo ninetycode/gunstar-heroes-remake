@@ -15,7 +15,15 @@ var monedas_actuales : int = 0
 func _ready():
 	vida_actual = vida_maxima
 	# 2. Avisamos al HUD cómo arrancamos
-	health_changed.emit(vida_maxima, vida_actual, escudo_actual) 
+	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
+	if GameManager.vida_persistente != -1:
+		vida_actual = GameManager.vida_persistente
+		escudo_actual = GameManager.escudo_persistente
+		monedas_actuales = GameManager.monedas_totales
+	
+	# Notificamos al HUD para que arranque con los valores correctos
+	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
+	monedas_cambiadas.emit(monedas_actuales) 
 
 func recibir_danio(cantidad):
 	if vida_actual <= 0 or es_invulnerable:
