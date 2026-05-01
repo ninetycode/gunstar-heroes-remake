@@ -27,7 +27,7 @@ position = Vector2(789, 212)
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("3_qewk2")]
 z_index = -1
-position = Vector2(876, 395)
+position = Vector2(592, 300)
 
 [node name="Piso" type="StaticBody2D" parent="." unique_id=274467790]
 collision_mask = 0

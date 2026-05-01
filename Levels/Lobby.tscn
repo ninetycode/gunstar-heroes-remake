@@ -1483,7 +1483,7 @@ shader_parameter/line_color = Color(0.8930753, 0.8960935, 3.85046e-07, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
-size = Vector2(187.69217, 129.23065)
+size = Vector2(186.87595, 96.452156)
 
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 
@@ -1536,8 +1536,8 @@ shape = SubResource("RectangleShape2D_v81qt")
 
 [node name="Mesa" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
 material = SubResource("ShaderMaterial_xrkt0")
-position = Vector2(23.630817, 5.538437)
-scale = Vector2(1.1076931, 1.1076931)
+position = Vector2(23.330818, 1.8462296)
+scale = Vector2(1.2461547, 1.2461544)
 texture = ExtResource("9_2uni1")
 
 [node name="InteractableComponent" parent="Interactuables/Mesa" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
@@ -1546,8 +1546,8 @@ scale = Vector2(0.5416667, 0.5416667)
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/Mesa/InteractableComponent" unique_id=1006339786]
-position = Vector2(-17.538536, -575.3843)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(-16.935768, -558.7442)
+scale = Vector2(0.9999999, 0.9999993)
 shape = SubResource("RectangleShape2D_xrkt0")
 
 [node name="MenuNiveles" parent="." unique_id=414099976 instance=ExtResource("10_v025o")]
