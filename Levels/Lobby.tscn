@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dm747rdneng7" path="res://Assets/IU-HUD/minifotoblue.png" id="16_4o6w2"]
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="16_71j2y"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
+[ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1484,7 +1485,15 @@ shader_parameter/line_color = Color(0.8930753, 0.8960935, 3.85046e-07, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
-size = Vector2(186.87595, 96.452156)
+size = Vector2(197.53845, 116.30771)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
+size = Vector2(95, 63)
 
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 metadata/_edit_horizontal_guides_ = [139.0, 299.0, 294.0, 143.0]
@@ -1528,10 +1537,11 @@ texture = ExtResource("4_j83j6")
 script = ExtResource("5_v81qt")
 menu_selector = NodePath("../../MenuNiveles")
 
-[node name="InteractableComponent" parent="Interactuables/SuperComputadora" unique_id=1507458313 instance=ExtResource("5_j83j6")]
+[node name="InteractableComponent" parent="Interactuables/SuperComputadora" unique_id=1507458313 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
 scale = Vector2(1.0000001, 1.0000002)
 collision_layer = 64
 collision_mask = 8
+sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactuables/SuperComputadora/InteractableComponent" unique_id=1494060409]
 position = Vector2(0, -0.10809326)
@@ -1553,6 +1563,21 @@ sprite_visual = NodePath("..")
 position = Vector2(-16.935768, -558.7442)
 scale = Vector2(0.9999999, 0.9999993)
 shape = SubResource("RectangleShape2D_xrkt0")
+
+[node name="Teleporter" type="Sprite2D" parent="." unique_id=2008568894]
+material = SubResource("ShaderMaterial_4qno8")
+position = Vector2(564, 306.5)
+texture = ExtResource("18_qomtn")
+
+[node name="InteractableComponent" parent="Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+position = Vector2(9, 310)
+scale = Vector2(0.5416667, 0.5416667)
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/InteractableComponent" unique_id=959161565]
+position = Vector2(-17.538452, -572.3077)
+scale = Vector2(1.8461539, 1.8461539)
+shape = SubResource("RectangleShape2D_qomtn")
 
 [node name="MenuNiveles" parent="." unique_id=414099976 instance=ExtResource("10_v025o")]
 niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
