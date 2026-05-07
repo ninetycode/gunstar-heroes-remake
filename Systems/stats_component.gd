@@ -12,18 +12,35 @@ var es_invulnerable: bool = false
 var escudo_actual : int = 0 # El escudo empieza en 0 hasta que agarres uno
 signal monedas_cambiadas(total_monedas)
 var monedas_actuales : int = 0
+
+@export_category("Debug y Pruebas")
+@export var monedas_de_prueba: int = 0 
+
 func _ready():
 	vida_actual = vida_maxima
-	# 2. Avisamos al HUD cómo arrancamos
-	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
+	vida_maxima = vida_maxima + (GameManager.nivel_mejora_vida * 10)
+	
+	# --- CORRECCIÓN DEL BUG 1: SIEMPRE LEEMOS EL BANCO ---
+	monedas_actuales = GameManager.monedas_totales
+	
 	if GameManager.vida_persistente != -1:
 		vida_actual = GameManager.vida_persistente
 		escudo_actual = GameManager.escudo_persistente
-		monedas_actuales = GameManager.monedas_totales
-	
-	# Notificamos al HUD para que arranque con los valores correctos
+	else:
+		# Si es una partida fresca, la vida actual arranca siendo la máxima mejorada
+		vida_actual = vida_maxima
+		# Si le compramos mejoras de escudo, arranca con el escudo
+		escudo_actual = (GameManager.nivel_mejora_escudo * 20)
+		
+	# --- ACTIVACIÓN DEL TRUCO DE PRUEBAS ---
+	if monedas_de_prueba > 0:
+		monedas_actuales += monedas_de_prueba
+		GameManager.monedas_totales = monedas_actuales # Guardamos el truco en el banco de una
+		monedas_de_prueba = 0 # Reseteamos para que no te sume infinito por error
+		
+	# 3. Notificamos al HUD
 	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
-	monedas_cambiadas.emit(monedas_actuales) 
+	monedas_cambiadas.emit(monedas_actuales)
 
 func recibir_danio(cantidad):
 	if vida_actual <= 0 or es_invulnerable:
