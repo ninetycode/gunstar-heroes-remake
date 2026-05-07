@@ -12,18 +12,47 @@ var es_invulnerable: bool = false
 var escudo_actual : int = 0 # El escudo empieza en 0 hasta que agarres uno
 signal monedas_cambiadas(total_monedas)
 var monedas_actuales : int = 0
+
+@export_category("Debug y Pruebas")
+@export var monedas_de_prueba: int = 0 
+
 func _ready():
-	vida_actual = vida_maxima
-	# 2. Avisamos al HUD cómo arrancamos
-	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
+	# 1. VIDA MÁXIMA REAL BASE (100 + Mejoras)
+	vida_maxima = 100 + (GameManager.nivel_mejora_vida * 10)
+	
+	# 2. CARGAR MONEDAS
+	monedas_actuales = GameManager.monedas_totales
+
+	# 3. ESTABLECER VIDA Y ESCUDO AL ARRANCAR
 	if GameManager.vida_persistente != -1:
 		vida_actual = GameManager.vida_persistente
 		escudo_actual = GameManager.escudo_persistente
-		monedas_actuales = GameManager.monedas_totales
-	
-	# Notificamos al HUD para que arranque con los valores correctos
+	else:
+		# Partida fresca (Cuando morís y volvés al lobby)
+		vida_actual = vida_maxima
+		escudo_actual = GameManager.nivel_mejora_escudo * 20
+
+	# Límite de seguridad para el escudo
+	if escudo_actual > vida_maxima:
+		escudo_actual = vida_maxima
+
+	# 4. TRUCO DE PRUEBAS
+	if monedas_de_prueba > 0:
+		monedas_actuales += monedas_de_prueba
+		GameManager.monedas_totales = monedas_actuales
+		monedas_de_prueba = 0
+
+	# 5. AVISAR AL HUD
 	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
-	monedas_cambiadas.emit(monedas_actuales) 
+	monedas_cambiadas.emit(monedas_actuales)
+
+	# 6. CONSOLA DE DIAGNÓSTICO
+	print("\n========================================")
+	print("=== INICIO DE NIVEL (Stats de Blue) ===")
+	print("Vida: ", vida_actual, " / ", vida_maxima)
+	print("Escudo Inicial: ", escudo_actual)
+	print("Monedas en Bolsillo: ", monedas_actuales)
+	print("========================================\n")
 
 func recibir_danio(cantidad):
 	if vida_actual <= 0 or es_invulnerable:
@@ -62,6 +91,10 @@ func recibir_danio(cantidad):
 # --- NUEVA FUNCIÓN PARA SUMAR ESCUDO ---
 func agregar_escudo(cantidad: int):
 	escudo_actual += cantidad
+	# Limitamos el escudo a la vida máxima
+	if escudo_actual > vida_maxima:
+		escudo_actual = vida_maxima
+		
 	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
 
 # Función de seguridad para apagar el escudo

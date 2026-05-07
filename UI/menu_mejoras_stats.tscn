@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bq4g4v06syhhg"]
+
+[ext_resource type="Script" uid="uid://cdccvrgyusm43" path="res://UI/menu_mejoras_stats.gd" id="1_1hnnn"]
+
+[node name="MenuMejorasStats" type="CanvasLayer" unique_id=62655691]
+process_mode = 3
+script = ExtResource("1_1hnnn")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1391553958]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
+
+[node name="LabelMonedas" type="Label" parent="." unique_id=1122599059]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Monedas Disponibles: 0"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=595185625]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnVida" type="Button" parent="VBoxContainer" unique_id=2081863106]
+layout_mode = 2
+text = "+10 Vida Máxima - Costo 50"
+
+[node name="BtnEscudo" type="Button" parent="VBoxContainer" unique_id=1115621719]
+layout_mode = 2
+text = "+20 Escudo Inicial - Costo 30"
+
+[node name="BtnSalir" type="Button" parent="VBoxContainer" unique_id=980742718]
+layout_mode = 2
+text = "Salir"

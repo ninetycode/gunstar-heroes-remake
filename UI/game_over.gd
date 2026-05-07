@@ -4,27 +4,45 @@ extends CanvasLayer
 @onready var contenedor_ui = $CenterContainer
 @onready var btn_si: Button = $CenterContainer/VBoxContainer/HBoxContainer/si
 @onready var btn_no: Button = $CenterContainer/VBoxContainer/HBoxContainer/no
+@onready var label_monedas: Label = $CenterContainer/VBoxContainer/LabelMonedas
 
 # Reemplazá esto por la ruta real a tu pantalla de inicio
 const RUTA_LOBBY = "res://Levels/Lobby.tscn" 
 
 func _ready() -> void:
-	# 1. Hacemos todo invisible al arrancar
+	
 	fondo_galaxia.modulate.a = 0.0
 	contenedor_ui.modulate.a = 0.0
 	
-	# Conectamos los botones
 	btn_si.pressed.connect(_on_btn_si_pressed)
 	btn_no.pressed.connect(_on_btn_no_pressed)
 	
-	# 2. Silenciamos el mundo (fade out de 1 segundo)
 	if has_node("/root/AudioManager"):
 		AudioManager.stop_music(1.0)
 		
-	# 3. Mandamos a dormir a los enemigos
 	_pacificar_enemigos()
 	
-	# 4. Arrancamos la secuencia visual
+	# --- CORRECCIÓN DEL BUG 2: EL CAJERO AUTOMÁTICO ---
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		var stats = player.get_node_or_null("StatsComponent")
+		if stats:
+			# 1. Calculamos cuántas agarró en este ratito (Bolsillo - Banco inicial)
+			var monedas_ganadas = stats.monedas_actuales - GameManager.monedas_totales
+			if monedas_ganadas < 0: monedas_ganadas = 0 # Por las dudas
+			
+			# 2. Mostramos el mensaje en pantalla
+			if label_monedas:
+				label_monedas.text = "Monedas obtenidas: " + str(monedas_ganadas)
+				
+			# 3. Guardamos TODO en el banco para que viaje con vos al Lobby
+			GameManager.monedas_totales = stats.monedas_actuales
+			
+			# 4. CRÍTICO: Reseteamos la "vida persistente" a -1. 
+			# Si no hacemos esto, Blue va a nacer en el Lobby con 0 HP y va a morir infinitamente.
+			GameManager.vida_persistente = -1
+			GameManager.escudo_persistente = 0
+
 	_animar_aparicion()
 
 func _pacificar_enemigos() -> void:

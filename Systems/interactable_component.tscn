@@ -4,3 +4,5 @@
 
 [node name="InteractableComponent" type="Area2D" unique_id=1518070210]
 script = ExtResource("1_173t6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799193847]
