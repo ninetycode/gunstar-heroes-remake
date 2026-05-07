@@ -1520,7 +1520,7 @@ jump_velocity = -500.0
 en_lobby = true
 
 [node name="StatsComponent" parent="GunstarBlue" index="2" unique_id=575655358]
-monedas_de_prueba = 500
+monedas_de_prueba = 2000
 
 [node name="Camera2D" type="Camera2D" parent="GunstarBlue" unique_id=474955854]
 zoom = Vector2(1.5, 1.5)
