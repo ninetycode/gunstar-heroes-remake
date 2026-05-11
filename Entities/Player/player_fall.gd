@@ -9,7 +9,7 @@ func enter(_msg := {}) -> void:
 func physics_update(_delta: float) -> void:
 	# Movimiento horizontal...
 	var direction = Input.get_axis("move_left", "move_right")
-	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
+	player.velocity.x = direction * player.air_speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	if direction != 0: player._animated_sprite.flip_h = direction < 0
 
 	if player.jump_buffer_counter > 0.0:

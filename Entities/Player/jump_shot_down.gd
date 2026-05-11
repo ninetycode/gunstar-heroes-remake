@@ -4,7 +4,7 @@ extends State
 
 func physics_update(_delta: float) -> void:
 	var direction = Input.get_axis("move_left", "move_right")
-	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
+	player.velocity.x = direction * player.air_speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	
 	if direction != 0: 
 		player._animated_sprite.flip_h = direction < 0
