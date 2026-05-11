@@ -19,7 +19,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("Jump")
 		return
 
-	if Input.is_action_pressed("disparo_fijo"):
+	if Input.is_action_pressed("disparo_fijo") and not player.en_lobby:
 		state_machine.transition_to("FixedShoot")
 		return
 	

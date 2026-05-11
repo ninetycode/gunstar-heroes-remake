@@ -20,7 +20,7 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Hanging")
 
 	# Si apretamos disparo (cualquiera), vamos al estado de disparo aéreo
-	if Input.is_action_pressed("disparo"):
+	if Input.is_action_pressed("disparo") and not player.en_lobby:
 		state_machine.transition_to("JumpShotDown")
 		return
 

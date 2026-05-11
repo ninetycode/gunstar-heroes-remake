@@ -22,6 +22,8 @@ func _ready():
 		BulletPool.initialize_pool(arma_actual.bullet_scene)
 
 func disparar():
+	if owner.get("en_lobby"):
+		return
 	if cooldown_timer.is_stopped() and arma_actual:
 		var direccion = obtener_direccion_apuntado()
 		
