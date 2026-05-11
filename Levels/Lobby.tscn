@@ -20,11 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://dm747rdneng7" path="res://Assets/IU-HUD/minifotoblue.png" id="16_4o6w2"]
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="16_71j2y"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
-HEAD
 [ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
-
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
-9d725e5e2907ddd290487403b33c17758c291d64
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1634,7 +1631,7 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qomtn")
 
 [node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats/InteractableComponent" unique_id=62655691 instance=ExtResource("20_lj22p")]
-9d725e5e2907ddd290487403b33c17758c291d64
+
 
 [node name="VentanaMejorada" type="Sprite2D" parent="." unique_id=312310455]
 z_index = -2
