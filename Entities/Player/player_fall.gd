@@ -12,10 +12,8 @@ func physics_update(_delta: float) -> void:
 	player.velocity.x = direction * player.speed if direction != 0 else move_toward(player.velocity.x, 0, player.speed)
 	if direction != 0: player._animated_sprite.flip_h = direction < 0
 
-	# --- EL COMBO MORTAL: BUFFER + COYOTE ---
-	if player.jump_buffer_counter > 0.0 and player.coyote_timer_counter > 0.0:
-		player.jump_buffer_counter = 0.0 # Consumimos el buffer
-		player.coyote_timer_counter = 0.0 # ¡CRÍTICO! Consumimos el coyote para no hacer doble salto
+	if player.jump_buffer_counter > 0.0:
+		player.jump_buffer_counter = 0.0 
 		state_machine.transition_to("Jump")
 		return
 

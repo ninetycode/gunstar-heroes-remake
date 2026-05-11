@@ -1497,14 +1497,6 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
 size = Vector2(197.53845, 116.30771)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
-shader_parameter/line_thickness = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
-size = Vector2(95, 63)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qomtn"]
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(1, 1, 0, 1)
@@ -1512,6 +1504,11 @@ shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
 size = Vector2(202.25562, 291.2484)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
+shader_parameter/line_thickness = 0.0
 
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 metadata/_edit_horizontal_guides_ = [139.0, 299.0, 294.0, 143.0]
@@ -1591,27 +1588,6 @@ position = Vector2(-16.935768, -558.7442)
 scale = Vector2(0.9999999, 0.9999993)
 shape = SubResource("RectangleShape2D_xrkt0")
 
-
-[node name="Teleporter" type="Sprite2D" parent="." unique_id=2008568894]
-material = SubResource("ShaderMaterial_4qno8")
-position = Vector2(564, 306.5)
-texture = ExtResource("18_qomtn")
-
-[node name="InteractableComponent" parent="Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
-position = Vector2(9, 310)
-scale = Vector2(0.5416667, 0.5416667)
-sprite_visual = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/InteractableComponent" unique_id=959161565]
-position = Vector2(-17.538452, -572.3077)
-scale = Vector2(1.8461539, 1.8461539)
-shape = SubResource("RectangleShape2D_qomtn")
-
-[node name="MenuNiveles" parent="." unique_id=414099976 instance=ExtResource("10_v025o")]
-niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
-miniaturas = Array[Texture2D]([ExtResource("12_mh5bn"), ExtResource("16_71j2y"), ExtResource("16_4o6w2")])
-nombres_niveles = Array[String](["Nivel 1", "Nivel 2", "Nivel 3"])
-
 [node name="Mejoras de Stats" type="Sprite2D" parent="Interactuables" unique_id=1481258388 node_paths=PackedStringArray("menu_mejoras")]
 material = SubResource("ShaderMaterial_qomtn")
 position = Vector2(-75.6923, -162.46152)
@@ -1632,6 +1608,25 @@ shape = SubResource("RectangleShape2D_qomtn")
 
 [node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats/InteractableComponent" unique_id=62655691 instance=ExtResource("20_lj22p")]
 
+[node name="Teleporter" type="Sprite2D" parent="." unique_id=2008568894]
+material = SubResource("ShaderMaterial_4qno8")
+position = Vector2(564, 306.5)
+texture = ExtResource("18_qomtn")
+
+[node name="InteractableComponent" parent="Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+position = Vector2(9, 310)
+scale = Vector2(0.5416667, 0.5416667)
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Teleporter/InteractableComponent" unique_id=959161565]
+position = Vector2(-17.538452, -572.3077)
+scale = Vector2(1.8461539, 1.8461539)
+shape = SubResource("RectangleShape2D_qomtn")
+
+[node name="MenuNiveles" parent="." unique_id=2114040999 instance=ExtResource("10_v025o")]
+niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
+miniaturas = Array[Texture2D]([ExtResource("12_mh5bn"), ExtResource("16_71j2y"), ExtResource("16_4o6w2")])
+nombres_niveles = Array[String](["Nivel 1", "Nivel 2", "Nivel 3"])
 
 [node name="VentanaMejorada" type="Sprite2D" parent="." unique_id=312310455]
 z_index = -2

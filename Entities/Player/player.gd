@@ -7,8 +7,6 @@ const BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 @export var gravity: float = 1200.0
 @export var jump_buffer_time: float = 0.15 # 150 milisegundos de tolerancia
 var jump_buffer_counter: float = 0.0
-@export var coyote_time: float = 0.1 # 100 milisegundos de gracia suele ser el estándar
-var coyote_timer_counter: float = 0.0
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var muzzle = $AnimatedSprite2D/muzzle
 @onready var shooter_time = $ShooterTime
@@ -20,18 +18,10 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	# 1. Actualizamos el reloj del buffer
+	# 1. Actualizamos el reloj del buffer (ESTO SÍ LO DEJAMOS)
 	if jump_buffer_counter > 0.0:
 		jump_buffer_counter -= delta
 		
-	# --- NUEVO: LÓGICA DEL COYOTE TIME ---
-	if is_on_floor():
-		# Si pisamos firme, el tanque del coyote está lleno
-		coyote_timer_counter = coyote_time
-	else:
-		# Si estamos en el aire, se va vaciando de a poco
-		coyote_timer_counter -= delta
-
 	# La gravedad se aplica siempre en el aire
 	if not is_on_floor():
 		velocity.y += gravity * delta
