@@ -1487,7 +1487,7 @@ shader_parameter/line_color = Color(1, 0.9254902, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
-size = Vector2(272.10388, 57.491463)
+size = Vector2(52.872604, 57.491463)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xrkt0"]
 shader = ExtResource("4_1tyf7")
@@ -1535,8 +1535,6 @@ limit_top = 108
 limit_right = 688
 limit_bottom = 360
 
-[node name="Fondo Espacial" parent="." unique_id=865269841 instance=ExtResource("4_ueq3s")]
-
 [node name="Profesor Oak" type="Sprite2D" parent="." unique_id=73491738]
 position = Vector2(598, 210.00002)
 scale = Vector2(0.15769234, 0.15769233)
@@ -1563,7 +1561,7 @@ collision_mask = 8
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/SuperComputadora/InteractableComponent" unique_id=1494060409]
-position = Vector2(0, -0.10809326)
+position = Vector2(1.4168701, -0.10809326)
 scale = Vector2(0.99999976, 0.99999964)
 shape = SubResource("RectangleShape2D_v81qt")
 
@@ -1594,7 +1592,7 @@ position = Vector2(-75.6923, -162.46152)
 scale = Vector2(0.2281956, 0.22819556)
 texture = ExtResource("11_3o54r")
 script = ExtResource("12_3o54r")
-menu_mejoras = NodePath("InteractableComponent/MenuMejorasStats")
+menu_mejoras = NodePath("MenuMejorasStats")
 
 [node name="InteractableComponent" parent="Interactuables/Mejoras de Stats" unique_id=525470435 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
 collision_layer = 64
@@ -1606,41 +1604,41 @@ position = Vector2(4.0450745, -0.00012207031)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qomtn")
 
-[node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats/InteractableComponent" unique_id=62655691 instance=ExtResource("20_lj22p")]
+[node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 instance=ExtResource("20_lj22p")]
 
-[node name="Teleporter" type="Sprite2D" parent="." unique_id=2008568894]
+[node name="Teleporter" type="Sprite2D" parent="Interactuables" unique_id=2008568894]
 material = SubResource("ShaderMaterial_4qno8")
-position = Vector2(564, 306.5)
+position = Vector2(1024.6155, -6.461548)
+scale = Vector2(1.8461539, 1.8461539)
 texture = ExtResource("18_qomtn")
 
-[node name="InteractableComponent" parent="Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+[node name="InteractableComponent" parent="Interactuables/Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
 position = Vector2(9, 310)
 scale = Vector2(0.5416667, 0.5416667)
 sprite_visual = NodePath("..")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Teleporter/InteractableComponent" unique_id=959161565]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Teleporter/InteractableComponent" unique_id=959161565]
 position = Vector2(-17.538452, -572.3077)
 scale = Vector2(1.8461539, 1.8461539)
 shape = SubResource("RectangleShape2D_qomtn")
 
-[node name="MenuNiveles" parent="." unique_id=2114040999 instance=ExtResource("10_v025o")]
-niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
-miniaturas = Array[Texture2D]([ExtResource("12_mh5bn"), ExtResource("16_71j2y"), ExtResource("16_4o6w2")])
-nombres_niveles = Array[String](["Nivel 1", "Nivel 2", "Nivel 3"])
+[node name="Background" type="Node" parent="." unique_id=830993560]
 
-[node name="VentanaMejorada" type="Sprite2D" parent="." unique_id=312310455]
+[node name="Fondo Espacial" parent="Background" unique_id=865269841 instance=ExtResource("4_ueq3s")]
+
+[node name="VentanaMejorada" type="Sprite2D" parent="Background" unique_id=312310455]
 z_index = -2
 position = Vector2(153, 219)
 scale = Vector2(1.030769, 1.0250001)
 texture = ExtResource("18_4qno8")
 
-[node name="VentanaMejorada" type="Sprite2D" parent="VentanaMejorada" unique_id=306732512]
+[node name="VentanaMejorada" type="Sprite2D" parent="Background/VentanaMejorada" unique_id=306732512]
 z_index = -2
 position = Vector2(279.40305, 9.655952e-06)
 scale = Vector2(1.0000002, 1)
 texture = ExtResource("18_4qno8")
 
-[node name="VentanaMejorada" type="Sprite2D" parent="VentanaMejorada/VentanaMejorada" unique_id=317476471]
+[node name="VentanaMejorada" type="Sprite2D" parent="Background/VentanaMejorada/VentanaMejorada" unique_id=317476471]
 z_index = -2
 position = Vector2(-139.70148, -1.8537045e-05)
 scale = Vector2(0.7462685, 0.9999999)

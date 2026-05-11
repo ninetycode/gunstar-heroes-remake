@@ -21,20 +21,25 @@ func abrir_menu():
 	show()
 	menu_abierto = true
 	
-	# --- CONGELAMOS A BLUE (En vez de pausar todo el juego) ---
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		# Le apagamos el motor de físicas para que no camine ni salte
-		player.set_physics_process(false) 
+		# 1. Forzamos a Blue a estar quieto y en Idle antes de congelarlo
+		player.velocity = Vector2.ZERO
+		if player.has_node("AnimatedSprite2D"):
+			player.get_node("AnimatedSprite2D").play("Idle")
+		
+		# 2. MODO PROFESIONAL: Desactivamos el procesamiento completo del nodo
+		# Esto apaga físicas, inputs y procesos normales de Blue y sus hijos (StateMachine)
+		player.process_mode = Node.PROCESS_MODE_DISABLED 
 
 func cerrar_menu():
 	hide()
 	menu_abierto = false
 	
-	# --- DESCONGELAMOS A BLUE ---
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		player.set_physics_process(true)
+		# Volvemos a activar a Blue para que pueda moverse de nuevo
+		player.process_mode = Node.PROCESS_MODE_INHERIT
 
 func actualizar_visuales():
 	if niveles.is_empty(): return 
