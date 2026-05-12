@@ -120,4 +120,9 @@ func curar(cantidad: int) -> void:
 	
 func agregar_monedas(cantidad: int):
 	monedas_actuales += cantidad
+	# --- NUEVO: Sincronizamos con el Banco inmediatamente ---
+	GameManager.monedas_totales = monedas_actuales 
+	# Emitimos la señal local para la animación
 	monedas_cambiadas.emit(monedas_actuales)
+	# Emitimos la señal global para que el nuevo HUD se entere
+	GameManager.monedas_globales_actualizadas.emit(monedas_actuales)

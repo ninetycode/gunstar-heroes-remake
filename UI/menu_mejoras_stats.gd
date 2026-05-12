@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var label_monedas = $LabelMonedas
+@export var coin_hud: CanvasLayer 
 @onready var btn_vida = $VBoxContainer/BtnVida
 @onready var btn_escudo = $VBoxContainer/BtnEscudo
 @onready var btn_salir = $VBoxContainer/BtnSalir
@@ -17,6 +17,11 @@ func abrir_menu():
 	actualizar_etiquetas()
 	show()
 	menu_abierto = true
+	
+	# --- NUEVO: Mostramos el HUD de monedas ---
+	if coin_hud and coin_hud.has_method("forzar_visibilidad"):
+		coin_hud.forzar_visibilidad(true)
+	
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		player.set_physics_process(false)
@@ -25,23 +30,27 @@ func abrir_menu():
 func cerrar_menu():
 	hide()
 	menu_abierto = false
+	
+	# --- NUEVO: Escondemos el HUD de monedas ---
+	if coin_hud and coin_hud.has_method("forzar_visibilidad"):
+		coin_hud.forzar_visibilidad(false)
+		
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		player.set_physics_process(true)
 
 func actualizar_etiquetas():
-	label_monedas.text = "Monedas Disponibles: " + str(GameManager.monedas_totales)
+	# Ya no necesitamos actualizar el label de monedas acá, 
+	# porque el CoinHUD se actualiza solo por señales.
 	
-	# Calculamos los topes actuales
 	var vida_max_actual = 100 + (GameManager.nivel_mejora_vida * 10)
 	var escudo_comprado = GameManager.nivel_mejora_escudo * 20
 	
 	btn_vida.text = "+10 Vida Máx (Nivel " + str(GameManager.nivel_mejora_vida) + ") - Costo: 50"
 	
-	# --- LÍMITE DE ESCUDO ---
 	if escudo_comprado >= vida_max_actual:
 		btn_escudo.text = "Escudo AL MÁXIMO (" + str(escudo_comprado) + ")"
-		btn_escudo.disabled = true # Apagamos el botón visualmente
+		btn_escudo.disabled = true
 	else:
 		btn_escudo.text = "+20 Escudo Inicial (Nivel " + str(GameManager.nivel_mejora_escudo) + ") - Costo: 30"
 		btn_escudo.disabled = false
@@ -51,15 +60,15 @@ func _on_btn_vida_pressed():
 		GameManager.monedas_totales -= 50
 		GameManager.nivel_mejora_vida += 1
 		
-		# --- FIX: ACTUALIZAR A BLUE EN VIVO ---
 		var player = get_tree().get_first_node_in_group("Player")
 		if player:
 			var stats = player.get_node_or_null("StatsComponent")
 			if stats:
 				stats.vida_maxima += 10
-				stats.vida_actual += 10 # Se cura instantáneamente el excedente
+				stats.vida_actual += 10
 				stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
 				
+		GameManager.monedas_globales_actualizadas.emit(GameManager.monedas_totales)
 		AudioManager.play_sfx("buy_success") 
 		actualizar_etiquetas()
 	else:
@@ -70,7 +79,6 @@ func _on_btn_escudo_pressed():
 		GameManager.monedas_totales -= 30
 		GameManager.nivel_mejora_escudo += 1
 		
-		# --- FIX: ACTUALIZAR A BLUE EN VIVO ---
 		var player = get_tree().get_first_node_in_group("Player")
 		if player:
 			var stats = player.get_node_or_null("StatsComponent")
@@ -78,6 +86,7 @@ func _on_btn_escudo_pressed():
 				stats.escudo_actual += 20
 				stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
 				
+		GameManager.monedas_globales_actualizadas.emit(GameManager.monedas_totales)
 		AudioManager.play_sfx("buy_success")
 		actualizar_etiquetas()
 	else:

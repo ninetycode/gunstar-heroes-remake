@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
 [ext_resource type="AudioStream" uid="uid://ch47hb8oj1in6" path="res://Assets/Audio/SONGS/Regular Show   Gary vs David   BEST Clean Extended Mix.mp3" id="23_cqpkw"]
+[ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="24_nl483"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1605,7 +1606,8 @@ position = Vector2(4.0450745, -0.00012207031)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qomtn")
 
-[node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 instance=ExtResource("20_lj22p")]
+[node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 node_paths=PackedStringArray("coin_hud") instance=ExtResource("20_lj22p")]
+coin_hud = NodePath("../../../CoinHud")
 
 [node name="Teleporter" type="Sprite2D" parent="Interactuables" unique_id=2008568894]
 material = SubResource("ShaderMaterial_4qno8")
@@ -1651,6 +1653,8 @@ volume_db = -2.0
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("24_nl483")]
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
 [connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]

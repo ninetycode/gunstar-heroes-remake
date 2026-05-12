@@ -42,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://f4j4oew3kfyx" path="res://Assets/Sprite Sheets/Bullets/icon-bullet-force.png" id="40_dfhql"]
 [ext_resource type="Texture2D" uid="uid://rilodl2v2vkc" path="res://Assets/Sprite Sheets/Bullets/laser_bullet.png" id="41_ok23f"]
 [ext_resource type="Texture2D" uid="uid://gj0lgqlwqw33" path="res://Assets/Sprite Sheets/Bullets/icon-bullet-green.png" id="42_hw5gt"]
+[ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="43_ok23f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_key22"]
 texture = ExtResource("3_i8yv5")
@@ -5710,6 +5711,8 @@ texture = ExtResource("41_ok23f")
 [node name="IconBulletGreen" type="Sprite2D" parent="." unique_id=1847648870]
 position = Vector2(5839, -49)
 texture = ExtResource("42_hw5gt")
+
+[node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("43_ok23f")]
 
 [connection signal="body_entered" from="PyramidTrigger" to="." method="_on_pyramid_trigger_entered"]
 [connection signal="body_entered" from="FinalPyramidTrigger" to="." method="_on_final_piramide_trigger_entered"]

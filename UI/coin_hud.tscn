@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cih0ucrv5a61q"]
+
+[ext_resource type="Script" uid="uid://dbpbj3ro0lba" path="res://UI/coin_hud.gd" id="1_4117k"]
+[ext_resource type="Texture2D" uid="uid://b2q4kr6agvqwt" path="res://Assets/Sprite Sheets/Items/hex 2.png" id="1_cn6ck"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4fqs"]
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+outline_size = 25
+
+[node name="CoinHud" type="CanvasLayer" unique_id=702402385]
+script = ExtResource("1_4117k")
+
+[node name="CoinContainer" type="HBoxContainer" parent="." unique_id=1102543580]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.8640625
+anchor_top = 0.88055557
+anchor_right = 0.9328125
+anchor_bottom = 0.95666665
+offset_right = 100.0
+offset_bottom = 100.600006
+scale = Vector2(0.2, 0.2)
+theme_override_constants/separation = 41
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="TextureRect" parent="CoinContainer" unique_id=806800391]
+layout_mode = 2
+texture = ExtResource("1_cn6ck")
+expand_mode = 3
+
+[node name="CoinLabel" type="Label" parent="CoinContainer" unique_id=612944476]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_o4fqs")

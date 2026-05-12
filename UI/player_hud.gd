@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var weapon_icons: HBoxContainer = %WeaponIcons
 var tween_go: Tween # Para controlar el parpadeo del cartel
 var tween_retrato: Tween
-var tween_coin: Tween
 
 func _ready():
 	# Primero nos aseguramos de que el HUD esté escondido/vacío hasta saber la vida
@@ -25,7 +24,7 @@ func _ready():
 			stats.danio_recibido.connect(_on_player_danio_recibido) 
 			stats.salud_agotada.connect(_on_player_salud_agotada)
 			stats.salud_recuperada.connect(_on_player_salud_recuperada)
-			stats.monedas_cambiadas.connect(_on_player_monedas_cambiadas)
+			
 			
 			# Inicializamos la barra de VIDA con los valores actuales
 			actualizar_barra(stats.vida_maxima, stats.vida_actual)
@@ -39,8 +38,7 @@ func _ready():
 			weapon_comp.inventario_cambiado.connect(_on_inventario_cambiado)
 			# Sincronización inicial por si el HUD cargó un milisegundo tarde
 			_on_inventario_cambiado(weapon_comp.inventario_armas, weapon_comp.indice_arma_actual)
-		if %CoinContainer:
-			%CoinContainer.modulate.a = 0.0
+		
 		else:
 			print("ERROR: El HUD no encontró StatsComponent en el Player")
 	else:
@@ -143,28 +141,6 @@ func _on_player_salud_recuperada(_cantidad: int):
 		print("HUD: No se encontró la imagen BluePortrait para la curación.")
 		
 		
-func _on_player_monedas_cambiadas(total: int):
-	if %CoinLabel and %CoinContainer:
-		# 1. Actualizamos el número
-		%CoinLabel.text = str(total)
-		
-		# 2. Gestión del Tween (El "cerebro" de la animación)
-		# Si ya hay una animación corriendo (ej: agarraste otra moneda rápido), la matamos
-		if tween_coin and tween_coin.is_valid():
-			tween_coin.kill()
-			
-		# Creamos una nueva secuencia
-		tween_coin = create_tween()
-		
-		# FADE IN: Aparece en 0.3 segundos
-		tween_coin.tween_property(%CoinContainer, "modulate:a", 1.0, 0.3)
-		
-		# ESPERA: Se queda visible por 2 segundos
-		tween_coin.tween_interval(2.0)
-		
-		# FADE OUT: Se va en 0.5 segundos
-		tween_coin.tween_property(%CoinContainer, "modulate:a", 0.0, 0.5)
-
 
 func mostrar_cartel_go(mostrar: bool):
 	var cartel = get_node_or_null("GoSign")
