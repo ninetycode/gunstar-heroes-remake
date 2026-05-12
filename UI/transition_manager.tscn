@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://lvytm54786ro"]
+
+[ext_resource type="Script" uid="uid://ud5rknwfdg4d" path="res://UI/transition_manager.gd" id="1_lh881"]
+[ext_resource type="Shader" uid="uid://dk0s0um24qds0" path="res://UI/transition_manager.gdshader" id="2_fs12g"]
+[ext_resource type="Texture2D" uid="uid://c3gvebdv7c2sh" path="res://Assets/Sprite Sheets/Character/Bluerun.png" id="3_0t1na"]
+[ext_resource type="Texture2D" uid="uid://daipjlnawm1hh" path="res://Assets/IU-HUD/abstract-black-comic-zoom-free-vector.png" id="3_55cs3"]
+[ext_resource type="Shader" uid="uid://cty4pyfc8tnsx" path="res://UI/bluewhite.gdshader" id="4_0t1na"]
+
+[sub_resource type="Gradient" id="Gradient_fs12g"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0t1na"]
+gradient = SubResource("Gradient_fs12g")
+fill_to = Vector2(1, 1)
+repeat = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ataiv"]
+shader = ExtResource("2_fs12g")
+shader_parameter/base_color = Color(0.122443475, 0.11845908, 0.17566195, 1)
+shader_parameter/node_resolution = Vector2(0, 0)
+shader_parameter/factor = 0.91999997943616
+shader_parameter/width = 0.4
+shader_parameter/gradient_texture = SubResource("GradientTexture2D_0t1na")
+shader_parameter/gradient_fixed = false
+shader_parameter/shape_texture = ExtResource("3_55cs3")
+shader_parameter/shape_tiling = 32.0
+shader_parameter/shape_rotation = 0.0
+shader_parameter/shape_scroll = Vector2(0, 0)
+shader_parameter/shape_feathering = 0.2999999932944
+shader_parameter/shape_treshold = 1.6999999620016
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_55cs3"]
+shader = ExtResource("4_0t1na")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55cs3"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(0, 0, 41, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6pdb"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(41, 0, 41, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8st6o"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(82, 0, 41, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmgf7"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(130, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ogix"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(169, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wg60"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(208, 0, 39, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd66a"]
+atlas = ExtResource("3_0t1na")
+region = Rect2(249, 0, 38, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ie17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55cs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6pdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8st6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmgf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ogix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wg60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd66a")
+}],
+"loop": true,
+"name": &"chargerun",
+"speed": 5.0
+}]
+
+[node name="TransitionManager" type="CanvasLayer" unique_id=1351957498]
+layer = 150
+script = ExtResource("1_lh881")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1527682806]
+material = SubResource("ShaderMaterial_ataiv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="." unique_id=1604656441]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control" unique_id=531171218]
+material = SubResource("ShaderMaterial_55cs3")
+position = Vector2(562, 284)
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_1ie17")
+animation = &"chargerun"
+frame_progress = 0.9606234

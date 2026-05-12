@@ -12,13 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dntvshojxd7q" path="res://Assets/Sprite Sheets/Niveles/Lobby/mesa de mejoras.png" id="9_2uni1"]
 [ext_resource type="PackedScene" uid="uid://b6jj6eg0f02qw" path="res://UI/menu_niveles.tscn" id="10_v025o"]
 [ext_resource type="Texture2D" uid="uid://8id7dn4oi03c" path="res://Assets/Sprite Sheets/Niveles/Lobby/Pantalla principal.png" id="11_3o54r"]
-[ext_resource type="PackedScene" uid="uid://7rxccjtdy28m" path="res://Levels/nivel1.tscn" id="11_mh5bn"]
 [ext_resource type="Script" uid="uid://btw43725tq8hy" path="res://UI/mejoras_de_stats.gd" id="12_3o54r"]
-[ext_resource type="PackedScene" uid="uid://c5hbqctwiqkk3" path="res://Levels/niveldeprueba.tscn" id="12_71c17"]
 [ext_resource type="Texture2D" uid="uid://cjwin66kghxrd" path="res://Assets/IU-HUD/Captura de pantalla 2026-04-25 175900.png" id="12_mh5bn"]
-[ext_resource type="PackedScene" uid="uid://fiud3qxa7mgh" path="res://Levels/nivel_de_prueba_2.tscn" id="13_4o6w2"]
-[ext_resource type="Texture2D" uid="uid://dm747rdneng7" path="res://Assets/IU-HUD/minifotoblue.png" id="16_4o6w2"]
-[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="16_71j2y"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
 [ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
@@ -1568,9 +1563,9 @@ scale = Vector2(0.99999976, 0.99999964)
 shape = SubResource("RectangleShape2D_v81qt")
 
 [node name="MenuNiveles" parent="Interactuables/SuperComputadora" unique_id=414099976 instance=ExtResource("10_v025o")]
-niveles = Array[PackedScene]([ExtResource("11_mh5bn"), ExtResource("12_71c17"), ExtResource("13_4o6w2")])
-miniaturas = Array[Texture2D]([ExtResource("12_mh5bn"), ExtResource("16_71j2y"), ExtResource("16_4o6w2")])
-nombres_niveles = Array[String](["Nivel 1", "Nivel 2", "Nivel 3"])
+rutas_niveles = Array[String](["res://Levels/nivel1.tscn"])
+miniaturas = Array[Texture2D]([ExtResource("12_mh5bn")])
+nombres_niveles = Array[String](["Nivel 1"])
 
 [node name="Mejora de Armas" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
 material = SubResource("ShaderMaterial_xrkt0")
