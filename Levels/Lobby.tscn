@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
 [ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
+[ext_resource type="AudioStream" uid="uid://ch47hb8oj1in6" path="res://Assets/Audio/SONGS/Regular Show   Gary vs David   BEST Clean Extended Mix.mp3" id="23_cqpkw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1643,6 +1644,13 @@ z_index = -2
 position = Vector2(-139.70148, -1.8537045e-05)
 scale = Vector2(0.7462685, 0.9999999)
 texture = ExtResource("18_4qno8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1040071661]
+stream = ExtResource("23_cqpkw")
+volume_db = -2.0
+autoplay = true
+bus = &"Music"
+parameters/looping = true
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
 [connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]
