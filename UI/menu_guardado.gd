@@ -44,8 +44,8 @@ func abrir_menu():
 	
 	# Congelamos a Blue para que no camine por atrás
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.set_physics_process(false)
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(true)
 		
 	btn_slot_1.grab_focus()
 
@@ -53,8 +53,8 @@ func cerrar_menu():
 	hide()
 	menu_abierto = false
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.set_physics_process(true)
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(false)
 
 # --- LÓGICA DE DIBUJADO DE TEXTOS ---
 

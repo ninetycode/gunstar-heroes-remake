@@ -23,18 +23,15 @@ func abrir_menu():
 	menu_abierto = true
 	
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.velocity = Vector2.ZERO
-		if player.has_node("AnimatedSprite2D"):
-			player.get_node("AnimatedSprite2D").play("Idle")
-		player.process_mode = Node.PROCESS_MODE_DISABLED 
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(true)
 
 func cerrar_menu():
 	hide()
 	menu_abierto = false
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.process_mode = Node.PROCESS_MODE_INHERIT
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(false)
 
 func actualizar_visuales():
 	# FIX: Cambiado niveles por rutas_niveles

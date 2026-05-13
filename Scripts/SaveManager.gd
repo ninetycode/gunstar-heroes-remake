@@ -10,9 +10,10 @@ func _process(delta: float) -> void:
 
 # Transforma los segundos (ej: 3665) en "01:01:05"
 func obtener_tiempo_formateado() -> String:
-	var horas = int(tiempo_jugado) / 3600
-	var minutos = (int(tiempo_jugado) % 3600) / 60
-	var segundos = int(tiempo_jugado) % 60
+	# Usamos división con decimales y fmod (resto de decimales), y al final lo convertimos a entero
+	var horas = int(tiempo_jugado / 3600.0)
+	var minutos = int(fmod(tiempo_jugado, 3600.0) / 60.0)
+	var segundos = int(fmod(tiempo_jugado, 60.0))
 	return "%02d:%02d:%02d" % [horas, minutos, segundos]
 
 # --- LÓGICA DE DISCO RÍGIDO ---

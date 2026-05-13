@@ -147,3 +147,11 @@ func limitar_a_camara():
 func _on_piramid_trigger_area_entered(_area):
 	pass # Replace with function body.
 	
+func set_congelado(congelar: bool) -> void:
+	if congelar:
+		velocity = Vector2.ZERO
+		if _animated_sprite:
+			_animated_sprite.play("Idle")
+		process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		process_mode = Node.PROCESS_MODE_INHERIT

@@ -17,14 +17,14 @@ func abrir_menu():
 	actualizar_etiquetas()
 	show()
 	menu_abierto = true
-	
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(true)
 	# --- NUEVO: Mostramos el HUD de monedas ---
 	if coin_hud and coin_hud.has_method("forzar_visibilidad"):
 		coin_hud.forzar_visibilidad(true)
 	
-	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.set_physics_process(false)
+
 	btn_vida.grab_focus()
 
 func cerrar_menu():
@@ -36,8 +36,8 @@ func cerrar_menu():
 		coin_hud.forzar_visibilidad(false)
 		
 	var player = get_tree().get_first_node_in_group("Player")
-	if player:
-		player.set_physics_process(true)
+	if player and player.has_method("set_congelado"):
+		player.set_congelado(false)
 
 func actualizar_etiquetas():
 	# Ya no necesitamos actualizar el label de monedas acá, 

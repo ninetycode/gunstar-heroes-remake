@@ -1482,6 +1482,7 @@ shader_parameter/velocidad = 1.5
 shader_parameter/ancho = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r50g8"]
+resource_local_to_scene = true
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(1, 0.9254902, 0, 1)
 shader_parameter/line_thickness = 0.0
@@ -1495,14 +1496,16 @@ shader_parameter/line_thickness = 0.0
 size = Vector2(52.872604, 57.491463)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xrkt0"]
+resource_local_to_scene = true
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(0.8930753, 0.8960935, 3.85046e-07, 1)
-shader_parameter/line_thickness = 0.0
+shader_parameter/line_thickness = 2.3350001109125
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
 size = Vector2(197.53845, 116.30771)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qomtn"]
+resource_local_to_scene = true
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
