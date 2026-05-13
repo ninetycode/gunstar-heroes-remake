@@ -25,6 +25,7 @@ GameEvents="*uid://baay76cbjy0em"
 AudioManager="*uid://cxh46sm6t23gg"
 GameManager="*uid://cucy580nwa0oa"
 TransitionManager="*uid://lvytm54786ro"
+SaveManager="*uid://bgthhcps1biah"
 
 [display]
 

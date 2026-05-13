@@ -5,7 +5,7 @@ extends Area2D
 signal interaccion_activada
 
 # Referencia al Sprite del objeto padre para prenderle el shader
-@export var sprite_visual: Sprite2D 
+@export var sprite_visual: CanvasItem
 
 
 func enfocar():

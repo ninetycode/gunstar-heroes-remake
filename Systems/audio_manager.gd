@@ -27,7 +27,8 @@ var sonidos: Dictionary = {
 	"estiramiento_papaya" : preload("res://Assets/Audio/SFX/Magical_Bow_PullBack_01.wav"),
 	"ui_accept" : preload ("res://Assets/Audio/SFX/UI_Menu_ExpandOpen_Volume_1_3_2.wav"),
 	"ui_cancel" : preload ("res://Assets/Audio/SFX/UI_ErrorAlert_Buzz_Volume_1_1_1.wav"),
-	"cargando" : preload ("res://Assets/Audio/SFX/UI_LoadingProgress_SoftPulsate_Volume_1_4_1.wav")
+	"cargando" : preload ("res://Assets/Audio/SFX/UI_LoadingProgress_SoftPulsate_Volume_1_4_1.wav"),
+	"ui_move" : preload ("res://Assets/Audio/SFX/UI_HoverSelect_LightClick_Volume_1_8_1.wav")
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	#"hit": preload("res://Assets/Audio/SFX/hit.wav")

@@ -14,8 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://8id7dn4oi03c" path="res://Assets/Sprite Sheets/Niveles/Lobby/Pantalla principal.png" id="11_3o54r"]
 [ext_resource type="Script" uid="uid://btw43725tq8hy" path="res://UI/mejoras_de_stats.gd" id="12_3o54r"]
 [ext_resource type="Texture2D" uid="uid://cjwin66kghxrd" path="res://Assets/IU-HUD/Captura de pantalla 2026-04-25 175900.png" id="12_mh5bn"]
+[ext_resource type="Texture2D" uid="uid://g5cleqbiptbn" path="res://Assets/Sprite Sheets/Niveles/Lobby/Animated-RadarMonitor-Sheet.png" id="16_lj22p"]
+[ext_resource type="Script" uid="uid://cly8vhpxcorac" path="res://UI/punto_de_guardado.gd" id="17_fwutw"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
 [ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
+[ext_resource type="PackedScene" uid="uid://d2ty7gd6k378u" path="res://UI/menu_guardado.tscn" id="20_3o54r"]
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
 [ext_resource type="AudioStream" uid="uid://ch47hb8oj1in6" path="res://Assets/Audio/SONGS/Regular Show   Gary vs David   BEST Clean Extended Mix.mp3" id="23_cqpkw"]
 [ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="24_nl483"]
@@ -1483,6 +1486,11 @@ shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(1, 0.9254902, 0, 1)
 shader_parameter/line_thickness = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqpkw"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(0, 1, 0.8, 1)
+shader_parameter/line_thickness = 0.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
 size = Vector2(52.872604, 57.491463)
 
@@ -1500,12 +1508,112 @@ shader_parameter/line_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
-size = Vector2(202.25562, 291.2484)
+size = Vector2(32.999985, 59)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
 shader_parameter/line_thickness = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwutw"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(0, 1, 0.8, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwutw"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(0, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqpkw"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(144, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl483"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(288, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6f3r"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(0, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy6qo"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(144, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghuvf"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(288, 96, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1q4u"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(0, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slnks"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(144, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugngs"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(288, 192, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ystf7"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(0, 288, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifrx1"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(144, 288, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogej0"]
+atlas = ExtResource("16_lj22p")
+region = Rect2(288, 288, 144, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ek0yd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwutw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqpkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl483")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6f3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy6qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghuvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1q4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slnks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugngs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ystf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifrx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogej0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj22p"]
+size = Vector2(48.00003, 94.15385)
 
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 metadata/_edit_horizontal_guides_ = [139.0, 299.0, 294.0, 143.0]
@@ -1552,9 +1660,8 @@ script = ExtResource("5_v81qt")
 menu_selector = NodePath("MenuNiveles")
 
 [node name="InteractableComponent" parent="Interactuables/SuperComputadora" unique_id=1507458313 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+material = SubResource("ShaderMaterial_cqpkw")
 scale = Vector2(1.0000001, 1.0000002)
-collision_layer = 64
-collision_mask = 8
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/SuperComputadora/InteractableComponent" unique_id=1494060409]
@@ -1563,6 +1670,7 @@ scale = Vector2(0.99999976, 0.99999964)
 shape = SubResource("RectangleShape2D_v81qt")
 
 [node name="MenuNiveles" parent="Interactuables/SuperComputadora" unique_id=414099976 instance=ExtResource("10_v025o")]
+visible = false
 rutas_niveles = Array[String](["res://Levels/nivel1.tscn"])
 miniaturas = Array[Texture2D]([ExtResource("12_mh5bn")])
 nombres_niveles = Array[String](["Nivel 1"])
@@ -1592,8 +1700,6 @@ script = ExtResource("12_3o54r")
 menu_mejoras = NodePath("MenuMejorasStats")
 
 [node name="InteractableComponent" parent="Interactuables/Mejoras de Stats" unique_id=525470435 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
-collision_layer = 64
-collision_mask = 8
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D" parent="Interactuables/Mejoras de Stats/InteractableComponent" index="0" unique_id=799193847]
@@ -1602,6 +1708,7 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_qomtn")
 
 [node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 node_paths=PackedStringArray("coin_hud") instance=ExtResource("20_lj22p")]
+visible = false
 coin_hud = NodePath("../../../CoinHud")
 
 [node name="Teleporter" type="Sprite2D" parent="Interactuables" unique_id=2008568894]
@@ -1616,9 +1723,26 @@ scale = Vector2(0.5416667, 0.5416667)
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Teleporter/InteractableComponent" unique_id=959161565]
-position = Vector2(-17.538452, -572.3077)
+position = Vector2(-17.538574, -568.61536)
 scale = Vector2(1.8461539, 1.8461539)
 shape = SubResource("RectangleShape2D_qomtn")
+
+[node name="Pc" type="AnimatedSprite2D" parent="Interactuables" unique_id=1000596457 node_paths=PackedStringArray("menu_guardado")]
+material = SubResource("ShaderMaterial_fwutw")
+position = Vector2(987.6923, -173.53845)
+sprite_frames = SubResource("SpriteFrames_ek0yd")
+frame_progress = 0.804698
+script = ExtResource("17_fwutw")
+menu_guardado = NodePath("menu_guardado")
+
+[node name="InteractableComponent" parent="Interactuables/Pc" unique_id=778901136 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" parent="Interactuables/Pc/InteractableComponent" index="0" unique_id=799193847]
+position = Vector2(0, 13.846191)
+shape = SubResource("RectangleShape2D_lj22p")
+
+[node name="menu_guardado" parent="Interactuables/Pc" unique_id=328795721 instance=ExtResource("20_3o54r")]
 
 [node name="Background" type="Node" parent="." unique_id=830993560]
 
@@ -1653,7 +1777,9 @@ parameters/looping = true
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
 [connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]
+[connection signal="interaccion_activada" from="Interactuables/Pc/InteractableComponent" to="Interactuables/Pc" method="_on_interactable_component_interaccion_activada"]
 
 [editable path="GunstarBlue"]
 [editable path="GunstarBlue/HurtboxComponent"]
 [editable path="Interactuables/Mejoras de Stats/InteractableComponent"]
+[editable path="Interactuables/Pc/InteractableComponent"]

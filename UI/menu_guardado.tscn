@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://d2ty7gd6k378u"]
+
+[ext_resource type="Script" uid="uid://eqhmbkj6a85b" path="res://UI/menu_guardado.gd" id="1_1u7ui"]
+
+[node name="menu_guardado" type="CanvasLayer" unique_id=328795721]
+script = ExtResource("1_1u7ui")
+
+[node name="ContenedorSlots" type="MarginContainer" parent="." unique_id=1202067916]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -91.5
+offset_right = 91.5
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContenedorSlots" unique_id=985670286]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="ContenedorSlots/VBoxContainer" unique_id=432155081]
+layout_mode = 2
+text = "Selecciona un espacio"
+
+[node name="BtnSlot1" type="Button" parent="ContenedorSlots/VBoxContainer" unique_id=1807270748]
+layout_mode = 2
+text = "Espacio 1"
+alignment = 0
+
+[node name="BtnSlot2" type="Button" parent="ContenedorSlots/VBoxContainer" unique_id=1497252408]
+layout_mode = 2
+text = "Espacio 2"
+alignment = 0
+
+[node name="BtnSlot3" type="Button" parent="ContenedorSlots/VBoxContainer" unique_id=764178689]
+layout_mode = 2
+text = "Espacio 3"
+alignment = 0
+
+[node name="PopupConfirmacion" type="ColorRect" parent="." unique_id=272239542]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.82222223
+anchor_right = 0.5
+anchor_bottom = 0.82222223
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelCentro" type="PanelContainer" parent="PopupConfirmacion" unique_id=1216714186]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -40.0
+offset_right = 176.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupConfirmacion/PanelCentro" unique_id=589601190]
+layout_mode = 2
+alignment = 1
+
+[node name="TextoPregunta" type="Label" parent="PopupConfirmacion/PanelCentro/VBoxContainer" unique_id=227409303]
+layout_mode = 2
+text = "¿Sobreescribir partida?"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupConfirmacion/PanelCentro/VBoxContainer" unique_id=1996310559]
+layout_mode = 2
+theme_override_constants/separation = 120
+alignment = 1
+
+[node name="BtnSi" type="Button" parent="PopupConfirmacion/PanelCentro/VBoxContainer/HBoxContainer" unique_id=4277055]
+layout_mode = 2
+text = "Sí"
+flat = true
+
+[node name="BtnNo" type="Button" parent="PopupConfirmacion/PanelCentro/VBoxContainer/HBoxContainer" unique_id=1071310113]
+layout_mode = 2
+text = "No"
+flat = true
+
+[node name="BtnBorrar" type="Button" parent="PopupConfirmacion/PanelCentro/VBoxContainer/HBoxContainer" unique_id=1882126074]
+layout_mode = 2
+text = "Borrar"
+flat = true
