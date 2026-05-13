@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://c6jxe8krn4aeo"]
+[gd_scene format=4 uid="uid://xh10nt8na8n3"]
 
-[ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="1_aflkf"]
+[ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="1_s8rsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rn7ik"]
-texture = ExtResource("1_aflkf")
+texture = ExtResource("1_s8rsr")
 64:4/0 = 0
 65:4/0 = 0
 66:4/0 = 0
