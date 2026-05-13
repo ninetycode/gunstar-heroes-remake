@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Gunstar Heroes Remake"
-run/main_scene="uid://dyf620lpmt3br"
+run/main_scene="uid://hd68cutw7xyg"
 config/features=PackedStringArray("4.6", "Mobile")
 
 [audio]
@@ -152,6 +152,12 @@ salir={
 2d_physics/layer_5="AreaDeSpawn"
 2d_physics/layer_6="Item"
 2d_physics/layer_7="Interactuable"
+
+[maaacks_menus_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
 
 [physics]
 

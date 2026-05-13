@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://hd68cutw7xyg"]
+
+[ext_resource type="Script" uid="uid://b7jub7jnj48nq" path="res://UI/mainmenu.gd" id="1_427s3"]
+[ext_resource type="Texture2D" uid="uid://citiwwhlsh5km" path="res://Assets/IU-HUD/portadagunstarheroes.png" id="2_6xc76"]
+[ext_resource type="FontFile" uid="uid://cqyrutwd1asn0" path="res://Assets/Fonts/Invincible-Regular.otf" id="3_81nvf"]
+
+[sub_resource type="Theme" id="Theme_6whui"]
+default_font = ExtResource("3_81nvf")
+default_font_size = 18
+
+[node name="Mainmenu" type="CanvasLayer" unique_id=1690235937]
+script = ExtResource("1_427s3")
+
+[node name="Fondo" type="TextureRect" parent="." unique_id=664918133]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6xc76")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2009158057]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_right = 100.0
+offset_bottom = 107.0
+grow_vertical = 2
+theme = SubResource("Theme_6whui")
+theme_override_constants/margin_left = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1144314281]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ColumnaPrincipal" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=474878123]
+layout_mode = 2
+
+[node name="BtnJugar" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=526174565]
+layout_mode = 2
+text = "Jugar"
+flat = true
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar" unique_id=2087322045]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 90
+
+[node name="ColumnaJugar" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer" unique_id=1197121133]
+layout_mode = 2
+
+[node name="BtnNuevo" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar" unique_id=2138125802]
+layout_mode = 2
+text = "Nuevo"
+flat = true
+alignment = 0
+
+[node name="BtnCargar" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar" unique_id=2106522568]
+layout_mode = 2
+text = "Cargar"
+flat = true
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar/BtnCargar" unique_id=758411328]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 80
+
+[node name="ColumnaPartidas" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar/BtnCargar/MarginContainer" unique_id=23916831]
+layout_mode = 2
+
+[node name="BtnPartida1" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar/BtnCargar/MarginContainer/ColumnaPartidas" unique_id=897281019]
+layout_mode = 2
+text = "Paritda 1"
+flat = true
+alignment = 0
+
+[node name="BtnPartida2" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar/BtnCargar/MarginContainer/ColumnaPartidas" unique_id=183843198]
+layout_mode = 2
+text = "Partida 2"
+flat = true
+alignment = 0
+
+[node name="BtnPartida3" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal/BtnJugar/MarginContainer/ColumnaJugar/BtnCargar/MarginContainer/ColumnaPartidas" unique_id=1871024335]
+layout_mode = 2
+text = "Partida 3"
+flat = true
+alignment = 0
+
+[node name="BtnOpciones" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=751628956]
+layout_mode = 2
+text = "Opciones"
+flat = true
+alignment = 0
+
+[node name="BtnCreditos" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=1865855777]
+layout_mode = 2
+text = "Creditos"
+flat = true
+alignment = 0
+
+[node name="BtnSalir" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=2097482448]
+layout_mode = 2
+text = "Salir"
+flat = true
+alignment = 0
