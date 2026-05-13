@@ -10,11 +10,13 @@ var tiempo_transcurrido: float = 0.0
 
 func _ready():
 	# Arrancamos con la pantalla transparente y Blue invisible
+	
 	color_rect.material.set_shader_parameter("factor", 0.0)
 	color_rect.hide()
 	$Control.hide()
 
 func viajar_a(ruta_escena: String):
+	AudioManager.play_sfx("cargando")
 	ruta_escena_destino = ruta_escena
 	tiempo_transcurrido = 0.0
 	cargando = true

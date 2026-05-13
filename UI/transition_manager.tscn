@@ -114,4 +114,4 @@ position = Vector2(562, 284)
 scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_1ie17")
 animation = &"chargerun"
-frame_progress = 0.3002911
+frame_progress = 0.9899084
