@@ -5,7 +5,7 @@ extends Area2D
 signal interaccion_activada
 
 # Referencia al Sprite del objeto padre para prenderle el shader
-@export var sprite_visual: Sprite2D
+@export var sprite_visual: CanvasItem
 
 
 func enfocar():
@@ -21,8 +21,7 @@ func desenfocar():
 func interactuar():
 	# El jugador apretó la tecla. Disparamos la señal.
 	interaccion_activada.emit()
-
-
+	
 func _input(event):
 	# Si aprietan el botón de disparo...
 	if event.is_action_pressed("disparo"):

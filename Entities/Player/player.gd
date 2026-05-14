@@ -144,6 +144,9 @@ func limitar_a_camara():
 		global_position.x = clamp(global_position.x, limite_izq + 20.0, limite_der - 20.0)
 
 
+func _on_piramid_trigger_area_entered(_area):
+	pass # Replace with function body.
+	
 func set_congelado(congelar: bool) -> void:
 	if congelar:
 		velocity = Vector2.ZERO
@@ -152,7 +155,3 @@ func set_congelado(congelar: bool) -> void:
 		process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		process_mode = Node.PROCESS_MODE_INHERIT
-
-
-func _on_interactable_component_interaccion_activada() -> void:
-	pass # Replace with function body.

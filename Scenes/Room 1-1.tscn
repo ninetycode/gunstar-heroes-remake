@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_ejyrr"]
 [ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="7_e8swb"]
 [ext_resource type="PackedScene" uid="uid://bop5cmsu3kff2" path="res://Scenes/columnas.tscn" id="8_73mnm"]
-[ext_resource type="PackedScene" path="res://Scenes/camera_2d.tscn" id="9_jxupe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hv4a"]
 texture = ExtResource("1_qq7t5")
@@ -5250,11 +5249,5 @@ position = Vector2(12, 296)
 [node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("7_e8swb")]
 
 [node name="Columnas" parent="." unique_id=1979231023 instance=ExtResource("8_73mnm")]
-
-[node name="Camera2D" parent="." unique_id=71914850 instance=ExtResource("9_jxupe")]
-position = Vector2(320.045, 170.875)
-limit_left = 0
-limit_right = 641
-limit_bottom = 350
 
 [editable path="AreaManager"]
