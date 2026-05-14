@@ -9,17 +9,22 @@ extends Node2D
 @export_category("Audio")
 ## Escribí acá el nombre de la pista tal cual lo lee tu AudioManager (ej: "boss_theme")
 @export var arena_music: String = ""
+var arena_completada: bool = false
 
 func _ready() -> void:
 	assert(zona_inicio != null, "Falta asignar la zona de inicio")
 	assert(zona_fin != null, "Falta asignar la zona de fin")
-	assert(spawner != null, "Falta asignar el spawner")
-
-	zona_inicio.body_entered.connect(_on_inicio_body_entered)
-	zona_fin.body_entered.connect(_on_fin_body_entered)
 	
-	# NUEVO: Conectamos la victoria de la arena
-	spawner.all_waves_completed.connect(_on_arena_completada)
+	zona_inicio.body_entered.connect(_on_inicio_body_entered) # 
+	zona_fin.body_entered.connect(_on_fin_body_entered) # 
+	
+	# --- ADAPTACIÓN PARA JEFES ---
+	if spawner != null:
+		# Es una sala normal con hordas
+		spawner.all_waves_completed.connect(_on_arena_completada) # 
+	else:
+		# Es una sala de jefe (no hay spawner). Escuchamos la señal de tu BaseBoss
+		GameEvents.boss_died.connect(_on_arena_completada)
 
 func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
@@ -33,22 +38,30 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 		spawner.start_spawning()
 
 func _on_fin_body_entered(body: Node2D) -> void:
+	# --- NUEVA REGLA: Si la arena no se completó, no hacemos nada ---
+	if not arena_completada:
+		return 
+
 	if body.is_in_group("Player"):
 		var stats = body.get_node_or_null("StatsComponent")
 		if stats:
-			# Le pasamos los datos al Autoload antes de cambiar de escena
-			GameManager.guardar_estado_jugador(
-				stats.vida_actual, 
-				stats.escudo_actual, 
-				stats.monedas_actuales
-			)
+			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, stats.monedas_actuales)
+			
 		zona_fin.set_deferred("monitoring", false)
-		spawner.stop_spawning()
+		if spawner:
+			spawner.stop_spawning()
 		get_tree().call_group("HUD_Group", "mostrar_cartel_go", false)
-		# Detenemos la música al cruzar la meta con un fade_out de 2 segundos
-		#if arena_music != "":
-			#AudioManager.stop_music(2.0)
+		
+		# Avanzamos de habitación
+		if LevelManager.has_method("avanzar_habitacion"):
+			LevelManager.avanzar_habitacion()
 			
 func _on_arena_completada():
-	# Usamos un grupo para no tener que buscar la ruta exacta del HUD
+	# --- ABRIMOS EL CANDADO ---
+	arena_completada = true 
 	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
+	
+	# Opcional (Pared Física): Si tenés una pared invisible que bloquea el paso, la borramos acá
+	var pared_derecha = get_node_or_null("ParedDerecha")
+	if pared_derecha:
+		pared_derecha.queue_free()

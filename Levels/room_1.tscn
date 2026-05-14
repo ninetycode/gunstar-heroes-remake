@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cu12q60be4pq3"]
+
+[ext_resource type="Script" uid="uid://ctkab6q4urxvi" path="res://Systems/level_manager.gd" id="1_5vwy8"]
+
+[node name="Room1" type="Node" unique_id=1217098321]
+script = ExtResource("1_5vwy8")
+pool_habitaciones = Array[String](["res://Scenes/Room 1-1.tscn", "res://Scenes/Room 1-2.tscn", "res://Scenes/Room 1-3.tscn", "res://Scenes/Room 1-4.tscn", "res://Scenes/Room 1-5.tscn"])

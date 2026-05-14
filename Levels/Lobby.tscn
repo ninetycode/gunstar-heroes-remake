@@ -1674,7 +1674,7 @@ shape = SubResource("RectangleShape2D_v81qt")
 
 [node name="MenuNiveles" parent="Interactuables/SuperComputadora" unique_id=414099976 instance=ExtResource("10_v025o")]
 visible = false
-rutas_niveles = Array[String](["res://Levels/nivel1.tscn"])
+rutas_niveles = Array[String](["res://Levels/room_1.tscn"])
 miniaturas = Array[Texture2D]([ExtResource("12_mh5bn")])
 nombres_niveles = Array[String](["Nivel 1"])
 

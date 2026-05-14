@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bop5cmsu3kff2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8swb"]
+size = Vector2(20, 351)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73mnm"]
+size = Vector2(12.5, 352)
+
+[node name="Columnas" type="Node" unique_id=1979231023]
+
+[node name="Principio" type="StaticBody2D" parent="." unique_id=40079345]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Principio" unique_id=1298394779]
+position = Vector2(0, 174.5)
+shape = SubResource("RectangleShape2D_e8swb")
+debug_color = Color(0.7566218, 0.5973416, 0.32923186, 0.83137256)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=717872965]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1962248719]
+position = Vector2(637.25, 175)
+shape = SubResource("RectangleShape2D_73mnm")
+debug_color = Color(0.75686276, 0.59607846, 0.32941177, 0.83137256)

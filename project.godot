@@ -26,6 +26,7 @@ AudioManager="*uid://cxh46sm6t23gg"
 GameManager="*uid://cucy580nwa0oa"
 TransitionManager="*uid://lvytm54786ro"
 SaveManager="*uid://bgthhcps1biah"
+LevelManager="*uid://cu12q60be4pq3"
 
 [display]
 

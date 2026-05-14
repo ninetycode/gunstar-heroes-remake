@@ -73,4 +73,11 @@ func viajar_al_nivel():
 		if stats:
 			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, stats.monedas_actuales)
 			
-	TransitionManager.viajar_a(rutas_niveles[indice_actual])
+	# --- CAMBIO CLAVE AQUÍ ---
+	# En lugar de viajar a una escena fija, le decimos al manager que arranque
+	# el bucle de rooms aleatorias.
+	if LevelManager.has_method("iniciar_nivel"):
+		LevelManager.iniciar_nivel()
+	else:
+		# Por si querés debuguear si el Autoload está bien puesto
+		print("ERROR: No se encontró el LevelManager")
