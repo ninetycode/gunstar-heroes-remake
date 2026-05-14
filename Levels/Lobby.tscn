@@ -1495,11 +1495,10 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
 size = Vector2(52.872604, 57.491463)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrkt0"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl483"]
 shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(0.8930753, 0.8960935, 3.85046e-07, 1)
-shader_parameter/line_thickness = 2.3350001109125
+shader_parameter/line_color = Color(1, 0.8901961, 0, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
 size = Vector2(197.53845, 116.30771)
@@ -1679,7 +1678,7 @@ miniaturas = Array[Texture2D]([ExtResource("12_mh5bn")])
 nombres_niveles = Array[String](["Nivel 1"])
 
 [node name="Mejora de Armas" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
-material = SubResource("ShaderMaterial_xrkt0")
+material = SubResource("ShaderMaterial_nl483")
 position = Vector2(23.330818, 1.8462296)
 scale = Vector2(1.2461547, 1.2461544)
 texture = ExtResource("9_2uni1")
