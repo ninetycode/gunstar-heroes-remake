@@ -103,22 +103,22 @@ func obtener_enemigo_visible_cercano() -> Node2D:
 		
 	var screen_size = get_viewport_rect().size / cam.zoom
 	var pos_esquina_superior_izq = cam.get_screen_center_position() - (screen_size / 2)
-	
-	# --- FIX: Le damos 150 píxeles de visión extra para cazar a los que están haciendo Spawn ---
-	var rectangulo_camara = Rect2(pos_esquina_superior_izq, screen_size).grow(150)
+	var rectangulo_camara = Rect2(pos_esquina_superior_izq, screen_size)
 
 	for enemigo in enemigos:
 		if "esta_muerto" in enemigo and enemigo.esta_muerto:
 			continue
 			
+		# Obtenemos el punto real al que queremos apuntar (el Hurtbox)
 		var punto_real = enemigo.global_position
 		if enemigo.has_method("obtener_punto_apuntado"):
 			punto_real = enemigo.obtener_punto_apuntado()
 			
-		# Ahora detectará al enemigo incluso si está un poquito afuera de la pantalla
+		# Chequeamos si ESE PUNTO (y no los pies) está en la cámara
 		if not rectangulo_camara.has_point(punto_real):
 			continue
 			
+		# Calculamos la distancia hacia el Hurtbox
 		var dist = global_position.distance_squared_to(punto_real)
 		if dist < distancia_minima:
 			distancia_minima = dist

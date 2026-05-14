@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="6_vjo2d"]
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="7_ycm45"]
-[ext_resource type="PackedScene" uid="uid://t8q8lblr4q78" path="res://Entities/Enemies/Normals/Fly Machine/enemy_fly_machine.tscn" id="8_ycm45"]
-[ext_resource type="PackedScene" uid="uid://c8eqy1i205blb" path="res://Scenes/camera_2d.tscn" id="9_vnbqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
@@ -43,7 +41,6 @@ offset_left = -313.0
 offset_top = -11.0
 offset_right = 328.0
 offset_bottom = 29.0
-metadata/_edit_use_anchors_ = true
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("5_4ufvc")]
 
@@ -57,11 +54,5 @@ position = Vector2(336, 0)
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
 waves = Array[ExtResource("7_ycm45")]([SubResource("Resource_vnbqc")])
 max_concurrent_enemies = 5
-
-[node name="enemy_fly_machine" parent="." unique_id=1995836615 instance=ExtResource("8_ycm45")]
-position = Vector2(64, 111)
-
-[node name="Camera2D" parent="." unique_id=71914850 instance=ExtResource("9_vnbqc")]
-position = Vector2(339, 175)
 
 [editable path="AreaManager"]

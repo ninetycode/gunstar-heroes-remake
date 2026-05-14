@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="3_i8yv5"]
 [ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="4_fwb7x"]
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="5_wfebu"]
+[ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="6_wfebu"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="7_bn74d"]
-[ext_resource type="PackedScene" uid="uid://c8eqy1i205blb" path="res://Scenes/camera_2d.tscn" id="7_ok23f"]
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="9_7j7t0"]
 [ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="9_7q4wo"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="9_fwgol"]
@@ -5601,7 +5601,7 @@ metadata/_edit_lock_ = true
 position = Vector2(1937, 278)
 collision_mask = 8
 script = ExtResource("7_bn74d")
-camara = NodePath("")
+camara = NodePath("../Camera2D")
 jefe_papaya = NodePath("../Enemies/PapayaBoss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LockZone" unique_id=160480512]
@@ -5611,8 +5611,11 @@ position = Vector2(6, -123)
 shape = SubResource("RectangleShape2D_unhkn")
 debug_color = Color(0.9764706, 0, 0, 0.41960785)
 
-[node name="Camera2D" parent="." unique_id=71914850 instance=ExtResource("7_ok23f")]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=224196049]
 position = Vector2(-900, 181)
+limit_right = 276447223
+position_smoothing_enabled = true
+script = ExtResource("6_wfebu")
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1679779527]
 
