@@ -65,3 +65,7 @@ func _on_arena_completada():
 	var pared_derecha = get_node_or_null("ParedDerecha")
 	if pared_derecha:
 		pared_derecha.queue_free()
+
+
+func _on_papaya_boss_enemy_died(enemy_node: Node) -> void:
+	pass # Replace with function body.
