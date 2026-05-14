@@ -94,7 +94,6 @@ collision_mask = 2
 script = ExtResource("1_8uimj")
 altura_minima_suelo = 500.0
 mi_arma_resource = ExtResource("2_3q20n")
-drop_chance = 10.0
 probabilidad_dropear_algo = 10.0
 posibles_drops = Array[ExtResource("3_seyq7")]([ExtResource("4_r2c7j")])
 

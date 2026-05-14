@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8eqy1i205blb"]
+
+[ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="1_omgnx"]
+
+[node name="Camera2D" type="Camera2D" unique_id=71914850]
+limit_right = 276447223
+position_smoothing_enabled = true
+script = ExtResource("1_omgnx")
