@@ -1,13 +1,15 @@
 class_name ArenaManager
 extends Node2D
 
+# --- NUEVO: INTERRUPTOR A PRUEBA DE BALAS ---
+@export_enum("Horda", "Jefe") var tipo_de_sala: int = 0
+
 @export_category("Zonas del Pasillo")
 @export var zona_inicio: Area2D
 @export var zona_fin: Area2D
 @export var spawner: SpawnerManager
 
 @export_category("Audio")
-## Escribí acá el nombre de la pista tal cual lo lee tu AudioManager (ej: "boss_theme")
 @export var arena_music: String = ""
 var arena_completada: bool = false
 
@@ -15,27 +17,29 @@ func _ready() -> void:
 	assert(zona_inicio != null, "Falta asignar la zona de inicio")
 	assert(zona_fin != null, "Falta asignar la zona de fin")
 	
-	zona_inicio.body_entered.connect(_on_inicio_body_entered) # 
-	zona_fin.body_entered.connect(_on_fin_body_entered) # 
+	zona_inicio.body_entered.connect(_on_inicio_body_entered)
+	zona_fin.body_entered.connect(_on_fin_body_entered)
 	
-	# --- ADAPTACIÓN PARA JEFES ---
-	if spawner != null:
-		# Es una sala normal con hordas
-		spawner.all_waves_completed.connect(_on_arena_completada) # 
-	else:
-		# Es una sala de jefe (no hay spawner). Escuchamos la señal de tu BaseBoss
+	# --- NUEVA LÓGICA EXPLICITA ---
+	if tipo_de_sala == 0: # Si en el inspector elegiste "Horda"
+		if spawner != null:
+			spawner.all_waves_completed.connect(_on_arena_completada) 
+	else: # Si en el inspector elegiste "Jefe"
+		# Ignoramos completamente al spawner y escuchamos al Boss
 		GameEvents.boss_died.connect(_on_arena_completada)
 
 func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		zona_inicio.set_deferred("monitoring", false)
 		
-		# [Inferencia] Asumo que tu AudioManager tiene un método parecido a este. 
-		# Cambiá "play_music" por la función real que usen con Facu.
 		if arena_music != "nivel_1":
 			AudioManager.play_music(arena_music)
 			
-		spawner.start_spawning()
+		# Solo activamos el Spawner si marcaste la sala como "Horda"
+		if tipo_de_sala == 0 and spawner != null:
+			spawner.start_spawning()
+
+# ... (Acá dejá tus funciones _on_fin_body_entered y _on_arena_completada tal cual las tenías) ...
 
 func _on_fin_body_entered(body: Node2D) -> void:
 	# --- NUEVA REGLA: Si la arena no se completó, no hacemos nada ---
