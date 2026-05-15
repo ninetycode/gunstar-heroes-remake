@@ -22,10 +22,12 @@ shape = SubResource("RectangleShape2D_pjbhi")
 debug_color = Color(0, 0.6505365, 0.10516455, 0.41960785)
 
 [node name="Zona Fin" type="Area2D" parent="." unique_id=1457722739]
-collision_layer = 16
-collision_mask = 8
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zona Fin" unique_id=1989812521]
+light_mask = 0
+visibility_layer = 0
 position = Vector2(639, 178)
 shape = SubResource("RectangleShape2D_pjbhi")
 debug_color = Color(0.890137, 0.21091738, 0.62374073, 0.41960785)

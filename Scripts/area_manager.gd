@@ -60,12 +60,13 @@ func _on_fin_body_entered(body: Node2D) -> void:
 		if LevelManager.has_method("avanzar_habitacion"):
 			LevelManager.avanzar_habitacion()
 			
-func _on_arena_completada():
-	# --- ABRIMOS EL CANDADO ---
-	arena_completada = true 
-	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
+func _on_arena_completada() -> void:
+	arena_completada = true
 	
-	# Opcional (Pared Física): Si tenés una pared invisible que bloquea el paso, la borramos acá
-	var pared_derecha = get_node_or_null("ParedDerecha")
-	if pared_derecha:
-		pared_derecha.queue_free()
+	# Buscamos la cámara en la escena y le damos permiso para moverse
+	var camara = get_viewport().get_camera_2d()
+	if camara and camara.has_method("permitir_avance"):
+		camara.permitir_avance()
+	
+	# Opcional: Mostrar el cartel de "GO!"
+	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)

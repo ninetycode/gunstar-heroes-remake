@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bi0fi5x6n61pk"]
+
+[ext_resource type="Script" uid="uid://c54y2ma05irpv" path="res://Scenes/nivel_procedural_0.1.gd" id="1_h2n3v"]
+[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_b705x"]
+[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="3_s7juh"]
+[ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="4_mkb2r"]
+[ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="5_b705x"]
+
+[node name="Node2D" type="Node2D" unique_id=962576990]
+script = ExtResource("1_h2n3v")
+
+[node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_b705x")]
+position = Vector2(40, 245)
+
+[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_s7juh")]
+
+[node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("4_mkb2r")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=372702705]
+position = Vector2(-860, 426)
+limit_right = 276447223
+position_smoothing_enabled = true
+script = ExtResource("5_b705x")

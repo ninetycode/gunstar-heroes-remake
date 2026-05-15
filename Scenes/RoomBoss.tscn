@@ -3,9 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://docnwg31idij3" path="res://Assets/Sprite Sheets/Niveles/Spritesheet nivel 1.png" id="1_vovh5"]
 [ext_resource type="PackedScene" uid="uid://o0kngude3gup" path="res://Entities/Enemies/Bosses/papaya_boss.tscn" id="2_gutuq"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="4_c2e18"]
-[ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="5_2urgh"]
-[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_ai5dg"]
-[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="7_cqked"]
 [ext_resource type="PackedScene" uid="uid://bqlwft448gve6" path="res://UI/boss_ui.tscn" id="8_o3g7d"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="9_c2e18"]
 
@@ -5226,7 +5223,7 @@ sources/0 = SubResource("TileSetAtlasSource_rn7ik")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e16ni"]
 size = Vector2(647, 359)
 
-[node name="Room1_boss1" type="Node2D" unique_id=1291597728]
+[node name="Room_boss" type="Node2D" unique_id=1291597728]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=620224499]
 z_index = -2
@@ -5245,20 +5242,13 @@ tipo_de_sala = 1
 [node name="CollisionShape2D" parent="AreaManager/Zona Inicio" parent_id_path=PackedInt32Array(7629039, 329029428) index="0" unique_id=1165107301]
 position = Vector2(27, 178)
 
-[node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("5_2urgh")]
-
-[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("6_ai5dg")]
-
-[node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("7_cqked")]
-position = Vector2(34, 313)
-
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("8_o3g7d")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1828068051 node_paths=PackedStringArray("camara", "jefe_papaya")]
 collision_layer = 128
 collision_mask = 8
 script = ExtResource("9_c2e18")
-camara = NodePath("../Camera2D")
+camara = NodePath("")
 jefe_papaya = NodePath("../PapayaBoss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1961559587]
@@ -5266,8 +5256,10 @@ visible = false
 position = Vector2(313.5, 169.5)
 shape = SubResource("RectangleShape2D_e16ni")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=665301597]
-anchor_mode = 0
+[node name="Entrada" type="Marker2D" parent="." unique_id=613724942]
+
+[node name="Salida" type="Marker2D" parent="." unique_id=1726501168]
+position = Vector2(640, 0)
 
 [editable path="PapayaBoss"]
 [editable path="PapayaBoss/HurtboxComponent"]
