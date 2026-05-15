@@ -12,36 +12,34 @@ var es_invulnerable: bool = false
 var escudo_actual : int = 0 # El escudo empieza en 0 hasta que agarres uno
 signal monedas_cambiadas(total_monedas)
 var monedas_actuales : int = 0
-
+@export var es_jugador: bool = false
 @export_category("Debug y Pruebas")
 @export var monedas_de_prueba: int = 0 
 
 func _ready():
-	# 1. VIDA MÁXIMA REAL BASE (100 + Mejoras)
-	vida_maxima = 100 + (GameManager.nivel_mejora_vida * 10)
+	# Si es el jugador, hacemos toda la lógica de persistencia y mejoras
+	if es_jugador:
+		# 1. VIDA MÁXIMA REAL BASE (100 + Mejoras)
+		vida_maxima = 100 + (GameManager.nivel_mejora_vida * 10)
+		
+		# 2. CARGAR MONEDAS
+		monedas_actuales = GameManager.monedas_totales
+
+		# 3. ESTABLECER VIDA Y ESCUDO AL ARRANCAR
+		if GameManager.vida_persistente != -1:
+			vida_actual = GameManager.vida_persistente
+			escudo_actual = GameManager.escudo_persistente
+		else:
+			vida_actual = vida_maxima
+			escudo_actual = GameManager.nivel_mejora_escudo * 20
+			
+		print("=== STATS DE BLUE CARGADOS ===")
 	
-	# 2. CARGAR MONEDAS
-	monedas_actuales = GameManager.monedas_totales
-
-	# 3. ESTABLECER VIDA Y ESCUDO AL ARRANCAR
-	if GameManager.vida_persistente != -1:
-		vida_actual = GameManager.vida_persistente
-		escudo_actual = GameManager.escudo_persistente
 	else:
-		# Partida fresca (Cuando morís y volvés al lobby)
-		vida_actual = vida_maxima
-		escudo_actual = GameManager.nivel_mejora_escudo * 20
-
-	# Límite de seguridad para el escudo
-	if escudo_actual > vida_maxima:
-		escudo_actual = vida_maxima
-
-	# 4. TRUCO DE PRUEBAS
-	if monedas_de_prueba > 0:
-		monedas_actuales += monedas_de_prueba
-		GameManager.monedas_totales = monedas_actuales
-		monedas_de_prueba = 0
-
+		# SI ES UN ENEMIGO O UN BOSS:
+		# Respetamos el valor que pusiste en el Inspector
+		vida_actual = vida_maxima 
+		print("=== STATS DE ENEMIGO CARGADOS (Vida: ", vida_actual, ") ===")
 	# 5. AVISAR AL HUD
 	health_changed.emit(vida_maxima, vida_actual, escudo_actual)
 	monedas_cambiadas.emit(monedas_actuales)

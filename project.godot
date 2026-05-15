@@ -154,6 +154,7 @@ salir={
 2d_physics/layer_5="AreaDeSpawn"
 2d_physics/layer_6="Item"
 2d_physics/layer_7="Interactuable"
+2d_physics/layer_8="Trigger"
 
 [maaacks_menus_template]
 
