@@ -3,6 +3,7 @@ extends State
 @onready var player = owner
 
 func enter(_msg := {}) -> void:
+	player.jump_buffer_counter = 0.0
 	player._animated_sprite.play("Jump")
 	AudioManager.play_sfx("jump")
 	player.velocity.y = player.jump_velocity
