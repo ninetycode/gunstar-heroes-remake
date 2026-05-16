@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dw6wloee1571m" path="res://Scenes/spawner_manager.tscn" id="2_qvxqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjbhi"]
-size = Vector2(20, 375)
+size = Vector2(29.75, 375)
 
 [node name="AreaManager" type="Node2D" unique_id=7629039 node_paths=PackedStringArray("zona_inicio", "zona_fin", "spawner")]
 script = ExtResource("1_pjbhi")

@@ -5,19 +5,48 @@
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="3_s7juh"]
 [ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="4_mkb2r"]
 [ext_resource type="Script" uid="uid://b2k3dva4p7jnk" path="res://Scripts/CameraControl.gd" id="5_b705x"]
+[ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="6_mkb2r"]
+[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="7_0lkjs"]
 
-[node name="Node2D" type="Node2D" unique_id=962576990]
+[node name="Nivel procedural 1" type="Node2D" unique_id=962576990]
 script = ExtResource("1_h2n3v")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_b705x")]
-position = Vector2(40, 245)
+position = Vector2(154, 182)
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_s7juh")]
 
 [node name="CoinHud" parent="." unique_id=702402385 instance=ExtResource("4_mkb2r")]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=372702705]
-position = Vector2(-860, 426)
-limit_right = 276447223
-position_smoothing_enabled = true
+[node name="Background" type="Node2D" parent="." unique_id=29663447]
+z_index = -2
+
+[node name="Midground" type="Parallax2D" parent="Background" unique_id=1223482729]
+texture_filter = 1
+scroll_scale = Vector2(0.7, 0.7)
+repeat_size = Vector2(512, 0)
+repeat_times = 4
+metadata/_edit_lock_ = true
+
+[node name="Arbolada" type="Sprite2D" parent="Background/Midground" unique_id=108931181]
+z_index = -1
+position = Vector2(1260, 271.285)
+texture = ExtResource("6_mkb2r")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Parallax2D" parent="Background" unique_id=1651021739]
+texture_filter = 1
+repeat_size = Vector2(512, 0)
+repeat_times = 4
+limit_begin = Vector2(0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Cielo" type="Sprite2D" parent="Background/Background" unique_id=1018145147]
+z_index = -2
+position = Vector2(1259, 162)
+texture = ExtResource("7_0lkjs")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1466818829]
+position = Vector2(320, 182)
 script = ExtResource("5_b705x")

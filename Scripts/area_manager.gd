@@ -32,10 +32,15 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		zona_inicio.set_deferred("monitoring", false)
 		
-		if arena_music != "nivel_1":
+		if arena_music != "":
 			AudioManager.play_music(arena_music)
 			
-		# Solo activamos el Spawner si marcaste la sala como "Horda"
+		# --- LÓGICA BEAT 'EM UP: Bloquear cámara al entrar a la pelea ---
+		var camara = get_viewport().get_camera_2d()
+		if camara and camara.has_method("bloquear_en_posicion"):
+			# Le pasamos la posición central de esta arena para que se clave ahí
+			camara.bloquear_en_posicion(global_position.x)
+
 		if tipo_de_sala == 0 and spawner != null:
 			spawner.start_spawning()
 
@@ -59,14 +64,12 @@ func _on_fin_body_entered(body: Node2D) -> void:
 		# Avanzamos de habitación
 		if LevelManager.has_method("avanzar_habitacion"):
 			LevelManager.avanzar_habitacion()
-			
+
 func _on_arena_completada() -> void:
 	arena_completada = true
+	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
 	
-	# Buscamos la cámara en la escena y le damos permiso para moverse
+	# --- LÓGICA BEAT 'EM UP: Liberar cámara al ganar la oleada ---
 	var camara = get_viewport().get_camera_2d()
 	if camara and camara.has_method("permitir_avance"):
 		camara.permitir_avance()
-	
-	# Opcional: Mostrar el cartel de "GO!"
-	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
