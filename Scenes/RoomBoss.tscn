@@ -5244,11 +5244,10 @@ position = Vector2(27, 178)
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("8_o3g7d")]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1828068051 node_paths=PackedStringArray("camara", "jefe_papaya")]
+[node name="Area2D" type="Area2D" parent="." unique_id=1828068051 node_paths=PackedStringArray("jefe_papaya")]
 collision_layer = 128
 collision_mask = 8
 script = ExtResource("9_c2e18")
-camara = NodePath("")
 jefe_papaya = NodePath("../PapayaBoss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1961559587]
