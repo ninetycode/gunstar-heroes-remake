@@ -66,10 +66,13 @@ func _on_fin_body_entered(body: Node2D) -> void:
 			LevelManager.avanzar_habitacion()
 
 func _on_arena_completada() -> void:
+	# 1. Marcamos la arena como limpia para que la zona de fin nos deje pasar
 	arena_completada = true
-	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
 	
-	# --- LÓGICA BEAT 'EM UP: Liberar cámara al ganar la oleada ---
+	# 2. Buscamos la cámara activa y la liberamos
 	var camara = get_viewport().get_camera_2d()
 	if camara and camara.has_method("permitir_avance"):
 		camara.permitir_avance()
+		
+	# 3. Le mandamos la señal al HUD para que encienda el cartel de "GO"
+	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)

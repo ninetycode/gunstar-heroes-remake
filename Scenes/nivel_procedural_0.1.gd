@@ -50,6 +50,10 @@ func generar_nivel_procedural():
 					var camara = get_node_or_null("Camera2D")
 					if camara:
 						camara.global_position = blue.global_position
+						
+						# --- FIX: Le ponemos una "pared" a la visión de la cámara ---
+						# Esto evita que encuadre el vacío a la izquierda del nivel
+						camara.limit_left = int(nueva_sala.position.x)
 			
 			es_primera_sala = false # Las siguientes salas desactivan este flag
 		else:
