@@ -3,7 +3,6 @@ extends Resource
 
 @export_category("Enemy Setup")
 @export var enemy_scene: PackedScene
-## Cambiamos el nombre a total_enemies para que coincida con el Spawner
 @export var enemy_count: int = 10
 @export var time_between_spawns: float = 1.0
 

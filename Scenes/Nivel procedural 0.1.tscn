@@ -12,7 +12,7 @@
 script = ExtResource("1_h2n3v")
 
 [node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_b705x")]
-position = Vector2(34, 215)
+position = Vector2(154, 182)
 
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_s7juh")]
 
@@ -48,6 +48,5 @@ texture = ExtResource("7_0lkjs")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1466818829]
-position = Vector2(319, 183)
+position = Vector2(320, 182)
 script = ExtResource("5_b705x")
-limite_suelo_y = 350

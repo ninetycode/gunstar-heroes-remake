@@ -5236,7 +5236,6 @@ position = Vector2(29, 176)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
 waves = Array[ExtResource("3_5qehv")]([ExtResource("5_oi1nq")])
-max_concurrent_enemies = 2
 
 [node name="Entrada" type="Marker2D" parent="." unique_id=993862509]
 
