@@ -49,5 +49,5 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1466818829]
 position = Vector2(320, 182)
+limit_bottom = 350
 script = ExtResource("5_b705x")
-limite_suelo_y = 350

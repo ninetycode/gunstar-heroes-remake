@@ -69,7 +69,7 @@ func _on_arena_completada() -> void:
 	arena_completada = true
 	get_tree().call_group("HUD_Group", "mostrar_cartel_go", true)
 	
-	# --- LÓGICA BEAT 'EM UP: Liberar cámara al ganar la oleada ---
+	# --- NUEVO: Avisamos a la cámara que ya puede seguir avanzando ---
 	var camara = get_viewport().get_camera_2d()
 	if camara and camara.has_method("permitir_avance"):
 		camara.permitir_avance()
