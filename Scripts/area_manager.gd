@@ -32,14 +32,11 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		zona_inicio.set_deferred("monitoring", false)
 		
-		if arena_music != "":
-			AudioManager.play_music(arena_music)
-			
-		# --- LÓGICA BEAT 'EM UP: Bloquear cámara al entrar a la pelea ---
 		var camara = get_viewport().get_camera_2d()
 		if camara and camara.has_method("bloquear_en_posicion"):
-			# Le pasamos la posición central de esta arena para que se clave ahí
-			camara.bloquear_en_posicion(global_position.x)
+			# Pasamos la posición X y si es jefe (tipo_de_sala == 1 es Jefe)
+			var es_jefe = (tipo_de_sala == 1)
+			camara.bloquear_en_posicion(global_position.x, es_jefe)
 
 		if tipo_de_sala == 0 and spawner != null:
 			spawner.start_spawning()

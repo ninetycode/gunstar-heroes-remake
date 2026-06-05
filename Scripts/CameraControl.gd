@@ -2,39 +2,34 @@ extends Camera2D
 
 var player 
 var bloqueada = false 
-var seguimiento_horizontal = true 
+var es_sala_jefe = false # NUEVA VARIABLE
 
 @export var altura_fija_y: float = 240.0 
 
 func _ready():
-	# Buscamos al jugador por grupo o unique_id
-	player = get_tree().get_first_node_in_group("Player")
-	position_smoothing_enabled = true # ¡Muy importante para suavidad!
-	position_smoothing_speed = 5.0
+	player = get_tree().current_scene.find_child("GunstarBlue", true, false)
+	global_position.y = altura_fija_y
+	position_smoothing_enabled = true # ¡Fundamental para suavidad!
+	position_smoothing_speed = 3.0   # Ajusta esto (menor = más suave/lento)
 
 func _process(_delta):
 	global_position.y = altura_fija_y
-
-	if player == null or bloqueada: 
-		return
+	if player == null or bloqueada: return
 	
-	if seguimiento_horizontal and player.global_position.x > global_position.x:
+	# Seguimiento horizontal fluido
+	if player.global_position.x > global_position.x:
 		global_position.x = player.global_position.x
 
-# Llamado por el AreaManager al entrar
-func bloquear_en_posicion(posicion_x_arena: float):
+func bloquear_en_posicion(posicion_x_arena: float, es_jefe: bool):
 	bloqueada = true
-	seguimiento_horizontal = false
+	es_sala_jefe = es_jefe # Marcamos si es jefe o horda
 	
-	# Tween para deslizarse suavemente al centro de la arena
+	# Usamos un tween para deslizar la cámara al centro de la sala suavemente
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "global_position:x", posicion_x_arena, 0.8)
+	tween.tween_property(self, "global_position:x", posicion_x_arena, 0.5)
 
-# Llamado por el AreaManager al completar la sala
 func permitir_avance():
+	# Si es jefe, ignoramos esta orden
+	if es_sala_jefe: 
+		return
 	bloqueada = false
-	
-	# Esperamos un momento a que el jugador se aleje un poco si es necesario
-	# o simplemente reactivamos el seguimiento suave
-	await get_tree().create_timer(0.5).timeout
-	seguimiento_horizontal = true
