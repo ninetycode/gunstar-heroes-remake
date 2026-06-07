@@ -393,11 +393,10 @@ jump_velocity = -450.0
 jump_buffer_time = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1673986240]
-position = Vector2(-2.3841858e-07, 15.000004)
-scale = Vector2(0.7112985, 0.6855192)
+position = Vector2(2.0304909, 15.011891)
+scale = Vector2(0.86547405, 0.834107)
 sprite_frames = SubResource("SpriteFrames_ugs6r")
-animation = &"Intro"
-frame_progress = 0.9811556
+animation = &"Idle"
 offset = Vector2(0.33, -25.58)
 
 [node name="muzzle" type="Marker2D" parent="AnimatedSprite2D" unique_id=1660029742]
