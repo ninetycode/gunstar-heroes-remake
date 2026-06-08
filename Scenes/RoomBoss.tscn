@@ -5240,7 +5240,7 @@ vida_maxima = 8000
 tipo_de_sala = 1
 
 [node name="CollisionShape2D" parent="AreaManager/Zona Inicio" parent_id_path=PackedInt32Array(7629039, 329029428) index="0" unique_id=1165107301]
-position = Vector2(319, 174)
+position = Vector2(27, 178)
 
 [node name="BossUI" parent="." unique_id=1851858112 instance=ExtResource("8_o3g7d")]
 
