@@ -3,30 +3,23 @@ extends Node
 var habitacion_actual: int = 0
 var ruta_generada: Array[String] = []
 
-@export_category("Mazo de Habitaciones")
-@export var pool_habitaciones: Array[String] # Acá arrastrás las escenas de Facu
-@export var jefe_final: String               # La ruta a la escena del jefe final
-
-@export_category("Configuración de Nivel")
-@export var cantidad_salas_antes_del_boss: int = 8 # <-- Expuesto para que lo manejes desde el Inspector
-
-func iniciar_nivel():
+func iniciar_nivel(config: LevelConfig):
 	habitacion_actual = 0
 	ruta_generada.clear()
 	
 	# 1. Armamos el mazo temporal y lo mezclamos
-	var temp_pool = pool_habitaciones.duplicate()
+	var temp_pool = config.pool_habitaciones.duplicate()
 	temp_pool.shuffle()
 	
-	# 2. Elegimos las salas normales previas al jefe
-	for i in range(cantidad_salas_antes_del_boss):
+	# 2. Elegimos las salas normales usando la cantidad de la configuración
+	for i in range(config.cantidad_salas):
 		ruta_generada.append(temp_pool[i % temp_pool.size()])
 		
 	# 3. Ponemos la Sala Final: Jefe
-	ruta_generada.append(jefe_final)
+	ruta_generada.append(config.jefe_final)
 	
 	# 4. ¡Arrancamos el viaje!
-	print("Nivel generado: ", ruta_generada)
+	print("Nivel generado: ", config.nombre_nivel, " - Ruta: ", ruta_generada)
 	avanzar_habitacion()
 
 func avanzar_habitacion():
@@ -36,8 +29,6 @@ func avanzar_habitacion():
 		TransitionManager.viajar_a(siguiente_escena)
 	else:
 		print("¡NIVEL COMPLETADO!")
-		
 		GameManager.vida_persistente = -1
 		GameManager.escudo_persistente = 0
-		
 		TransitionManager.viajar_a("res://Levels/Lobby.tscn")

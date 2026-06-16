@@ -10,10 +10,11 @@
 [ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
 [ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
 [ext_resource type="Texture2D" uid="uid://dntvshojxd7q" path="res://Assets/Sprite Sheets/Niveles/Lobby/mesa de mejoras.png" id="9_2uni1"]
+[ext_resource type="Script" uid="uid://brmn2e18l0ioi" path="res://Systems/LevelConfig.gd" id="10_cqpkw"]
 [ext_resource type="PackedScene" uid="uid://b6jj6eg0f02qw" path="res://UI/menu_niveles.tscn" id="10_v025o"]
 [ext_resource type="Texture2D" uid="uid://8id7dn4oi03c" path="res://Assets/Sprite Sheets/Niveles/Lobby/Pantalla principal.png" id="11_3o54r"]
+[ext_resource type="Resource" uid="uid://jhjmnoouxd4r" path="res://Resources/nivel_1.tres" id="11_nl483"]
 [ext_resource type="Script" uid="uid://btw43725tq8hy" path="res://UI/mejoras_de_stats.gd" id="12_3o54r"]
-[ext_resource type="Texture2D" uid="uid://cjwin66kghxrd" path="res://Assets/IU-HUD/Captura de pantalla 2026-04-25 175900.png" id="12_mh5bn"]
 [ext_resource type="Texture2D" uid="uid://g5cleqbiptbn" path="res://Assets/Sprite Sheets/Niveles/Lobby/Animated-RadarMonitor-Sheet.png" id="16_lj22p"]
 [ext_resource type="Script" uid="uid://cly8vhpxcorac" path="res://UI/punto_de_guardado.gd" id="17_fwutw"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
@@ -1670,9 +1671,7 @@ shape = SubResource("RectangleShape2D_v81qt")
 
 [node name="MenuNiveles" parent="Interactuables/SuperComputadora" unique_id=414099976 instance=ExtResource("10_v025o")]
 visible = false
-rutas_niveles = Array[String](["res://Levels/room_1.tscn"])
-miniaturas = Array[Texture2D]([ExtResource("12_mh5bn")])
-nombres_niveles = Array[String](["Nivel 1"])
+niveles_config = Array[ExtResource("10_cqpkw")]([ExtResource("11_nl483")])
 
 [node name="Mejora de Armas" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
 material = SubResource("ShaderMaterial_nl483")
