@@ -31,11 +31,22 @@ func _ready() -> void:
 	# Forzamos actualización del HUD al arrancar
 	stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
 	
+
 	# === 2. INYECCIÓN DE BILLETERA ===
 	if wallet:
-		wallet.inicializar(GameManager.monedas_totales)
-		# Cada vez que la billetera sume monedas, el jugador le avisa al GameManager
+		# PRIMERO conectamos el cable
 		wallet.monedas_cambiadas.connect(_on_monedas_cambiadas)
+		
+		# SEGUNDO armamos el fajo de billetes a cargar
+		var monedas_a_cargar = GameManager.monedas_totales
+		
+		# Si hay plata de prueba en el inspector Y todavía no la cobramos...
+		if wallet.monedas_iniciales_prueba > 0 and not GameManager.plata_prueba_entregada:
+			monedas_a_cargar += wallet.monedas_iniciales_prueba
+			GameManager.plata_prueba_entregada = true # Marcamos que ya se entregó
+			
+		# TERCERO inyectamos la plata limpia a la billetera
+		wallet.inicializar(monedas_a_cargar)
 
 
 func _physics_process(delta):

@@ -358,6 +358,7 @@ debug_color = Color(0.60444856, 0.50858676, 0.51715946, 0.41960785)
 
 [node name="WalletComponent" type="Node" parent="." unique_id=1909127783]
 script = ExtResource("13_kx1i7")
+monedas_iniciales_prueba = 5000
 
 [node name="StateMachine" type="Node" parent="." unique_id=1379360393 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_owvpp")

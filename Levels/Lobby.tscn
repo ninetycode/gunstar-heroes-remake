@@ -1746,6 +1746,7 @@ shape = SubResource("RectangleShape2D_lj22p")
 [node name="Background" type="Node" parent="." unique_id=830993560]
 
 [node name="Fondo Espacial" parent="Background" unique_id=865269841 instance=ExtResource("4_ueq3s")]
+layer = -7
 
 [node name="VentanaMejorada" type="Sprite2D" parent="Background" unique_id=312310455]
 z_index = -2

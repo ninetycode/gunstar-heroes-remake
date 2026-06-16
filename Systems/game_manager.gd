@@ -10,13 +10,14 @@ var pause_menu_instance: CanvasLayer
 var monedas_totales: int = 0
 var vida_persistente: int = -1 # -1 significa "llena" (primera vez)
 var escudo_persistente: int = 0
-
+var plata_prueba_entregada: bool = false
 
 #--------------------------------------------------
 ## MEJORAS: 
 var nivel_mejora_vida: int = 0
 var nivel_mejora_escudo: int = 0
 #--------------------------------------------------
+
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
