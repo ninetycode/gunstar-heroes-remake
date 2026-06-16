@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelConfig" format=3 uid="uid://ubkwrep4w2w7"]
+
+[ext_resource type="Texture2D" uid="uid://bqaow6qxima7e" path="res://Assets/Captura de pantalla 2026-06-16 015430.png" id="1_nojfw"]
+[ext_resource type="Script" uid="uid://brmn2e18l0ioi" path="res://Systems/LevelConfig.gd" id="1_w2fd4"]
+
+[resource]
+script = ExtResource("1_w2fd4")
+nombre_nivel = "Nivel 2"
+miniatura = ExtResource("1_nojfw")
+pool_habitaciones = Array[String](["res://Scenes/Room 2-1.tscn", "res://Scenes/Room 2-2.tscn", "res://Scenes/Room 2-3.tscn", "res://Scenes/Room 2-4.tscn", "res://Scenes/Room 2-5.tscn", "res://Scenes/Room 2-6.tscn"])
+jefe_final = "res://Scenes/RoomBoss.tscn"
+metadata/_custom_type_script = "uid://brmn2e18l0ioi"
