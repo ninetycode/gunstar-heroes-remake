@@ -70,12 +70,15 @@ func viajar_al_nivel():
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		var stats = player.get_node_or_null("StatsComponent")
+		var wallet = player.get_node_or_null("WalletComponent") # <-- Agregamos la búsqueda de la billetera
+		
 		if stats:
-			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, stats.monedas_actuales)
+			# Si por alguna razón no hay billetera (ej: estás probando algo), usamos la global como seguro
+			var monedas_guardar = wallet.monedas_actuales if wallet else GameManager.monedas_totales
 			
-	# --- CAMBIO CLAVE AQUÍ ---
-	# En lugar de viajar a una escena fija, le decimos al manager que arranque
-	# el bucle de rooms aleatorias.
+			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, monedas_guardar)
+			
+	
 	if LevelManager.has_method("iniciar_nivel"):
 		LevelManager.iniciar_nivel()
 	else:

@@ -42,21 +42,24 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 # ... (Acá dejá tus funciones _on_fin_body_entered y _on_arena_completada tal cual las tenías) ...
 
 func _on_fin_body_entered(body: Node2D) -> void:
-	# --- NUEVA REGLA: Si la arena no se completó, no hacemos nada ---
 	if not arena_completada:
 		return 
 
 	if body.is_in_group("Player"):
 		var stats = body.get_node_or_null("StatsComponent")
+		var wallet = body.get_node_or_null("WalletComponent") # <-- Buscamos la billetera
+		
 		if stats:
-			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, stats.monedas_actuales)
+			# Si por alguna razón no hay billetera, usamos el valor global como respaldo para evitar crasheos
+			var monedas_guardar = wallet.monedas_actuales if wallet else GameManager.monedas_totales
+			
+			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, monedas_guardar)
 			
 		zona_fin.set_deferred("monitoring", false)
 		if spawner:
 			spawner.stop_spawning()
 		get_tree().call_group("HUD_Group", "mostrar_cartel_go", false)
 		
-		# Avanzamos de habitación
 		if LevelManager.has_method("avanzar_habitacion"):
 			LevelManager.avanzar_habitacion()
 			

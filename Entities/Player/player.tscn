@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3gvebdv7c2sh" path="res://Assets/Sprite Sheets/Character/Bluerun.png" id="9_iplt1"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="11_owvpp"]
 [ext_resource type="Script" uid="uid://dwg6pvxenn1wu" path="res://Entities/Player/player_idle.gd" id="12_xr8lj"]
+[ext_resource type="Script" uid="uid://bfcs58m6dyir8" path="res://Entities/Player/wallet_component.gd" id="13_kx1i7"]
 [ext_resource type="Script" uid="uid://dej2qts3e0soe" path="res://Entities/Player/player_run.gd" id="13_xr8lj"]
 [ext_resource type="Script" uid="uid://vf7xrclamyny" path="res://Entities/Player/player_jump.gd" id="14_r8fok"]
 [ext_resource type="Script" uid="uid://cgklqmvqxbqe1" path="res://Entities/Player/fixed_shoot.gd" id="16_pjcup"]
@@ -354,7 +355,9 @@ shape = SubResource("CapsuleShape2D_fmlbe")
 debug_color = Color(0.60444856, 0.50858676, 0.51715946, 0.41960785)
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("2_fmlbe")]
-es_jugador = true
+
+[node name="WalletComponent" type="Node" parent="." unique_id=1909127783]
+script = ExtResource("13_kx1i7")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1379360393 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_owvpp")

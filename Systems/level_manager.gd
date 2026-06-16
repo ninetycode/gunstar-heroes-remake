@@ -36,4 +36,8 @@ func avanzar_habitacion():
 		TransitionManager.viajar_a(siguiente_escena)
 	else:
 		print("¡NIVEL COMPLETADO!")
+		
+		GameManager.vida_persistente = -1
+		GameManager.escudo_persistente = 0
+		
 		TransitionManager.viajar_a("res://Levels/Lobby.tscn")

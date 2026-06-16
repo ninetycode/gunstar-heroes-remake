@@ -56,37 +56,39 @@ func actualizar_etiquetas():
 		btn_escudo.disabled = false
 
 func _on_btn_vida_pressed():
-	if GameManager.monedas_totales >= 50:
-		GameManager.monedas_totales -= 50
+	var player = get_tree().get_first_node_in_group("Player")
+	if not player: return
+	
+	var wallet = player.get_node_or_null("WalletComponent")
+	var stats = player.get_node_or_null("StatsComponent")
+	
+	# Le decimos a la billetera que intente gastar 50. 
+	# Si devuelve 'true', es porque tenía plata y ya la descontó.
+	if wallet and wallet.gastar_monedas(50):
 		GameManager.nivel_mejora_vida += 1
 		
-		var player = get_tree().get_first_node_in_group("Player")
-		if player:
-			var stats = player.get_node_or_null("StatsComponent")
-			if stats:
-				stats.vida_maxima += 10
-				stats.vida_actual += 10
-				stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
-				
-		GameManager.monedas_globales_actualizadas.emit(GameManager.monedas_totales)
+		if stats:
+			stats.aumentar_vida_maxima(10)
+			
 		AudioManager.play_sfx("buy_success") 
 		actualizar_etiquetas()
 	else:
 		AudioManager.play_sfx("error") 
 
 func _on_btn_escudo_pressed():
-	if GameManager.monedas_totales >= 30:
-		GameManager.monedas_totales -= 30
+	var player = get_tree().get_first_node_in_group("Player")
+	if not player: return
+		
+	var wallet = player.get_node_or_null("WalletComponent")
+	var stats = player.get_node_or_null("StatsComponent")
+	
+	# Le decimos a la billetera que intente gastar 30.
+	if wallet and wallet.gastar_monedas(30):
 		GameManager.nivel_mejora_escudo += 1
 		
-		var player = get_tree().get_first_node_in_group("Player")
-		if player:
-			var stats = player.get_node_or_null("StatsComponent")
-			if stats:
-				stats.escudo_actual += 20
-				stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
-				
-		GameManager.monedas_globales_actualizadas.emit(GameManager.monedas_totales)
+		if stats:
+			stats.agregar_escudo(20)
+			
 		AudioManager.play_sfx("buy_success")
 		actualizar_etiquetas()
 	else:

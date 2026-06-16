@@ -22,13 +22,15 @@ func _ready() -> void:
 		
 	_pacificar_enemigos()
 	
-	# --- CORRECCIÓN DEL BUG 2: EL CAJERO AUTOMÁTICO ---
+	# --- CORRECCIÓN DEL BUG 2: EL CAJERO AUTOMÁTICO (REFACTORIZADO) ---
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		var stats = player.get_node_or_null("StatsComponent")
-		if stats:
+		# Buscamos nuestra nueva billetera
+		var wallet = player.get_node_or_null("WalletComponent")
+		
+		if wallet:
 			# 1. Calculamos cuántas agarró en este ratito (Bolsillo - Banco inicial)
-			var monedas_ganadas = stats.monedas_actuales - GameManager.monedas_totales
+			var monedas_ganadas = wallet.monedas_actuales - GameManager.monedas_totales
 			if monedas_ganadas < 0: monedas_ganadas = 0 # Por las dudas
 			
 			# 2. Mostramos el mensaje en pantalla
@@ -36,12 +38,12 @@ func _ready() -> void:
 				label_monedas.text = "Monedas obtenidas: " + str(monedas_ganadas)
 				
 			# 3. Guardamos TODO en el banco para que viaje con vos al Lobby
-			GameManager.monedas_totales = stats.monedas_actuales
+			GameManager.monedas_totales = wallet.monedas_actuales
 			
-			# 4. CRÍTICO: Reseteamos la "vida persistente" a -1. 
-			# Si no hacemos esto, Blue va a nacer en el Lobby con 0 HP y va a morir infinitamente.
-			GameManager.vida_persistente = -1
-			GameManager.escudo_persistente = 0
+		# 4. CRÍTICO: Reseteamos la "vida persistente" a -1.
+		# Esto lo hacemos siempre, haya agarrado monedas o no.
+		GameManager.vida_persistente = -1
+		GameManager.escudo_persistente = 0
 
 	_animar_aparicion()
 
