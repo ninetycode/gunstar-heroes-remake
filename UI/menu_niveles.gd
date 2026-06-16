@@ -8,14 +8,16 @@ extends CanvasLayer
 var indice_actual: int = 0
 var menu_abierto: bool = false
 
-@onready var imagen_nivel = $VBoxContainer/TextureRect
-@onready var texto_nivel = $VBoxContainer/Label
+# --- NUEVAS REFERENCIAS ---
+@onready var imagen_nivel = $HBoxContainer/VBoxContainer/TextureRect
+@onready var texto_nivel = $HBoxContainer/VBoxContainer/Label
+@onready var flecha_izq = $HBoxContainer/FlechaIzq
+@onready var flecha_der = $HBoxContainer/FlechaDer
 
 func _ready():
 	hide()
 
 func abrir_menu():
-	# FIX: Cambiado niveles por rutas_niveles
 	if rutas_niveles.is_empty(): return
 	indice_actual = 0
 	actualizar_visuales()
@@ -34,26 +36,50 @@ func cerrar_menu():
 		player.set_congelado(false)
 
 func actualizar_visuales():
-	# FIX: Cambiado niveles por rutas_niveles
 	if rutas_niveles.is_empty(): return 
+	
 	imagen_nivel.texture = miniaturas[indice_actual]
 	texto_nivel.text = nombres_niveles[indice_actual]
+	
+	# --- LÓGICA AAA DE UI (ILUMINACIÓN Y APAGADO DE FLECHAS) ---
+	
+	# 1. Evaluamos si estamos en los bordes
+	var tope_izquierdo = (indice_actual == 0)
+	var tope_derecho = (indice_actual == rutas_niveles.size() - 1)
+	
+	# 2. Deshabilitamos o habilitamos la interacción
+	flecha_izq.disabled = tope_izquierdo
+	flecha_der.disabled = tope_derecho
+	
+	# 3. Feedback Visual: Color normal (blanco) si está activo, gris oscuro si está inactivo
+	flecha_izq.modulate = Color(0.3, 0.3, 0.3) if tope_izquierdo else Color.WHITE
+	flecha_der.modulate = Color(0.3, 0.3, 0.3) if tope_derecho else Color.WHITE
 
 func _input(event):
 	if not menu_abierto: return 
 	
 	if event.is_action_pressed("move_right"):
-		# FIX: Cambiado niveles por rutas_niveles
-		indice_actual = (indice_actual + 1) % rutas_niveles.size()
-		actualizar_visuales()
-		AudioManager.play_sfx("ui_move")
+		# Si no llegamos al final del arreglo, avanzamos
+		if indice_actual < rutas_niveles.size() - 1:
+			indice_actual += 1
+			actualizar_visuales()
+			AudioManager.play_sfx("ui_move")
+		else:
+			# Si intentamos chocar contra la pared derecha, suena error
+			AudioManager.play_sfx("error")
+			
 		get_viewport().set_input_as_handled()
 		
 	elif event.is_action_pressed("move_left"):
-		# FIX: Cambiado niveles por rutas_niveles
-		indice_actual = (indice_actual - 1 + rutas_niveles.size()) % rutas_niveles.size()
-		actualizar_visuales()
-		AudioManager.play_sfx("ui_move")
+		# Si no estamos en el primer nivel, retrocedemos
+		if indice_actual > 0:
+			indice_actual -= 1
+			actualizar_visuales()
+			AudioManager.play_sfx("ui_move")
+		else:
+			# Si intentamos ir a la izquierda del nivel 1, suena error
+			AudioManager.play_sfx("error")
+			
 		get_viewport().set_input_as_handled()
 		
 	elif event.is_action_pressed("disparo"):
@@ -70,17 +96,13 @@ func viajar_al_nivel():
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		var stats = player.get_node_or_null("StatsComponent")
-		var wallet = player.get_node_or_null("WalletComponent") # <-- Agregamos la búsqueda de la billetera
+		var wallet = player.get_node_or_null("WalletComponent")
 		
 		if stats:
-			# Si por alguna razón no hay billetera (ej: estás probando algo), usamos la global como seguro
 			var monedas_guardar = wallet.monedas_actuales if wallet else GameManager.monedas_totales
-			
 			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, monedas_guardar)
 			
-	
 	if LevelManager.has_method("iniciar_nivel"):
 		LevelManager.iniciar_nivel()
 	else:
-		# Por si querés debuguear si el Autoload está bien puesto
 		print("ERROR: No se encontró el LevelManager")
