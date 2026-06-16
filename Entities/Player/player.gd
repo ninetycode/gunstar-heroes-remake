@@ -13,9 +13,29 @@ var jump_buffer_counter: float = 0.0
 @onready var shooter_time = $ShooterTime
 @export var en_lobby: bool = false
 var gravity_enabled = true
+@onready var wallet: Node = $WalletComponent
 
 func _ready() -> void:
 	stats.danio_recibido.connect(_on_danio_recibido)
+	
+	# === 1. INYECCIÓN DE STATS (SALUD Y ESCUDO) ===
+	stats.vida_maxima = 100 + (GameManager.nivel_mejora_vida * 10)
+	
+	if GameManager.vida_persistente != -1:
+		stats.vida_actual = GameManager.vida_persistente
+		stats.escudo_actual = GameManager.escudo_persistente
+	else:
+		stats.vida_actual = stats.vida_maxima
+		stats.escudo_actual = GameManager.nivel_mejora_escudo * 20
+		
+	# Forzamos actualización del HUD al arrancar
+	stats.health_changed.emit(stats.vida_maxima, stats.vida_actual, stats.escudo_actual)
+	
+	# === 2. INYECCIÓN DE BILLETERA ===
+	if wallet:
+		wallet.inicializar(GameManager.monedas_totales)
+		# Cada vez que la billetera sume monedas, el jugador le avisa al GameManager
+		wallet.monedas_cambiadas.connect(_on_monedas_cambiadas)
 
 
 func _physics_process(delta):
@@ -32,6 +52,7 @@ func _physics_process(delta):
 
 # Posiciones del muzzle por dirección (ajustá los valores a tu sprite)
 # Posiciones base asumiendo ÚNICAMENTE que el personaje mira a la DERECHA
+
 const MUZZLE_POSITIONS = {
 	"recto":            Vector2(22.0, -20.0),
 	"arriba":           Vector2(0.0,  -45.0),
@@ -103,7 +124,10 @@ func _on_stats_component_salud_agotada() -> void:
 	$StateMachine.transition_to("Death")
 
 
-
+func _on_monedas_cambiadas(total: int) -> void:
+	GameManager.monedas_totales = total
+	GameManager.monedas_globales_actualizadas.emit(total)
+	
 func _on_danio_recibido(_cantidad: int) -> void:
 	# 1. El flash blanco del impacto inicial (Esto ya lo tenías, está perfecto)
 	_animated_sprite.modulate = Color(10, 10, 10)
