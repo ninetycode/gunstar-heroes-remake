@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="6_a8wek"]
 [ext_resource type="PackedScene" uid="uid://djbvgbrmlypof" path="res://Scenes/area_manager.tscn" id="6_vjo2d"]
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="7_ycm45"]
+[ext_resource type="PackedScene" uid="uid://ck6efwlt13wxd" path="res://Entities/Enemies/Bosses/growl_boss.tscn" id="8_ycm45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okj6t"]
 size = Vector2(669, 20)
@@ -54,5 +55,8 @@ position = Vector2(336, 0)
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
 waves = Array[ExtResource("7_ycm45")]([SubResource("Resource_vnbqc")])
 max_concurrent_enemies = 5
+
+[node name="Growl" parent="." unique_id=1840454371 instance=ExtResource("8_ycm45")]
+position = Vector2(121, 277)
 
 [editable path="AreaManager"]

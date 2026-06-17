@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="5_j1417"]
 [ext_resource type="Resource" uid="uid://d2pgtsk5i61a3" path="res://Resources/wave_soldados.tres" id="6_pg8tt"]
 [ext_resource type="Resource" uid="uid://ch6xylifrbowi" path="res://Resources/wave_flymachine.tres" id="7_345bh"]
+[ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="8_ejtae"]
+[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="9_j1417"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rn7ik"]
 texture = ExtResource("1_b2yu1")
@@ -5236,6 +5238,7 @@ tile_map_data = PackedByteArray("AAAAABAAAAA+AD4AABAAABEAAAA+AD8AABAAABIAAAA+AEA
 tile_set = SubResource("TileSet_pk6vb")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMapLayer" unique_id=294472244]
+visible = false
 modulate = Color(0.27450982, 0.27450982, 0, 1)
 z_index = -1
 position = Vector2(327.24994, 185.75)
@@ -5262,5 +5265,31 @@ waves = Array[ExtResource("5_j1417")]([ExtResource("6_pg8tt"), ExtResource("7_34
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1298217552]
 anchor_mode = 0
+
+[node name="Background" type="Node2D" parent="." unique_id=1502562155]
+z_index = -2
+position = Vector2(-1300, 0)
+
+[node name="Midground" type="Parallax2D" parent="Background" unique_id=1826971327]
+texture_filter = 1
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(-271, -2)
+repeat_size = Vector2(512, 0)
+
+[node name="Arbolada" type="Sprite2D" parent="Background/Midground" unique_id=1850779606]
+z_index = -1
+position = Vector2(1387, 258)
+texture = ExtResource("8_ejtae")
+
+[node name="Background" type="Parallax2D" parent="Background" unique_id=884554756]
+texture_filter = 1
+scroll_offset = Vector2(-391, -54)
+repeat_size = Vector2(512, 0)
+limit_begin = Vector2(0, 0)
+
+[node name="Cielo" type="Sprite2D" parent="Background/Background" unique_id=1979480391]
+z_index = -2
+position = Vector2(1704, 176)
+texture = ExtResource("9_j1417")
 
 [editable path="AreaManager2"]

@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cnebxd8onhlsi" path="res://Data/wave_config.gd" id="5_2ayb2"]
 [ext_resource type="Resource" uid="uid://d2pgtsk5i61a3" path="res://Resources/wave_soldados.tres" id="6_ekt10"]
 [ext_resource type="Resource" uid="uid://ch6xylifrbowi" path="res://Resources/wave_flymachine.tres" id="7_35wa3"]
+[ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="8_toemp"]
+[ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="9_2ayb2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rn7ik"]
 texture = ExtResource("1_ol2qp")
@@ -5236,6 +5238,7 @@ tile_map_data = PackedByteArray("AAAAABAAAAAEAFcAAAAAABEAAAAEAFgAAAAAABIAAAAEAFk
 tile_set = SubResource("TileSet_pk6vb")
 
 [node name="Sprite2D" type="Sprite2D" parent="TileMapLayer" unique_id=1132047172]
+visible = false
 modulate = Color(0.27450982, 0.27450982, 0, 1)
 z_index = -1
 position = Vector2(319.24997, 178.75)
@@ -5257,5 +5260,31 @@ position = Vector2(52, 0)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
 waves = Array[ExtResource("5_2ayb2")]([ExtResource("7_35wa3"), ExtResource("6_ekt10")])
+
+[node name="Background" type="Node2D" parent="." unique_id=1092437458]
+z_index = -2
+position = Vector2(-1300, 0)
+
+[node name="Midground" type="Parallax2D" parent="Background" unique_id=1928446511]
+texture_filter = 1
+scroll_scale = Vector2(0.7, 0.7)
+scroll_offset = Vector2(-271, -2)
+repeat_size = Vector2(512, 0)
+
+[node name="Arbolada" type="Sprite2D" parent="Background/Midground" unique_id=1790243309]
+z_index = -1
+position = Vector2(1585, 146)
+texture = ExtResource("8_toemp")
+
+[node name="Background" type="Parallax2D" parent="Background" unique_id=1962354532]
+texture_filter = 1
+scroll_offset = Vector2(690, 14)
+repeat_size = Vector2(512, 0)
+limit_begin = Vector2(0, 0)
+
+[node name="Cielo" type="Sprite2D" parent="Background/Background" unique_id=1129598126]
+z_index = -2
+position = Vector2(1704, 176)
+texture = ExtResource("9_2ayb2")
 
 [editable path="AreaManager"]
