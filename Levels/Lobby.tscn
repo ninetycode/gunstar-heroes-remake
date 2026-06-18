@@ -1646,6 +1646,7 @@ limit_right = 688
 limit_bottom = 360
 
 [node name="Profesor Oak" type="Sprite2D" parent="." unique_id=73491738]
+visible = false
 position = Vector2(598, 210.00002)
 scale = Vector2(0.15769234, 0.15769233)
 texture = ExtResource("7_r50g8")

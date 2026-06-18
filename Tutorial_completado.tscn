@@ -1465,15 +1465,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="LOBBY" type="PanelContainer" parent="." unique_id=932254049]
-offset_left = 2061.0
-offset_top = 210.0
-offset_right = 2196.0
-offset_bottom = 249.0
+[node name="ARMAS2" type="PanelContainer" parent="." unique_id=1410560011]
+offset_left = -370.0
+offset_top = 209.0
+offset_right = -233.0
+offset_bottom = 257.0
 
-[node name="Label" type="Label" parent="LOBBY" unique_id=898279211]
+[node name="Label" type="Label" parent="ARMAS2" unique_id=24970711]
 layout_mode = 2
-text = "Cuando estés listo, cruzá la puerta para ir al lobby"
+text = "Con las monedas podrás
+comprar mejoras 
+permanentes que te 
+ayudarán durante el juego"
 label_settings = SubResource("LabelSettings_fr6qw")
 horizontal_alignment = 1
 vertical_alignment = 1

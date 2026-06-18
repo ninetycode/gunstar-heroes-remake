@@ -1,0 +1,19 @@
+~ Intro
+
+# Si la variable 'intro_terminada' del NPC es verdadera, salta acá directo
+if intro_terminada == true
+	Profesor Loco: Te espero en la sala de comandos.
+	=> END
+
+# Si es falsa (la primera vez), lee todo el testamento
+Profesor Loco: ¡[wave]Gunstar Blue[/wave]!
+Profesor Loco: !El planeta TE NECESITA!
+Profesor Loco: La coalición militicar [color=red]Hydra[/color] nuevamente quiere [wave]dominar[/wave] el mundo.
+Profesor Loco: ¡Debemos evitarlo!
+Profesor Loco: Tú misión como protector de la tierra será viajar hasta allá y derrotar sus defensas.
+Profesor Loco: Recupera las 2 [color=yellow]gemas del poder[/color] y frustra los planes de [color=red]Hydra[/color].
+Profesor Loco: Te espero en la sala de comandos.
+
+# Justo antes de terminar por primera vez, cambiamos la variable a true
+set intro_terminada = true
+=> END

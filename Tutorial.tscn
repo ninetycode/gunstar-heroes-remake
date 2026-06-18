@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="6_hlpnd"]
 [ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="7_73or5"]
 [ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="8_jldhp"]
+[ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="9_tyy4w"]
+[ext_resource type="Script" uid="uid://dswoj4p1l0wqr" path="res://Entities/NPC/profesor_oak_2.gd" id="10_hp7xp"]
+[ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="10_swigd"]
+[ext_resource type="Resource" uid="uid://bfvwsy57ccyub" path="res://Dialogues/intro.dialogue" id="11_tpsgm"]
+[ext_resource type="PackedScene" uid="uid://defpltfbk7j7b" path="res://Scenes/shield_item.tscn" id="13_538ju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5s8la"]
 texture = ExtResource("1_jl26d")
@@ -1427,6 +1432,9 @@ default_base_scale = 0.05
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqhk"]
 size = Vector2(43.5, 231)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_swigd"]
+radius = 189.37299
+
 [node name="Tutorial" type="Node2D" unique_id=833142180]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=647148597]
@@ -1486,19 +1494,21 @@ autowrap_mode = 3
 [node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_fr6qw")]
 
 [node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("4_oiqhk")]
-position = Vector2(813, 312)
+position = Vector2(824, 312)
 probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier2" parent="." unique_id=998546367 instance=ExtResource("4_oiqhk")]
-position = Vector2(1605, 311)
+position = Vector2(1593, 311)
 probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier3" parent="." unique_id=735126655 instance=ExtResource("4_oiqhk")]
-position = Vector2(1633, 311)
+position = Vector2(1617, 311)
+speed = 160.0
 probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier4" parent="." unique_id=1206694144 instance=ExtResource("4_oiqhk")]
 position = Vector2(1575, 311)
+speed = 170.0
 probabilidad_dropear_algo = 0.0
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("7_73or5")]
@@ -1535,6 +1545,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
+[node name="LANZALLAMAS2" type="PanelContainer" parent="." unique_id=1905391910]
+anchors_preset = -1
+offset_left = 1580.0
+offset_top = 207.0
+offset_right = 1717.0
+offset_bottom = 255.0
+
+[node name="Label" type="Label" parent="LANZALLAMAS2" unique_id=1523933090]
+layout_mode = 2
+text = "Podrás curarte u obetener 
+escudos agarrando items"
+label_settings = SubResource("LabelSettings_fr6qw")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
 [node name="ARMAS" type="PanelContainer" parent="." unique_id=262709805]
 offset_left = 1770.0
 offset_top = 209.0
@@ -1557,7 +1583,8 @@ offset_bottom = 249.0
 
 [node name="Label" type="Label" parent="LOBBY" unique_id=898279211]
 layout_mode = 2
-text = "Cuando estés listo, cruzá la puerta para ir al lobby"
+text = "Presioná (X) para 
+interaccionar."
 label_settings = SubResource("LabelSettings_fr6qw")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1581,6 +1608,25 @@ autoplay = true
 parameters/looping = false
 
 [node name="HelthItem" parent="." unique_id=712430850 instance=ExtResource("8_jldhp")]
-position = Vector2(2156, 282)
+position = Vector2(1619, 282)
 heal_amount = 100
 float_amplitude = 10.0
+
+[node name="Profesor Oak2" type="Sprite2D" parent="." unique_id=1504449508]
+position = Vector2(2183, 313)
+scale = Vector2(0.14500001, 0.14500001)
+texture = ExtResource("9_tyy4w")
+script = ExtResource("10_hp7xp")
+recurso_dialogo = ExtResource("11_tpsgm")
+
+[node name="InteractableComponent" parent="Profesor Oak2" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("10_swigd")]
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" parent="Profesor Oak2/InteractableComponent" index="0" unique_id=799193847]
+shape = SubResource("CircleShape2D_swigd")
+debug_color = Color(0.78431374, 0.49803922, 0, 0.36078432)
+
+[node name="ShieldItem" parent="." unique_id=133560986 instance=ExtResource("13_538ju")]
+position = Vector2(1670, 282)
+
+[editable path="Profesor Oak2/InteractableComponent"]
