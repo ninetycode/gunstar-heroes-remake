@@ -1,80 +1,146 @@
 {
-	"version": "0.0.1",
-	"velocity": 100.0,
-	"items": [
+	"version" : "1.0.0",
+	"velocity" : 30,
+	"items" : [
 		{
 			"type": "title",
-			"text": "Credits Template: \nThe Template for your credits"
+			"text": "Gunstar Heroes Remake"
 		},
 		{
 			"type": "space",
-			"height": 100.0
+			"height": 50.0
+		},
+		{
+			"type": "category",
+			"text": "UNIVERSIDAD"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Centro Universitario de Innovación de La Matanza"
+			]
+		},
+		{
+			"type": "space",
+			"height": 30.0
+		},
+		{
+			"type": "category",
+			"text": "MATERIA"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Taller de Prototipado - Año: 2026",
+				"Profesor: MAXIMILIANO GABRIEL OSCAR DIAZ"
+			]
+		},
+		{
+			"type": "space",
+			"height": 60.0
+		},
+		{
+			"type": "category",
+			"text": "DESARROLLADORES"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Mathías Andino",
+				"Facu Scazziotti"
+			]
+		},
+		{
+			"type": "space",
+			"height": 40.0
+		},
+		{
+			"type": "category",
+			"text": "DISEÑO DE JUEGO & SONIDO"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Mathías Andino"
+			]
+		},
+		{
+			"type": "space",
+			"height": 40.0
+		},
+		{
+			"type": "category",
+			"text": "ARTE & DISEÑO DE NIVEL"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Facu Scazziotti"
+			]
+		},
+		{
+			"type": "space",
+			"height": 60.0
+		},
+		{
+			"type": "category",
+			"text": "HERRAMIENTAS UTILIZADAS"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Godot Engine 4",
+				"Dialogue Manager (Nathan Hoad)",
+				"Credits Template (Falme)"
+			]
+		},
+		{
+			"type": "space",
+			"height": 40.0
+		},
+		{
+			"type": "category",
+			"text": "ASSETS UTILIZADOS"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Gunstar Heroes",
+				"Metal Slug"
+			]
+		},
+		{
+			"type": "space",
+			"height": 60.0
+		},
+		{
+			"type": "category",
+			"text": "AGRADECIMIENTOS ESPECIALES"
+		},
+		{
+			"type": "actor",
+			"actors": [
+				"Lara Marina Lopez",
+				"Berenice Lobos"
+				
+			]
+		},
+		{
+			"type": "space",
+			"height": 80.0
 		},
 		{
 			"type": "image",
-			"path": "addons/credits-template/sprites/example_image.png",
-			"height": 400.0
+			"path": "res://Assets/scandino.png",
+			"height": 150
 		},
 		{
 			"type": "space",
 			"height": 100.0
 		},
 		{
-			"type": "category",
-			"text": "Created By"
-		},
-		{
-			"type": "actor",
-			"actors": [
-				"Falme Streamless"
-			]
-		},
-		{
-			"type": "space",
-			"height": 100.0
-		},
-		{
-			"type": "category",
-			"text": "Special Thanks"
-		},
-		{
-			"type": "actor",
-			"actors": [
-				"Alex Arroyo",
-				"Danilo Cavedon",
-				"Ruan Lima",
-				"And everyone who shared this project!"
-			]
-		},
-		{
-			"type": "space",
-			"height": 100.0
-		},
-		{
-			"type": "category",
-			"text": "Background Image"
-		},
-		{
-			"type": "actor",
-			"actors": [
-				"Mixtapes",
-				"From: https://falme.itch.io/mixtapes"
-			]
-		},
-		{
-			"type": "space",
-			"height": 100.0
-		},
-		{
-			"type": "category",
-			"text": "Image Not Found Author"
-		},
-		{
-			"type": "actor",
-			"actors": [
-				"Jordan Irwin (AntumDeluge)",
-				"From: https://opengameart.org/content/failsafe-image"
-			]
+			"type": "title",
+			"text": "¡GRACIAS POR JUGAR!"
 		}
 	]
 }

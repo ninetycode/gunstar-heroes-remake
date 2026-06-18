@@ -119,3 +119,7 @@ func _conectar_clics():
 	btn_partida_1.pressed.connect(_on_btn_partida_pressed.bind(1))
 	btn_partida_2.pressed.connect(_on_btn_partida_pressed.bind(2))
 	btn_partida_3.pressed.connect(_on_btn_partida_pressed.bind(3))
+
+
+func _on_btn_creditos_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/creditosfinales.tscn")

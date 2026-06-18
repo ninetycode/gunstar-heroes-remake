@@ -43,6 +43,6 @@ func avanzar_habitacion():
 		# 3. ¿A dónde vamos ahora?
 		if config_actual.es_nivel_final:
 			# Cambiá esta ruta por la de tus créditos reales
-			TransitionManager.viajar_a("res://UI/creditos.tscn") 
+			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn") 
 		else:
 			TransitionManager.viajar_a("res://Levels/Lobby.tscn")

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CT_Item_List" load_steps=13 format=3 uid="uid://0uiuxjau1a3k"]
+[gd_resource type="Resource" script_class="CT_Item_List" format=3 uid="uid://0uiuxjau1a3k"]
 
 [ext_resource type="Script" uid="uid://dmogrs8dkli1s" path="res://addons/credits-template/scripts/pool_item.gd" id="1_6rbvu"]
 [ext_resource type="PackedScene" uid="uid://dh2nk4w2xadb7" path="res://addons/credits-template/prefabs/items/title.tscn" id="2_gjq6l"]

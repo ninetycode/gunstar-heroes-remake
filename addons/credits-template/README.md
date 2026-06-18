@@ -92,8 +92,8 @@ From top to bottom, we will explain each field.
 	- image : An image to be added to the credits
 		- path : Address/path to the image (base is "res://")
 		- height : height of the image to be displayed, width is proportional to the original size
-    - space : empty space, a margin between a label and other label
+	- space : empty space, a margin between a label and other label
 		- height : height of the space to be displayed
-    - category : the role title
+	- category : the role title
 	- actor : Names, those who worked in the project at the specified role above
 		- actors : Array of names, try not putting too many names in one array, divide for better performance

@@ -9,7 +9,8 @@ var indice_actual: int = 0
 var musicas: Dictionary = {
 	"nivel_1_zone_2": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3"),
 	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
-	"nivel_1_zona1": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3")
+	"nivel_1_zona1": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3"),
+	"end" : preload("res://Assets/Audio/SONGS/Electronica - Theme 1 (looped).wav")
 }
  
 var sonidos: Dictionary = {

@@ -1506,7 +1506,7 @@ shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghuvf"]
-size = Vector2(412.6016, 501.5946)
+size = Vector2(323.60767, 501.5946)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwutw"]
 shader = ExtResource("5_xy6qo")
@@ -1647,7 +1647,7 @@ menu_mejoras = NodePath("MenuMejorasStats")
 sprite_visual = NodePath("..")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Mejoras de Stats/InteractableComponent" unique_id=1182222352]
-position = Vector2(0.00036621094, -64.72169)
+position = Vector2(0.0009765625, -64.72119)
 shape = SubResource("RectangleShape2D_ghuvf")
 debug_color = Color(0.9478027, 5.583167e-06, 0.58369106, 0.41960785)
 
