@@ -111,7 +111,7 @@ func _conectar_clics():
 	col_principal.get_node("BtnSalir").pressed.connect(func(): get_tree().quit())
 	
 	# Cambiamos la ruta directa por el inicio del sistema rogue-like
-	col_jugar.get_node("BtnNuevo").pressed.connect(func(): TransitionManager.viajar_a("res://Levels/Lobby.tscn"))
+	col_jugar.get_node("BtnNuevo").pressed.connect(func(): TransitionManager.viajar_a("res://Tutorial.tscn"))
 	
 	col_jugar.get_node("BtnCargar").pressed.connect(_on_btn_cargar_pressed)
 	

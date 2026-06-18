@@ -50,7 +50,10 @@ offset_bottom = 29.0
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("6_vjo2d")]
 
 [node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]
-position = Vector2(336, 0)
+position = Vector2(689, 0)
+
+[node name="Zona Fin" parent="AreaManager" index="1" unique_id=1457722739]
+position = Vector2(105, 0)
 
 [node name="SpawnerManager" parent="AreaManager" index="2" unique_id=311363804]
 waves = Array[ExtResource("7_ycm45")]([SubResource("Resource_vnbqc")])

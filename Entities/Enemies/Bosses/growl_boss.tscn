@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://ck6efwlt13wxd"]
 
+[ext_resource type="Script" uid="uid://6ywuwatlxpps" path="res://Entities/Enemies/Bosses/growl_boss.gd" id="1_5itva"]
 [ext_resource type="Texture2D" uid="uid://bebtk72tj6twa" path="res://Assets/Sprite Sheets/Enemies/Growl/growl idle.png" id="1_g3l5x"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="1_j6s4v"]
 [ext_resource type="Texture2D" uid="uid://ch1pljnaaejok" path="res://Assets/Sprite Sheets/Enemies/Growl/jump_close_attack.png" id="1_t1s8f"]
 [ext_resource type="Texture2D" uid="uid://20m016csqhv" path="res://Assets/Sprite Sheets/Enemies/Growl/growl run.png" id="2_e8fpp"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_vlokq"]
+[ext_resource type="Texture2D" uid="uid://b2bmgrkm30sfb" path="res://Assets/Sprite Sheets/Enemies/Growl/growl close attack.png" id="3_2hb6p"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_atoew"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="4_atoew"]
+[ext_resource type="Texture2D" uid="uid://dy8ettjgc10qu" path="res://Assets/Sprite Sheets/Enemies/Growl/death.png" id="4_hqlnq"]
+[ext_resource type="Script" uid="uid://h281rgbvdper" path="res://Entities/Enemies/Bosses/idle.gd" id="9_wa076"]
+[ext_resource type="Script" uid="uid://cvj5m3y20lsbi" path="res://Entities/Enemies/Bosses/chase_zarpazo.gd" id="10_mhdir"]
+[ext_resource type="Script" uid="uid://bfyq0tcgxq61k" path="res://Entities/Enemies/Bosses/attack_zarpazo.gd" id="11_ed6g8"]
+[ext_resource type="Script" uid="uid://d31ylljehd0ya" path="res://Entities/Enemies/Bosses/chase_jump.gd" id="12_dexnm"]
+[ext_resource type="Script" uid="uid://bdcwvvw40w2t7" path="res://Entities/Enemies/Bosses/attack_jump.gd" id="13_ca102"]
+[ext_resource type="Script" uid="uid://de7h60rcwdcb" path="res://Entities/Enemies/Bosses/death_growl_state.gd" id="14_pjge8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hkaub"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hb6p"]
+size = Vector2(76, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ispqc"]
 atlas = ExtResource("1_t1s8f")
@@ -83,44 +93,56 @@ atlas = ExtResource("1_t1s8f")
 region = Rect2(130, 440, 130, 110)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_83dr3"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(260, 440, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(0, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7c4ns"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(390, 440, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(127, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyvi4"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(0, 550, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(254, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2wesd"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(130, 550, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(381, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eg12x"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(260, 550, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(508, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h6xwk"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(390, 550, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(635, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3lvbv"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(0, 660, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(762, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wjrea"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(130, 660, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(889, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vwxhc"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(260, 660, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(1016, 0, 127, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14f2b"]
-atlas = ExtResource("1_t1s8f")
-region = Rect2(390, 660, 130, 110)
+atlas = ExtResource("3_2hb6p")
+region = Rect2(1143, 0, 127, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fegur"]
+atlas = ExtResource("4_hqlnq")
+region = Rect2(0, 0, 109, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bamn7"]
+atlas = ExtResource("4_hqlnq")
+region = Rect2(109, 0, 109, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrb4m"]
+atlas = ExtResource("4_hqlnq")
+region = Rect2(218, 0, 109, 78)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8fpp"]
 atlas = ExtResource("1_g3l5x")
@@ -259,7 +281,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_52ncw")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_jump",
 "speed": 15.0
 }, {
@@ -294,9 +316,23 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_14f2b")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_zarpazo",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fegur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bamn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrb4m")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -369,24 +405,78 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjge8"]
+height = 52.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjge8"]
+size = Vector2(86, 37)
+
 [node name="Growl" type="CharacterBody2D" unique_id=1840454371]
 collision_layer = 4
 collision_mask = 3
+platform_floor_layers = 4294901761
+script = ExtResource("1_5itva")
+nombre_boss = "Growl Boss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471632644]
-shape = SubResource("CircleShape2D_hkaub")
+position = Vector2(6, 23)
+shape = SubResource("RectangleShape2D_2hb6p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1996906043]
 sprite_frames = SubResource("SpriteFrames_hqlnq")
-animation = &"attack_jump"
-frame_progress = 0.60297656
+animation = &"attack_zarpazo"
+frame = 7
 
 [node name="StatsComponent" parent="." unique_id=575655358 instance=ExtResource("1_j6s4v")]
+vida_maxima = 10000
+tiempo_invulnerabilidad = 0.2
 
 [node name="HitboxComponent" parent="." unique_id=597531608 instance=ExtResource("2_vlokq")]
+position = Vector2(0, 9)
+scale = Vector2(1.08, 0.6800003)
+collision_layer = 4
+collision_mask = 8
+danio = 35
 
-[node name="HurtboxComponent" parent="." unique_id=807576902 instance=ExtResource("3_atoew")]
+[node name="CollisionShape2D" parent="HitboxComponent" index="0" unique_id=1677833624]
+position = Vector2(26, 6)
+scale = Vector2(-2.8144567, -1.6225537)
+shape = SubResource("CapsuleShape2D_pjge8")
+debug_color = Color(0.96807677, 0.18124366, 1.92523e-07, 0.41960785)
 
-[node name="StateMachine" type="Node" parent="." unique_id=864674281]
+[node name="HurtboxComponent" parent="." unique_id=807576902 node_paths=PackedStringArray("stats_component") instance=ExtResource("3_atoew")]
+collision_layer = 4
+collision_mask = 2
+stats_component = NodePath("../StatsComponent")
+
+[node name="CollisionShape2D" parent="HurtboxComponent" index="0" unique_id=489208994]
+position = Vector2(4, 6.5)
+shape = SubResource("RectangleShape2D_pjge8")
+debug_color = Color(0.7398426, 0.46719885, 0, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=864674281 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_atoew")
+initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dwvi1p3vxvx8q"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=626251887]
+script = ExtResource("9_wa076")
+tiempo_espera = 1.5
+
+[node name="ChaseZarpazo" type="Node" parent="StateMachine" unique_id=1994946459]
+script = ExtResource("10_mhdir")
+
+[node name="AttackZarpazo" type="Node" parent="StateMachine" unique_id=1273225962]
+script = ExtResource("11_ed6g8")
+
+[node name="ChaseJump" type="Node" parent="StateMachine" unique_id=1921151416]
+script = ExtResource("12_dexnm")
+
+[node name="AttackJump" type="Node" parent="StateMachine" unique_id=344939925]
+script = ExtResource("13_ca102")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=1759021542]
+script = ExtResource("14_pjge8")
+
+[editable path="HitboxComponent"]
+[editable path="HurtboxComponent"]

@@ -1485,15 +1485,19 @@ autowrap_mode = 3
 
 [node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("4_oiqhk")]
 position = Vector2(711, 313)
+probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier2" parent="." unique_id=998546367 instance=ExtResource("4_oiqhk")]
 position = Vector2(1323, 307)
+probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier3" parent="." unique_id=735126655 instance=ExtResource("4_oiqhk")]
 position = Vector2(1351, 307)
+probabilidad_dropear_algo = 0.0
 
 [node name="EnemySoldier4" parent="." unique_id=1206694144 instance=ExtResource("4_oiqhk")]
 position = Vector2(1293, 307)
+probabilidad_dropear_algo = 0.0
 
 [node name="PanelContainer4" type="PanelContainer" parent="." unique_id=1810041848]
 offset_left = 822.0
@@ -1556,6 +1560,7 @@ position = Vector2(1834, 245)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("5_p3v23")
+ruta_lobby = "uid://df0wykuptgjqd"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaSalida" unique_id=508715827]
 visibility_layer = 9
@@ -1565,3 +1570,4 @@ shape = SubResource("RectangleShape2D_oiqhk")
 stream = ExtResource("6_hlpnd")
 volume_db = -20.0
 autoplay = true
+parameters/looping = false
