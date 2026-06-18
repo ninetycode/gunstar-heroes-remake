@@ -1,0 +1,10 @@
+~ Inicio
+
+Profesor Loco: Usá la [color=blue]super computadora[/color] del medio para ir a tus misiones en la tierra.
+Profesor Loco: ¿Estás listo?
+- Sí
+	Profesor Loco: ¡Mucha suerte!
+	=> END
+- No
+	Profesor Loco: Podés ir a practicar disparos hasta que te sientas seguro.
+	=> END

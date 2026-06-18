@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://csunf60fm7bc6"]
+
+[ext_resource type="Shader" uid="uid://bqfxk0e1skqj1" path="res://Shaders/outline_interactuable.gdshader" id="1_mempu"]
+[ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="2_nad34"]
+[ext_resource type="Script" uid="uid://dswoj4p1l0wqr" path="res://Entities/NPC/profesor_oak_2.gd" id="3_y53l2"]
+[ext_resource type="Resource" uid="uid://bfvwsy57ccyub" path="res://Dialogues/intro.dialogue" id="4_opoqb"]
+[ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_vl5pj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r586"]
+resource_local_to_scene = true
+shader = ExtResource("1_mempu")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swigd"]
+radius = 189.37299
+
+[node name="Profesor Oak2" type="Sprite2D" unique_id=1844458492]
+material = SubResource("ShaderMaterial_6r586")
+scale = Vector2(0.14500001, 0.14500001)
+texture = ExtResource("2_nad34")
+script = ExtResource("3_y53l2")
+recurso_dialogo = ExtResource("4_opoqb")
+
+[node name="InteractableComponent" parent="." unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_vl5pj")]
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D" parent="InteractableComponent" index="0" unique_id=799193847]
+shape = SubResource("CircleShape2D_swigd")
+debug_color = Color(0.78431374, 0.49803922, 0, 0.36078432)
+
+[editable path="InteractableComponent"]

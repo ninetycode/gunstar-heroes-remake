@@ -102,6 +102,7 @@ _data = {
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=1434168376]
 layer = 100
 script = ExtResource("1_36de5")
+metadata/_edit_horizontal_guides_ = [238.0]
 
 [node name="Balloon" type="Control" parent="." unique_id=359403728]
 unique_name_in_owner = true
@@ -182,10 +183,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.5
-offset_top = -35.0
-offset_right = 290.5
-offset_bottom = 35.0
+offset_left = 293.33325
+offset_top = -23.333344
+offset_right = 874.33325
+offset_bottom = 46.666656
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8

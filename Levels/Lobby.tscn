@@ -9,7 +9,6 @@
 [ext_resource type="Shader" uid="uid://c8wbike8yc6e7" path="res://Shaders/player_hud.gdshader" id="5_qomtn"]
 [ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
 [ext_resource type="Shader" uid="uid://bqfxk0e1skqj1" path="res://Shaders/outline_interactuable.gdshader" id="5_xy6qo"]
-[ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
 [ext_resource type="Texture2D" uid="uid://dntvshojxd7q" path="res://Assets/Sprite Sheets/Niveles/Lobby/mesa de mejoras.png" id="9_2uni1"]
 [ext_resource type="Script" uid="uid://brmn2e18l0ioi" path="res://Systems/LevelConfig.gd" id="10_cqpkw"]
 [ext_resource type="PackedScene" uid="uid://b6jj6eg0f02qw" path="res://UI/menu_niveles.tscn" id="10_v025o"]
@@ -26,6 +25,8 @@
 [ext_resource type="AudioStream" uid="uid://ch47hb8oj1in6" path="res://Assets/Audio/SONGS/Regular Show   Gary vs David   BEST Clean Extended Mix.mp3" id="23_cqpkw"]
 [ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="24_nl483"]
 [ext_resource type="Script" uid="uid://loqkuiol172n" path="res://teleport_area.gd" id="25_x6f3r"]
+[ext_resource type="PackedScene" uid="uid://csunf60fm7bc6" path="res://Entities/NPC/profesor_oak_.tscn" id="26_xy6qo"]
+[ext_resource type="Resource" uid="uid://dlyqqm1ul84yc" path="res://Dialogues/lobby.dialogue" id="27_ghuvf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3aojn"]
 texture = ExtResource("1_vit0s")
@@ -1513,13 +1514,16 @@ shader = ExtResource("5_xy6qo")
 shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
-size = Vector2(32.999985, 59)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ghuvf"]
+radius = 200.83478
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
 shader = ExtResource("4_1tyf7")
 shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
 shader_parameter/line_thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
+size = Vector2(32.999985, 59)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwutw"]
 shader = ExtResource("5_xy6qo")
@@ -1554,6 +1558,42 @@ size = Vector2(48.00003, 94.15385)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nl483"]
 size = Vector2(20, 72)
 
+[sub_resource type="Shader" id="Shader_ghuvf"]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+// Parámetros que controlamos desde Godot (Inspector o Código)
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Blanco por defecto
+uniform float line_thickness : hint_range(0.0, 10.0) = 0.0;          // Grosor que cambia tu script
+
+void fragment() {
+	// Obtenemos el tamaño de un píxel en coordenadas de textura (UV)
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	// Muestreamos los 4 pìxeles vecinos (arriba, abajo, izquierda, derecha)
+	float alpha = texture(TEXTURE, UV).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, size.y)).a;  // Arriba
+	alpha += texture(TEXTURE, UV + vec2(0.0, -size.y)).a; // Abajo
+	alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;  // Derecha
+	alpha += texture(TEXTURE, UV + vec2(-size.x, 0.0)).a; // Izquierda
+	
+	// Obtenemos el color original del sprite
+	vec4 sprite_color = texture(TEXTURE, UV);
+	
+	// Si sumando los vecinos hay opacidad, pero el píxel original es transparente, pintamos contorno
+	if (sprite_color.a == 0.0 && alpha > 0.0) {
+		COLOR = outline_color;
+	} else {
+		COLOR = sprite_color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1q4u"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ghuvf")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 0.0
+
 [node name="Lobby" type="Node2D" unique_id=1656351788]
 metadata/_edit_horizontal_guides_ = [139.0, 299.0, 294.0, 143.0]
 metadata/_edit_vertical_guides_ = [-99.0, 684.0]
@@ -1575,12 +1615,6 @@ limit_left = -100
 limit_top = 108
 limit_right = 688
 limit_bottom = 360
-
-[node name="Profesor Oak" type="Sprite2D" parent="." unique_id=73491738]
-visible = false
-position = Vector2(598, 210.00002)
-scale = Vector2(0.15769234, 0.15769233)
-texture = ExtResource("7_r50g8")
 
 [node name="Interactuables" type="Node2D" parent="." unique_id=1707674572]
 material = SubResource("ShaderMaterial_lj22p")
@@ -1629,7 +1663,7 @@ shape = SubResource("RectangleShape2D_xrkt0")
 
 [node name="Mejoras de Stats" type="Sprite2D" parent="Interactuables" unique_id=1481258388 node_paths=PackedStringArray("menu_mejoras")]
 material = SubResource("ShaderMaterial_qomtn")
-position = Vector2(-75.6923, -162.46152)
+position = Vector2(987.6923, 18.461548)
 scale = Vector2(0.2281956, 0.22819556)
 texture = ExtResource("11_3o54r")
 script = ExtResource("12_3o54r")
@@ -1641,7 +1675,7 @@ sprite_visual = NodePath("..")
 [node name="CollisionShape2D" parent="Interactuables/Mejoras de Stats/InteractableComponent" index="0" unique_id=799193847]
 position = Vector2(4.0450745, -0.00012207031)
 scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("RectangleShape2D_qomtn")
+shape = SubResource("CircleShape2D_ghuvf")
 
 [node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 node_paths=PackedStringArray("coin_hud") instance=ExtResource("20_lj22p")]
 visible = false
@@ -1669,7 +1703,7 @@ material = SubResource("ShaderMaterial_fwutw")
 position = Vector2(987.6923, -173.53845)
 sprite_frames = SubResource("SpriteFrames_ek0yd")
 animation = &"play"
-frame_progress = 0.83315766
+frame_progress = 0.5449413
 script = ExtResource("17_fwutw")
 menu_guardado = NodePath("menu_guardado")
 
@@ -1724,6 +1758,13 @@ escena_destino = "uid://cqmh7ohhf5o8q"
 position = Vector2(-73, 313)
 shape = SubResource("RectangleShape2D_nl483")
 debug_color = Color(0.25512242, 0.63511217, 0, 0.41960785)
+
+[node name="Profesor Oak2" parent="." unique_id=1844458492 instance=ExtResource("26_xy6qo")]
+material = SubResource("ShaderMaterial_h1q4u")
+position = Vector2(-26.000008, 217.99998)
+scale = Vector2(-0.145, 0.145)
+recurso_dialogo = ExtResource("27_ghuvf")
+titulo_dialogo = "Inicio"
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
 [connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]

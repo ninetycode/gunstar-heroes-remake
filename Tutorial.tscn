@@ -8,11 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="6_hlpnd"]
 [ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="7_73or5"]
 [ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="8_jldhp"]
-[ext_resource type="Shader" uid="uid://bqfxk0e1skqj1" path="res://Shaders/outline_interactuable.gdshader" id="9_su8sl"]
-[ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="9_tyy4w"]
-[ext_resource type="Script" uid="uid://dswoj4p1l0wqr" path="res://Entities/NPC/profesor_oak_2.gd" id="10_hp7xp"]
-[ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="10_swigd"]
-[ext_resource type="Resource" uid="uid://bfvwsy57ccyub" path="res://Dialogues/intro.dialogue" id="11_tpsgm"]
+[ext_resource type="PackedScene" uid="uid://csunf60fm7bc6" path="res://Entities/NPC/profesor_oak_.tscn" id="9_swigd"]
 [ext_resource type="PackedScene" uid="uid://defpltfbk7j7b" path="res://Scenes/shield_item.tscn" id="13_538ju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5s8la"]
@@ -1433,14 +1429,41 @@ default_base_scale = 0.05
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqhk"]
 size = Vector2(43.5, 231)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r586"]
+[sub_resource type="Shader" id="Shader_hp7xp"]
 resource_local_to_scene = true
-shader = ExtResource("9_su8sl")
+code = "shader_type canvas_item;
+
+// Parámetros que controlamos desde Godot (Inspector o Código)
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Blanco por defecto
+uniform float line_thickness : hint_range(0.0, 10.0) = 0.0;          // Grosor que cambia tu script
+
+void fragment() {
+	// Obtenemos el tamaño de un píxel en coordenadas de textura (UV)
+	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
+	
+	// Muestreamos los 4 pìxeles vecinos (arriba, abajo, izquierda, derecha)
+	float alpha = texture(TEXTURE, UV).a;
+	alpha += texture(TEXTURE, UV + vec2(0.0, size.y)).a;  // Arriba
+	alpha += texture(TEXTURE, UV + vec2(0.0, -size.y)).a; // Abajo
+	alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;  // Derecha
+	alpha += texture(TEXTURE, UV + vec2(-size.x, 0.0)).a; // Izquierda
+	
+	// Obtenemos el color original del sprite
+	vec4 sprite_color = texture(TEXTURE, UV);
+	
+	// Si sumando los vecinos hay opacidad, pero el píxel original es transparente, pintamos contorno
+	if (sprite_color.a == 0.0 && alpha > 0.0) {
+		COLOR = outline_color;
+	} else {
+		COLOR = sprite_color;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpsgm"]
+resource_local_to_scene = true
+shader = SubResource("Shader_hp7xp")
 shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_swigd"]
-radius = 189.37299
 
 [node name="Tutorial" type="Node2D" unique_id=833142180]
 
@@ -1619,22 +1642,9 @@ position = Vector2(1619, 282)
 heal_amount = 100
 float_amplitude = 10.0
 
-[node name="Profesor Oak2" type="Sprite2D" parent="." unique_id=1504449508]
-material = SubResource("ShaderMaterial_6r586")
+[node name="Profesor Oak2" parent="." unique_id=1844458492 instance=ExtResource("9_swigd")]
+material = SubResource("ShaderMaterial_tpsgm")
 position = Vector2(2183, 313)
-scale = Vector2(0.14500001, 0.14500001)
-texture = ExtResource("9_tyy4w")
-script = ExtResource("10_hp7xp")
-recurso_dialogo = ExtResource("11_tpsgm")
-
-[node name="InteractableComponent" parent="Profesor Oak2" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("10_swigd")]
-sprite_visual = NodePath("..")
-
-[node name="CollisionShape2D" parent="Profesor Oak2/InteractableComponent" index="0" unique_id=799193847]
-shape = SubResource("CircleShape2D_swigd")
-debug_color = Color(0.78431374, 0.49803922, 0, 0.36078432)
 
 [node name="ShieldItem" parent="." unique_id=133560986 instance=ExtResource("13_538ju")]
 position = Vector2(1670, 282)
-
-[editable path="Profesor Oak2/InteractableComponent"]
