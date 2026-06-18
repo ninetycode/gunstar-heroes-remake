@@ -17,6 +17,7 @@ var plata_prueba_entregada: bool = false
 var nivel_mejora_vida: int = 0
 var nivel_mejora_escudo: int = 0
 #--------------------------------------------------
+var nivel_maximo_alcanzado: int = 0
 
 
 func _ready() -> void:

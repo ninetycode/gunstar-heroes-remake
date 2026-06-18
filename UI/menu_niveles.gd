@@ -36,12 +36,22 @@ func cerrar_menu():
 func actualizar_visuales():
 	if niveles_config.is_empty(): return 
 	
-	# Sacamos los datos directamente del recurso
 	var config_actual = niveles_config[indice_actual]
 	imagen_nivel.texture = config_actual.miniatura
 	texto_nivel.text = config_actual.nombre_nivel
 	
-	# ... (La lógica AAA de las flechas grises/blancas queda exactamente igual) ...
+	# --- LÓGICA DE PROGRESIÓN (COLORES AAA) ---
+	if indice_actual < GameManager.nivel_maximo_alcanzado:
+		# Ya lo completaste: Verde brillante
+		imagen_nivel.modulate = Color(0.0, 1.0, 0.0)
+	elif indice_actual == GameManager.nivel_maximo_alcanzado:
+		# Es tu nivel actual a superar: Normal
+		imagen_nivel.modulate = Color.WHITE
+	else:
+		# Está bloqueado en el futuro: Gris oscuro
+		imagen_nivel.modulate = Color(0.3, 0.3, 0.3)
+	
+	# --- LÓGICA DE FLECHAS ---
 	var tope_izquierdo = (indice_actual == 0)
 	var tope_derecho = (indice_actual == niveles_config.size() - 1)
 	
@@ -88,7 +98,20 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 
 func viajar_al_nivel():
+	# --- BARRERA DE SEGURIDAD ---
+	if indice_actual > GameManager.nivel_maximo_alcanzado:
+		AudioManager.play_sfx("error")
+		print("Nivel bloqueado.")
+		return
+	elif indice_actual < GameManager.nivel_maximo_alcanzado:
+		AudioManager.play_sfx("error")
+		print("Nivel ya completado.")
+		return
+	
+	# Si pasamos los bloqueos, iniciamos la partida
+	AudioManager.play_sfx("ui_accept") # Te sugiero agregar un sonido de éxito acá
 	cerrar_menu()
+	
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
 		var stats = player.get_node_or_null("StatsComponent")
@@ -99,7 +122,7 @@ func viajar_al_nivel():
 			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, monedas_guardar)
 			
 	if LevelManager.has_method("iniciar_nivel"):
-		# ¡ACÁ ESTÁ LA MAGIA! Le pasamos el recurso del nivel elegido al manager
-		LevelManager.iniciar_nivel(niveles_config[indice_actual])
+		# Le pasamos el recurso Y el índice
+		LevelManager.iniciar_nivel(niveles_config[indice_actual], indice_actual)
 	else:
 		print("ERROR: No se encontró el LevelManager")

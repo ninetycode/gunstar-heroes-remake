@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var menu_mejoras: CanvasLayer # Arrastrá tu Menú acá en el Inspector
+@export var menu_mejoras: CanvasLayer
 
 func _ready():
 	# 1. Buscamos el componente hijo

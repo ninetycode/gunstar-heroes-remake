@@ -3,6 +3,7 @@ extends Node
 var tiempo_jugado: float = 0.0
 var veces_guardado: int = 0
 var slot_actual: int = 1 # Para saber en qué archivo estamos jugando
+var nivel_maximo_alcanzado: int = 0
 
 func _process(delta: float) -> void:
 	# El reloj avanza siempre que el juego no esté pausado

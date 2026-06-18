@@ -9,3 +9,5 @@ class_name LevelConfig
 @export var pool_habitaciones: Array[String] # Las escenas de Facu para este nivel
 @export var jefe_final: String               # La escena del boss de este nivel
 @export var cantidad_salas: int = 8          # Cuántas salas antes del jefe
+@export_category("Finalización")
+@export var es_nivel_final: bool = false

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bu3phsujoqng0"]
+
+[ext_resource type="Shader" uid="uid://bb51jhte3f4dm" path="res://Shaders/outline.gdshader" id="1_73k1r"]
+[ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="2_vi5sq"]
+[ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="3_itjrl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
+shader = ExtResource("1_73k1r")
+shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
+size = Vector2(32.999985, 59)
+
+[node name="Teleporter" type="Sprite2D" unique_id=153773560]
+visible = false
+material = SubResource("ShaderMaterial_4qno8")
+scale = Vector2(1.8461539, 1.8461539)
+texture = ExtResource("2_vi5sq")
+
+[node name="InteractableComponent" parent="." unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("3_itjrl")]
+position = Vector2(9, 310)
+scale = Vector2(0.5416667, 0.5416667)
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractableComponent" unique_id=1566541251]
+position = Vector2(-17.538574, -568.61536)
+scale = Vector2(1.8461539, 1.8461539)
+shape = SubResource("RectangleShape2D_qomtn")

@@ -5255,6 +5255,7 @@ position = Vector2(25, 320)
 anchor_mode = 0
 
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("5_epjnp")]
+position = Vector2(-12, -1)
 tipo_de_sala = 1
 
 [node name="Zona Inicio" parent="AreaManager" index="0" unique_id=329029428]

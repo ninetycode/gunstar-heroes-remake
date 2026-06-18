@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://g5cleqbiptbn" path="res://Assets/Sprite Sheets/Niveles/Lobby/Animated-RadarMonitor-Sheet.png" id="16_lj22p"]
 [ext_resource type="Script" uid="uid://cly8vhpxcorac" path="res://UI/punto_de_guardado.gd" id="17_fwutw"]
 [ext_resource type="Texture2D" uid="uid://bocioxsqwgxlk" path="res://Assets/Sprite Sheets/Niveles/Lobby/ventana mejorada.png" id="18_4qno8"]
-[ext_resource type="Texture2D" uid="uid://bq1xs6mcd5qe5" path="res://Assets/Sprite Sheets/Niveles/Lobby/Teleporter.png" id="18_qomtn"]
 [ext_resource type="PackedScene" uid="uid://d2ty7gd6k378u" path="res://UI/menu_guardado.tscn" id="20_3o54r"]
 [ext_resource type="PackedScene" uid="uid://bq4g4v06syhhg" path="res://UI/menu_mejoras_stats.tscn" id="20_lj22p"]
 [ext_resource type="AudioStream" uid="uid://ch47hb8oj1in6" path="res://Assets/Audio/SONGS/Regular Show   Gary vs David   BEST Clean Extended Mix.mp3" id="23_cqpkw"]
@@ -1500,30 +1499,14 @@ shader_parameter/line_thickness = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v81qt"]
 size = Vector2(52.872604, 57.491463)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl483"]
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(1, 0.8901961, 0, 1)
-shader_parameter/line_thickness = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
-size = Vector2(197.53845, 116.30771)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qomtn"]
 resource_local_to_scene = true
 shader = ExtResource("5_xy6qo")
 shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ghuvf"]
-radius = 200.83478
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qno8"]
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
-shader_parameter/line_thickness = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
-size = Vector2(32.999985, 59)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghuvf"]
+size = Vector2(412.6016, 501.5946)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwutw"]
 shader = ExtResource("5_xy6qo")
@@ -1554,6 +1537,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lj22p"]
 size = Vector2(48.00003, 94.15385)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl483"]
+shader = ExtResource("4_1tyf7")
+shader_parameter/line_color = Color(1, 0.8901961, 0, 1)
+shader_parameter/line_thickness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkt0"]
+size = Vector2(197.53845, 116.30771)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nl483"]
 size = Vector2(20, 72)
@@ -1644,66 +1635,32 @@ shape = SubResource("RectangleShape2D_v81qt")
 visible = false
 niveles_config = Array[ExtResource("10_cqpkw")]([ExtResource("11_nl483"), ExtResource("12_nl483")])
 
-[node name="Mejora de Armas" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
-visible = false
-material = SubResource("ShaderMaterial_nl483")
-position = Vector2(23.330818, 1.8462296)
-scale = Vector2(1.2461547, 1.2461544)
-texture = ExtResource("9_2uni1")
-
-[node name="InteractableComponent" parent="Interactuables/Mejora de Armas" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
-position = Vector2(9, 310)
-scale = Vector2(0.5416667, 0.5416667)
-sprite_visual = NodePath("..")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Mejora de Armas/InteractableComponent" unique_id=1006339786]
-position = Vector2(-16.935768, -558.7442)
-scale = Vector2(0.9999999, 0.9999993)
-shape = SubResource("RectangleShape2D_xrkt0")
-
 [node name="Mejoras de Stats" type="Sprite2D" parent="Interactuables" unique_id=1481258388 node_paths=PackedStringArray("menu_mejoras")]
 material = SubResource("ShaderMaterial_qomtn")
-position = Vector2(987.6923, 18.461548)
+position = Vector2(983.9998, 14.76923)
 scale = Vector2(0.2281956, 0.22819556)
 texture = ExtResource("11_3o54r")
 script = ExtResource("12_3o54r")
 menu_mejoras = NodePath("MenuMejorasStats")
 
-[node name="InteractableComponent" parent="Interactuables/Mejoras de Stats" unique_id=525470435 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+[node name="InteractableComponent" parent="Interactuables/Mejoras de Stats" unique_id=616476352 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
 sprite_visual = NodePath("..")
 
-[node name="CollisionShape2D" parent="Interactuables/Mejoras de Stats/InteractableComponent" index="0" unique_id=799193847]
-position = Vector2(4.0450745, -0.00012207031)
-scale = Vector2(0.99999976, 0.99999976)
-shape = SubResource("CircleShape2D_ghuvf")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Mejoras de Stats/InteractableComponent" unique_id=1182222352]
+position = Vector2(0.00036621094, -64.72169)
+shape = SubResource("RectangleShape2D_ghuvf")
+debug_color = Color(0.9478027, 5.583167e-06, 0.58369106, 0.41960785)
 
 [node name="MenuMejorasStats" parent="Interactuables/Mejoras de Stats" unique_id=62655691 node_paths=PackedStringArray("coin_hud") instance=ExtResource("20_lj22p")]
 visible = false
 coin_hud = NodePath("../../../CoinHud")
-
-[node name="Teleporter" type="Sprite2D" parent="Interactuables" unique_id=2008568894]
-visible = false
-material = SubResource("ShaderMaterial_4qno8")
-position = Vector2(1024.6155, -6.461548)
-scale = Vector2(1.8461539, 1.8461539)
-texture = ExtResource("18_qomtn")
-
-[node name="InteractableComponent" parent="Interactuables/Teleporter" unique_id=2002056609 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
-position = Vector2(9, 310)
-scale = Vector2(0.5416667, 0.5416667)
-sprite_visual = NodePath("..")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Teleporter/InteractableComponent" unique_id=959161565]
-position = Vector2(-17.538574, -568.61536)
-scale = Vector2(1.8461539, 1.8461539)
-shape = SubResource("RectangleShape2D_qomtn")
 
 [node name="Pc" type="AnimatedSprite2D" parent="Interactuables" unique_id=1000596457 node_paths=PackedStringArray("menu_guardado")]
 material = SubResource("ShaderMaterial_fwutw")
 position = Vector2(987.6923, -173.53845)
 sprite_frames = SubResource("SpriteFrames_ek0yd")
 animation = &"play"
-frame_progress = 0.5449413
+frame_progress = 0.48337808
 script = ExtResource("17_fwutw")
 menu_guardado = NodePath("menu_guardado")
 
@@ -1715,6 +1672,23 @@ position = Vector2(0, 13.846191)
 shape = SubResource("RectangleShape2D_lj22p")
 
 [node name="menu_guardado" parent="Interactuables/Pc" unique_id=328795721 instance=ExtResource("20_3o54r")]
+
+[node name="Mejora de Armas" type="Sprite2D" parent="Interactuables" unique_id=2018368756]
+visible = false
+material = SubResource("ShaderMaterial_nl483")
+position = Vector2(23.33082, 1.8462524)
+scale = Vector2(1.2461548, 1.2461544)
+texture = ExtResource("9_2uni1")
+
+[node name="InteractableComponent" parent="Interactuables/Mejora de Armas" unique_id=1518070210 node_paths=PackedStringArray("sprite_visual") instance=ExtResource("5_j83j6")]
+position = Vector2(9, 310)
+scale = Vector2(0.5416667, 0.5416667)
+sprite_visual = NodePath("..")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Interactuables/Mejora de Armas/InteractableComponent" unique_id=1006339786]
+position = Vector2(-16.935768, -558.7442)
+scale = Vector2(0.9999999, 0.9999993)
+shape = SubResource("RectangleShape2D_xrkt0")
 
 [node name="Background" type="Node" parent="." unique_id=830993560]
 
@@ -1767,10 +1741,9 @@ recurso_dialogo = ExtResource("27_ghuvf")
 titulo_dialogo = "Inicio"
 
 [connection signal="interaccion_activada" from="Interactuables/SuperComputadora/InteractableComponent" to="Interactuables/SuperComputadora" method="_on_interactable_component_interaccion_activada"]
-[connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]
 [connection signal="interaccion_activada" from="Interactuables/Pc/InteractableComponent" to="Interactuables/Pc" method="_on_interactable_component_interaccion_activada"]
+[connection signal="interaccion_activada" from="Interactuables/Mejora de Armas/InteractableComponent" to="GunstarBlue" method="_on_interactable_component_interaccion_activada"]
 
 [editable path="GunstarBlue"]
 [editable path="GunstarBlue/HurtboxComponent"]
-[editable path="Interactuables/Mejoras de Stats/InteractableComponent"]
 [editable path="Interactuables/Pc/InteractableComponent"]

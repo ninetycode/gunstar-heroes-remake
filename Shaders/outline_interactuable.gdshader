@@ -1,5 +1,5 @@
 shader_type canvas_item;
-
+             
 // Parámetros que controlamos desde Godot (Inspector o Código)
 uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // Blanco por defecto
 uniform float line_thickness : hint_range(0.0, 10.0) = 0.0;          // Grosor que cambia tu script
