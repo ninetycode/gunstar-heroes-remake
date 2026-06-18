@@ -9,7 +9,8 @@ func aplicar_efecto(player: Node2D) -> bool:
 		wallet.agregar_monedas(valor_moneda)
 		
 		# [Inferencia] Pongo un sonido genérico, cambialo por tu AudioManager
-		# AudioManager.play_sfx("coin_pickup") 
+		AudioManager.play_sfx("coin") 
+		#play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0)
 		
 		return true # ¡Se consume!
 		
