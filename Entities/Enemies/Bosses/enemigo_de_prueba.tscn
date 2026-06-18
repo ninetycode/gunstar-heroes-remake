@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dmwkuqg5ijcm4" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.gd" id="1_i457a"]
 [ext_resource type="Texture2D" uid="uid://csvnmofw83p3p" path="res://Assets/Sprite Sheets/Enemies/etc/maddummy.png" id="2_i457a"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="2_q0w3f"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_jpb47"]
+[ext_resource type="Resource" uid="uid://clpi504w6b8ox" path="res://Resources/item_coin.tres" id="3_sr30a"]
 [ext_resource type="PackedScene" uid="uid://cj2g7e564pawy" path="res://Systems/stats_component.tscn" id="4_urfqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_trxyw"]
@@ -29,6 +31,8 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_i457a")
 nombre_boss = "Jefe de Prueba"
+probabilidad_dropear_algo = 100.0
+posibles_drops = Array[ExtResource("2_q0w3f")]([ExtResource("3_sr30a")])
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=117444472]

@@ -1,16 +1,15 @@
-[gd_scene format=4 uid="uid://dn748s2ic7v3m"]
+[gd_scene format=4 uid="uid://cqmh7ohhf5o8q"]
 
-[ext_resource type="Texture2D" uid="uid://dj3v1fjf7yk4h" path="res://Assets/Sprite Sheets/Niveles/Lobby/Lobby Sprite sheet.png" id="1_jl26d"]
-[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_5s8la"]
-[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="3_fr6qw"]
-[ext_resource type="PackedScene" uid="uid://pwieavbj4rwd" path="res://Entities/Enemies/Normals/Soldier/enemy_soldier.tscn" id="4_oiqhk"]
-[ext_resource type="Script" uid="uid://loqkuiol172n" path="res://teleport_area.gd" id="5_p3v23"]
-[ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="6_hlpnd"]
-[ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="7_73or5"]
-[ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="8_jldhp"]
+[ext_resource type="Texture2D" uid="uid://dj3v1fjf7yk4h" path="res://Assets/Sprite Sheets/Niveles/Lobby/Lobby Sprite sheet.png" id="1_ikfou"]
+[ext_resource type="PackedScene" uid="uid://dayoqc78au6j2" path="res://Entities/Player/player.tscn" id="2_aq6gd"]
+[ext_resource type="PackedScene" uid="uid://bxf0bylam6w4o" path="res://UI/player_hud.tscn" id="3_l8jbp"]
+[ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="5_tyjyj"]
+[ext_resource type="Script" uid="uid://loqkuiol172n" path="res://teleport_area.gd" id="6_34af2"]
+[ext_resource type="PackedScene" uid="uid://c7m7fe51faqjy" path="res://Scenes/coin_item.tscn" id="7_2d1j7"]
+[ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="7_5wckk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5s8la"]
-texture = ExtResource("1_jl26d")
+texture = ExtResource("1_ikfou")
 39:2/0 = 0
 40:2/0 = 0
 41:2/0 = 0
@@ -1421,13 +1420,10 @@ sources/0 = SubResource("TileSetAtlasSource_5s8la")
 [sub_resource type="LabelSettings" id="LabelSettings_fr6qw"]
 font_size = 10
 
-[sub_resource type="Theme" id="Theme_oiqhk"]
-default_base_scale = 0.05
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqhk"]
 size = Vector2(43.5, 231)
 
-[node name="Tutorial" type="Node2D" unique_id=833142180]
+[node name="Tutorial Completado" type="Node2D" unique_id=833142180]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=647148597]
 z_index = -1
@@ -1435,105 +1431,25 @@ tile_map_data = PackedByteArray("AAADAAoAAAAOACkAAAACAAoAAAANACkAAAABAAoAAAAMACk
 tile_set = SubResource("TileSet_fr6qw")
 metadata/_edit_lock_ = true
 
-[node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_5s8la")]
-position = Vector2(-327, 318)
+[node name="GunstarBlue" parent="." unique_id=488555054 instance=ExtResource("2_aq6gd")]
+position = Vector2(2243, 317)
 
 [node name="Camera2D" type="Camera2D" parent="GunstarBlue" unique_id=538274453]
 zoom = Vector2(1.6, 1.6)
 limit_left = -412
 limit_top = 159
-limit_right = 4000
+limit_right = 2335
 limit_bottom = 338
 limit_smoothed = true
 
-[node name="SALTO" type="PanelContainer" parent="." unique_id=541457322]
-offset_left = 96.0
-offset_top = 213.0
-offset_right = 221.0
-offset_bottom = 239.0
+[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_l8jbp")]
 
-[node name="Label" type="Label" parent="SALTO" unique_id=994787536]
-layout_mode = 2
-text = "Utilizá Espacio para saltar"
-label_settings = SubResource("LabelSettings_fr6qw")
-
-[node name="DISPARO" type="PanelContainer" parent="." unique_id=169370910]
-offset_left = 617.0
-offset_top = 213.0
-offset_right = 724.0
-offset_bottom = 239.0
-
-[node name="Label" type="Label" parent="DISPARO" unique_id=2020736161]
-layout_mode = 2
-text = "Utilizá X para disparar"
-label_settings = SubResource("LabelSettings_fr6qw")
-
-[node name="MOVERSE" type="PanelContainer" parent="." unique_id=436811338]
-offset_left = -309.0
-offset_top = 213.0
-offset_right = -164.0
-offset_bottom = 244.0
-theme = SubResource("Theme_oiqhk")
-
-[node name="Label" type="Label" parent="MOVERSE" unique_id=1445698771]
-layout_mode = 2
-text = "Utilizá las flechas direccionales para moverte"
-label_settings = SubResource("LabelSettings_fr6qw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="player_hud" parent="." unique_id=1489847109 instance=ExtResource("3_fr6qw")]
-
-[node name="EnemySoldier" parent="." unique_id=992673902 instance=ExtResource("4_oiqhk")]
-position = Vector2(813, 312)
-probabilidad_dropear_algo = 0.0
-
-[node name="EnemySoldier2" parent="." unique_id=998546367 instance=ExtResource("4_oiqhk")]
-position = Vector2(1605, 311)
-probabilidad_dropear_algo = 0.0
-
-[node name="EnemySoldier3" parent="." unique_id=735126655 instance=ExtResource("4_oiqhk")]
-position = Vector2(1633, 311)
-probabilidad_dropear_algo = 0.0
-
-[node name="EnemySoldier4" parent="." unique_id=1206694144 instance=ExtResource("4_oiqhk")]
-position = Vector2(1575, 311)
-probabilidad_dropear_algo = 0.0
-
-[node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("7_73or5")]
+[node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("5_tyjyj")]
 z_index = -1
-position = Vector2(1146, 317)
+position = Vector2(1689, 317)
 
-[node name="TAB" type="PanelContainer" parent="." unique_id=1810041848]
-offset_left = 911.0
-offset_top = 209.0
-offset_right = 1018.0
-offset_bottom = 240.0
-
-[node name="Label" type="Label" parent="TAB" unique_id=1071484646]
-layout_mode = 2
-text = "Usá TAB para cambiar entre tus armas"
-label_settings = SubResource("LabelSettings_fr6qw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 1
-
-[node name="LANZALLAMAS" type="PanelContainer" parent="." unique_id=1675048529]
-anchors_preset = -1
-offset_left = 1323.0
-offset_top = 206.0
-offset_right = 1460.0
-offset_bottom = 254.0
-
-[node name="Label" type="Label" parent="LANZALLAMAS" unique_id=1006639878]
-layout_mode = 2
-text = "Probá el lanzallamas para
-acabar con un gran número de enemigos"
-label_settings = SubResource("LabelSettings_fr6qw")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 1
+[node name="AnimatedSprite2D" parent="Enemigo de prueba" index="0" unique_id=117444472]
+scale = Vector2(-0.17, 0.17)
 
 [node name="ARMAS" type="PanelContainer" parent="." unique_id=262709805]
 offset_left = 1770.0
@@ -1563,24 +1479,65 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="PuertaSalida" type="Area2D" parent="." unique_id=2127365335]
-position = Vector2(2288, 245)
+[node name="TP- LOBBY" type="Area2D" parent="." unique_id=2127365335]
+position = Vector2(2314, 243)
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("5_p3v23")
+script = ExtResource("6_34af2")
 escena_destino = "uid://df0wykuptgjqd"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuertaSalida" unique_id=508715827]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TP- LOBBY" unique_id=508715827]
 visibility_layer = 9
 shape = SubResource("RectangleShape2D_oiqhk")
+debug_color = Color(2.7434528e-06, 0.64918625, 0.16551706, 0.41960785)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1517206492]
-stream = ExtResource("6_hlpnd")
+stream = ExtResource("7_5wckk")
 volume_db = -20.0
 autoplay = true
 parameters/looping = false
 
-[node name="HelthItem" parent="." unique_id=712430850 instance=ExtResource("8_jldhp")]
-position = Vector2(2156, 282)
-heal_amount = 100
-float_amplitude = 10.0
+[node name="coin_item" parent="." unique_id=945099877 instance=ExtResource("7_2d1j7")]
+position = Vector2(386, 311)
+
+[node name="coin_item2" parent="." unique_id=1599635959 instance=ExtResource("7_2d1j7")]
+position = Vector2(411, 311)
+
+[node name="coin_item3" parent="." unique_id=1047958828 instance=ExtResource("7_2d1j7")]
+position = Vector2(434, 311)
+
+[node name="coin_item4" parent="." unique_id=1019005623 instance=ExtResource("7_2d1j7")]
+position = Vector2(456, 311)
+
+[node name="coin_item12" parent="." unique_id=1067005332 instance=ExtResource("7_2d1j7")]
+position = Vector2(503, 234)
+
+[node name="coin_item13" parent="." unique_id=1845568234 instance=ExtResource("7_2d1j7")]
+position = Vector2(344, 271)
+
+[node name="coin_item14" parent="." unique_id=590721620 instance=ExtResource("7_2d1j7")]
+position = Vector2(75, 315)
+
+[node name="coin_item5" parent="." unique_id=305040598 instance=ExtResource("7_2d1j7")]
+position = Vector2(-369, 310)
+
+[node name="coin_item6" parent="." unique_id=363977678 instance=ExtResource("7_2d1j7")]
+position = Vector2(-345, 310)
+
+[node name="coin_item7" parent="." unique_id=1784378518 instance=ExtResource("7_2d1j7")]
+position = Vector2(-321, 310)
+
+[node name="coin_item8" parent="." unique_id=729817730 instance=ExtResource("7_2d1j7")]
+position = Vector2(-297, 310)
+
+[node name="coin_item9" parent="." unique_id=39066822 instance=ExtResource("7_2d1j7")]
+position = Vector2(-274, 310)
+
+[node name="coin_item10" parent="." unique_id=170709846 instance=ExtResource("7_2d1j7")]
+position = Vector2(-249, 310)
+
+[node name="coin_item11" parent="." unique_id=1687953916 instance=ExtResource("7_2d1j7")]
+position = Vector2(-249, 310)
+
+[editable path="Enemigo de prueba"]
+[editable path="Enemigo de prueba/HurtboxComponent"]
