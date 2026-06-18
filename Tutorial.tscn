@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="6_hlpnd"]
 [ext_resource type="PackedScene" uid="uid://djiukb0odcry8" path="res://Entities/Enemies/Bosses/enemigo_de_prueba.tscn" id="7_73or5"]
 [ext_resource type="PackedScene" uid="uid://c2egs7etgsygw" path="res://Scenes/helth_item.tscn" id="8_jldhp"]
+[ext_resource type="Shader" uid="uid://bqfxk0e1skqj1" path="res://Shaders/outline_interactuable.gdshader" id="9_su8sl"]
 [ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="9_tyy4w"]
 [ext_resource type="Script" uid="uid://dswoj4p1l0wqr" path="res://Entities/NPC/profesor_oak_2.gd" id="10_hp7xp"]
 [ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="10_swigd"]
@@ -1432,6 +1433,12 @@ default_base_scale = 0.05
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqhk"]
 size = Vector2(43.5, 231)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r586"]
+resource_local_to_scene = true
+shader = ExtResource("9_su8sl")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/line_thickness = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_swigd"]
 radius = 189.37299
 
@@ -1613,6 +1620,7 @@ heal_amount = 100
 float_amplitude = 10.0
 
 [node name="Profesor Oak2" type="Sprite2D" parent="." unique_id=1504449508]
+material = SubResource("ShaderMaterial_6r586")
 position = Vector2(2183, 313)
 scale = Vector2(0.14500001, 0.14500001)
 texture = ExtResource("9_tyy4w")

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cg63hbv47lgp3" path="res://Systems/interactable_component.tscn" id="5_j83j6"]
 [ext_resource type="Shader" uid="uid://c8wbike8yc6e7" path="res://Shaders/player_hud.gdshader" id="5_qomtn"]
 [ext_resource type="Script" uid="uid://bcdti0k0kfqd0" path="res://Levels/super_computadora.gd" id="5_v81qt"]
+[ext_resource type="Shader" uid="uid://bqfxk0e1skqj1" path="res://Shaders/outline_interactuable.gdshader" id="5_xy6qo"]
 [ext_resource type="Texture2D" uid="uid://d2w54ahy8ccff" path="res://Assets/Sprite Sheets/Niveles/Lobby/FERQsjNWQAU92hf.png" id="7_r50g8"]
 [ext_resource type="Texture2D" uid="uid://dntvshojxd7q" path="res://Assets/Sprite Sheets/Niveles/Lobby/mesa de mejoras.png" id="9_2uni1"]
 [ext_resource type="Script" uid="uid://brmn2e18l0ioi" path="res://Systems/LevelConfig.gd" id="10_cqpkw"]
@@ -1484,10 +1485,10 @@ shader_parameter/brillo_color = Color(1, 1, 1, 0.5)
 shader_parameter/velocidad = 1.5
 shader_parameter/ancho = 0.1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r50g8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy6qo"]
 resource_local_to_scene = true
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(1, 0.9254902, 0, 1)
+shader = ExtResource("5_xy6qo")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cqpkw"]
@@ -1508,8 +1509,8 @@ size = Vector2(197.53845, 116.30771)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qomtn"]
 resource_local_to_scene = true
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(1, 1, 0, 1)
+shader = ExtResource("5_xy6qo")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qomtn"]
@@ -1521,99 +1522,29 @@ shader_parameter/line_color = Color(0.89422745, 0.89478105, 0.112638064, 1)
 shader_parameter/line_thickness = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwutw"]
-shader = ExtResource("4_1tyf7")
-shader_parameter/line_color = Color(0, 1, 0.8, 1)
+shader = ExtResource("5_xy6qo")
+shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwutw"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(0, 0, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cqpkw"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(144, 0, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nl483"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(288, 0, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6f3r"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(0, 96, 144, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xy6qo"]
 atlas = ExtResource("16_lj22p")
-region = Rect2(144, 96, 144, 96)
+region = Rect2(0, 0, 144, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghuvf"]
 atlas = ExtResource("16_lj22p")
-region = Rect2(288, 96, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h1q4u"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(0, 192, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_slnks"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(144, 192, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ugngs"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(288, 192, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ystf7"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(0, 288, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifrx1"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(144, 288, 144, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogej0"]
-atlas = ExtResource("16_lj22p")
-region = Rect2(288, 288, 144, 96)
+region = Rect2(144, 0, 144, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ek0yd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fwutw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cqpkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nl483")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x6f3r")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_xy6qo")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ghuvf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h1q4u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_slnks")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ugngs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ystf7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ifrx1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogej0")
 }],
 "loop": true,
-"name": &"default",
+"name": &"play",
 "speed": 5.0
 }]
 
@@ -1658,7 +1589,7 @@ scale = Vector2(0.5416667, 0.5416667)
 
 [node name="SuperComputadora" type="Sprite2D" parent="Interactuables" unique_id=1389299185 node_paths=PackedStringArray("menu_selector")]
 z_index = -1
-material = SubResource("ShaderMaterial_r50g8")
+material = SubResource("ShaderMaterial_xy6qo")
 position = Vector2(537.5927, 10.268433)
 scale = Vector2(1.04751, 1.05969)
 texture = ExtResource("4_j83j6")
@@ -1737,7 +1668,8 @@ shape = SubResource("RectangleShape2D_qomtn")
 material = SubResource("ShaderMaterial_fwutw")
 position = Vector2(987.6923, -173.53845)
 sprite_frames = SubResource("SpriteFrames_ek0yd")
-frame_progress = 0.804698
+animation = &"play"
+frame_progress = 0.83315766
 script = ExtResource("17_fwutw")
 menu_guardado = NodePath("menu_guardado")
 
