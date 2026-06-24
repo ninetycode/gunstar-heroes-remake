@@ -1429,7 +1429,7 @@ default_base_scale = 0.05
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiqhk"]
 size = Vector2(43.5, 231)
 
-[sub_resource type="Shader" id="Shader_hp7xp"]
+[sub_resource type="Shader" id="Shader_swigd"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -1459,9 +1459,9 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpsgm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hp7xp"]
 resource_local_to_scene = true
-shader = SubResource("Shader_hp7xp")
+shader = SubResource("Shader_swigd")
 shader_parameter/outline_color = Color(1, 1, 0, 1)
 shader_parameter/line_thickness = 0.0
 
@@ -1543,7 +1543,7 @@ probabilidad_dropear_algo = 0.0
 
 [node name="Enemigo de prueba" parent="." unique_id=1736553888 instance=ExtResource("7_73or5")]
 z_index = -1
-position = Vector2(1146, 317)
+position = Vector2(1056, 317)
 
 [node name="TAB" type="PanelContainer" parent="." unique_id=1810041848]
 offset_left = 911.0
@@ -1643,7 +1643,7 @@ heal_amount = 100
 float_amplitude = 10.0
 
 [node name="Profesor Oak2" parent="." unique_id=1844458492 instance=ExtResource("9_swigd")]
-material = SubResource("ShaderMaterial_tpsgm")
+material = SubResource("ShaderMaterial_hp7xp")
 position = Vector2(2183, 313)
 
 [node name="ShieldItem" parent="." unique_id=133560986 instance=ExtResource("13_538ju")]

@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://byygw5sib24tr" path="res://Assets/Sprite Sheets/Niveles/Parallax 1.png" id="9_2urgh"]
 [ext_resource type="Script" uid="uid://otuoeuwbsbyd" path="res://Scripts/lock_zone.gd" id="9_c2e18"]
 [ext_resource type="Texture2D" uid="uid://bltvvnks2kfrc" path="res://Assets/Sprite Sheets/Niveles/parallax 0.png" id="10_ai5dg"]
-[ext_resource type="AudioStream" uid="uid://cq2f6a3siv1b4" path="res://Assets/Audio/SONGS/Action Beat #4 (looped).wav" id="11_ai5dg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rn7ik"]
 texture = ExtResource("1_vovh5")
@@ -5299,11 +5298,6 @@ limit_begin = Vector2(0, 0)
 z_index = -2
 position = Vector2(1704, 176)
 texture = ExtResource("10_ai5dg")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1912390697]
-stream = ExtResource("11_ai5dg")
-autoplay = true
-bus = &"Music"
 
 [editable path="PapayaBoss"]
 [editable path="PapayaBoss/HurtboxComponent"]

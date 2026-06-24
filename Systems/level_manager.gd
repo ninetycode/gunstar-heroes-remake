@@ -21,6 +21,11 @@ func iniciar_nivel(config: LevelConfig, indice: int):
 		
 	ruta_generada.append(config.jefe_final)
 	
+	# === AUTOMATIZACIÓN DE MÚSICA DE ENTRADA ===
+	if config.musica_ambiente != "":
+		# Llama al AudioManager con un fundido de 1.5 segundos
+		AudioManager.play_music(config.musica_ambiente, 0.0, 1.5)
+	
 	print("Iniciando: ", config.nombre_nivel)
 	avanzar_habitacion()
 
@@ -32,6 +37,11 @@ func avanzar_habitacion():
 	else:
 		print("¡NIVEL COMPLETADO!")
 		
+		# === FIX DE AUDIO LOBBY/CRÉDITOS AAA ===
+		# Frenamos cualquier música que esté sonando (horda o jefe) con un fundido suave
+		if has_node("/root/AudioManager"):
+			AudioManager.stop_music(1.5)
+		
 		# 1. Limpiamos las variables temporales de la partida
 		GameManager.vida_persistente = -1
 		GameManager.escudo_persistente = 0
@@ -40,10 +50,8 @@ func avanzar_habitacion():
 		if GameManager.nivel_maximo_alcanzado <= indice_nivel_actual:
 			GameManager.nivel_maximo_alcanzado = indice_nivel_actual + 1
 			
-		# 3. ¿A dónde vamos ahora? (BLINDAJE ANTI-CRASH)
+		# 3. ¿A dónde vamos ahora?
 		if config_actual == null:
-			# [Inferencia] Si es nulo, es porque estás probando con F6.
-			# Te mandamos a los créditos directo para que verifiques que funcione la ruta.
 			print("AVISO: config_actual es Nil (Prueba con F6). Mandando a créditos por seguridad.")
 			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn")
 		elif config_actual.es_nivel_final:

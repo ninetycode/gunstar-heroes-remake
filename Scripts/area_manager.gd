@@ -13,6 +13,7 @@ extends Node2D
 @export var arena_music: String = ""
 var arena_completada: bool = false
 
+
 func _ready() -> void:
 	assert(zona_inicio != null, "Falta asignar la zona de inicio")
 	assert(zona_fin != null, "Falta asignar la zona de fin")
@@ -32,14 +33,20 @@ func _on_inicio_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		zona_inicio.set_deferred("monitoring", false)
 		
-		if arena_music != "nivel_1":
-			AudioManager.play_music(arena_music)
-			
-		# Solo activamos el Spawner si marcaste la sala como "Horda"
-		if tipo_de_sala == 0 and spawner != null:
-			spawner.start_spawning()
-
-# ... (Acá dejá tus funciones _on_fin_body_entered y _on_arena_completada tal cual las tenías) ...
+		if tipo_de_sala == 0: # Si es sala normal de Horda
+			if spawner != null:
+				spawner.start_spawning()
+		else: # Si elegiste tipo "Jefe"
+			# 1. Le pedimos al LevelManager los datos del nivel actual
+			if LevelManager.config_actual:
+				var config = LevelManager.config_actual
+				if config.musica_jefe != "":
+					# 2. Hacemos que la música de hordas se apague en 0.8 segundos
+					AudioManager.stop_music(0.8)
+					# Esperamos un instante breve para que no se pisen de golpe
+					await get_tree().create_timer(0.4).timeout
+					# 3. Encendemos la música del jefe con un fade de 1.2 segundos
+					AudioManager.play_music(config.musica_jefe, 0.0, 1.2)
 
 func _on_fin_body_entered(body: Node2D) -> void:
 	if not arena_completada:

@@ -5,11 +5,15 @@ var music_player: AudioStreamPlayer
 var reproductores: Array[AudioStreamPlayer] = []
 var cantidad_reproductores: int = 12 # Cuántos sonidos pueden sonar exactamente al mismo tiempo
 var indice_actual: int = 0
+var _music_tween: Tween
+
 
 var musicas: Dictionary = {
-	"nivel_1_zone_2": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3"),
+	"nivel_1_music": preload("res://Assets/Audio/SONGS/Doom (1993) OST — At Doom's Gate (Extended).mp3"),
+	"boss_1" : preload("res://Assets/Audio/SONGS/Action Beat #4 (looped).wav"),
 	#"boss_theme": preload("res://Assets/Audio/Music/boss_battle.ogg")
-	"nivel_1_zona1": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3"),
+	"nivel_2_music": preload("res://Assets/Audio/SONGS/Metal Slug X - Judgement (Mission 1) Cover.mp3"),
+	"boss_2" : preload("res://Assets/Audio/SONGS/Action Beat - Rock Version #3 (looped).wav"),
 	"end" : preload("res://Assets/Audio/SONGS/Electronica - Theme 1 (looped).wav")
 }
  
@@ -88,34 +92,47 @@ func stop_sfx(nombre_sonido: String):
 		if reproductor.stream == audio_stream and reproductor.playing:
 			reproductor.stop()
 			
-func play_music(nombre_track: String, volumen: float = 0.0):
+func play_music(nombre_track: String, volumen_destino: float = 0.0, fade_in_duration: float = 1.0):
 	if not musicas.has(nombre_track):
 		return
 	
-	# Si ya está sonando ese tema, no lo reinicies
 	if music_player.stream == musicas[nombre_track] and music_player.playing:
 		return
 		
+	# === ACCIÓN PREVENTIVA AAA ===
+	# Si había un fade out corriendo (de la horda anterior), lo fulminamos 
+	# para que no nos apague la música nueva al terminar.
+	if _music_tween and _music_tween.is_valid():
+		_music_tween.kill()
+		
 	music_player.stream = musicas[nombre_track]
-	music_player.volume_db = volumen
-	music_player.play()
+	
+	if fade_in_duration > 0.0:
+		music_player.volume_db = -80.0
+		music_player.play()
+		_music_tween = create_tween()
+		_music_tween.tween_property(music_player, "volume_db", volumen_destino, fade_in_duration)
+	else:
+		music_player.volume_db = volumen_destino
+		music_player.play()
 	
 func stop_music(fade_out_duration: float = 1.0):
-	# Si no hay música sonando, no hacemos nada
 	if not music_player.playing:
 		return
 		
-	# Si nos piden que se corte de golpe (tiempo 0)
+	# Si ya había un tween corriendo, lo limpiamos antes de empezar uno nuevo
+	if _music_tween and _music_tween.is_valid():
+		_music_tween.kill()
+		
 	if fade_out_duration <= 0.0:
 		music_player.stop()
 		return
 		
-	# Creamos un Tween para bajar el volumen de a poco
-	var tween = create_tween()
-	# Le decimos que baje el volume_db a -80 (que es silencio total en Godot) en X segundos
-	tween.tween_property(music_player, "volume_db", -80.0, fade_out_duration)
+	_music_tween = create_tween()
+	_music_tween.tween_property(music_player, "volume_db", -80.0, fade_out_duration)
 	
-	# Cuando el tween termina de bajar el volumen, frenamos el reproductor y restauramos el volumen base
-	await tween.finished
-	music_player.stop()
-	music_player.volume_db = 0.0 # Lo dejamos listo para la próxima canción
+	# Usamos un método limpio de Tween en lugar de un await directo en el vacío
+	_music_tween.tween_callback(func():
+		music_player.stop()
+		music_player.volume_db = 0.0
+	)

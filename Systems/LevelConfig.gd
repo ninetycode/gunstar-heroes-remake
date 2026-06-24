@@ -11,3 +11,8 @@ class_name LevelConfig
 @export var cantidad_salas: int = 8          # Cuántas salas antes del jefe
 @export_category("Finalización")
 @export var es_nivel_final: bool = false
+
+
+@export_category("Música del Nivel")
+@export var musica_ambiente: String = ""
+@export var musica_jefe: String = ""

@@ -9,5 +9,6 @@ nombre_nivel = "Nivel 1"
 miniatura = ExtResource("1_7k8kn")
 pool_habitaciones = Array[String](["res://Scenes/Room 1-1.tscn", "res://Scenes/Room 1-2.tscn", "res://Scenes/Room 1-3.tscn", "res://Scenes/Room 1-4.tscn", "res://Scenes/Room 1-5.tscn", "res://Scenes/Room 1-6.tscn"])
 jefe_final = "res://Scenes/RoomBoss.tscn"
-cantidad_salas = 10
+musica_ambiente = "nivel_1_music"
+musica_jefe = "boss_1"
 metadata/_custom_type_script = "uid://brmn2e18l0ioi"
