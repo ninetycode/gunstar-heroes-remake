@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl34so6guqykn"
+path="res://.godot/imported/Action Beat - Rock Version #3 (looped).wav-5c08224d854c78b62a76cfcc1205fd40.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SONGS/Action Beat - Rock Version #3 (looped).wav"
+dest_files=["res://.godot/imported/Action Beat - Rock Version #3 (looped).wav-5c08224d854c78b62a76cfcc1205fd40.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

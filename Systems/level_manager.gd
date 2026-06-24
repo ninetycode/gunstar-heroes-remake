@@ -40,9 +40,13 @@ func avanzar_habitacion():
 		if GameManager.nivel_maximo_alcanzado <= indice_nivel_actual:
 			GameManager.nivel_maximo_alcanzado = indice_nivel_actual + 1
 			
-		# 3. ¿A dónde vamos ahora?
-		if config_actual.es_nivel_final:
-			# Cambiá esta ruta por la de tus créditos reales
+		# 3. ¿A dónde vamos ahora? (BLINDAJE ANTI-CRASH)
+		if config_actual == null:
+			# [Inferencia] Si es nulo, es porque estás probando con F6.
+			# Te mandamos a los créditos directo para que verifiques que funcione la ruta.
+			print("AVISO: config_actual es Nil (Prueba con F6). Mandando a créditos por seguridad.")
+			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn")
+		elif config_actual.es_nivel_final:
 			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn") 
 		else:
 			TransitionManager.viajar_a("res://Levels/Lobby.tscn")

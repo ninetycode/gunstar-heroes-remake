@@ -196,7 +196,7 @@ platform_floor_layers = 4294901761
 platform_wall_layers = 1
 script = ExtResource("1_1i8gr")
 attack_range = 25.0
-probabilidad_dropear_algo = 80.0
+probabilidad_dropear_algo = 15.0
 posibles_drops = Array[ExtResource("2_5104v")]([ExtResource("3_ygrj3"), ExtResource("4_ngsse"), ExtResource("5_ngsse")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286054112]

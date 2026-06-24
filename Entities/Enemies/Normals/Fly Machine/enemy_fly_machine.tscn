@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b25uujpdpgc34" path="res://Assets/Sprite Sheets/Enemies/Fly machine/punch enemy.png" id="4_o5lgy"]
 [ext_resource type="Resource" uid="uid://d2b26mid6stsp" path="res://Resources/item_vida.tres" id="4_r2c7j"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="5_og1r4"]
+[ext_resource type="Resource" uid="uid://onxd572u1omr" path="res://Resources/item_escudo.tres" id="5_r2c7j"]
 [ext_resource type="Script" uid="uid://48y53nl431af" path="res://Entities/Enemies/Normals/Fly Machine/fly_state.gd" id="6_0yade"]
+[ext_resource type="Resource" uid="uid://clpi504w6b8ox" path="res://Resources/item_coin.tres" id="6_1pqi8"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="6_o5lgy"]
 [ext_resource type="Script" uid="uid://dh8dinwh6ady6" path="res://Entities/Enemies/Normals/Fly Machine/attack_state.gd" id="7_3q20n"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="7_og1r4"]
@@ -94,9 +96,8 @@ collision_mask = 2
 script = ExtResource("1_8uimj")
 altura_minima_suelo = 500.0
 mi_arma_resource = ExtResource("2_3q20n")
-drop_chance = 10.0
 probabilidad_dropear_algo = 10.0
-posibles_drops = Array[ExtResource("3_seyq7")]([ExtResource("4_r2c7j")])
+posibles_drops = Array[ExtResource("3_seyq7")]([ExtResource("4_r2c7j"), ExtResource("5_r2c7j"), ExtResource("6_1pqi8")])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=38438922]
 sprite_frames = SubResource("SpriteFrames_s2wv7")

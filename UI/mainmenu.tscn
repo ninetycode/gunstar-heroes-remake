@@ -45,12 +45,6 @@ text = "Jugar"
 flat = true
 alignment = 0
 
-[node name="BtnOpciones" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=751628956]
-layout_mode = 2
-text = "Opciones"
-flat = true
-alignment = 0
-
 [node name="BtnCreditos" type="Button" parent="MarginContainer/HBoxContainer/ColumnaPrincipal" unique_id=1865855777]
 layout_mode = 2
 text = "Creditos"

@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Gunstar Heroes Remake"
+config/description="Best Juego Islas Tiki Tiki"
 run/main_scene="uid://hd68cutw7xyg"
 config/features=PackedStringArray("4.6", "Mobile")
+config/icon="uid://drgl8c1lsrpba"
 
 [audio]
 

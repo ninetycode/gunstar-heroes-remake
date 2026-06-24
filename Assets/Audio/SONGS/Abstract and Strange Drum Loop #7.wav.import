@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bx00xrocq4env"
+path="res://.godot/imported/Abstract and Strange Drum Loop #7.wav-3c9832a51a45eba1ecb7314be17b93ab.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SONGS/Abstract and Strange Drum Loop #7.wav"
+dest_files=["res://.godot/imported/Abstract and Strange Drum Loop #7.wav-3c9832a51a45eba1ecb7314be17b93ab.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -46,13 +46,13 @@ func actualizar_etiquetas():
 	var vida_max_actual = 100 + (GameManager.nivel_mejora_vida * 10)
 	var escudo_comprado = GameManager.nivel_mejora_escudo * 20
 	
-	btn_vida.text = "+10 Vida Máx (Nivel " + str(GameManager.nivel_mejora_vida) + ") - Costo: 50"
+	btn_vida.text = "+10 Vida Máx (Nivel " + str(GameManager.nivel_mejora_vida) + ") - Costo: 10"
 	
 	if escudo_comprado >= vida_max_actual:
 		btn_escudo.text = "Escudo AL MÁXIMO (" + str(escudo_comprado) + ")"
 		btn_escudo.disabled = true
 	else:
-		btn_escudo.text = "+20 Escudo Inicial (Nivel " + str(GameManager.nivel_mejora_escudo) + ") - Costo: 30"
+		btn_escudo.text = "+20 Escudo Inicial (Nivel " + str(GameManager.nivel_mejora_escudo) + ") - Costo: 5"
 		btn_escudo.disabled = false
 
 func _on_btn_vida_pressed():
@@ -64,7 +64,7 @@ func _on_btn_vida_pressed():
 	
 	# Le decimos a la billetera que intente gastar 50. 
 	# Si devuelve 'true', es porque tenía plata y ya la descontó.
-	if wallet and wallet.gastar_monedas(50):
+	if wallet and wallet.gastar_monedas(10):
 		GameManager.nivel_mejora_vida += 1
 		
 		if stats:
@@ -83,7 +83,7 @@ func _on_btn_escudo_pressed():
 	var stats = player.get_node_or_null("StatsComponent")
 	
 	# Le decimos a la billetera que intente gastar 30.
-	if wallet and wallet.gastar_monedas(30):
+	if wallet and wallet.gastar_monedas(5):
 		GameManager.nivel_mejora_escudo += 1
 		
 		if stats:
