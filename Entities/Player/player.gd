@@ -149,6 +149,7 @@ func _on_monedas_cambiadas(total: int) -> void:
 	
 func _on_danio_recibido(_cantidad: int) -> void:
 	# 1. El flash blanco del impacto inicial (Esto ya lo tenías, está perfecto)
+	AudioManager.play_sfx("hit", -9.0, randf_range(0.9, 1.1))
 	_animated_sprite.modulate = Color(10, 10, 10)
 	await get_tree().create_timer(0.05).timeout
 	_animated_sprite.modulate = Color(1, 1, 1)

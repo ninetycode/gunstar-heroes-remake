@@ -281,7 +281,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_52ncw")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack_jump",
 "speed": 15.0
 }, {
@@ -316,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_14f2b")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack_zarpazo",
 "speed": 10.0
 }, {
@@ -330,7 +330,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qrb4m")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -365,7 +365,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hb6p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 10.0
 }, {
@@ -400,7 +400,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uhbft")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 10.0
 }]
@@ -416,6 +416,7 @@ collision_layer = 4
 collision_mask = 3
 platform_floor_layers = 4294901761
 script = ExtResource("1_5itva")
+speed = 250.0
 nombre_boss = "Growl Boss"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471632644]
