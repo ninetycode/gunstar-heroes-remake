@@ -10,7 +10,6 @@ extends CanvasLayer
 const RUTA_LOBBY = "res://Levels/Lobby.tscn" 
 
 func _ready() -> void:
-	
 	fondo_galaxia.modulate.a = 0.0
 	contenedor_ui.modulate.a = 0.0
 	
@@ -22,26 +21,21 @@ func _ready() -> void:
 		
 	_pacificar_enemigos()
 	
-	# --- CORRECCIÓN DEL BUG 2: EL CAJERO AUTOMÁTICO (REFACTORIZADO) ---
+	# === CRÍTICO: CONGELAMOS EL TIEMPO EN EL MUNDO ===
+	# Como este nodo está en modo "Always", la UI sigue viva pero el Boss se frena en seco
+	get_tree().paused = true
+	
+	# --- LÓGICA DE MONEDAS ---
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		# Buscamos nuestra nueva billetera
 		var wallet = player.get_node_or_null("WalletComponent")
-		
 		if wallet:
-			# 1. Calculamos cuántas agarró en este ratito (Bolsillo - Banco inicial)
 			var monedas_ganadas = wallet.monedas_actuales - GameManager.monedas_totales
-			if monedas_ganadas < 0: monedas_ganadas = 0 # Por las dudas
-			
-			# 2. Mostramos el mensaje en pantalla
+			if monedas_ganadas < 0: monedas_ganadas = 0
 			if label_monedas:
 				label_monedas.text = "Monedas obtenidas: " + str(monedas_ganadas)
-				
-			# 3. Guardamos TODO en el banco para que viaje con vos al Lobby
 			GameManager.monedas_totales = wallet.monedas_actuales
 			
-		# 4. CRÍTICO: Reseteamos la "vida persistente" a -1.
-		# Esto lo hacemos siempre, haya agarrado monedas o no.
 		GameManager.vida_persistente = -1
 		GameManager.escudo_persistente = 0
 
@@ -85,23 +79,23 @@ func _animar_aparicion() -> void:
 	tween.tween_callback(btn_no.grab_focus)
 
 func _on_btn_no_pressed() -> void:
-	# === FIX DE MÚSICA EN REINTENTO AAA ===
-	# Le preguntamos al LevelManager si tiene los datos del nivel que estábamos jugando
-	if LevelManager.config_actual:
-		var config = LevelManager.config_actual
+	if has_node("/root/AudioManager"):
+		AudioManager.stop_music(0.0)
+	
+	# === FIX DE LIMPIEZA DE BALAS ENEMIGAS ===
+	# Barremos la pantalla para que las esporas del Papaya Boss no te queden flotando
+	if has_node("/root/BulletPool"):
+		BulletPool.limpiar_pool()
+	
+	get_tree().paused = false
+	
+	var arbol_escenas = get_tree()
+	if arbol_escenas:
+		arbol_escenas.reload_current_scene()
+	else:
+		Engine.get_main_loop().reload_current_scene()
 		
-		# Si estábamos en medio de las hordas normales, relanzamos la música ambiente
-		if LevelManager.habitacion_actual < LevelManager.ruta_generada.size():
-			if config.musica_ambiente != "":
-				AudioManager.play_music(config.musica_ambiente, 0.0, 1.0)
-		else:
-			# Si moriste exactamente en la última sala (el jefe), relanzamos la música del boss
-			if config.musica_jefe != "":
-				AudioManager.play_music(config.musica_jefe, 0.0, 1.0)
-
-	# Reiniciamos la escena actual tal cual lo hacías antes
-	get_tree().reload_current_scene()
-
 func _on_btn_si_pressed() -> void:
-	# Volvemos al menú
+	# === CRÍTICO: DESPAUSAMOS ANTES DE IR AL LOBBY ===
+	get_tree().paused = false
 	get_tree().change_scene_to_file(RUTA_LOBBY)

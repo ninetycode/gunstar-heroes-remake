@@ -10,6 +10,7 @@ font_size = 50
 font_size = 29
 
 [node name="GameOverScreen" type="CanvasLayer" unique_id=1447691403]
+process_mode = 3
 layer = 101
 script = ExtResource("1_3y5qq")
 

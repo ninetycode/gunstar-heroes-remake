@@ -35,6 +35,8 @@ var sonidos: Dictionary = {
 	"cargando" : preload ("res://Assets/Audio/SFX/UI_LoadingProgress_SoftPulsate_Volume_1_4_1.wav"),
 	"ui_move" : preload ("res://Assets/Audio/SFX/UI_HoverSelect_LightClick_Volume_1_8_1.wav"),
 	"coin" : preload ("res://Assets/Audio/SFX/Collective_Coins_02.wav"),
+	"boss2_jump" : preload("res://Assets/Audio/SFX/NaturalElements_ShortAirBursts_AirWhoosh_Volume_1_1_1.wav"),
+	"boss2_attack" : preload("res://Assets/Audio/SFX/NaturalElements_ShortAirBursts_AirWhoosh_Volume_1_1_2.wav"),
 	#"salto": preload("res://Assets/Audio/SFX/jump.wav"),
 	#"explosion": preload("res://Assets/Audio/SFX/explosion.wav"),
 	"hit": preload("res://Assets/Audio/SFX/CinematicHitsImpacts_QuickStings_AirWoosh_Fast_Volume_1_8_2.wav")

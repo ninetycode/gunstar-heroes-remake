@@ -21,3 +21,9 @@ func get_bullet(pos: Vector2, dir: Vector2, data: WeaponResource, de_enemigo: bo
 	bala.activar(pos, dir, data, de_enemigo, fire_index) # Lo pasamos acá
 	
 	_current_index = (_current_index + 1) % _pool.size()
+
+func limpiar_pool() -> void:
+	for bala in _pool:
+		if is_instance_valid(bala) and bala.visible:
+			bala.desactivar() # Apaga la bala y la manda a la posición de espera (-9999, -9999)
+	_current_index = 0

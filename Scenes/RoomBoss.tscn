@@ -5240,7 +5240,7 @@ tile_set = SubResource("TileSet_pk6vb")
 position = Vector2(320, 330)
 
 [node name="StatsComponent" parent="PapayaBoss" index="3" unique_id=575655358]
-vida_maxima = 8000
+vida_maxima = 6000
 
 [node name="AreaManager" parent="." unique_id=7629039 instance=ExtResource("4_c2e18")]
 tipo_de_sala = 1

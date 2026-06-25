@@ -5,6 +5,7 @@ var ya_despego: bool = false
 func enter(_msg := {}) -> void:
 	ya_despego = false
 	owner.sprite.play("attack_jump")
+	AudioManager.play_sfx("boss2_jump")
 	
 	if is_instance_valid(owner.player): 
 		owner.mirar_hacia(owner.player.global_position)
