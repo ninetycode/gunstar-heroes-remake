@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ch1pljnaaejok" path="res://Assets/Sprite Sheets/Enemies/Growl/jump_close_attack.png" id="1_t1s8f"]
 [ext_resource type="Texture2D" uid="uid://20m016csqhv" path="res://Assets/Sprite Sheets/Enemies/Growl/growl run.png" id="2_e8fpp"]
 [ext_resource type="PackedScene" uid="uid://gr8by1sioxyf" path="res://Systems/hitbox_component.tscn" id="2_vlokq"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="2_yhbql"]
 [ext_resource type="Texture2D" uid="uid://b2bmgrkm30sfb" path="res://Assets/Sprite Sheets/Enemies/Growl/growl close attack.png" id="3_2hb6p"]
+[ext_resource type="Resource" uid="uid://d1t4vlvipqtar" path="res://Resources/item_gem.tres" id="3_2xicr"]
 [ext_resource type="PackedScene" uid="uid://q8fg5y28axv8" path="res://Systems/hurtbox_component.tscn" id="3_atoew"]
 [ext_resource type="Script" uid="uid://dwvi1p3vxvx8q" path="res://Scripts/state_machine.gd" id="4_atoew"]
 [ext_resource type="Texture2D" uid="uid://dy8ettjgc10qu" path="res://Assets/Sprite Sheets/Enemies/Growl/death.png" id="4_hqlnq"]
@@ -418,6 +420,8 @@ platform_floor_layers = 4294901761
 script = ExtResource("1_5itva")
 speed = 250.0
 nombre_boss = "Growl Boss"
+probabilidad_dropear_algo = 100.0
+posibles_drops = Array[ExtResource("2_yhbql")]([ExtResource("3_2xicr")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471632644]
 position = Vector2(6, 23)

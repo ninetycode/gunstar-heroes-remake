@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DropConfig" format=3 uid="uid://d1t4vlvipqtar"]
+
+[ext_resource type="PackedScene" uid="uid://caasmts5hvpv8" path="res://Scenes/gem_item.tscn" id="1_cdyho"]
+[ext_resource type="Script" uid="uid://x46q7nngivmm" path="res://Scripts/drop_config.gd" id="2_3m70k"]
+
+[resource]
+script = ExtResource("2_3m70k")
+item_scene = ExtResource("1_cdyho")
+peso = 25
+metadata/_custom_type_script = "uid://x46q7nngivmm"

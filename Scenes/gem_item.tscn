@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://caasmts5hvpv8"]
+
+[ext_resource type="Script" uid="uid://cwljdv7riiikx" path="res://Scripts/gem_item.gd" id="1_s3fi0"]
+[ext_resource type="Texture2D" uid="uid://cbkvaseuxichj" path="res://Assets/Sprite Sheets/Items/Gema3.png" id="2_k804m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="Gem Item" type="Area2D" unique_id=1542040650]
+collision_layer = 32
+collision_mask = 8
+script = ExtResource("1_s3fi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=796632012]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2123555056]
+texture = ExtResource("2_k804m")
+
+[node name="FloorDetector" type="RayCast2D" parent="." unique_id=1961510492]
