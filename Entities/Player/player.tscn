@@ -170,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_owvpp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Crouch",
 "speed": 5.0
 }, {
@@ -187,7 +187,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_slvv8")
 }],
-"loop": false,
+"loop": 0,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -198,7 +198,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r8fok")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Disparo abajo",
 "speed": 9.0
 }, {
@@ -209,7 +209,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lr01m")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Disparo arriba",
 "speed": 9.0
 }, {
@@ -220,7 +220,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u86q5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Disparo diagonal abajo",
 "speed": 5.0
 }, {
@@ -231,7 +231,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ui1ln")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Disparo diagonal arriba",
 "speed": 5.0
 }, {
@@ -242,7 +242,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vskfa")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Disparo recto",
 "speed": 9.0
 }, {
@@ -265,7 +265,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cete1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hanging",
 "speed": 7.0
 }, {
@@ -276,7 +276,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rcn7p")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 3.0
 }, {
@@ -290,7 +290,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nd53j")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Jump",
 "speed": 7.0
 }, {
@@ -316,7 +316,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dv6dp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Run",
 "speed": 7.0
 }]

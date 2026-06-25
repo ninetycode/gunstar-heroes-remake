@@ -7,6 +7,8 @@ signal monedas_globales_actualizadas(cantidad)
 const PAUSE_MENU_SCENE = preload("res://UI/pause_menu.tscn") # <- ¡Chequeá esta ruta!
 var pause_menu_instance: CanvasLayer
 
+var indice_arma_persistente: int = 0
+
 var monedas_totales: int = 0
 var vida_persistente: int = -1 # -1 significa "llena" (primera vez)
 var escudo_persistente: int = 0
@@ -81,3 +83,4 @@ func resetear_stats_rogue():
 	vida_persistente = -1
 	escudo_persistente = 0
 	monedas_totales = 0
+	indice_arma_persistente = 0 

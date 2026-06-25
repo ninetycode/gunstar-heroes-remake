@@ -12,15 +12,24 @@ var _ultimo_sonido_msec : int = 0
 var balas_disparadas : int = 0
 
 func _ready():
-	# Al nacer, si tenemos armas en el inventario, nos equipamos la primera (índice 0)
-	inventario_cambiado.emit(inventario_armas, indice_arma_actual)
+	# 1. Cargamos el índice que quedó guardado en el GameManager
+	indice_arma_actual = GameManager.indice_arma_persistente
+	
 	if inventario_armas.size() > 0:
-		arma_actual = inventario_armas[0]
+		# CONTROL DE SEGURIDAD AAA: Si en el futuro cambiás el tamaño del inventario 
+		# desde el inspector, esto evita que el juego crashee por índice fuera de rango.
+		if indice_arma_actual >= inventario_armas.size():
+			indice_arma_actual = 0
+			GameManager.indice_arma_persistente = 0
+			
+		arma_actual = inventario_armas[indice_arma_actual]
 		
 	if arma_actual:
 		cooldown_timer.wait_time = arma_actual.fire_rate
 		BulletPool.initialize_pool(arma_actual.bullet_scene)
 
+	# 2. Emitimos la señal para que el HUD se entere del arma persistente real
+	inventario_cambiado.emit(inventario_armas, indice_arma_actual)
 func disparar():
 	if owner.get("en_lobby"):
 		return
@@ -81,16 +90,18 @@ func cambiar_arma(nuevo_recurso: WeaponResource):
 
 # --- NUEVA FUNCIÓN PARA ROTAR EL INVENTARIO ---
 func rotar_arma():
-	# Si no hay armas o hay solo 1, no hacemos nada
 	if inventario_armas.size() <= 1: 
 		return 
 		
-	# Sumamos 1 al índice. El "%" hace que si nos pasamos del límite, vuelva a 0.
 	indice_arma_actual = (indice_arma_actual + 1) % inventario_armas.size()
 	
-	# Cambiamos al arma que toca
+	# === GUARDA INMEDIATO ===
+	# Almacenamos el nuevo índice en el Autoload al instante
+	GameManager.indice_arma_persistente = indice_arma_actual
+	
 	cambiar_arma(inventario_armas[indice_arma_actual])
 	inventario_cambiado.emit(inventario_armas, indice_arma_actual)
+	
 func detener_disparo():
 	# Reseteamos la ráfaga para que el próximo click arranque desde cero
 	balas_disparadas = 0
