@@ -24,7 +24,6 @@ func guardar_partida(slot: int):
 	var config = ConfigFile.new()
 	
 	# 1. Guardamos la Meta-Data (Para mostrar en el menú)
-	# Esto saca la fecha y hora real de tu compu (ej: "2026-05-14 15:30")
 	var fecha_actual = Time.get_datetime_string_from_system(false, true).replace("T", " ")
 	config.set_value("Meta", "fecha", fecha_actual)
 	config.set_value("Meta", "tiempo_jugado", tiempo_jugado)
@@ -36,20 +35,29 @@ func guardar_partida(slot: int):
 	config.set_value("Stats", "mejora_vida", GameManager.nivel_mejora_vida)
 	config.set_value("Stats", "mejora_escudo", GameManager.nivel_mejora_escudo)
 	
+	# === FIX DE PROGRESIÓN AAA ===
+	# Le decimos al archivo que salve el nivel máximo que desbloqueó Blue
+	config.set_value("Progreso", "nivel_maximo", GameManager.nivel_maximo_alcanzado)
+	
 	# 3. Guardamos el archivo en la carpeta "AppData" del usuario
 	config.save("user://save_slot_" + str(slot) + ".cfg")
-	print("Partida guardada en el slot ", slot)
+	print("Partida guardada en el slot ", slot, " (Nivel Máx: ", GameManager.nivel_maximo_alcanzado, ")")
 
 func cargar_partida(slot: int) -> bool:
 	var config = ConfigFile.new()
 	if config.load("user://save_slot_" + str(slot) + ".cfg") == OK:
-		# Recuperamos los datos
+		# Recuperamos los datos de meta y stats base
 		tiempo_jugado = config.get_value("Meta", "tiempo_jugado", 0.0)
 		veces_guardado = config.get_value("Meta", "veces_guardado", 0)
 		
 		GameManager.monedas_totales = config.get_value("Stats", "monedas", 0)
 		GameManager.nivel_mejora_vida = config.get_value("Stats", "mejora_vida", 0)
 		GameManager.nivel_mejora_escudo = config.get_value("Stats", "mejora_escudo", 0)
+		
+		# === FIX DE CARGA AAA ===
+		# Recuperamos el progreso guardado y se lo inyectamos de una al GameManager.
+		# Si el archivo no tiene este dato (partida vieja), le ponemos 0 por defecto (Nivel 1).
+		GameManager.nivel_maximo_alcanzado = config.get_value("Progreso", "nivel_maximo", 0)
 		
 		slot_actual = slot
 		return true

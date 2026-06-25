@@ -33,26 +33,26 @@ func iniciar_nivel(config: LevelConfig, indice: int):
 	avanzar_habitacion()
 
 func avanzar_habitacion():
-	# === CERROJO DE SEGURIDAD ANTIFANTASMA AAA ===
-	# Si ya estamos procesando un cambio de escena, ignoramos cualquier trigger duplicado
+	# === CERROJO DE SEGURIDAD ANTIFANTASMA ===
 	if cambiando_escena:
 		return
 		
 	if habitacion_actual < ruta_generada.size():
-		cambiando_escena = true # Cerramos el candado
+		cambiando_escena = true
 		var siguiente_escena = ruta_generada[habitacion_actual]
 		habitacion_actual += 1
 		
-		# Viajamos a la escena
 		TransitionManager.viajar_a(siguiente_escena)
-		
-		# Le damos un pequeño respiro de 0.5 segundos para que la pantalla de carga 
-		# tape todo y cambie de escena antes de volver a abrir el candado
 		get_tree().create_timer(0.5).timeout.connect(func(): cambiando_escena = false)
 		
 	else:
 		print("¡NIVEL COMPLETADO!")
 		cambiando_escena = true
+		
+		# === ACÁ ESTÁ EL FIX: APAGAMOS LA MÚSICA DEL BOSS ===
+		if has_node("/root/AudioManager"):
+			# Le ponemos 0.0 para que corte en seco antes de la carga del Lobby
+			AudioManager.stop_music(0.0) 
 		
 		GameManager.vida_persistente = -1
 		GameManager.escudo_persistente = 0
