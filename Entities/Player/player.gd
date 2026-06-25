@@ -14,6 +14,8 @@ var jump_buffer_counter: float = 0.0
 @export var en_lobby: bool = false
 var gravity_enabled = true
 @onready var wallet: Node = $WalletComponent
+@export var max_saltos: int = 2 # 1 para salto normal, 2 para doble salto
+var saltos_realizados: int = 0
 
 func _ready() -> void:
 	stats.danio_recibido.connect(_on_danio_recibido)
@@ -50,19 +52,25 @@ func _ready() -> void:
 
 
 func _physics_process(delta):
-	# 1. Actualizamos el reloj del buffer (ESTO SÍ LO DEJAMOS)
+	# 1. Actualizamos el reloj del buffer
 	if jump_buffer_counter > 0.0:
 		jump_buffer_counter -= delta
 		
-	# La gravedad se aplica siempre en el aire
+	# 2. La gravedad se aplica siempre en el aire
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	else:
+		# === CRÍTICO PARA EL DOBLE SALTO ===
+		# Si está pisando el suelo, reseteamos el contador de saltos inmediatamente
+		saltos_realizados = 0
+		
+	# 3. LÓGICA DE ACTIVACIÓN DEL SALTO
+	# Si el buffer pide un salto Y todavía tenemos saltos disponibles...
+	if jump_buffer_counter > 0.0 and saltos_realizados < max_saltos:
+		ejecutar_salto()
 		
 	move_and_slide()
 	limitar_a_camara()
-
-# Posiciones del muzzle por dirección (ajustá los valores a tu sprite)
-# Posiciones base asumiendo ÚNICAMENTE que el personaje mira a la DERECHA
 
 const MUZZLE_POSITIONS = {
 	"recto":            Vector2(22.0, -20.0),
@@ -178,9 +186,21 @@ func limitar_a_camara():
 		# Le sumamos/restamos 20 píxeles para que frene justo en el borde y no quede el sprite cortado por la mitad.
 		global_position.x = clamp(global_position.x, limite_izq + 20.0, limite_der - 20.0)
 
-
-func _on_piramid_trigger_area_entered(_area):
-	pass # Replace with function body.
+func ejecutar_salto():
+	# Si es el primer salto, o si es el segundo salto Y la habilidad está comprada
+	if saltos_realizados == 0 or (saltos_realizados == 1 and GameManager.doble_salto_desbloqueado):
+		velocity.y = jump_velocity
+		saltos_realizados += 1
+		jump_buffer_counter = 0.0
+		
+		# Feedback Sonoro
+		if saltos_realizados == 1:
+			AudioManager.play_sfx("jump", -3.0, randf_range(0.9, 1.1))
+		elif saltos_realizados == 2:
+			AudioManager.play_sfx("jump", -2.0, randf_range(1.3, 1.5))
+	else:
+		# Si intenta hacer un doble salto pero no lo compró, vaciamos el buffer y no hace nada
+		jump_buffer_counter = 0.0
 	
 func set_congelado(congelar: bool) -> void:
 	if congelar:

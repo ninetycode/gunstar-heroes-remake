@@ -8,6 +8,7 @@ const PAUSE_MENU_SCENE = preload("res://UI/pause_menu.tscn") # <- ¡Chequeá est
 var pause_menu_instance: CanvasLayer
 
 var indice_arma_persistente: int = 0
+var doble_salto_desbloqueado: bool = false
 
 var monedas_totales: int = 0
 var vida_persistente: int = -1 # -1 significa "llena" (primera vez)

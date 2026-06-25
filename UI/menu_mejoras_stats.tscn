@@ -35,6 +35,10 @@ text = "+10 Vida Máxima - Costo 50"
 layout_mode = 2
 text = "+20 Escudo Inicial - Costo 30"
 
+[node name="BtnDobleSalto" type="Button" parent="VBoxContainer" unique_id=340646135]
+layout_mode = 2
+text = "Habilidad: Doble Salto - Costo 5"
+
 [node name="BtnSalir" type="Button" parent="VBoxContainer" unique_id=980742718]
 layout_mode = 2
 text = "Salir"
