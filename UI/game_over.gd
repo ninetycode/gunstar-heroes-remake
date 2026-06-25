@@ -85,7 +85,21 @@ func _animar_aparicion() -> void:
 	tween.tween_callback(btn_no.grab_focus)
 
 func _on_btn_no_pressed() -> void:
-	# Reiniciamos el nivel actual mágicamente
+	# === FIX DE MÚSICA EN REINTENTO AAA ===
+	# Le preguntamos al LevelManager si tiene los datos del nivel que estábamos jugando
+	if LevelManager.config_actual:
+		var config = LevelManager.config_actual
+		
+		# Si estábamos en medio de las hordas normales, relanzamos la música ambiente
+		if LevelManager.habitacion_actual < LevelManager.ruta_generada.size():
+			if config.musica_ambiente != "":
+				AudioManager.play_music(config.musica_ambiente, 0.0, 1.0)
+		else:
+			# Si moriste exactamente en la última sala (el jefe), relanzamos la música del boss
+			if config.musica_jefe != "":
+				AudioManager.play_music(config.musica_jefe, 0.0, 1.0)
+
+	# Reiniciamos la escena actual tal cual lo hacías antes
 	get_tree().reload_current_scene()
 
 func _on_btn_si_pressed() -> void:
