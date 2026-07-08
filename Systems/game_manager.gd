@@ -14,6 +14,9 @@ var monedas_totales: int = 0
 var vida_persistente: int = -1 # -1 significa "llena" (primera vez)
 var escudo_persistente: int = 0
 var plata_prueba_entregada: bool = false
+# --- REGISTRO DE OBJETOS FIJOS COLECTADOS ---
+# Guardará cosas como: {"tutorial_moneda_1": true, "tutorial_moneda_2": true}
+var objetos_fijos_agarrados: Dictionary = {}
 
 #--------------------------------------------------
 ## MEJORAS: 

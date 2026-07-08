@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://loqkuiol172n" path="res://teleport_area.gd" id="6_34af2"]
 [ext_resource type="PackedScene" uid="uid://c7m7fe51faqjy" path="res://Scenes/coin_item.tscn" id="7_2d1j7"]
 [ext_resource type="AudioStream" uid="uid://dfdiybqjf0b63" path="res://Assets/Audio/SONGS/Gunstar Heroes OST_ Sega Genesis - 04 - Military on the Max Power.mp3" id="7_5wckk"]
+[ext_resource type="Script" uid="uid://bjaxfgqs87tcu" path="res://Scripts/moneda_fija.gd" id="8_ikfou"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5s8la"]
 texture = ExtResource("1_ikfou")
@@ -1500,47 +1501,77 @@ volume_db = -20.0
 autoplay = true
 parameters/looping = false
 
-[node name="coin_item" parent="." unique_id=945099877 instance=ExtResource("7_2d1j7")]
+[node name="Coins" type="Node" parent="." unique_id=637133617]
+
+[node name="coin_item" parent="Coins" unique_id=945099877 instance=ExtResource("7_2d1j7")]
 position = Vector2(386, 270)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item2" parent="." unique_id=1599635959 instance=ExtResource("7_2d1j7")]
+[node name="coin_item2" parent="Coins" unique_id=1599635959 instance=ExtResource("7_2d1j7")]
 position = Vector2(411, 271)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item3" parent="." unique_id=1047958828 instance=ExtResource("7_2d1j7")]
+[node name="coin_item3" parent="Coins" unique_id=1047958828 instance=ExtResource("7_2d1j7")]
 position = Vector2(435, 271)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item4" parent="." unique_id=1019005623 instance=ExtResource("7_2d1j7")]
+[node name="coin_item4" parent="Coins" unique_id=1019005623 instance=ExtResource("7_2d1j7")]
 position = Vector2(459, 271)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item12" parent="." unique_id=1067005332 instance=ExtResource("7_2d1j7")]
+[node name="coin_item12" parent="Coins" unique_id=1067005332 instance=ExtResource("7_2d1j7")]
 position = Vector2(503, 224)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item13" parent="." unique_id=1845568234 instance=ExtResource("7_2d1j7")]
+[node name="coin_item13" parent="Coins" unique_id=1845568234 instance=ExtResource("7_2d1j7")]
 position = Vector2(345, 260)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item14" parent="." unique_id=590721620 instance=ExtResource("7_2d1j7")]
+[node name="coin_item14" parent="Coins" unique_id=590721620 instance=ExtResource("7_2d1j7")]
 position = Vector2(75, 286)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item5" parent="." unique_id=305040598 instance=ExtResource("7_2d1j7")]
+[node name="coin_item5" parent="Coins" unique_id=305040598 instance=ExtResource("7_2d1j7")]
 position = Vector2(-369, 285)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item6" parent="." unique_id=363977678 instance=ExtResource("7_2d1j7")]
+[node name="coin_item6" parent="Coins" unique_id=363977678 instance=ExtResource("7_2d1j7")]
 position = Vector2(-345, 286)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item7" parent="." unique_id=1784378518 instance=ExtResource("7_2d1j7")]
+[node name="coin_item7" parent="Coins" unique_id=1784378518 instance=ExtResource("7_2d1j7")]
 position = Vector2(-321, 286)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item8" parent="." unique_id=729817730 instance=ExtResource("7_2d1j7")]
+[node name="coin_item8" parent="Coins" unique_id=729817730 instance=ExtResource("7_2d1j7")]
 position = Vector2(-297, 286)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item9" parent="." unique_id=39066822 instance=ExtResource("7_2d1j7")]
+[node name="coin_item9" parent="Coins" unique_id=39066822 instance=ExtResource("7_2d1j7")]
 position = Vector2(-274, 286)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item10" parent="." unique_id=170709846 instance=ExtResource("7_2d1j7")]
+[node name="coin_item10" parent="Coins" unique_id=170709846 instance=ExtResource("7_2d1j7")]
 position = Vector2(-249, 287)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
-[node name="coin_item11" parent="." unique_id=1687953916 instance=ExtResource("7_2d1j7")]
+[node name="coin_item11" parent="Coins" unique_id=1687953916 instance=ExtResource("7_2d1j7")]
 position = Vector2(-222, 287)
+script = ExtResource("8_ikfou")
+id_unica = ""
 
 [editable path="Enemigo de prueba"]
 [editable path="Enemigo de prueba/HurtboxComponent"]

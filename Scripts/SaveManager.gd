@@ -29,7 +29,7 @@ func guardar_partida(slot: int):
 	config.set_value("Meta", "tiempo_jugado", tiempo_jugado)
 	config.set_value("Meta", "tiempo_formateado", obtener_tiempo_formateado())
 	config.set_value("Meta", "veces_guardado", veces_guardado)
-	
+	config.set_value("Progreso", "objetos_fijos", GameManager.objetos_fijos_agarrados)
 	# 2. Guardamos los Datos del Juego (Desde el GameManager)
 	config.set_value("Stats", "monedas", GameManager.monedas_totales)
 	config.set_value("Stats", "mejora_vida", GameManager.nivel_mejora_vida)
@@ -54,9 +54,11 @@ func cargar_partida(slot: int) -> bool:
 		GameManager.nivel_mejora_vida = config.get_value("Stats", "mejora_vida", 0)
 		GameManager.nivel_mejora_escudo = config.get_value("Stats", "mejora_escudo", 0)
 		
+		# === FIX DE LA CLAVE CORREGIDA ===
+		# Cambiamos "objects_fijos" por "objetos_fijos" para que coincida exactamente con el guardado
+		GameManager.objetos_fijos_agarrados = config.get_value("Progreso", "objetos_fijos", {})
+		
 		# === FIX DE CARGA AAA ===
-		# Recuperamos el progreso guardado y se lo inyectamos de una al GameManager.
-		# Si el archivo no tiene este dato (partida vieja), le ponemos 0 por defecto (Nivel 1).
 		GameManager.nivel_maximo_alcanzado = config.get_value("Progreso", "nivel_maximo", 0)
 		
 		slot_actual = slot
