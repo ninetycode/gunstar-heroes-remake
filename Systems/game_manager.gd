@@ -1,11 +1,11 @@
 extends Node
 
-signal game_paused(is_paused: bool)
 signal monedas_globales_actualizadas(cantidad)
+signal pausa_estado_cambiado(esta_pausado: bool)
 
-
-const PAUSE_MENU_SCENE = preload("res://UI/pause_menu.tscn") # <- ¡Chequeá esta ruta!
-var pause_menu_instance: CanvasLayer
+# === SOLUCIÓN FIX CÍCLICO AAA ===
+# Eliminamos por completo el preload y la variable local. 
+# El GameManager ya no necesita conocer físicamente a la escena de pausa.
 
 var indice_arma_persistente: int = 0
 var doble_salto_desbloqueado: bool = false
@@ -14,8 +14,8 @@ var monedas_totales: int = 0
 var vida_persistente: int = -1 # -1 significa "llena" (primera vez)
 var escudo_persistente: int = 0
 var plata_prueba_entregada: bool = false
+
 # --- REGISTRO DE OBJETOS FIJOS COLECTADOS ---
-# Guardará cosas como: {"tutorial_moneda_1": true, "tutorial_moneda_2": true}
 var objetos_fijos_agarrados: Dictionary = {}
 
 #--------------------------------------------------
@@ -28,52 +28,35 @@ var nivel_maximo_alcanzado: int = 0
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
-	# 2. Instanciamos el menú, lo agregamos al juego y lo ocultamos
-	pause_menu_instance = PAUSE_MENU_SCENE.instantiate()
-	add_child(pause_menu_instance)
-	pause_menu_instance.hide()
+	# Limpiamos las líneas que instanciaban el menú a mano para que no dupliquen al Autoload
 
 func toggle_pause() -> void:
-	var nuevo_estado = not get_tree().paused
-	get_tree().paused = nuevo_estado
-	
-	# 3. Prendemos o apagamos el menú visual
-	if pause_menu_instance:
-		pause_menu_instance.visible = nuevo_estado
-		
-	game_paused.emit(nuevo_estado)
-
-# ... (El resto de tus funciones restart_current_level e _input quedan exactamente igual)
+	get_tree().paused = !get_tree().paused
+	pausa_estado_cambiado.emit(get_tree().paused)
 
 func restart_current_level() -> void:
-	# 1. Despausar siempre antes de reiniciar
 	get_tree().paused = false
 	
-	# 2. Frenar la música (recuperamos tu lógica original)
-	# (Verificamos que el Singleton exista para no crashear por las dudas)
 	if has_node("/root/AudioManager"):
 		AudioManager.stop_music(0.0)
 	
-	# 3. Reinicio a prueba de F6 (Play Scene)
 	if get_tree().current_scene != null:
 		get_tree().call_deferred("reload_current_scene")
 	else:
-		# PLAN B: Si current_scene es null, buscamos la escena "a la fuerza".
-		# En el Root de Godot, los primeros hijos son los Autoloads, 
-		# y el ÚLTIMO hijo siempre es la escena que estás jugando.
 		var root = get_tree().root
 		var escena_actual = root.get_child(root.get_child_count() - 1)
 		get_tree().call_deferred("change_scene_to_file", escena_actual.scene_file_path)
 
 func _input(event: InputEvent) -> void:
-	# Agregamos "not event.is_echo()" para que solo reaccione al primer toque de la tecla,
-	# ignorando la ametralladora del sistema operativo si dejás el dedo apretado.
-	if event is InputEventKey and event.pressed and not event.is_echo():
-		if event.keycode == KEY_P:
-			toggle_pause()
-		elif event.keycode == KEY_R:
-			restart_current_level()
+	if event.is_action_pressed("pausa"):
+		# === BLINDAJE ANTI-PAUSA SEGURO ===
+		# Le preguntamos al motor si Blue está vivo en la escena actual.
+		# Si no hay nadie en el grupo "Player", significa que estás en el Main Menu o Créditos,
+		# por lo que cortamos en seco con un return y el botón no hace nada.
+		if not get_tree().get_first_node_in_group("Player"):
+			return
+			
+		toggle_pause()
 			
 func guardar_estado_jugador(vida: int, escudo: int, monedas: int):
 	vida_persistente = vida
@@ -83,8 +66,7 @@ func guardar_estado_jugador(vida: int, escudo: int, monedas: int):
 	print("GameManager: Estado guardado. Monedas: ", monedas_totales)
 	
 func resetear_stats_rogue():
-	# Para cuando Blue muere de verdad y vuelve a la nave
 	vida_persistente = -1
 	escudo_persistente = 0
 	monedas_totales = 0
-	indice_arma_persistente = 0 
+	indice_arma_persistente = 0

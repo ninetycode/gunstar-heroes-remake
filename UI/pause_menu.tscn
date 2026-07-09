@@ -47,6 +47,44 @@ process_mode = 3
 layout_mode = 2
 text = "Salir"
 
+[node name="ContenedorConfirmacion" type="VBoxContainer" parent="FondoOscuro" unique_id=2038957068]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.5
+offset_top = -20.0
+offset_right = 130.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="FondoOscuro/ContenedorConfirmacion" unique_id=1705650209]
+layout_mode = 2
+text = "¿Querés volver al menú principal?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FondoOscuro/ContenedorConfirmacion/Label" unique_id=1341315582]
+layout_mode = 0
+offset_left = 58.5
+offset_top = 31.0
+offset_right = 211.5
+offset_bottom = 71.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="BtnConfirmarSi" type="Button" parent="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer" unique_id=73929169]
+layout_mode = 2
+text = "Sí"
+
+[node name="BtnConfirmarNo" type="Button" parent="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer" unique_id=1519440169]
+layout_mode = 2
+text = "No"
+
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnReanudar" to="." method="_on_btn_reanudar_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnReiniciar" to="." method="_on_btn_reiniciar_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnSalir" to="." method="_on_btn_salir_pressed"]
+[connection signal="pressed" from="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer/BtnConfirmarSi" to="." method="_on_btn_confirmar_si_pressed"]
+[connection signal="pressed" from="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer/BtnConfirmarNo" to="." method="_on_btn_confirmar_no_pressed"]
