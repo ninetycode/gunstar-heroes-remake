@@ -44,6 +44,7 @@ var sonidos: Dictionary = {
 
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# 1. Creamos el pool de SFX (Los 12 canales)
 	for i in range(cantidad_reproductores):
 		var reproductor = AudioStreamPlayer.new()
@@ -55,7 +56,7 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music" 
 	add_child(music_player)
-
+	
 # Función universal que cualquier script puede llamar
 func play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0):
 	if not sonidos.has(nombre_sonido):
