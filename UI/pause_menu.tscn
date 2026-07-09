@@ -42,10 +42,14 @@ process_mode = 3
 layout_mode = 2
 text = "Reiniciar"
 
+[node name="BtnOpciones" type="Button" parent="FondoOscuro/ContenedorBotones" unique_id=1692399602]
+layout_mode = 2
+text = "Opciones"
+
 [node name="BtnSalir" type="Button" parent="FondoOscuro/ContenedorBotones" unique_id=481909563]
 process_mode = 3
 layout_mode = 2
-text = "Salir"
+text = "Volver al Menú"
 
 [node name="ContenedorConfirmacion" type="VBoxContainer" parent="FondoOscuro" unique_id=2038957068]
 visible = false
@@ -83,8 +87,41 @@ text = "Sí"
 layout_mode = 2
 text = "No"
 
+[node name="ContenedorOpciones" type="VBoxContainer" parent="FondoOscuro" unique_id=2116168441]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 112.0
+offset_right = 410.0
+offset_bottom = 237.0
+
+[node name="Volumen musica" type="Label" parent="FondoOscuro/ContenedorOpciones" unique_id=1794936149]
+layout_mode = 2
+text = "Volumen Música"
+
+[node name="HSlider" type="HSlider" parent="FondoOscuro/ContenedorOpciones" unique_id=1504941617]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Volumen sfx" type="Label" parent="FondoOscuro/ContenedorOpciones" unique_id=514154605]
+layout_mode = 2
+text = "Volumen Efectos (SFX)"
+
+[node name="HSlider2" type="HSlider" parent="FondoOscuro/ContenedorOpciones" unique_id=907627203]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="BtnVolverOpciones" type="Button" parent="FondoOscuro/ContenedorOpciones" unique_id=67949956]
+layout_mode = 2
+text = "Volver"
+
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnReanudar" to="." method="_on_btn_reanudar_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnReiniciar" to="." method="_on_btn_reiniciar_pressed"]
+[connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnOpciones" to="." method="_on_btn_opciones_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorBotones/BtnSalir" to="." method="_on_btn_salir_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer/BtnConfirmarSi" to="." method="_on_btn_confirmar_si_pressed"]
 [connection signal="pressed" from="FondoOscuro/ContenedorConfirmacion/Label/HBoxContainer/BtnConfirmarNo" to="." method="_on_btn_confirmar_no_pressed"]
+[connection signal="pressed" from="FondoOscuro/ContenedorOpciones/BtnVolverOpciones" to="." method="_on_btn_volver_opciones_pressed"]
