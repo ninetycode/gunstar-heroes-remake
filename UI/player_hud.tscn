@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dvewobju7ra88" path="res://Assets/IU-HUD/barra-progreso-escudo2.png" id="8_o4fqs"]
 [ext_resource type="AudioStream" uid="uid://dguxi7hfxtye" path="res://Assets/Audio/SFX/Power_Up_Bar_02.wav" id="9_l43u3"]
 [ext_resource type="PackedScene" uid="uid://cih0ucrv5a61q" path="res://UI/coin_hud.tscn" id="11_4g3o5"]
+[ext_resource type="Script" uid="uid://cycfppgjed5lr" path="res://UI/gem_hud.gd" id="12_b0gj7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o0p8"]
 atlas = ExtResource("1_pi8qp")
@@ -151,3 +152,23 @@ stream = ExtResource("9_l43u3")
 
 [node name="CoinContainer" parent="." unique_id=1102543580 instance=ExtResource("11_4g3o5")]
 unique_name_in_owner = true
+
+[node name="MarginContainer2" type="PanelContainer" parent="." unique_id=105744139]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -104.0
+offset_right = 84.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("12_b0gj7")
+
+[node name="Label" type="Label" parent="MarginContainer2" unique_id=920502516]
+layout_mode = 2
+text = "¡NIVEL COMPLETADO!"

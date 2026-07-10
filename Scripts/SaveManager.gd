@@ -38,7 +38,7 @@ func guardar_partida(slot: int):
 	# === FIX DE PROGRESIÓN AAA ===
 	# Le decimos al archivo que salve el nivel máximo que desbloqueó Blue
 	config.set_value("Progreso", "nivel_maximo", GameManager.nivel_maximo_alcanzado)
-	
+	config.set_value("Stats", "doble_salto", GameManager.doble_salto_desbloqueado)
 	# 3. Guardamos el archivo en la carpeta "AppData" del usuario
 	config.save("user://save_slot_" + str(slot) + ".cfg")
 	print("Partida guardada en el slot ", slot, " (Nivel Máx: ", GameManager.nivel_maximo_alcanzado, ")")
@@ -60,7 +60,7 @@ func cargar_partida(slot: int) -> bool:
 		
 		# === FIX DE CARGA AAA ===
 		GameManager.nivel_maximo_alcanzado = config.get_value("Progreso", "nivel_maximo", 0)
-		
+		GameManager.doble_salto_desbloqueado = config.get_value("Stats", "doble_salto", false)
 		slot_actual = slot
 		return true
 	return false

@@ -8,3 +8,5 @@ signal boss_health_changed(vida_actual: int)
 
 @warning_ignore("unused_signal")
 signal boss_died()
+
+signal gema_recolectada(nombre)

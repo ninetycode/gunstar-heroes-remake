@@ -32,37 +32,40 @@ func iniciar_nivel(config: LevelConfig, indice: int):
 	print("Ruta exacta generada para este nivel: ", ruta_generada)
 	avanzar_habitacion()
 
-func avanzar_habitacion():
-	# === CERROJO DE SEGURIDAD ANTIFANTASMA ===
+func avanzar_habitacion() -> bool:
 	if cambiando_escena:
-		return
+		return false
 		
 	if habitacion_actual < ruta_generada.size():
+		# Flujo normal de habitaciones comunes...
 		cambiando_escena = true
 		var siguiente_escena = ruta_generada[habitacion_actual]
 		habitacion_actual += 1
-		
 		TransitionManager.viajar_a(siguiente_escena)
 		get_tree().create_timer(0.5).timeout.connect(func(): cambiando_escena = false)
+		return true # <-- AVISAMOS ÉXITO
 		
 	else:
-		print("¡NIVEL COMPLETADO!")
+		# === CONDICIÓN DE VICTORIA DE LA GEMA ===
+		if not GameManager.gema_recolectada_en_nivel:
+			AudioManager.play_sfx("error")
+			print("CERRADO: Necesitás la Gema del Jefe para poder escapar.")
+			return false # <-- CAMBIO CLAVE: Avisamos que el paso fue RECHAZADO
+			
+		# --- SI TIENE LA GEMA: GANÓ EL NIVEL ---
+		print("¡NIVEL COMPLETADO CON GEMA!")
 		cambiando_escena = true
-		
-		# === ACÁ ESTÁ EL FIX: APAGAMOS LA MÚSICA DEL BOSS ===
-		if has_node("/root/AudioManager"):
-			# Le ponemos 0.0 para que corte en seco antes de la carga del Lobby
-			AudioManager.stop_music(0.0) 
 		
 		GameManager.vida_persistente = -1
 		GameManager.escudo_persistente = 0
+		GameManager.gema_recolectada_en_nivel = false
 		
 		if GameManager.nivel_maximo_alcanzado <= indice_nivel_actual:
 			GameManager.nivel_maximo_alcanzado = indice_nivel_actual + 1
 			
-		if config_actual == null:
+		if config_actual == null or config_actual.es_nivel_final:
 			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn")
-		elif config_actual.es_nivel_final:
-			TransitionManager.viajar_a("res://Scenes/creditosfinales.tscn") 
 		else:
 			TransitionManager.viajar_a("res://Levels/Lobby.tscn")
+			
+		return true # <-- AVISAMOS ÉXITO

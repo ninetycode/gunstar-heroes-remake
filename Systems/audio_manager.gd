@@ -56,7 +56,16 @@ func _ready():
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music" 
 	add_child(music_player)
+	if has_node("/root/GameManager"):
+		GameManager.pausa_estado_cambiado.connect(_on_game_manager_pausa_cambiada)
+		
 	
+func _on_game_manager_pausa_cambiada(esta_pausado: bool) -> void:
+	# === ACCESO DIRECTO AAA ===
+	# Como 'music_player' es tu variable global, le aplicamos la pausa de una
+	if music_player:
+		music_player.stream_paused = esta_pausado
+		
 # Función universal que cualquier script puede llamar
 func play_sfx(nombre_sonido: String, volumen_db: float = 0.0, pitch: float = 1.0):
 	if not sonidos.has(nombre_sonido):

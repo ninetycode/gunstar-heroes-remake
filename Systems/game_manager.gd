@@ -17,7 +17,7 @@ var plata_prueba_entregada: bool = false
 
 # --- REGISTRO DE OBJETOS FIJOS COLECTADOS ---
 var objetos_fijos_agarrados: Dictionary = {}
-
+var gema_recolectada_en_nivel: bool = false
 #--------------------------------------------------
 ## MEJORAS: 
 var nivel_mejora_vida: int = 0

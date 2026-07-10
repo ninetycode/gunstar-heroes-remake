@@ -53,22 +53,29 @@ func _on_fin_body_entered(body: Node2D) -> void:
 		return 
 
 	if body.is_in_group("Player"):
+		
+		# === VERIFICACIÓN DE SEGURIDAD INTERACTIVA ===
+		# Le pedimos al LevelManager avanzar y guardamos su respuesta
+		if LevelManager.has_method("avanzar_habitacion"):
+			var exito_viaje = LevelManager.avanzar_habitacion()
+			
+			# Si el mánager nos rebotó (porque no hay gema), cortamos la función acá.
+			# NO apagamos el monitoring, permitiendo que el jugador vuelva a intentar después.
+			if not exito_viaje:
+				return 
+		
+		# --- SI EL VIAJE FUE ACEPTADO, RECIÉN ACÁ EXTRAEMOS Y APAGAMOS TODO ---
 		var stats = body.get_node_or_null("StatsComponent")
-		var wallet = body.get_node_or_null("WalletComponent") # <-- Buscamos la billetera
+		var wallet = body.get_node_or_null("WalletComponent")
 		
 		if stats:
-			# Si por alguna razón no hay billetera, usamos el valor global como respaldo para evitar crasheos
 			var monedas_guardar = wallet.monedas_actuales if wallet else GameManager.monedas_totales
-			
 			GameManager.guardar_estado_jugador(stats.vida_actual, stats.escudo_actual, monedas_guardar)
 			
 		zona_fin.set_deferred("monitoring", false)
 		if spawner:
 			spawner.stop_spawning()
 		get_tree().call_group("HUD_Group", "mostrar_cartel_go", false)
-		
-		if LevelManager.has_method("avanzar_habitacion"):
-			LevelManager.avanzar_habitacion()
 			
 func _on_arena_completada():
 	# --- ABRIMOS EL CANDADO ---
